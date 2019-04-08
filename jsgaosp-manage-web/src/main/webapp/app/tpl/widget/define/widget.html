@@ -1,0 +1,138 @@
+<div class="w-full h-full scroll-y">
+	<div class="hbox hbox-auto-xs hbox-auto-sm"
+		ng-controller="dashboardController">
+		<div class="wrapper">
+
+			<div class="row">
+				<div class="col-md-4">
+					<div id="show" style="height: 350px;"></div>
+				</div>
+
+				<div class="col-md-8">
+					<div class="row">
+						<div class="col-xs-4">
+							<div class="panel panel-default">
+								<div class="panel-body text-center">
+									<div class="inline">
+										<div ui-jq="easyPieChart"
+											ui-options="{
+				                percent: 0,
+				                lineWidth: 10,
+				                trackColor: '{{app.color.light}}',
+				                barColor: '{{app.color.success}}',
+				                scaleColor: '{{app.color.light}}',
+				                size: 188,
+				                lineCap: 'butt',
+				                animate: 1000
+				              }">
+											<div>
+												<span class="h2 m-l-sm step"
+													data-ng-bind="(overall.sendCount-overall.failCount)/overall.sendCount*100||0|number:2"></span>%
+												<div class="text text-sm">送达率</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<ul class="list-group">
+									<li class="list-group-item">消息送达数量 <span
+										class="badge pull-right"
+										data-ng-bind="(overall.sendCount-overall.failCount)||0"></span>
+									</li>
+									<li class="list-group-item">消息发送数量 <span
+										class="badge pull-right" data-ng-bind="overall.sendCount||0"></span>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-xs-4">
+							<div class="panel panel-default">
+								<div class="panel-body text-center">
+									<div class="inline">
+										<div ui-jq="easyPieChart"
+											ui-options="{
+				                percent: 0,
+				                lineWidth: 10,
+				                trackColor: '{{app.color.light}}',
+				                barColor: '{{app.color.success}}',
+				                scaleColor: '{{app.color.light}}',
+				                size: 188,
+				                lineCap: 'butt',
+				                animate: 1000
+				              }">
+											<div>
+												<span class="h2 m-l-sm step"
+													data-ng-bind="overall.openCount/overall.sendCount*100||0|number:2"></span>%
+												<div class="text text-sm">打开率</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<ul class="list-group">
+									<li class="list-group-item">消息打开数量 <span
+										class="badge pull-right" data-ng-bind="overall.openCount||0"></span>
+									</li>
+									<li class="list-group-item">消息点击数量 <span
+										class="badge pull-right" data-ng-bind="overall.clickCount||0"></span>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-xs-4">
+							<div class="panel panel-default">
+								<div class="panel-body text-center">
+									<div class="inline">
+										<div ui-jq="easyPieChart"
+											ui-options="{
+				                percent: 0,
+				                lineWidth: 10,
+				                trackColor: '{{app.color.light}}',
+				                barColor: '{{app.color.success}}',
+				                scaleColor: '{{app.color.light}}',
+				                size: 188,
+				                lineCap: 'butt',
+				                animate: 1000
+				              }">
+											<div>
+												<span class="h2 m-l-sm step"
+													data-ng-bind="overall.orderCount/overall.userView*100||0|number:2"></span>%
+												<div class="text text-sm">转化率</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<ul class="list-group">
+									<li class="list-group-item">商品浏览人数 <span
+										class="badge pull-right" data-ng-bind="overall.userView||0"></span>
+									</li>
+									<li class="list-group-item">商品购买人数 <span
+										class="badge pull-right" data-ng-bind="overall.orderCount||0"></span>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="fade-in-down">
+				<div class="bg-light lter b-b wrapper-md hidden-print">
+					<h1 class="m-n font-thin h3">响应数据</h1>
+					<div class="pull-right" style="position: relative; top: -30px;">
+						<div class="btn-group dropdown">
+							<button class="btn btn-success" data-toggle="dropdown"
+								aria-expanded="false">
+								最近<span data-ng-bind="responseChart.type">30</span>天 <span
+									class="caret"></span>
+							</button>
+							<ul class="dropdown-menu">
+								<li><a href="" data-ng-click="selectType(7);">最近7天</a></li>
+								<li><a href="" data-ng-click="selectType(30);">最近30天</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div id="chart1" style="height: 400px;"></div>
+			</div>
+		</div>
+	</div>
+</div>

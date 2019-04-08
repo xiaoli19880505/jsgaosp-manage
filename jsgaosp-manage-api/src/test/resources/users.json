@@ -1,0 +1,204 @@
+{
+    "users": [
+        {
+            "userId": "1071834",
+            "dataFields": {
+                "populationAttr": {
+                    "name": "肖彦虎",
+                    "sex": "男",
+                    "job": "",
+                    "citizenship": "中国",
+                    "nationality": "汉",
+                    "education": "",
+                    "nativePlace": "",
+                    "birthPlace": "",
+                    "maritalStatus": "未知",
+                    "numberOfChildren": "",
+                    "business": "",
+                    "position": "",
+                    "organization": ""
+                },
+                "identityAttr": {
+                    "email": "",
+                    "mobilePhone": "115015476279",
+                    "idCardNo": "341202197208103565"
+                },
+                "contactAttr": {
+                    "contactPhone": "115015476279",
+                    "country": "中国",
+                    "province": "安徽省",
+                    "city": "阜阳市颍州区",
+                    "address": "后肖营学校"
+                },
+                "hobbiesAttr": {
+                    "channel": [
+                        "SMS",
+                        "INBOUND",
+                        "OUTBOUD"
+                    ]
+                },
+                "customerValueAttr": {
+                    "score": 0,
+                    "consumingAbility": 0,
+                    "totalCompaign": 0,
+                    "maxConsumption": 0,
+                    "minConsumption": 0,
+                    "cumulativeMoney": 0,
+                    "cumulativeCount": 0,
+                    "recentThreeMonthConsumption": 0,
+                    "recentThreeMonthCount": 0
+                }
+            }
+        },
+        {
+            "userId": "1058342",
+            "dataFields": {
+                "populationAttr": {
+                    "name": "杨芳",
+                    "sex": "女",
+                    "job": "",
+                    "citizenship": "中国",
+                    "nationality": "汉",
+                    "education": "",
+                    "nativePlace": "",
+                    "birthPlace": "",
+                    "maritalStatus": "未知",
+                    "numberOfChildren": "",
+                    "business": "",
+                    "position": "",
+                    "organization": ""
+                },
+                "identityAttr": {
+                    "email": "",
+                    "mobilePhone": "123456789",
+                    "idCardNo": "123456789"
+                },
+                "contactAttr": {
+                    "contactPhone": "123456789",
+                    "country": "中国",
+                    "province": "贵州省",
+                    "city": "贵阳市南明区",
+                    "address": "东山公园102号"
+                },
+                "hobbiesAttr": {
+                    "channel": [
+                        "SMS",
+                        "INBOUND",
+                        "OUTBOUD"
+                    ]
+                },
+                "customerValueAttr": {
+                    "score": 0,
+                    "consumingAbility": 0,
+                    "totalCompaign": 0,
+                    "maxConsumption": 0,
+                    "minConsumption": 0,
+                    "cumulativeMoney": 0,
+                    "cumulativeCount": 0,
+                    "recentThreeMonthConsumption": 0,
+                    "recentThreeMonthCount": 0
+                }
+            }
+        },
+        {
+            "userId": "1011139",
+            "dataFields": {
+                "populationAttr": {
+                    "name": "阿哈",
+                    "sex": "男",
+                    "job": "",
+                    "citizenship": "中国",
+                    "nationality": "汉",
+                    "education": "",
+                    "nativePlace": "",
+                    "birthPlace": "",
+                    "maritalStatus": "未知",
+                    "numberOfChildren": "",
+                    "business": "",
+                    "position": "",
+                    "organization": ""
+                },
+                "identityAttr": {
+                    "email": "",
+                    "mobilePhone": "12345678912",
+                    "idCardNo": ""
+                },
+                "contactAttr": {
+                    "contactPhone": "12345678912",
+                    "country": "中国",
+                    "province": "贵州省",
+                    "city": "贵阳市云岩区",
+                    "address": "龙泉港56号"
+                },
+                "hobbiesAttr": {
+                    "channel": [
+                        "SMS",
+                        "INBOUND",
+                        "OUTBOUD"
+                    ]
+                },
+                "customerValueAttr": {
+                    "score": 0,
+                    "consumingAbility": 0,
+                    "totalCompaign": 0,
+                    "maxConsumption": 0,
+                    "minConsumption": 0,
+                    "cumulativeMoney": 0,
+                    "cumulativeCount": 0,
+                    "recentThreeMonthConsumption": 0,
+                    "recentThreeMonthCount": 0
+                }
+            }
+        },
+        {
+            "userId": "1040633",
+            "dataFields": {
+                "populationAttr": {
+                    "name": "韩清梅",
+                    "sex": "女",
+                    "job": "",
+                    "citizenship": "中国",
+                    "nationality": "汉",
+                    "education": "",
+                    "nativePlace": "",
+                    "birthPlace": "",
+                    "maritalStatus": "未知",
+                    "numberOfChildren": "",
+                    "business": "",
+                    "position": "",
+                    "organization": ""
+                },
+                "identityAttr": {
+                    "email": "",
+                    "mobilePhone": "13000302034",
+                    "idCardNo": "暂无"
+                },
+                "contactAttr": {
+                    "contactPhone": "13000302034",
+                    "country": "中国",
+                    "province": "河北省",
+                    "city": "邯郸市永年县",
+                    "address": "宁关镇107国道交通宾馆楼下"
+                },
+                "hobbiesAttr": {
+                    "channel": [
+                        "SMS",
+                        "INBOUND",
+                        "OUTBOUD"
+                    ]
+                },
+                "customerValueAttr": {
+                    "score": 0,
+                    "consumingAbility": 0,
+                    "totalCompaign": 0,
+                    "maxConsumption": 0,
+                    "minConsumption": 0,
+                    "cumulativeMoney": 0,
+                    "cumulativeCount": 0,
+                    "recentThreeMonthConsumption": 0,
+                    "recentThreeMonthCount": 0
+                }
+            }
+        }
+    ]
+}

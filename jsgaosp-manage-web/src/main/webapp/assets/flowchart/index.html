@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>demo</title>
+	<link rel="stylesheet" href="css/joint.min.css">
+	<link rel="stylesheet" href="http://at.alicdn.com/t/font_1447294951_9937747.css">
+	<link rel="stylesheet" href="css/flowchart.css">
+	<style>
+	body{
+		background-color: #CCC;
+	}
+	#paper{
+	    width: 1000px;
+	    height: 600px;
+	    position: relative;
+	    margin: 0 auto;
+	    background-color: #FFF;
+	}
+	</style>
+</head>
+<body>
+	<div id="paper"></div>
+	<script src="js/jquery.min.js"></script>
+    <script src="js/lodash.min.js"></script>
+    <script src="js/backbone-min.js"></script>
+	<script src="js/joint.min.js"></script>
+	<script src="js/joint.shapes.devs.min.js"></script>
+	<script src="js/flowchart.js"></script>
+	<script>
+		//wf.loadData('');//编辑流程时,从数据库查询json字符串，作为loadData参数
+
+		/*wf.addNode('trigger',{
+	        state:'0 users here ,nodeId:5483',
+	        name:'User adds an item to cart',
+	        desc:''
+	    });		
+	    wf.addNode('action',{
+	        state:'0 users here ,nodeId:5483',
+	        name:'Delay for 2 hours',
+	        desc:''
+	    });
+	    wf.addNode('filter',{
+	        state:'0 users here ,nodeId:5485',
+	        name:'Mathes query',
+	        desc:'1 criteria..'
+	    });*/
+
+	    wf.editNode=function (){
+	    	//var node=getSelected();
+	    	//TODO 弹窗展示编辑界面，双击节点时会触发此方法
+	    	//编辑完之后，调用updateNode(node,data)更新节点信息
+	    	console.log(123);
+	    }
+	</script>
+</body>
+</html>

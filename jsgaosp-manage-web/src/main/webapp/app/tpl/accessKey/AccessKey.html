@@ -1,0 +1,248 @@
+<meta charset="utf-8" />
+<style>
+.able {
+	color: green;
+}
+
+.disable {
+	color: red;
+}
+</style>
+<div ng-controller="AccessKeyController" class="wrapper page">
+	<div class="topbar">
+		<div class="breadcrumbs">
+			<a class="level level-zone level-zone-2 gd1">API密钥</a> <a
+				class="level">密钥管理</a>
+		</div>
+	</div>
+	<br>
+	<div class="page-intro vxnets">
+		<p class="lead">
+			<em>ApiKey</em>可以让您通过发送API指令来访问我们的服务,ApiKey和ApiSecret须作为参数包含在每一个请求中发送，切勿外传。更多内容请参见API文档。
+		</p>
+	</div>
+
+	<div class="pane" style="min-height: 500px;">
+		<div class="hbox hbox-auto-xs hbox-auto-sm">
+			<div class="pane" style="height: 92%;">
+				<div class="panel-heading">
+					<div class="pull-left">
+						<span>
+							<button type="button" ng-click="showCreateModal()"
+								class="btn btn-sm btn-dark">
+								<span class="h6"><a class="fa refresh"></a>创建</span>
+							</button>
+
+							<button type="button" ng-click="delete()"
+								class="btn btn-sm btn-dark">
+								<span class="h6"><a class="fa refresh"></a>删除</span>
+							</button>
+
+							<button type="button" ng-click="edit()"
+								class="btn btn-sm btn-dark">
+								<span class="h6"><a class="fa refresh"></a>编辑</span>
+							</button>
+						</span>
+					</div>
+					<div class=" pull-right col-sm-3">
+						<div class="input-group h5">
+							<input type="text" class="form-control input-sm"
+								placeholder="请输入关键字" ng-keypress="enter($event)" ng-model="query"> <span
+								class="input-group-addon input-sm"><i
+								class="fa fa-search" ng-click="Search()"></i> </span>
+						</div>
+					</div>
+				</div>
+				<br>
+
+				<div class="panel-body" style="height: 80%;">
+					<div style="height: 95%; min-height: 400px;">
+						<table class="table table-bordered "
+							style="border: 1px solid lightgrey;">
+							<thead>
+								<tr>
+									<th style="width: 30px;"><label class="i-checks m-b-none">
+											<input type="checkbox" ng-click="chooseAll(master)"
+											ng-model="master"><i></i>
+									</label></th>
+									<th style="width:80px;">#</th>
+									<th class="tha">ApiKey</th>
+									<th class="tha">ApiSecret</th>
+									<th class="tha">名称</th>
+									<th class="tha">创建时间</th>
+								</tr>
+							</thead>
+							<tr ng-repeat="item in accessKeys"
+								onmouseover="style.backgroundColor='#F2F5F6'"
+								onmouseout="style.backgroundColor='#FFFFFF'" class="h5">
+								<td style="width: 30px;"><label class="i-checks m-b-none">
+										<input type="checkbox" ng-model="item.check"
+										ng-checked="item.check" ng-click="choose(item)"><i></i>
+								</label></td>
+								<td style="width: 80px;">{{$index+1}}</td>
+								<td><a href="" ng-dblclick="showItem(item)"
+									class="text-info ng-binding">{{item.apiKey}}</a></td>
+								<td>{{item.privateKey}}</td>
+								<td>{{item.name}}</td>
+								<td>{{item.createDate}}</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+
+				<div class="wrapper">
+					<div class="col-sm-4 hidden-xs"></div>
+					<div class="col-sm-8 col-sm-offset-4">
+						<small class="text-muted inline m-t-sm m-b-sm">第{{currentPage}}页
+							共{{totalItems}}个 </small>
+						<div class="pull-right">
+							<pagination boundary-links="true" total-items="totalItems"
+								ng-model="currentPage" ng-change="pageChanged()" max-size="5"
+								rotate="false" class="pagination-sm m-t-none m-b"
+								previous-text="&lsaquo;" next-text="&rsaquo;"
+								first-text="&laquo;" last-text="&raquo;"> </pagination>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--#modal 查看APIKEY详细信息  -->
+	<div class="modal fade" id="ShowAccessKeyModal">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title">查看APIKey</h4>
+				</div>
+				<div class="modal-body">
+					<fieldset>
+						<div class="form-group">
+							<label class="col-sm-1 control-label input-sm" for="editbranch">密钥ID</label>
+							<div class="col-sm-11">
+								<input class="form-control input-sm" type="text"
+									ng-model="accessKey.apiKey" readonly />
+							</div>
+						</div>
+					</fieldset>
+					<br>
+					<fieldset>
+						<div class="form-group">
+							<label class="col-sm-1 control-label input-sm" for="editbranch">名称</label>
+							<div class="col-sm-11">
+								<input class="form-control input-sm" type="text"
+									ng-model="accessKey.name" readonly />
+							</div>
+						</div>
+					</fieldset>
+					<br>
+					<fieldset>
+						<div class="form-group">
+							<label class="col-sm-1 control-label input-sm" for="editbranch">描述</label>
+							<div class="col-sm-11">
+								<input class="form-control input-sm" type="text"
+									ng-model="accessKey.description" readonly />
+							</div>
+						</div>
+					</fieldset>
+					<br>
+					<fieldset>
+						<div class="form-group">
+							<label class="col-sm-1 control-label input-sm" for="editbranch">创建时间</label>
+							<div class="col-sm-11">
+								<input class="form-control input-sm" type="text"
+									ng-model="accessKey.createDate" readonly />
+							</div>
+						</div>
+					</fieldset>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-dark" data-dismiss="modal">确定</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- #modal 创建accessKey -->
+	<div class="modal fade" id="createAccessKeyModal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title">创建APIKey</h4>
+				</div>
+				<div class="modal-body">
+					<form class="form-horizontal form-validation"
+						name="createAccessKeyForm">
+						<fieldset>
+							<div class="form-group">
+								<label class="col-sm-1 control-label input-sm" for="editbranch">名称</label>
+								<div class="col-sm-11">
+									<input class="form-control input-sm" type="text"
+										ng-model="name" required />
+								</div>
+							</div>
+						</fieldset>
+						<br>
+						<fieldset>
+							<div class="form-group">
+								<label class="col-sm-1 control-label input-sm" for="editbranch">描述</label>
+								<div class="col-sm-11">
+									<input class="form-control input-sm" type="text"
+										ng-model="description" />
+								</div>
+							</div>
+						</fieldset>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-dark" data-dismiss="modal">取消</button>
+					<button type="submit" class="btn btn-dark"
+						ng-disabled="createAccessKeyForm.$invalid"
+						ng-click="createAccessKey()" data-dismiss="modal">确定</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- #modal 编辑accessKey -->
+	<div class="modal fade" id="editAccessKeyModal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title">编辑APIKey</h4>
+				</div>
+				<div class="modal-body">
+					<form class="form-horizontal form-validation"
+						name="editAccessKeyForm">
+						<fieldset>
+							<div class="form-group">
+								<label class="col-sm-1 control-label input-sm" for="editbranch">名称</label>
+								<div class="col-sm-11">
+									<input class="form-control input-sm" type="text"
+										ng-model="editItem.name" required />
+								</div>
+							</div>
+						</fieldset>
+						<br>
+						<fieldset>
+							<div class="form-group">
+								<label class="col-sm-1 control-label input-sm" for="editbranch">描述</label>
+								<div class="col-sm-11">
+									<input class="form-control input-sm" type="text"
+										ng-model="editItem.description" />
+								</div>
+							</div>
+						</fieldset>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-dark" data-dismiss="modal">取消</button>
+					<button type="submit" class="btn btn-dark"
+						ng-disabled="editAccessKeyForm.$invalid"
+						ng-click="updateAccessKey()" data-dismiss="modal">确定</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+</div>

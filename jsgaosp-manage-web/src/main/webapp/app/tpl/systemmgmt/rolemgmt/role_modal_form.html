@@ -1,0 +1,68 @@
+<div class="modal-header ng-scope">
+    <h4 class="modal-title" style="display: inline">{{title}}</h4>
+
+    <div class="input-group pull-right" style="width: 200px">
+<!--         <input type="text" class="form-control input-sm" placeholder="请输入关键字" ng-model="query"> -->
+<!--         <span class="input-group-addon input-sm" style="cursor: pointer" ng-click="loadList()"><i class="fa fa-search"></i></span> -->
+    </div>
+</div>
+<div class="modal-body ng-scope" style="padding: 0">
+    <table class="table table-striped b-t b-light">
+        <thead>
+        <tr ng-show="isUser">
+            <th style="width:20px;">
+                <label class="i-checks m-b-none">
+                    <input type="checkbox" ng-click="checkAll()" ng-model="selectedAll"><i></i>
+                </label>
+            </th>
+            <th>序号</th>
+            <th>邮箱</th>
+            <th>姓名</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="item in items"
+        	onmouseover="style.backgroundColor='#F2F5F6'"
+			onmouseout="style.backgroundColor='#FFFFFF'"
+		    style="cursor: pointer">
+            <td>
+                <label class="i-checks m-b-none">
+                    <input type="checkbox" ng-click="check(item)" ng-model="item.selected"><i></i>
+                </label>
+            </td>
+            <td>{{$index+1}}</td>
+            <td>{{item.userEmail}}</td>
+            <td >{{item.userName}}</td>
+<!--             ng-if="item.account" -->
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div class="modal-footer ng-scope">
+    <div class="col-sm-5 text-left">
+        <pagination
+                boundary-links="true"
+                total-items="totalItems"
+                ng-model="currentPage"
+                ng-change="pageChanged()"
+                max-size="3"
+                rotate="false"
+                class="pagination-sm m-t-none m-b"
+                previous-text="&lsaquo;"
+                next-text="&rsaquo;"
+                first-text="&laquo;"
+                last-text="&raquo;">
+        </pagination>
+    </div>
+    <div class="col-sm-3 text-left">
+        <small class="text-muted inline m-t-sm m-b-sm">
+            第{{currentPage}}页
+            共{{totalItems}}个
+        </small>
+    </div>
+    <div class="col-sm-4">
+        <button type="reset" class="btn btn-dark" ng-click="cancel()">取消</button>
+        <button type="submit" class="btn btn-dark" ng-click="add()">添加
+        </button>
+    </div>
+</div>

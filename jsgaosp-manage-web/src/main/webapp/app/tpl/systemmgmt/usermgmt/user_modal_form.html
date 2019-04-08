@@ -1,0 +1,103 @@
+<style>
+.help-block{
+	color:#F05050;
+	margin-bottom: 0px;
+	font-weight:bold;
+	font-style:oblique;
+}
+</style>
+<div class="modal-dialog" style="height: 100%;margin: -1px;padding: -1px;">
+	<div class="modal-content">
+		<div class="modal-header"
+			style="background: #000000; color: #ffffff;">
+			<button type="button" class="close" data-dismiss="modal"
+				aria-label="Close"></button>
+			<h4 class="modal-title">{{title}}</h4>
+		</div>
+
+		<div class="modal-body">
+			<form name="userForm" class="form-validation form-horizontal" ng-submit="submitForm(userForm.$valid)" novalidate>
+			    
+			    <div class="form-group">
+                    <label class="col-sm-2 control-label">邮&nbsp;箱<span style="color:red;">*</span></label>
+                    <div class="col-sm-10">
+                    <input type="email" class="form-control" placeholder="请输入合法邮箱地址" name="mail" ng-model="user.userEmail"
+                           ng-pattern="/^[\w!#$%&'*+/=?^_`{|}~-]+(?:\.[\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\w](?:[\w-]*[\w])?\.)+[\w](?:[\w-]*[\w])?$/"
+                           required ng-disabled="!flag" ng-change="checkEmail();" ui-validate="'isUniqueMail'" ui-validate-watch="'isUniqueMail'">
+                      <p ng-show="userForm.mail.$pristine&& submitted" class="help-block">请输入邮箱</p>
+                      <p ng-show="userForm.mail.$invalid && !userForm.mail.$pristine&& submitted" class="help-block">请输入正确的邮箱地址</p>
+                      <p ng-show="!isUniqueMail" class="help-block">该邮箱已被使用</p>
+                     </div>
+                </div>
+                
+                <div class="form-group" ng-if="flag">
+                    <label class="col-sm-2 control-label">密&nbsp;码<span style="color:red;">*</span></label>
+                    <div class="col-sm-10">
+                    <input type="password" placeholder="请输入6~10位长度密码" class="form-control" name="pwd" ng-model="user.userPwd"
+                           ng-minlength="6" ng-maxlength="10" required>
+                      <p ng-show="userForm.pwd.$pristine&& submitted" class="help-block">请输入密码</p>
+                      <p ng-show="userForm.pwd.$error.minlength&& submitted" class="help-block">密码不得少于6个字符</p>
+        		      <p ng-show="userForm.pwd.$error.maxlength&& submitted" class="help-block">密码不得大于10个字符</p>
+                    </div>
+                </div>
+                
+                <div class="form-group" ng-if="flag">
+                    <label class="col-sm-2 control-label">确认密码<span style="color:red;">*</span></label>
+                    <div class="col-sm-10">
+                    <input type="password" placeholder="请再次确认输入密码" class="form-control" name="confirm_pwd"
+                           ng-minlength="6" ng-maxlength="10" required ng-model="confirm_pwd" ui-validate=" '$value==user.userPwd' "
+                           ui-validate-watch=" 'user.pwd' ">
+                    <p ng-show='userForm.confirm_pwd.$error.validator' class="help-block">两次输入密码不一致！</p>
+                    </div>
+                </div>
+                
+				<div class="form-group">
+                    <label class="col-sm-2 control-label">姓名<span style="color:red;">*</span></label>
+                    <div class="col-sm-10">
+                    <input type="text" class="form-control" placeholder="请输入2~5位字符" name="name" ng-model="user.userName"
+                           ng-minlength="2" ng-maxlength="5" required>
+                      <p ng-show="userForm.name.$pristine&& submitted" class="help-block">请输入姓名</p>
+                      <p ng-show="userForm.name.$error.minlength&& submitted" class="help-block">姓名不得少于2个字符</p>
+        		      <p ng-show="userForm.name.$error.maxlength&& submitted" class="help-block">姓名不得大于5个字符</p>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">办公电话</label>
+                    <div class="col-sm-10">
+                    <input type="text" class="form-control" placeholder="请输入正确的办公电话" name="phone" ng-model="user.userOfficePhone"
+                           ng-pattern="/^(\d{3}-\d{8}|\d{4}-\d{7})$/" >
+                      <p ng-show="userForm.phone.$pristine&& submitted" class="help-block">请输入办公号码</p>
+                      <p ng-show="userForm.phone.$invalid && !userForm.phone.$pristine&& submitted" class="help-block">请输入正确的办公号码</p>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">手机号码</label>
+                    <div class="col-sm-10">
+                    <input type="text" class="form-control" placeholder="请输入正确的手机号码" name="mobile" ng-model="user.userMobile"
+                           ng-pattern="/^(13[0-9]{9})|(15[89][0-9]{8})|(18[0-9]{9})$/" >
+                      <p ng-show="userForm.mobile.$pristine&& submitted" class="help-block">请输入手机号码</p>
+                      <p ng-show="userForm.mobile.$invalid && !userForm.mobile.$pristine&& submitted" class="help-block">请输入正确的手机号码</p>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">QQ号码</label>
+                    <div class="col-sm-10">
+                    <input type="text" class="form-control" placeholder="请输入正确的QQ号码" name="qq" ng-model="user.userQq"
+                           ng-pattern="/^([1-9][0-9]{5,9})$/" >
+                      <p ng-show="userForm.qq.$pristine&& submitted" class="help-block">请输入QQ号码</p>
+                      <p ng-show="userForm.qq.$invalid && !userForm.qq.$pristine&& submitted" class="help-block">请输入正确的QQ号码</p>
+                     </div>
+                </div>
+                
+            </form>
+		</div>
+		<div class="modal-footer">
+			<button type="reset" class="btn btn-dark" ng-click="cancel()">取消</button>
+            <button type="submit" class="btn btn-dark" ng-click="submitForm(userForm.$valid)">保存
+            </button>
+		</div>
+	</div>
+</div>

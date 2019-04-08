@@ -1,0 +1,30 @@
+{
+        "label": "所有机构",
+        "children": [
+          {
+            "label": "莆田医院集团",
+            "data": {
+              "description": "最好的医院"
+            },
+            "children": ["长江医院", "长城医院", "黄河医院"]
+          }, {
+            "label": "南京市鼓楼医院",
+            "data": {
+              "description": "好医院"
+            }
+          }, {
+            "label": "南京市明基医院",
+            "data": {
+              "description": "儿童医院"
+            }
+          }, {
+            "label": "上海医院",
+            "children": [
+                {
+			    "label": "上海人民医院",
+			    "children": ["上海人民一院", "上海人民二院", "上海人民三院"]
+                }
+            ]
+          }
+        ]
+      }

@@ -1,0 +1,24 @@
+<div class="modal-header ng-scope">
+    <h3 class="modal-title" style="display: inline">机构列表</h3>
+</div>
+<div class="modal-body ng-scope  bg-white">
+	<div class="b-a bg-light dk r r-2x">
+		<span ng-if="doing_async">...loading...</span>
+	        <abn-tree 
+	          tree-data         = "orgList" 
+	          tree-control      = "my_tree" 
+	          on-select         = "getOrg(branch)" 
+	          expand-level      = "2" 
+	          initial-selection = "上海医院"
+	          icon-leaf			= "fa fa-hospital-o"
+	          icon-expand       = "fa fa-plus"
+	          icon-collapse     = "fa fa-minus"
+	          >
+	        </abn-tree>
+      </div>
+</div>
+<div class="modal-footer ng-scope">
+    <button type="reset" class="btn btn-default" ng-click="cancel()">取消</button>
+    <button type="submit" class="btn btn-primary" ng-click="ok()" ng-disabled="org.orgId==-1">确定
+    </button>
+</div>

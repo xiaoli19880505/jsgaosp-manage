@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<script src=""></script>
+</head>
+<body>
+	<span>welcome:</span>
+	<ul>
+		<li>time: $time</li>
+		<li>dateTool: $dateTool</li>
+	</ul>
+	<span>Message: $message</span>
+</body>
+
+</html>

@@ -1,0 +1,23 @@
+<!-- list -->
+<ul class="nav">
+	<li class="hidden-folded padder m-t m-b-sm text-muted text-xs"><span>主菜单{{test}}</span>
+	</li>
+	<li ng-repeat="group in app.groups" ng-class="{'active':group.active}">
+		<a ui-sref="{{group.sref}}" class="auto" ng-show="group.sref!='#'">
+			<i class=" {{group.iconCls}}"></i><span class="font-bold">{{group.text}}</span>
+		</a> 
+		<a href class="auto" ng-show="group.sref=='#'"> <span
+				ng-show="group.funcs" class="pull-right text-muted"> <i
+					class="fa fa-fw fa-angle-right text"></i> <i
+					class="fa fa-fw fa-angle-down text-active"></i>
+			</span> <i class=" {{group.iconCls}}"></i><span class="font-bold">{{group.text}}</span>
+		</a>
+		<ul class="nav nav-sub dk">
+			<li ui-sref-active="active" ng-repeat="func in group.funcs "><a
+				ui-sref="{{func.sref}}"> <i class=" {{func.iconCls}}"></i> <span>{{func.text}}</span>
+			</a></li>
+		</ul>
+	</li>
+</ul>
+<!-- / list -->
+

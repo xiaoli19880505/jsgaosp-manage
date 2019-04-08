@@ -1,0 +1,88 @@
+<div class="modal-header ng-scope">
+	<h3 class="modal-title" style="display: inline">个人资料</h3>
+</div>
+<div class="modal-body ng-scope">
+	<form name="form" class="form-validation form-horizontal wrapper-xs">
+		<div class="form-group">
+			<label class="control-label col-sm-2 input-sm">姓名</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control input-sm"
+					placeholder="请输入2~5位字符" ng-model="user.userName" ng-minlength="2"
+					ng-maxlength="5" required>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="control-label col-sm-2 input-sm">密码</label>
+			<div class="col-sm-10">
+				<input type="password" placeholder="请输入4~10位长度密码"
+					class="form-control input-sm" name="pwd" ng-model="user.userPwd"
+					ng-minlength="4" ng-maxlength="10" required>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="control-label col-sm-2 input-sm">确认密码</label>
+			<div class="col-sm-10">
+				<input type="password" placeholder="请再次确认输入密码"
+					class="form-control input-sm" name="confirm_password"
+					ng-minlength="4" ng-maxlength="10" required
+					ng-model="confirm_password" ui-validate=" '$value==user.userPwd' "
+					ui-validate-watch=" 'user.userPwd' ">
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="control-label col-sm-2 input-sm">邮箱</label>
+			<div class="col-sm-10">
+				<input type="email" class="form-control input-sm"
+					placeholder="请输入合法邮箱地址" ng-model="user.userEmail"
+					ng-pattern="/^[\w!#$%&'*+/=?^_`{|}~-]+(?:\.[\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\w](?:[\w-]*[\w])?\.)+[\w](?:[\w-]*[\w])?$/"
+					required>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="control-label col-sm-2 input-sm">办公电话</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control input-sm"
+					placeholder="请输入正确的办公电话" name="phone"
+					ng-model="user.userOfficePhone"
+					ng-pattern="/^(\d{3}-\d{8}|\d{4}-\d{7})$/" required>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="control-label col-sm-2 input-sm">手机号码</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control input-sm"
+					placeholder="请输入正确的手机号码" name="mobile" ng-model="user.userMobile"
+					ng-pattern="/^(13[0-9]{9})|(15[89][0-9]{8})|(18[0-9]{9})$/"
+					required>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="control-label col-sm-2 input-sm">QQ号码</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control input-sm"
+					placeholder="请输入正确的QQ号码" name="qq" ng-model="user.userQq"
+					ng-pattern="/^([1-9][0-9]{5,9})$/" required>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="control-label col-sm-2 input-sm">用户类型</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control input-sm"
+					placeholder="请输入3~10位字符" name="type" ng-model="user.userType"
+					ng-minlength="3" ng-maxlength="10" required>
+			</div>
+		</div>
+	</form>
+</div>
+<div class="modal-footer ng-scope">
+	<button type="reset" class="btn btn-default" ng-click="cancel()">取消</button>
+	<button type="submit" class="btn btn-primary" ng-click="ok()"
+		ng-disabled="form.$invalid">保存</button>
+</div>

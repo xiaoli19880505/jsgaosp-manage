@@ -1,0 +1,208 @@
+<style>
+.table th, .table td {
+	text-align: center;
+	height: 38px;
+	font-size: 12px;
+}
+
+.hover {
+	background: #D1EEEE;
+}
+
+.able {
+	color: #96CD00;
+}
+
+.disable {
+	color: red;
+}
+</style>
+<div class="wrapper page" ng-controller="SystemRoleController">
+	<div class="topbar">
+		<div class="breadcrumbs">
+			<a class="level level-zone level-zone-2 gd1">系统</a> <a class="level">角色管理</a>
+		</div>
+	</div>
+	<br>
+	<div class="page-intro vxnets">
+		<p class="lead">
+			<em>角色管理</em> 角色管理。
+		</p>
+	</div>
+	<div class="pane" style="height: 100%;">
+		<div class="hbox hbox-auto-xs hbox-auto-sm">
+			<div class="col w-md " style="height: 100%;">
+				<div class="panel"
+					style="border-right: 1px solid lightgrey; padding-right: 5px;">
+					<div class="toolbar">
+						<div class="h5">角色列表</div>
+					</div>
+
+					<div class=" panel-body">
+						<div class="list-group"
+							style="height: 78%; border: 0; min-height: 400px;">
+							<a ng-repeat="item in roles|filter:{'name':query} "
+								ng-click="selectRole(item)"
+								class="list-group-item  hover-anchor"
+								ng-class="{'hover': item.selected }" style="magin-top: 30px;">
+								<span ng-click='deleteRole(item)' ng-if="item.companyId"
+								class="pull-right text-muted hover-action"> <i
+									class="fa fa-times"></i>
+							</span> <span class="block text-ellipsis"> <span
+									ng-if="item.roleType == GGsysadmin"><i
+										class="fa  fa-user"></i>&nbsp;&nbsp;</span> <span
+									ng-if="item.roleType == GGuser"><i class="fa icon-user"></i>&nbsp;&nbsp;</span>
+									<span ng-if="item.roleType ==GGmaintain"><i
+										class="fa icon-wrench"></i>&nbsp;&nbsp;</span>{{item.name}}
+							</span>
+							</a>
+						</div>
+
+						<div class="panel-footer" style="border: 0" >
+							<div style="text-align:center">
+								<a class="pull-left btn btn-sm btn-dark m-t-n-xs"
+									ng-click="addRole()">新增角色</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col">
+				<div class="vbox" id="rightPanl">
+					<div class="page-intro vxnets">
+						<p class="lead">
+							<em></em>
+						</p>
+					</div>
+
+					<ul id="myTab" class="nav nav-tabs page-tabs">
+						<li class="active"><a href="#roleinfo" data-toggle="tab"
+							aria-controls="roleinfo">角色信息</a></li>
+						<li><a href="#rolepersonnel" data-toggle="tab"
+							aria-controls="rolepersonnel">角色人员</a></li>
+						<li><a href="#Rolefunctions" data-toggle="tab"
+							aria-controls="Rolefunctions">角色功能</a></li>
+					</ul>
+					<div class="pane" style="padding-right: 0 !important;">
+						<div class="hbox hbox-auto-xs hbox-auto-sm">
+							<div id="myTabContent" class="tab-content">
+
+								<!-- 第一个标签页 -->
+								<div class="tab-pane fade in active" id="roleinfo">
+									<div class="vbox">
+										<form name="form">
+											<div class="form-group">
+												<label>名称</label> <input type="text" class="form-control"
+													placeholder="请输入2~10位字符" ng-model="role.name"
+													ng-minlength="2" ng-maxlength="10" required>
+											</div>
+											<div class="form-group">
+												<label>描述</label>
+												<textarea class="form-control" rows="6"
+													placeholder="请输入描述信息，至少2位" ng-model="role.description"
+													ng-minlength="2" required></textarea>
+											</div>
+											<div class="checkbox">
+												<button class="btn btn-dark" ng-disabled="form.$invalid"
+													ng-click="saveRole()">提交</button>
+											</div>
+										</form>
+									</div>
+								</div>
+								<!-- 第2个标签页 -->
+								<div class="tab-pane fade" id="rolepersonnel">
+									<div class="vbox">
+										<div class="row wrapper-xs">
+											<div class="col-sm-5 m-b-xs">
+												<span>
+													<button class="btn btn-dark" ng-disabled="roleId==null"
+														ng-click="open('','user')">添加人员</button>
+												</span>
+											</div>
+										</div>
+										<div class="table-responsive ">
+											<table class="table b-t table-bordered   b-light">
+												<thead>
+													<tr>
+														<th>序号</th>
+														<th>邮箱</th>
+														<th>姓名</th>
+														<th>操作</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr ng-repeat="item in role_user"
+														onmouseover="style.backgroundColor='#F2F5F6'"
+														onmouseout="style.backgroundColor='#FFFFFF'"
+														style="cursor: pointer">
+														<td>{{$index+1}}</td>
+														<td>{{item.userEmail}}</td>
+														<td>{{item.userName}}</td>
+														<td><a class="fa fa-times fa-fw"
+															ng-click="deleteUser($index)"></a></td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+										<footer class="panel-footer" style="padding-bottom: 0">
+											<div class="row">
+												<div class="col-sm-3 text-center">
+													<small class="text-muted inline m-t-sm m-b-sm">
+														第{{currentPage}}页 共{{totalItems}}个 </small>
+												</div>
+												<div class="col-sm-9 text-right text-center-xs">
+
+													<pagination boundary-links="true" total-items="totalItems"
+														ng-model="currentPage"
+														ng-change="pageChanged(currentPage)" max-size="maxSize"
+														rotate="false" class="pagination-sm m-t-none m-b"
+														previous-text="&lsaquo;" next-text="&rsaquo;"
+														first-text="&laquo;" last-text="&raquo;"> </pagination>
+
+												</div>
+											</div>
+										</footer>
+
+									</div>
+								</div>
+								<!-- 第3个标签页 -->
+								<div class="tab-pane fade" id="Rolefunctions"
+									style="overflow-y: auto; overflow-x: hidden;">
+									<div class="row" style="padding-left: 20px;">
+										<div ng-repeat="items in roleFunction">
+											<div class="row wrapper-sm">
+												<div class="col-sm-12">
+													<label class="checkbox-inline i-checks font-bold">
+														<input type="checkbox" ng-click="selectAll(items)"
+														ng-model="items.selected"><i></i>{{items.text}}
+													</label>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-lg-1"></div>
+												<div class="col-lg-2" ng-repeat="item in items.funcs">
+													<label class="checkbox-inline i-checks"> <input
+														type="checkbox" ng-click="select(item,items)"
+														ng-model="item.selected"><i></i>{{item.text}}
+													</label>
+												</div>
+											</div>
+											<hr>
+										</div>
+									</div>
+									<div class="wrapper-sm checkbox">
+										<button class="btn btn-dark" ng-click="saveRoleFun()">
+											提交</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<!-- /.modal -->
+</div>
+

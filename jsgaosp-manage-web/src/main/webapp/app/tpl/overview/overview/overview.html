@@ -1,0 +1,165 @@
+<style>
+.table th, .table td {
+	text-align: center;
+	height: 38px;
+	font-size:12px;
+}
+
+.hover {
+	background: #D1EEEE;
+}
+
+.able {
+	color: #96CD00;
+}
+
+.disable {
+	color: red;
+}
+</style>
+<div class="wrapper page" ng-controller=overviewModelController
+	style="overflow: auto; height: 100%;">
+	<div class="topbar">
+		<div class="breadcrumbs">
+			<a class="level level-zone level-zone-2 gd1">总览</a> <a
+				class="level">总览</a>
+		</div>
+	</div>
+	<br>
+	<div class="page-intro vxnets">
+		<p class="lead">
+			<em>总览</em> 总览。
+		</p>
+	</div>
+	<div class="pane" style="height:auto!important;
+height:400px;
+min-height:400px;overflow-x:hidden; border: 1px solid lightgrey;">
+		<div class="hbox hbox-auto-xs hbox-auto-sm">
+
+			<div class="row">
+				<div class="hbox " style="">
+					<!-- 表头开始 -->
+					<div class="panel-heading " style="background-color: '#f6f8f8!important'">
+		                <span class="text-muted">最近七天运行过的营销活动</span>
+		            </div>
+		            <!-- 表头结束 -->
+		            
+		            <!-- 表格开始 -->
+		            <div class="row-row" id="tablePanel" style="height: auto;">
+		                <div class="cell">
+		                    <div class="cell-inner">
+		                        <div class="panel panel-default  " style="overflow-x: hidden;margin: 0;padding: 0;">
+		                                <table class="table  table-bordered pull-center ">
+		                                    <thead style="background: #E4EAEC;">
+		                                    <tr>
+		                                    	<th style="width: 80px;">序号</th>
+			                                   	<th style="width: 150px;">活动名称</th>
+									            <th>描述</th>
+									            <th style="width: 150px;">开始日期</th>
+									            <th style="width: 150px;">结束日期</th>
+									            <th style="width: 150px;">最后一次运行时间</th>
+		                                    </tr>
+		                                    </thead>
+		                                    <tbody>
+		                                    <tr ng-repeat="item in compaigns" 
+		                                    	onmouseover="style.backgroundColor='#F2F5F6'"
+												onmouseout="style.backgroundColor='#FFFFFF'">
+		                                         <td>{{$index+1}}</td>
+										         <td>{{item.name}}</td>
+										         <td style="text-align:left;">{{item.desc}}</td>
+										         <td>{{item.startDate}}</td>
+										         <td>{{item.endDate}}</td>
+										         <td>{{item.lastWorkDate}}</td>
+		                                    </tr>
+		                                    </tbody>
+		                                </table>
+		                        </div>
+		                    </div>
+		                </div>
+		            </div>
+		            <!-- 表格结束 -->
+		            
+		            <!-- 分页开始 -->
+		            <footer class="panel-footer" style="padding-bottom: 0">
+		                <div class="row">
+		                    <div class="col-sm-2 hidden-xs">
+		                    </div>
+		                    <div class="col-sm-4 text-center">
+		                        <small class="text-muted inline m-t-sm m-b-sm">
+		                        	第{{currentPage}}页 共{{totalItems}}个
+		                        </small>
+		                    </div>
+		                    <div class="col-sm-6 text-right text-center-xs">
+		                        <pagination
+		                                boundary-links="true"
+		                                total-items="totalItems"
+		                                ng-model="currentPage"
+		                                ng-change="pageChanged()"
+		                                max-size="maxSize"
+		                                rotate="false"
+		                                class="pagination-sm m-t-none m-b"
+		                                previous-text="&lsaquo;"
+		                                next-text="&rsaquo;"
+		                                first-text="&laquo;"
+		                                last-text="&raquo;">
+		                        </pagination>
+		
+		                    </div>
+		                </div>
+	            	</footer>
+		            <!-- 分页结束 -->	
+				</div>
+			</div>
+			<!-- 柱状图开始-->
+			<div class="row" style="">
+				<div class="ng-scope" >
+					<div  class="row">
+						<div class="col-md-6">
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<span class="text-muted">过去7天营销活动响应率</span>{{compaignsName}}
+									</div>
+									<div class="panel-body">
+										<div id="chart1" style="height: 240px;"></div>
+									</div>
+								</div>
+						</div>
+						<div class="col-md-6">
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<span class="text-muted">过去7天推荐品响应率</span>
+									</div>
+									<div class="panel-body">
+										<div id="chart2" style="height: 240px;"></div>
+									</div>
+								</div>
+						</div>
+					</div>
+					<div  class="row">
+							<div class="col-md-6">
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<span class="text-muted">过去7天推荐品响应结果分布</span>
+									</div>
+									<div class="panel-body">
+										<div id="chart3" style="height: 240px;"></div>
+									</div>
+								</div>
+						</div>
+						<div class="col-md-6">
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<span class="text-muted">过去7天推荐品响应量</span>
+									</div>
+									<div class="panel-body">
+										<div id="chart4" style="height: 240px;"></div>
+									</div>
+								</div>
+						</div>
+					</div>
+			</div>
+		</div>
+		<!-- 柱状图结束 -->
+	</div>
+</div>
+</div>

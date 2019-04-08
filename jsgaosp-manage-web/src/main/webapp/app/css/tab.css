@@ -1,0 +1,19 @@
+.page-tabs {
+	background: #e4eaec;
+	padding: 0 40px;
+	margin: 0 20px;
+}
+
+.page-tabs li a {
+	padding: 10px 20px;
+	margin:0 2px;
+	font-size: 12px;
+	display: inline-block;
+	background:#d6dfe2;
+	color: #58666e;
+}
+
+.nav-tabs li.active a {
+	background: #fff;
+	font-weight: 700;
+}

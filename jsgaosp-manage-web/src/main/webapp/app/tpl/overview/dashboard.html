@@ -1,0 +1,362 @@
+<div class="w-full h-full" style="background-color:#58666e; overflow-y:auto">
+	<div class="hbox hbox-auto-xs hbox-auto-sm"
+		ng-controller="dashboardController">
+		<div class="wrapper">
+			
+			<div class="row">
+				<div class="col-md-12">
+					<div class="row">
+						<div class="col-xs-3">
+							<div class="panel panel-default">
+								<div class="panel-body text-left">
+									<div class="inline text-info">
+											<strong>接口探测次数</strong>
+									</div>
+								</div>
+								<ul class="list-group">
+									<div class="text-center text-success">10.101.2.180 Mysql Delete Execute</div>
+									<div class="text-center text-success"><h1>20次</h1></div>
+								</ul>
+							</div>
+						</div>
+						<div class="col-xs-3">
+							<div class="panel panel-default">
+								<div class="panel-body text-left">
+									<div class="inline text-info">
+											<strong>服务状态</strong>
+									</div>
+								</div>
+								<ul class="list-group">
+									<div class="text-center text-success">10.101.2.180 Mysql Insert Execute</div>
+									<div class="text-center text-success"><h1>190次</h1></div>
+								</ul>
+							</div>
+						</div>
+						<div class="col-xs-3">
+							<div class="panel panel-default">
+								<div class="panel-body text-left">
+									<div class="inline text-info">
+											<strong>异常信息</strong>
+									</div>
+								</div>
+								<ul class="list-group">
+									<div class="text-center text-success">10.101.2.180 Mysql Select Execute</div>
+									<div class="text-center text-success"><h1>1100次</h1></div>
+								</ul>
+							</div>
+						</div>
+						<div class="col-xs-3">
+							<div class="panel panel-default">
+								<div class="panel-body text-left">
+									<div class="inline text-info">
+											<strong>告警信息</strong>
+									</div>
+								</div>
+								<ul class="list-group">
+									<div class="text-center text-success">10.101.2.180 Mysql Update Execute</div>
+									<div class="text-center text-success"><h1>1200次</h1></div>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-md-12">
+					<div class="row">
+						<div class="col-xs-3">
+							<div class="panel panel-default">
+								<div class="panel-body text-left">
+									<div class="inline text-info">
+											<strong>Agent状态</strong>
+									</div>
+								</div>
+								<div id="cpuSirq" style="height: 270px;"></div>
+								<ul class="list-group">
+									<li class="list-group-item text-success">消息送达数量 <span
+										class="badge pull-right"
+										data-ng-bind="dataVal1||0"></span>
+									</li>
+									<li class="list-group-item text-success">消息发送数量 <span
+										class="badge pull-right" 
+										data-ng-bind="dataVal2||0"></span>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-xs-3">
+							<div class="panel panel-default">
+								<div class="panel-body text-left">
+									<div class="inline text-info">
+											<strong>当前监控项</strong>
+									</div>
+								</div>
+								<div id="cpuSirq1" style="height: 270px;"></div>
+								<ul class="list-group">
+									<li class="list-group-item text-success">消息打开数量 <span
+										class="badge pull-right" data-ng-bind="overall.openCount||0"></span>
+									</li>
+									<li class="list-group-item text-success">消息点击数量 <span
+										class="badge pull-right" data-ng-bind="overall.clickCount||0"></span>
+									</li>
+								</ul>
+							</div>text-info
+						</div>
+						<div class="col-xs-3">
+							<div class="panel panel-default">
+								<div class="panel-body text-left">
+									<div class="inline text-info">
+											<strong>硬件台账信息</strong>
+									</div>
+								</div>
+								<div id="cpuSirq2" style="height: 270px;"></div>
+								<ul class="list-group">
+									<li class="list-group-item text-success">商品浏览人数 <span
+										class="badge pull-right" data-ng-bind="overall.userView||0"></span>
+									</li>
+									<li class="list-group-item text-success">商品购买人数 <span
+										class="badge pull-right" data-ng-bind="overall.orderCount||0"></span>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-xs-3">
+							<div class="panel panel-default">
+								<div class="panel-body text-left">
+									<div class="inline text-info">
+											<strong>软件台账信息</strong>
+									</div>
+								</div>
+								<div id="cpuSirq3" style="height: 270px;"></div>
+								<ul class="list-group">
+									<li class="list-group-item text-success">商品浏览人数 <span
+										class="badge pull-right" data-ng-bind="overall.userView||0"></span>
+									</li>
+									<li class="list-group-item text-success">商品购买人数 <span
+										class="badge pull-right" data-ng-bind="overall.orderCount||0"></span>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-md-12">
+					<div class="row">
+						<div class="col-xs-12">
+							<div class="panel panel-default">
+								<div class="panel-body text-left">
+									<div class="inline text-info">
+											<strong>异常、告警趋势</strong>
+									</div>
+								</div>
+								<div id="chart1" style="height: 270px;"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-md-12">
+					<div class="row">
+						<div class="col-xs-3">
+							<div class="panel panel-default">
+								<div class="panel-body text-left">
+									<div class="inline text-info">
+											<strong>测试仪表</strong>
+									</div>
+								</div>
+								<ul class="list-group">
+									<li class="list-group-item text-success">消息送达数量 <span
+										class="badge pull-right"
+										data-ng-bind="(overall.sendCount-overall.failCount)||0"></span>
+									</li>
+									<li class="list-group-item text-success">消息发送数量 <span
+										class="badge pull-right" data-ng-bind="overall.sendCount||0"></span>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-xs-3">
+							<div class="panel panel-default">
+								<div class="panel-body text-left">
+									<div class="inline text-info">
+											<strong>测试仪表</strong>
+									</div>
+								</div>
+								<ul class="list-group">
+									<li class="list-group-item text-success">消息打开数量 <span
+										class="badge pull-right" data-ng-bind="overall.openCount||0"></span>
+									</li>
+									<li class="list-group-item text-success">消息点击数量 <span
+										class="badge pull-right" data-ng-bind="overall.clickCount||0"></span>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-xs-3">
+							<div class="panel panel-default">
+								<div class="panel-body text-left">
+									<div class="inline text-info">
+											<strong>测试仪表</strong>
+									</div>
+								</div>
+								<ul class="list-group">
+									<li class="list-group-item text-success">商品浏览人数 <span
+										class="badge pull-right" data-ng-bind="overall.userView||0"></span>
+									</li>
+									<li class="list-group-item text-success">商品购买人数 <span
+										class="badge pull-right" data-ng-bind="overall.orderCount||0"></span>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-xs-3">
+							<div class="panel panel-default">
+								<div class="panel-body text-left">
+									<div class="inline text-info">
+											<strong>测试仪表</strong>
+									</div>
+								</div>
+								<ul class="list-group">
+									<li class="list-group-item text-success">商品浏览人数 <span
+										class="badge pull-right" data-ng-bind="overall.userView||0"></span>
+									</li>
+									<li class="list-group-item text-success">商品购买人数 <span
+										class="badge pull-right" data-ng-bind="overall.orderCount||0"></span>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-md-12">
+					<div class="row">
+						<div class="col-xs-6">
+							<div class="panel panel-default">
+								<div class="panel-body text-left">
+									<div class="inline text-info">
+											<strong>测试仪表</strong>
+									</div>
+								</div>
+								<ul class="list-group">
+									<li class="list-group-item text-success">消息送达数量 <span
+										class="badge pull-right"
+										data-ng-bind="(overall.sendCount-overall.failCount)||0"></span>
+									</li>
+									<li class="list-group-item text-success">消息发送数量 <span
+										class="badge pull-right" data-ng-bind="overall.sendCount||0"></span>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-xs-6">
+							<div class="panel panel-default">
+								<div class="panel-body text-left">
+									<div class="inline text-info">
+											<strong>测试仪表</strong>
+									</div>
+								</div>
+								<ul class="list-group">
+									<li class="list-group-item text-success">消息打开数量 <span
+										class="badge pull-right" data-ng-bind="overall.openCount||0"></span>
+									</li>
+									<li class="list-group-item text-success">消息点击数量 <span
+										class="badge pull-right" data-ng-bind="overall.clickCount||0"></span>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-md-12">
+					<div class="row">
+						<div class="col-xs-3">
+							<div class="panel panel-default">
+								<div class="panel-body text-left">
+									<div class="inline text-info">
+											<strong>测试仪表</strong>
+									</div>
+								</div>
+								<ul class="list-group">
+									<li class="list-group-item text-success">消息送达数量 <span
+										class="badge pull-right"
+										data-ng-bind="(overall.sendCount-overall.failCount)||0"></span>
+									</li>
+									<li class="list-group-item text-success">消息发送数量 <span
+										class="badge pull-right" data-ng-bind="overall.sendCount||0"></span>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-xs-3">
+							<div class="panel panel-default">
+								<div class="panel-body text-left">
+									<div class="inline text-info">
+											<strong>测试仪表</strong>
+									</div>
+								</div>
+								<ul class="list-group">
+									<li class="list-group-item text-success">消息打开数量 <span
+										class="badge pull-right" data-ng-bind="overall.openCount||0"></span>
+									</li>
+									<li class="list-group-item text-success">消息点击数量 <span
+										class="badge pull-right" data-ng-bind="overall.clickCount||0"></span>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-xs-3">
+							<div class="panel panel-default">
+								<div class="panel-body text-left">
+									<div class="inline text-info">
+											<strong>测试仪表</strong>
+									</div>
+								</div>
+								<ul class="list-group">
+									<li class="list-group-item text-success">商品浏览人数 <span
+										class="badge pull-right" data-ng-bind="overall.userView||0"></span>
+									</li>
+									<li class="list-group-item text-success">商品购买人数 <span
+										class="badge pull-right" data-ng-bind="overall.orderCount||0"></span>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-xs-3">
+							<div class="panel panel-default">
+								<div class="panel-body text-left">
+									<div class="inline text-info">
+											<strong>测试仪表</strong>
+									</div>
+								</div>
+								<ul class="list-group">
+									<li class="list-group-item text-success">商品浏览人数 <span
+										class="badge pull-right" data-ng-bind="overall.userView||0"></span>
+									</li>
+									<li class="list-group-item text-success">商品购买人数 <span
+										class="badge pull-right" data-ng-bind="overall.orderCount||0"></span>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="fade-in-down">
+				
+			</div>
+		</div>
+	</div>
+</div>

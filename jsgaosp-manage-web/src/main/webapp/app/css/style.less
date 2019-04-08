@@ -1,0 +1,35 @@
+.scroll-y{
+	overflow-y:scroll;
+	overflow-x:hidden; 
+	position: relative;
+}
+
+.ui-checkbox{
+	position: relative;
+    display: inline-block;
+    border: none;
+    height: auto;
+    .ui-checkbox-input{
+		background-color: #FFF;
+		width: 100%;
+    }
+    .ui-checkbox-ul{
+    	z-index: 1;
+	    padding: 0;
+	    margin: 0;
+    	position: absolute;
+    	top: 100%;
+    	width: 100%;
+    	border: 1px solid #cfdadd;
+    	background-color: #FFF;
+    	.ui-checkbox-li{
+			width: 100%;
+			height: 32px;
+			padding: 0 5px;
+			.checkbox{
+				margin-top: -8px;
+				margin-bottom: 0px;
+			}
+    	}
+    }
+}

@@ -1,0 +1,80 @@
+<div class="wrapper-md ng-scope" ng-controller="HospitalPeopleController">
+	<div class="panel panel-default">
+    <div class="panel-heading">
+      人员管理
+    </div>
+    <div class="row wrapper">
+      <div class="col-sm-5 m-b-xs">
+      	<span ng-controller="ModalHospitalCtrl">
+          <script type="text/ng-template" id="xxx">
+            <div ng-include="'hospital/modal.form.html'"></div>
+          </script>
+          <button class="btn m-b-xs w-xs btn-success" style="margin-bottom: -1px!important;" ng-click="open('')">新增</button>
+        </span>
+      	&nbsp;&nbsp;&nbsp;
+        <select class="input-sm form-control w-sm inline v-middle">
+          <option value="0">全体员工</option>
+          <option value="1">护士</option>
+          <option value="2">医师</option>
+          <option value="3">领导</option>
+        </select>
+        <button class="btn btn-sm btn-default">筛选</button>                
+      </div>
+      <div class="col-sm-4">
+      </div>
+      <div class="col-sm-3">
+        <div class="input-group">
+          <input type="text" class="input-sm form-control" placeholder="姓名/手机号码">
+          <span class="input-group-btn">
+            <button class="btn btn-sm btn-default" type="button">搜索</button>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="table-responsive">
+      <table class="table table-striped b-t b-light">
+        <thead>
+          <tr>
+            <th>姓名</th>
+            <th>年龄</th>
+            <th>手机号码</th>
+            <th>职务</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="people in peoples">
+            <td>{{people.name}}</td>
+            <td>{{people.age}}</td>
+            <td>{{people.phone}}</td>
+            <td>{{people.job}}</td>
+            <td>
+             <i class="fa fa-pencil fa-fw m-r-xs"  ng-click="open('lg')"></i>
+              <i class="fa fa-times fa-fw" ng-click="deletePeo('{{people.name}}')"></i>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <footer class="panel-footer">
+      <div class="row">
+        <div class="col-sm-4 hidden-xs">
+        </div>
+        <div class="col-sm-4 text-center">
+          <small class="text-muted inline m-t-sm m-b-sm">第6~7页 共50页</small>
+        </div>
+        <div class="col-sm-4 text-right text-center-xs">                
+          <ul class="pagination pagination-sm m-t-none m-b-none">
+            <li><a href=""><i class="fa fa-chevron-left"></i></a></li>
+            <li><a href="">1</a></li>
+            <li><a href="">2</a></li>
+            <li><a href="">3</a></li>
+            <li><a href="">4</a></li>
+            <li><a href="">5</a></li>
+            <li><a href=""><i class="fa fa-chevron-right"></i></a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+  </div>
+</div>

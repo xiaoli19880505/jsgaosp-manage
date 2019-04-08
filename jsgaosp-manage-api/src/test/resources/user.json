@@ -1,0 +1,37 @@
+{
+	"userId": "1071456",
+	"dataFields": 
+	{
+		"populationAttr": 
+		{
+			"name": "我",
+			"sex": "女",
+			"education": "",
+			"job": "",
+			"maritalStatus": "未知",
+			"business": "",
+			"position": "",
+			"organization": ""
+		},
+
+		"identityAttr": 
+		{
+			"email": "",
+			"mobilePhone": "11345694586",
+			"idCardNo": ""
+		},
+
+		"customerValueAttr": 
+		{
+			"score": 0,
+			"consumingAbility": 0,
+			"totalCompaign": 0,
+			"maxConsumption": 0,
+			"minConsumption": 0,
+			"cumulativeMoney": 0,
+			"cumulativeCount": 0,
+			"recentThreeMonthConsumption": 0,
+			"recentThreeMonthCount": 0
+		}
+	}
+}

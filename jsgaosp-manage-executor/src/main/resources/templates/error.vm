@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<body>
+	${status} ${error}
+</body>
+
+</html>

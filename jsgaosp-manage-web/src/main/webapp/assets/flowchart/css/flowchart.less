@@ -1,0 +1,194 @@
+.highlighted {
+    opacity: initial;
+    &.element{
+        outline: none;
+    }
+/*     .scalable{
+    outline: 2px solid red;
+} */
+}
+
+.wf-node {
+    position: absolute;
+    border: 2px solid #444444;
+    /* border-radius: 5px; */
+    pointer-events: none;
+    -webkit-user-select: none;
+    z-index: 2;
+    box-sizing: border-box;
+    &.highlighted{
+        outline: 2px solid red;
+    }
+    .head {
+        height: 25px;
+        color: #FFF;
+        line-height: 25px;
+        font-weight: 900;
+        padding: 0 8px;
+        background-color: #444444;
+        font-size: 12px;
+        .in{
+            background-color: #FFF;
+            display: block;
+            width: 16px;
+            height: 16px;
+            position: absolute;
+            border-radius: 8px;
+            border: 1px solid #444444;
+            top: -10px;
+            left: 55px;
+        }
+        &:hover{
+            border:1px solid red;
+        }
+    }
+    .body {
+        min-height: 56px;
+        text-align: center;
+        line-height: 1.6;
+        span{
+          display: block;
+          width: 100%;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          height: 18px;
+          line-height: 18px;
+          font-size: 12px;
+        }
+        .state {
+            color: #616161;
+        }
+        .name {
+            color: #313131;
+            font-weight: 900;
+        }
+        .desc {
+            color: #2B2B2B;
+        }
+        .out{
+            background-color: #FFF;
+            display: block;
+            width: 16px;
+            height: 16px;
+            position: absolute;
+            border-radius: 8px;
+            border: 1px solid #444444;
+            top: 75px;
+            left: 55px;
+            overflow: visible;
+            color: black;
+        }
+        .out1{
+            left: 22px;
+            .text{
+                position: relative;
+                top: -18px;
+                overflow: visible;
+            }
+        }
+        .out2{
+            left: 88px;
+            .text{
+                position: relative;
+                top: -18px;
+                overflow: visible;
+            }
+        }
+    }
+    &.trigger {
+        .body {
+            background-color: #2ECC71;
+        }
+    }
+    &.delay {
+        .body {
+            background-color: #E0E2E4;
+        }
+    }
+    &.execute {
+        .body {
+            background-color: #23b7e5;
+        }
+    }
+    &.decide {
+        .body {
+            background-color: #F9F0AE;
+        }
+    }
+    &.filter {
+        .body {
+            background-color: #B986D0;
+        }
+    }
+    &.recommend {
+        .body {
+            background-color: #B986D0;
+        }
+    }
+    &.spss {
+        .body {
+            background-color: #B986D0;
+        }
+    }
+}
+
+
+/* 过滤节点相关 */
+.condition-ct{
+    select,input{
+        height: 28px;
+        line-height: 26px;
+        padding: 0 1rem;
+    }
+}
+.condition-list{
+    width: 100%;
+    .condition-item{
+        border-left: 1px dashed #f2f2f3;
+        padding-left: 25px;
+        margin-left: 25px;
+        position: relative;
+        .condition-inner{
+            padding:10px 10px 0 10px; 
+            border-bottom: 1px solid #f2f2f3;
+            min-height: 50px;
+            .refine-btn{
+                display: inline;
+                float: right;
+                color: #009e9b;
+                cursor: pointer;
+                top: 3px;
+                right: 10px;
+                position: relative;
+            }
+            .close{
+                position: relative;
+                top: 2px;
+            }
+            .refine-block{
+                margin: 10px 0;
+            }
+        }
+        .condition-mode{
+                position: absolute;
+                top: 10px;
+                left: -16px;
+                min-width: 32px;
+                height: 28px;
+                line-height: 26px;
+                border: 1px solid #e2e3e4;
+                background-color: #f9f9f9;
+                color: #9ba4aa;
+                border-radius: 3px;
+                text-align: center;
+                font-size: 10px;
+        }
+    }
+    .condition-add-btn{
+        width: 110px;
+        color: #009e9b;
+        padding-left: 15px;
+        padding-top: 10px;
+    }
+}

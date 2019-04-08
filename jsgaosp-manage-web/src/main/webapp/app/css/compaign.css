@@ -1,0 +1,144 @@
+.pane {
+	padding: 5px 10px;
+	background: #FFF none repeat scroll 0% 0%;
+	margin: 0px 20px 20px;
+}
+
+.table-bordered tr.idle {
+	background: #f3f3f3;
+	color: #ccc
+}
+
+.breadcrumbs {
+	float: left
+}
+
+.lead {
+	margin: 16px 20px;
+	font-size: 12px;
+	line-height: 18px
+}
+
+.vxnets h3 {
+	margin: 20px 0 0
+}
+
+.table-hover tbody tr td.total {
+	background: #eff8eb
+}
+
+.page-intro {
+	background: #e4eaec;
+	overflow: hidden;
+	margin: 10px 20px 0;
+	-webkit-border-radius: 3px 3px 0 0;
+	-moz-border-radius: 3px 3px 0 0;
+	border-radius: 3px 3px 0 0;
+	color: #58666e
+}
+
+.page-intro .lead {
+	margin: 16px 20px;
+	font-size: 12px;
+	line-height: 18px
+}
+
+.page-intro .lead em {
+	font-style: normal;
+	font-weight: 700
+}
+
+.page-intro.subusers,.page-intro.access_keys,.page-intro.alarm_notification_lists
+	{
+	margin-top: 20px
+}
+
+.page-tabs {
+	background: #e4eaec;
+	padding: 0 20px;
+	margin: 0 20px
+}
+
+.alarm-history div.toolbar .pagination {
+	float: right
+}
+
+.toolbar {
+	position: relative;
+	z-index: 4;
+	margin: 10px 0px;
+	margin-top: 10px;
+	margin-right: 0px;
+	margin-bottom: 10px;
+	margin-left: 0px;
+}
+
+.topbar .level:hover {
+	color: #1c82b4
+}
+
+.topbar .level::before {
+	content: '/';
+	font-size: 14px;
+	color: #bebebe;
+	padding: 0 10px 0 2px
+}
+
+.topbar .level:first-child::before {
+	content: '';
+	padding: 0
+}
+
+.topbar .level-zone {
+	color: #fff;
+	padding: 1px 6px;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+	margin-right: 5px
+}
+
+.topbar .level-zone-0 {
+	background: #ff615a
+}
+
+.topbar .level-zone-0:hover {
+	background: #ff5049;
+	color: #fff
+}
+
+.topbar .level-zone-1 {
+	background: #6ebbe5
+}
+
+.topbar .level-zone-1:hover {
+	background: #60b4e2;
+	color: #fff
+}
+
+.topbar .level-zone-2 {
+	background: #94cc68
+}
+
+.topbar .level-zone-2:hover {
+	background: #8cc85c;
+	color: #fff
+}
+
+.topbar .level-zone-3 {
+	background: #9872c2
+}
+
+.topbar .level-zone-3:hover {
+	background: #9067bd;
+	color: #fff
+}
+
+.topbar .level-zone-4 {
+	background: #ecb33a
+}
+
+.topbar .level-zone-4:hover {
+	background: #ebae2d;
+	color: #fff
+}
