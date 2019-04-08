@@ -34,4 +34,4 @@ VALUES
 );
 --------------------------------------------
 --getCpuRunningInfo
-select * from cpu where  view_time> DATE_SUB(NOW(),INTERVAL  30 MINUTE);
+select * from cpu where  view_time > (sysdate+numtodsinterval(-30,'minute'));
