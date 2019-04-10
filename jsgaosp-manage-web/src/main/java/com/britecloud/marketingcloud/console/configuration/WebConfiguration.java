@@ -12,7 +12,7 @@ public class WebConfiguration extends WebMvcConfigurerAdapter {
 
 	@Bean
 	public SecurityInterceptor securityInterceptor() {
-		SecurityInterceptor interceptor = new SecurityInterceptor();
+	    SecurityInterceptor interceptor = new SecurityInterceptor();
 		interceptor.setUnfilteredURIs("(/.*/login$)|(/global/.*)|(/auth/.*)|(/.*\\.html$)|(/.*\\.jar$)|(/.*\\.jnlp$)|(/.*\\.png$)|(/.*\\.jpg$)|(/.*\\.gif$)|(/.*\\.ico$)|(/.*\\.css$)|(/.*\\.swf$)|(/.*\\.js$)|(/tools/.*)|(/.*\\.woff$)|(/.*\\.eot$)|(/.*\\.map$)|(/.*\\.ck$)");
 		return interceptor;
 	}
@@ -21,5 +21,7 @@ public class WebConfiguration extends WebMvcConfigurerAdapter {
 	public void addInterceptors(InterceptorRegistry registry) {
 		registry.addInterceptor(securityInterceptor());
 	}
+
+
 
 }
