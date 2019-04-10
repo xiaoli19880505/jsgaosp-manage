@@ -57,7 +57,7 @@
 			<div class="col-sm-10">
 				<input type="text" class="form-control input-sm"
 					placeholder="请输入正确的手机号码" name="mobile" ng-model="user.userMobile"
-					ng-pattern="/^(13[0-9]{9})|(15[89][0-9]{8})|(18[0-9]{9})$/"
+					ng-pattern="/^(13[0-9]{9})|(15[0-9][0-9]{8})|(18[0-9]{9})$/"
 					required>
 			</div>
 		</div>
@@ -84,5 +84,5 @@
 <div class="modal-footer ng-scope">
 	<button type="reset" class="btn btn-default" ng-click="cancel()">取消</button>
 	<button type="submit" class="btn btn-primary" ng-click="ok()"
-		ng-disabled="form.$invalid">保存</button>
+		ng-disabled="form.$valid">保存</button>
 </div>
