@@ -1,6 +1,6 @@
 --------------------------------------------
 --listSysArgs
-SELECT * FROM BC_SYS_ARGS;
+SELECT * FROM BC_SYS_ARGS
 
 --------------------------------------------
 --saveSysArgs

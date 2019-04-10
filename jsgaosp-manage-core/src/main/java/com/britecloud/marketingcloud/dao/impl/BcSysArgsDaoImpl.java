@@ -3,7 +3,9 @@ package com.britecloud.marketingcloud.dao.impl;
 import com.britecloud.marketingcloud.consants.Constants;
 import com.britecloud.marketingcloud.core.dao.jdbc.BaseJdbcDao;
 import com.britecloud.marketingcloud.dao.BcSysArgsDao;
+import com.britecloud.marketingcloud.domain.PageDataResult;
 import com.britecloud.marketingcloud.model.BcSysArgs;
+import com.britecloud.marketingcloud.utils.PageUtils;
 import com.britecloud.marketingcloud.utils.UUIDUtils;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
@@ -26,10 +28,19 @@ import java.util.Map;
 public class BcSysArgsDaoImpl extends BaseJdbcDao implements BcSysArgsDao {
 
 	@Override
-	public List<BcSysArgs> listSysArgs(BcSysArgs args) {
-		String sql = loadSQL("listSysArgs");
-		Map<String, String> paramMap = new HashMap<String, String>();
-		return getNamedParameterJdbcTemplate().query(sql, paramMap, new BeanPropertyRowMapper<BcSysArgs>(BcSysArgs.class));
+	public PageDataResult<BcSysArgs> listSysArgs(Map params) {
+//		Map pageData = new HashMap();
+		PageDataResult<BcSysArgs> pageData = new PageDataResult<BcSysArgs>();
+
+		String sql = loadSQL("listSysArgs", params);
+		Integer totalCount = getNamedParameterJdbcTemplate().queryForInt(getTotalCountString(sql), params);
+		pageData.setTotalCount(totalCount);
+		pageData.setTotalPage(PageUtils.getTotalPage(totalCount));
+
+		sql = getPaginationString(sql, PageUtils.getStartNum((Integer) params.get("page")), PageUtils.pageSize);
+		List<BcSysArgs> list = getNamedParameterJdbcTemplate().query(sql, params, new BeanPropertyRowMapper(BcSysArgs.class));
+		pageData.setData(list);
+		return pageData;
 	}
 
 	@Override

@@ -2,6 +2,7 @@ package com.britecloud.marketingcloud.service.impl;
 
 import com.britecloud.marketingcloud.dao.BcAreaDao;
 import com.britecloud.marketingcloud.dao.BcSysArgsDao;
+import com.britecloud.marketingcloud.domain.PageDataResult;
 import com.britecloud.marketingcloud.model.BcArea;
 import com.britecloud.marketingcloud.model.BcSysArgs;
 import com.britecloud.marketingcloud.service.BcAreaService;
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class BcSysArgsServiceImpl implements BcSysArgsService {
@@ -18,8 +20,8 @@ public class BcSysArgsServiceImpl implements BcSysArgsService {
     private BcSysArgsDao bcSysArgsDao;
 
     @Override
-    public List<BcSysArgs> listSysArgs(BcSysArgs args) {
-        return bcSysArgsDao.listSysArgs(args);
+    public PageDataResult<BcSysArgs> listSysArgs(Map params) {
+        return bcSysArgsDao.listSysArgs(params);
     }
 
     @Override

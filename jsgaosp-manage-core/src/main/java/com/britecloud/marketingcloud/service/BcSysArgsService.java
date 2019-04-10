@@ -1,9 +1,11 @@
 
 package com.britecloud.marketingcloud.service;
 
+import com.britecloud.marketingcloud.domain.PageDataResult;
 import com.britecloud.marketingcloud.model.BcSysArgs;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 项目名称:省公安
@@ -16,7 +18,7 @@ import java.util.List;
  */
 public interface BcSysArgsService {
 
-	List<BcSysArgs> listSysArgs(BcSysArgs args);
+    PageDataResult<BcSysArgs> listSysArgs(Map params);
 
 	void saveSysArgs(BcSysArgs args);
 

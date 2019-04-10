@@ -26,9 +26,10 @@ import java.util.Map;
 public class BcAreaDaoImpl extends BaseJdbcDao implements BcAreaDao {
 
 	@Override
-	public List<BcArea> listArea(BcArea area) {
+	public List<BcArea> listArea(String pAreaNo) {
 		String sql = loadSQL("listArea");
 		Map<String, String> paramMap = new HashMap<String, String>();
+		paramMap.put("pAreaNo",pAreaNo);
 		return getNamedParameterJdbcTemplate().query(sql, paramMap, new BeanPropertyRowMapper<BcArea>(BcArea.class));
 	}
 

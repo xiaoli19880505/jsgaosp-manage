@@ -1,6 +1,6 @@
 --------------------------------------------
 --listArea
-SELECT * FROM bc_area;
+SELECT * FROM bc_area where P_AREA_NO=:pAreaNo;
 
 --------------------------------------------
 --saveArea
