@@ -260,5 +260,8 @@ public class Constants {
 	public static final String REGEX_FOR_USERDEFINED_PARAM = "%\\w+(:\\w+)*%";
 
 
+	/*状态*/
+	public static final String STATUS_ENABLE = "1";//启用
+	public static final String STATUS_DISABLE = "0";//禁用
 
 }

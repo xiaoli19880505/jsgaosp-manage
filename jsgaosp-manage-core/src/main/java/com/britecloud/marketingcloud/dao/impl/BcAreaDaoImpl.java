@@ -1,5 +1,6 @@
 package com.britecloud.marketingcloud.dao.impl;
 
+import com.britecloud.marketingcloud.consants.Constants;
 import com.britecloud.marketingcloud.core.dao.jdbc.BaseJdbcDao;
 import com.britecloud.marketingcloud.dao.BcAreaDao;
 import com.britecloud.marketingcloud.model.BcArea;
@@ -34,6 +35,7 @@ public class BcAreaDaoImpl extends BaseJdbcDao implements BcAreaDao {
 	@Override
 	public void saveArea(BcArea area) {
 	    area.setId(UUIDUtils.generateUUID());
+	    area.setStatus(Constants.STATUS_ENABLE);
         String sql = loadSQL("saveArea");
         SqlParameterSource parameters = new BeanPropertySqlParameterSource(area);
         getNamedParameterJdbcTemplate().update(sql, parameters);
