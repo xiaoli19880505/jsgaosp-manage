@@ -43,9 +43,7 @@ SELECT
 	FROM
     	BC_ROLE
 	WHERE
-		(COMPANY_ID = :companyId OR ISNULL(COMPANY_ID)=1 OR COMPANY_ID = '')
-	AND
-		ROLE_TYPE !='MAINTAIN'; 
+		ROLE_TYPE !='MAINTAIN';
 --------------------------------------------
 --getRole
 SELECT
