@@ -21,7 +21,7 @@ import org.springframework.jdbc.support.lob.LobHandler;
 
 import com.britecloud.marketingcloud.utils.SqlUtils;
 
-public class BaseJdbcDao extends NamedParameterJdbcDaoSupport implements MySqlSupport {
+public class BaseJdbcDao extends NamedParameterJdbcDaoSupport implements OracleSupport {
 	
 	@Autowired
 	private DataSource dataSource;
@@ -93,7 +93,7 @@ public class BaseJdbcDao extends NamedParameterJdbcDaoSupport implements MySqlSu
 	}
 	
 	public String getTotalCountString(String sql){
-		return "SELECT COUNT(*) FROM ("+sql+") CDD;";
+		return "SELECT COUNT(*) FROM ("+sql+") CDD ";
 	}
 
 	public String loadSQL(String sqlId) {

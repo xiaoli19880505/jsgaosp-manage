@@ -74,9 +74,8 @@ SELECT
        	BC_USER
     WHERE 
     	1=1
-    	and COMPANY_ID=:companyId
     	and RETIRED = '1'
-    	and USER_TYPE != 'MAINTAIN'
+    	and USER_TYPE <> 'MAINTAIN'
 	--<dynamic>
 	  --<isNotNull property="keyword" prepend="AND">
 	        NAME=:keyword
