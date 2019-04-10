@@ -19,3 +19,8 @@ delete from bc_area where id=:id;
 --getAreaById
 SELECT * from bc_area WHERE  ID = :id;
 
+--------------------------------------------
+--existsAreaNo
+SELECT COUNT(1) from bc_area WHERE area_no=:areaNo;
+
+

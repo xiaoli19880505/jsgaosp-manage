@@ -1,6 +1,5 @@
 package com.britecloud.marketingcloud.console.action;
 
-import com.alibaba.fastjson.JSONObject;
 import com.britecloud.marketingcloud.console.common.ResponseResult;
 import com.britecloud.marketingcloud.console.util.ResultUtil;
 import com.britecloud.marketingcloud.model.BcArea;
@@ -44,10 +43,18 @@ public class BcAreaAction {
     @ResponseBody
     public ResponseResult saveArea(BcArea area){
         if(area != null){
-            bcAreaService.saveArea(area);
-            return ResultUtil.success();
+            if(StringUtils.isNotEmpty(area.getAreaNo())){
+                //判断areaNo是否存在
+                int num = bcAreaService.existsAreaNo(area);
+                if(num>0){
+                    return ResultUtil.error("10002","行政区划编号已存在!");
+                }else {
+                    bcAreaService.saveArea(area);
+                    return ResultUtil.success();
+                }
+            }
         }
-        return ResultUtil.error("10001","更新失败！");
+        return ResultUtil.error("10001","保存失败！");
     }
 
     @RequestMapping(value = "/update_area", method = RequestMethod.GET)

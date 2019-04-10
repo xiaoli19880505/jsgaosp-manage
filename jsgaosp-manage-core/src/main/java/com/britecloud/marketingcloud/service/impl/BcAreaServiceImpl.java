@@ -38,4 +38,14 @@ public class BcAreaServiceImpl implements BcAreaService {
     public BcArea getAreaById(String id) {
         return bcAreaDao.getAreaById(id);
     }
+
+    /**
+     * 根据areaNo判断是否存在
+     * @param area
+     * @return
+     */
+    @Override
+    public int existsAreaNo(BcArea area){
+        return bcAreaDao.existsAreaNo(area);
+    }
 }

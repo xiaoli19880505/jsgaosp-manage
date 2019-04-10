@@ -24,4 +24,11 @@ public interface BcAreaDao {
     void deleteArea(BcArea area);
 
     BcArea getAreaById(String id);
+
+    /**
+     * 根据areaNo判断是否存在
+     * @param area
+     * @return
+     */
+    int existsAreaNo(BcArea area);
 }

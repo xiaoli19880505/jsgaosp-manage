@@ -39,6 +39,18 @@ public class BcAreaDaoImpl extends BaseJdbcDao implements BcAreaDao {
         getNamedParameterJdbcTemplate().update(sql, parameters);
 	}
 
+	/**
+	 * 根据areaNo判断是否存在
+	 * @param area
+	 * @return
+	 */
+	@Override
+	public int existsAreaNo(BcArea area){
+		String sql = loadSQL("existsAreaNo");
+		SqlParameterSource parameters = new BeanPropertySqlParameterSource(area);
+		return getNamedParameterJdbcTemplate().queryForInt(sql,parameters);
+	}
+
     @Override
     public void updateArea(BcArea area) {
         String sql = loadSQL("updateArea");
