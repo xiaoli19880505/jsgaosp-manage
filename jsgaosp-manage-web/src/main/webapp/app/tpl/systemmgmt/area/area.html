@@ -1,0 +1,134 @@
+<!-- hbox layout -->
+<style>
+    .help-block {
+        color: #F05050;
+        margin-bottom: 0px;
+        font-weight: bold;
+        font-style: oblique;
+    }
+</style>
+<div class="hbox hbox-auto-xs bg-light"
+     ng-init="app.settings.asideFixed = true;app.settings.asideDock = false; app.settings.container = false; app.hideAside = false; app.hideFooter = true;"
+     ng-controller="AreaController">
+    <!-- column -->
+    <div class="col w-xl lt b-r">
+        <div class="vbox">
+            <div class="wrapper">
+                <span class="h4">行政区划管理</span>
+            </div>
+            <div class="wrapper b-t m-t-xxs">
+
+				<!--<div class="input-group">-->
+					<!--<input type="text" class="form-control input-sm ng-valid ng-dirty ng-valid-parse ng-touched" placeholder="请输入关键字" ng-model="keyword">-->
+					<!--<span class="input-group-addon input-sm" ng-click="search()"><i class="fa fa-search"></i></span>-->
+				<!--</div>-->
+			</div>
+            <div class="row-row">
+				<div class="cell scrollable hover">
+					<div class="cell-inner">
+						<div class="padder">
+							<div class="m-b">
+								<button type="button" ng-click="add_a_Area()" class="btn btn-sm btn-info">新增</button>
+								<button type="button" ng-click="delete_a_Area()" class="btn btn-sm btn-danger">删除</button>
+								<!--<button type="button" ng-click="synchronous_a_org()" class="btn btn-sm btn-success">同步</button>-->
+							</div>
+							<div class="b-a bg-light dk r r-2x">
+								<span ng-if="doing_async">...loading...</span>
+							        <abn-tree 
+							          tree-data         = "area"
+							          tree-control      = "my_tree" 
+							          on-select         = "getArea(branch)"
+							          expand-level      = "2" 
+							          initial-selection = "新城大厦机房"
+							          icon-leaf			= "fa fa-hospital-o"
+							          icon-expand       = "fa fa-plus"
+							          icon-c管ollapse     = "fa fa-minus"
+							          >
+						        </abn-tree>
+						      </div>
+						</div>
+					</div>
+				</div>
+			</div>
+        </div>
+    </div>
+    <!-- /column -->
+
+    <!-- column -->
+    <div class="col">
+        <div class="vbox">
+            <div class="wrapper bg-light lt b-b">
+                <span class="text-muted h4">编辑</span>
+            </div>
+            <div class="row-row">
+            	<div class="row wrapper">
+			      <div class="col-sm-5 m-b-xs">
+			      <button type="button"  ng-click="submitForm(areaForm.$valid)" class="btn btn-sm btn-success">保存</button>
+			      </div>
+			      <div class="col-sm-4">
+			      </div>
+
+			    </div>
+                <!--<div class="table-responsive" style="margin: 0; padding: 0; overflow-x: hidden;">-->
+			    	<!--<table class="table table-striped b-t b-light">-->
+				   		<!--<thead>-->
+				          <!--<tr>-->
+				            <!--<th>序号</th>-->
+				            <!--<th>姓名</th>-->
+				            <!--<th>账号</th>-->
+				            <!--<th>密码</th>-->
+				            <!--<th>邮箱</th>-->
+				            <!--<th>电话</th>-->
+				            <!--<th>操作</th>-->
+				          <!--</tr>-->
+				        <!--</thead>-->
+				        <!--<tbody>-->
+					        <!--<tr class="ng-scope">-->
+					        	<!--<td class="ng-binding">1</td>-->
+					            <!--<td class="ng-binding">bjgw</td>-->
+					            <!--<td class="ng-binding">cs_zjj</td>-->
+					            <!--<td class="ng-binding">123456</td>-->
+					            <!--<td class="ng-binding">111424188@qq.com</td>-->
+					            <!--<td class="ng-binding">13801010101</td>-->
+					            <!--<td>-->
+					            	<!--&lt;!&ndash;<a class="fa fa-refresh fa-fw m-r-xs" title="重置密码" ng-click="reset('938176')"></a>&ndash;&gt;-->
+			                        <!--&lt;!&ndash;<a class="fa fa-pencil fa-fw m-r-xs" title="修改用户" ng-click="open('','update',$index)"></a>&ndash;&gt;-->
+			                        <!--&lt;!&ndash;<a class="fa fa-times fa-fw" title="删除用户" ng-click="deleteUser(user.userId,user.name)"></a>&ndash;&gt;-->
+					            <!--</td>-->
+					        <!--</tr>-->
+			    		<!--</tbody>-->
+			    	<!--</table>-->
+			    <!--</div>-->
+
+				<form name="areaForm" class="form-validation form-horizontal" ng-submit="submitForm(areaForm.$valid)" novalidate>
+
+					<div class="form-group">
+						<label class="col-sm-2 control-label">名称<span style="color:red;">*</span></label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" placeholder="请输入2~5位字符" name="areaName" ng-model="areaItem.areaName"
+								   ng-minlength="2" ng-maxlength="5" required>
+							<p ng-show="areaForm.name.$pristine&& submitted" class="help-block">请输入名称</p>
+							<p ng-show="areaForm.name.$error.minlength&& submitted" class="help-block">名称不得少于2个字符</p>
+							<p ng-show="areaForm.name.$error.maxlength&& submitted" class="help-block">名称不得大于5个字符</p>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-sm-2 control-label">编号<span style="color:red;">*</span></label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" placeholder="请输入数字编号" name="areaNo" ng-model="areaItem.areaNo"
+								   >
+							<p ng-show="areaForm.areaNo.$pristine&& submitted" class="help-block">请输入编号</p>
+							<p ng-show="areaForm.areaNo.$invalid && !userForm.phone.$pristine&& submitted" class="help-block">请输入正确的编号</p>
+						</div>
+					</div>
+
+
+				</form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /column -->
+</div>
+<!-- /hbox layout -->

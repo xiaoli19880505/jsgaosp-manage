@@ -91,7 +91,7 @@ angular
 			            	 deps : [
 			            	         'js/app/systemmgmt/systemuser/user-ctrl.js',
 			            	         'js/app/systemmgmt/systemuser/user-serv.js',
-			            	         'js/app/systemmgmt/commgmt/company_serv.js',
+								 	 'js/app/systemmgmt/commgmt/company_serv.js',
 			            	         'js/app/systemmgmt/systemuser/user-modal.js' ]
 			             },
 			             {
@@ -102,6 +102,16 @@ angular
 			            	         'js/app/systemmgmt/commgmt/company_serv.js',
 			            	         'js/app/systemmgmt/commgmt/company_ctrl.js' ]
 			             },
+						 {
+							 state : 'app.system.area',
+							 url : '/area',
+							 templateUrl : 'tpl/systemmgmt/area/area.html',
+							 deps : [
+								 'js/app/systemmgmt/area/area_ctrl.js',
+								 'js/app/systemmgmt/area/area_serv.js'
+
+								 ]
+						 },
 			             /***设备管理***/
 			             {
 			            	 state : 'app.device',

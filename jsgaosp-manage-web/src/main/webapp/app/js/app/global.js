@@ -263,7 +263,12 @@ angular.module('app').constant('GG', {
 			text : '角色管理',
 			iconCls :'fa fa-caret-right',
 			sref : 'app.system.role'
-		} ]
+		} , {
+			id : '8-3',
+			text : '行政区划管理',
+			iconCls :'fa fa-caret-right',
+			sref : 'app.system.area'
+		}]
 	}],
 	colors : [ {
 		backgroundColor : '#FFFFFF'
