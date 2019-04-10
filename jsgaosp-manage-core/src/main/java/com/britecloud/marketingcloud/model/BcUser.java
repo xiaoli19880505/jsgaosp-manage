@@ -28,10 +28,19 @@ public class BcUser {
 	private String createBy;
 	private Date updateDate;
 	private String updateBy;
+	private String avatar;
+	
 	
 	private String name;
 
 	
+	
+	public String getAvatar() {
+		return avatar;
+	}
+	public void setAvatar(String avatar) {
+		this.avatar = avatar;
+	}
 	public String getName() {
 		return name;
 	}
