@@ -7,7 +7,7 @@ angular.module('app').factory('AreaService', ['res', 'GG',
         var res = res(GG.BASE + '/area/:type');
         var service = {
         	loadArea: function () {
-                return res.query({
+                return res.get({
                 	type:'list_area'
                 }).$promise;
             },
@@ -17,37 +17,37 @@ angular.module('app').factory('AreaService', ['res', 'GG',
                     type:'get_area'
                 }).$promise;
             },
-            addCompany: function (name) {
-                return res.save({
-                	name: name
+            updateArea: function (areaItem) {
+
+                return res.get({
+
+                    areaName:areaItem.area_name,
+                    areaNo:areaItem.area_no,
+                    pAreaNo:areaItem.p_area_no,
+                    id:areaItem.id,
+                    status:areaItem.status,
+                    type:'update_area'
                 }).$promise;
             },
-            deleteArea: function (id) {
+            addArea: function (areaItem) {
                 return res.get({
-                    type:"delete_area",
-                	id: id
+                    areaName:areaItem.area_name,
+                    areaNo:areaItem.area_no,
+                    pAreaNo:areaItem.p_area_no,
+                    id:areaItem.id,
+                    status:areaItem.status,
+                    type:'save_area'
+                }).$promise;
+            },
+            deleteArea: function (areaItem) {
+                return res.get({
+                    id: areaItem.id,
+                    type:"delete_area"
+
 
                 }).$promise;
-            },
-            saveCompany: function (company) {
-            	console.info(company);
-                return res.update(company).$promise;
-            },
-            query: function () {
-                return res.query().$promise;
-            },
-            getOrgList: function () {
-                return res.query({
-                	type:"getOrgList"
-                }).$promise;
-            },
-            checkCode: function (code,orgId) {
-                return res.get({
-                	code:code,
-                	orgId:orgId,
-                	type:'checkCode'
-                }).$promise;
             }
+
         };
         return service;
     }
