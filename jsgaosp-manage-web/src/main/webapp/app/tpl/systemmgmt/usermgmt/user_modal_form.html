@@ -76,7 +76,7 @@
                     <label class="col-sm-2 control-label">手机号码</label>
                     <div class="col-sm-10">
                     <input type="text" class="form-control" placeholder="请输入正确的手机号码" name="mobile" ng-model="user.userMobile"
-                           ng-pattern="/^(13[0-9]{9})|(15[89][0-9]{8})|(18[0-9]{9})$/" >
+                           ng-pattern="/^(13[0-9]{9})|(15[0-9]{8})|(18[0-9]{9})$/" >
                       <p ng-show="userForm.mobile.$pristine&& submitted" class="help-block">请输入手机号码</p>
                       <p ng-show="userForm.mobile.$invalid && !userForm.mobile.$pristine&& submitted" class="help-block">请输入正确的手机号码</p>
                     </div>

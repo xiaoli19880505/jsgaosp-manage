@@ -9,7 +9,7 @@ import java.util.List;
  */
 public interface BcAreaService {
 
-    List<BcArea> listArea(BcArea area);
+    List<BcArea> listArea(String pAreaNo);
 
     void saveArea(BcArea area);
 

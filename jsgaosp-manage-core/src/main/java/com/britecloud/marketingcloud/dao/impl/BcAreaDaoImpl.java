@@ -1,5 +1,6 @@
 package com.britecloud.marketingcloud.dao.impl;
 
+import com.britecloud.marketingcloud.consants.Constants;
 import com.britecloud.marketingcloud.core.dao.jdbc.BaseJdbcDao;
 import com.britecloud.marketingcloud.dao.BcAreaDao;
 import com.britecloud.marketingcloud.model.BcArea;
@@ -25,15 +26,17 @@ import java.util.Map;
 public class BcAreaDaoImpl extends BaseJdbcDao implements BcAreaDao {
 
 	@Override
-	public List<BcArea> listArea(BcArea area) {
+	public List<BcArea> listArea(String pAreaNo) {
 		String sql = loadSQL("listArea");
 		Map<String, String> paramMap = new HashMap<String, String>();
+		paramMap.put("pAreaNo",pAreaNo);
 		return getNamedParameterJdbcTemplate().query(sql, paramMap, new BeanPropertyRowMapper<BcArea>(BcArea.class));
 	}
 
 	@Override
 	public void saveArea(BcArea area) {
 	    area.setId(UUIDUtils.generateUUID());
+	    area.setStatus(Constants.STATUS_ENABLE);
         String sql = loadSQL("saveArea");
         SqlParameterSource parameters = new BeanPropertySqlParameterSource(area);
         getNamedParameterJdbcTemplate().update(sql, parameters);

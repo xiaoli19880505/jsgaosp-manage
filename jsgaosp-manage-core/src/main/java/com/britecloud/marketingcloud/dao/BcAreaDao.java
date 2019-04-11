@@ -15,7 +15,7 @@ import java.util.List;
  */
 public interface BcAreaDao {
 
-	List<BcArea> listArea(BcArea area);
+	List<BcArea> listArea(String pAreaNo);
 
 	void saveArea(BcArea area);
 

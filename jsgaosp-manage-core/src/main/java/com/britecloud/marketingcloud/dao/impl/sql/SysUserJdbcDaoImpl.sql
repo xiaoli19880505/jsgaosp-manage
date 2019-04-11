@@ -48,6 +48,7 @@ UPDATE
         ,USER_TYPE =:userType
         ,UPDATE_DATE =:updateDate
         ,UPDATE_BY =:updateBy
+        ,AVATAR =:avatar
     WHERE
         USER_ID = :userId;
 --------------------------------------------

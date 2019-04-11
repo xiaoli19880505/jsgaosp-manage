@@ -15,8 +15,8 @@ public class BcAreaServiceImpl implements BcAreaService {
     private BcAreaDao bcAreaDao;
 
     @Override
-    public List<BcArea> listArea(BcArea area) {
-        return bcAreaDao.listArea(area);
+    public List<BcArea> listArea(String pAreaNo) {
+        return bcAreaDao.listArea(pAreaNo);
     }
 
     @Override
