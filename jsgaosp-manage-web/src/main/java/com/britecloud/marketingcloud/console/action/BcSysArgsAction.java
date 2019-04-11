@@ -62,7 +62,7 @@ public class BcSysArgsAction {
         return new BcSysArgs();
     }
 
-    @RequestMapping(value = "/save_sysargs", method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.POST)
     @ResponseBody
     public ResponseResult saveSysargs(BcSysArgs args){
         if(args != null){
@@ -80,7 +80,7 @@ public class BcSysArgsAction {
         return ResultUtil.error("10001","保存失败！");
     }
 
-    @RequestMapping(value = "/update_sysargs", method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.PUT)
     @ResponseBody
     public ResponseResult updateSysargs(BcSysArgs args){
         if(args != null){
@@ -90,7 +90,7 @@ public class BcSysArgsAction {
         return ResultUtil.error("10001","更新失败！");
     }
 
-    @RequestMapping(value = "/delete_sysargs", method = RequestMethod.GET)
+    @RequestMapping( method = RequestMethod.DELETE)
     @ResponseBody
     public ResponseResult deleteSysargs(BcSysArgs args){
         if(args != null && StringUtils.isNotEmpty(args.getId())){
