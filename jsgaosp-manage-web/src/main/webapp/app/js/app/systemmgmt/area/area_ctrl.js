@@ -1,30 +1,28 @@
 'use strict';
 
 app.controller('AreaController',function($scope,$http,$state,$timeout,modalServ,AreaService){
-	/*
-	 * 初始化
-	 */
+
 
 	//选中的区划或者要新添区划的对象属性
 	$scope.areaItem= {
-		"areaName":"",
-		"areaNo":"",
-		"pareaId":"",
+		"area_name":"",
+		"area_no":"",
+		"p_area_no":"",
 		"id":"",
-		"status":""
-
+		"status":"",
+		"children":""
 	};
+
+	//0:新增区划  1：修改区划属性
+	//初始化为1
+	$scope.flag=1;
+
+	//表示新增区划的父节点area_no
+	$scope.parentId=0;
 
 	$scope.totalItems = 1;
     $scope.currentPage = 1;
-	$scope.getAreaInfoById=function(){
-		AreaService.getAreaInfo($scope.app.user.companyId).then(function(data){
-			var arr = new Array();
-			arr.push(data);
-			console.log(arr);
-			$scope.area=arr;
-		})
-	}
+
 
 	$scope.getAreaInfo=function(){
 		AreaService.loadArea().then(function(data){
@@ -32,26 +30,18 @@ app.controller('AreaController',function($scope,$http,$state,$timeout,modalServ,
 			arr.push(data);
 			console.log(arr);
 			console.log(arr.length)
-			$scope.area=data;
+			$scope.area=data.data;
 		})
 	}
-	$scope.submitForm=function(isValid){
-		$scope.submitted = false;
-		if(isValid){
-			var data = {
-				companyId : $scope.app.user.companyId,
-				name : $scope.company.name,
-				description : $scope.company.description
-			};
-			CompanyService.saveCompany(data).then(function(data){
-				if(data.result){
-					toastr.success('保存成功！');
-				}
-			});
-		}else{
-			$scope.submitted = true;
-		}
-	}
+
+	// $scope.submitForm=function(isValid){
+	// 	$scope.submitted = false;
+	// 	if(isValid){
+	// 		$scope.updateArea();
+	// 	}else{
+	// 		$scope.submitted = true;
+	// 	}
+	// }
 
 	//获取区划列表
 	//$scope.getAreaInfo();
@@ -62,64 +52,52 @@ app.controller('AreaController',function($scope,$http,$state,$timeout,modalServ,
 	$scope.getArea = function(branch) {
 		_branch = branch;
 //		console.log(_branch);
-		$scope.orgId = _branch.orgId;
-		if (branch.orgId!= -1) {
-			$scope.output=_branch.label;
+		$scope.area_no = _branch.area_no;
 
-			$scope.areaItem.areaName=_branch.label;
-			$scope.areaItem.areaNo=_branch.orgId;
+		$scope.flag=1;
+		if (branch.area_no!= 0) {
+			$scope.output=_branch.area_name;
+
+			$scope.areaItem.area_name=_branch.area_name;
+			$scope.areaItem.area_no=_branch.area_no;
+			$scope.areaItem.id=_branch.id;
+			$scope.areaItem.status=_branch.status;
+			$scope.areaItem.p_area_no=_branch.p_area_no;
+			$scope.areaItem.children=_branch.children;
 			if(tree.get_parent_branch(branch)!=null){
-				$scope.pId = tree.get_parent_branch(branch).orgId;
-				$scope.pCode=tree.get_parent_branch(branch).code;
-				$scope._pCode=$scope.pCode+"_";
+				$scope.p_area_no = tree.get_parent_branch(branch).area_no;
+
 			}_branch
-			// $scope.getAreaInfoById();
+
+
+			$scope.parentId=branch.area_no;
+
+
 		}
 	};
-	$scope.orgList = [];
+	$scope.area = [];
 	var tree = $scope.my_tree = {};
 
+	var tmp=[];
 	/**
 	 * 加载地区树形结构
 	 */
 	$scope.loadArea = function() {
 		$scope.doing_async = true;
-		AreaService.loadArea();
-		// var parent=[];
-		// var areaList=AreaService.loadArea();
-		// for(var len=areaList.length;i--; ){
-		// 	var item=areaList[len];
-		// 	if(item.)
-		// }
-		var tmp = [{
-			"label":"江苏省",
-			"orgId":"-1",
-			"pId":"-1",
-			"code":"",
-			"address":"",
-			"children":[{"label":"南京市","children":[
-					{
-						"orgId":"11",
-						"pId":"0",
-						"label":"栖霞区",
-						"code":""
-					},{
-						"orgId":"12",
-						"pId":"0",
-						"label":"玄武区",
-						"code":""
-					},{
-						"orgId":"13",
-						"pId":"0",
-						"label":"鼓楼区",
-						"code":""
-					}
-				],"orgId":"0","pId":"-1","code":""},
-				{"label":"无锡市","children":[],"orgId":"1","pId":"-1","code":""},
-				{"label":"扬州市","children":[],"orgId":"2","pId":"-1","code":""}]
-		}];
-		$scope.area = tmp;
-		$scope.doing_async = false;
+
+
+
+		AreaService.loadArea().then(function(data) {
+
+			if (data.code=="10000") {
+				tmp=data.data;
+
+
+				$scope.area = tmp;
+				$scope.doing_async = false;
+			}
+		})
+
 
 
 	};
@@ -130,7 +108,7 @@ app.controller('AreaController',function($scope,$http,$state,$timeout,modalServ,
 	 * 初始化
 	 */
 	$scope.getAreaInfoById = function() {
-		AreaService.getAreaInfo($scope.orgId).then(function(data) {
+		AreaService.getAreaInfo($scope.area_no).then(function(data) {
 			$scope.area = data;
 
 		})
@@ -147,8 +125,23 @@ app.controller('AreaController',function($scope,$http,$state,$timeout,modalServ,
 			toastr.error('请先选择一个区划！');
 			return;
 		}
+
+		if(b.children==""){
+			toastr.error('不能在市区下增加子节点！');
+			return;
+		}
+
+		$scope.flag=0;
+
+		$scope.areaItem.area_name='未命名';
+		$scope.areaItem.area_no="";
+		$scope.areaItem.id="";
+		$scope.areaItem.status="1";
+		$scope.areaItem.p_area_no=$scope.parentId;
+
+
 		return tree.add_branch(b, {
-			label : '未命名',
+			area_name : '未命名',
 			data : {
 				something : 42,
 				"else" : 43
@@ -164,23 +157,25 @@ app.controller('AreaController',function($scope,$http,$state,$timeout,modalServ,
 		toastr.remove();
 		if (_branch == "") {
 			toastr.error('请选择区划！');
-		} else if(_branch.orgId == 0){
+		} else if(_branch.area_no == 32100){
 			toastr.error('江苏省不能被删除！');
 		}else {
 			var b = tree.get_children(_branch);
 			if (b != "") {
-				toastr.warning('该机构下有子节点，不能删除!');
+				toastr.warning('该区划下有子节点，不能删除!');
 			} else {
 				var modalOptions = {
 					bodyText : '确认删除' + $scope.output + '?'
 				};
 				modalServ.show(true, modalOptions).then(function() {
-					AreaService.deleteArea($scope.orgId).then(function(data) {
+					AreaService.deleteArea($scope.areaItem).then(function(data) {
 						if (data.code=="10000") {
+
 							$scope.loadArea();
 							$timeout(function() {
 								tree.expand_all();
 								tree.select_firstChild_branch();
+								clean_areaItem();
 							}, 0);
 							toastr.success('删除成功！');
 						}
@@ -188,6 +183,75 @@ app.controller('AreaController',function($scope,$http,$state,$timeout,modalServ,
 				});
 			}
 		}
+
+	}
+
+
+	$scope.updateArea=function(){
+
+		if($scope.flag==1){
+			AreaService.updateArea($scope.areaItem).then(function(data){
+				if(data.code=="10000"){
+
+					toastr.success('更新区划成功！');
+					$scope.loadArea();
+					$timeout(function() {
+						tree.expand_all();
+						tree.select_firstChild_branch();
+						clean_areaItem();
+					}, 0);
+				}else{
+					toastr.error('更新区划失败！');
+
+				}
+			})
+		}else if($scope.flag==0){
+			AreaService.addArea($scope.areaItem).then(function(data){
+				if(data.code=="10000"){
+					toastr.success('新建区划成功！');
+
+					$scope.loadArea();
+					$timeout(function() {
+						tree.expand_all();
+						tree.select_firstChild_branch();
+						clean_areaItem();
+					}, 0);
+				}else{
+					toastr.error('新建区划失败！');
+
+				}
+			})
+		}
+
+	}
+
+	$scope.submitForm = function (isValid) {
+
+		$scope.submitted = false;
+		if(isValid){
+			// alert("run");
+			$scope.updateArea();
+		}else{
+			$scope.submitted = true;
+		}
+
+
+
+
+
+	};
+	
+	//清除作用域里的区划对象，适用条件：
+	//1.增删改操作成功后
+	function clean_areaItem() {
+
+		$timeout(function() {
+			$scope.areaItem.area_name="";
+			$scope.areaItem.area_no="";
+			$scope.areaItem.id="";
+			$scope.areaItem.status="1";
+			$scope.areaItem.p_area_no="";
+		},1000)
 
 	}
 
