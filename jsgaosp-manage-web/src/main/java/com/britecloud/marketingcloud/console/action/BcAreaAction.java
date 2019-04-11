@@ -8,6 +8,7 @@ import com.britecloud.marketingcloud.console.util.ObjectUtils;
 import com.britecloud.marketingcloud.console.util.ResultUtil;
 import com.britecloud.marketingcloud.model.BcArea;
 import com.britecloud.marketingcloud.service.BcAreaService;
+import com.britecloud.marketingcloud.service.CommonService;
 import com.britecloud.marketingcloud.utils.StringUtils;
 import org.apache.commons.collections.map.HashedMap;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,9 @@ public class BcAreaAction {
     @Autowired
     private BcAreaService bcAreaService;
 
+    @Autowired
+    private CommonService commonService;
+
     /**
      * 加载行政区划
      * @param request
@@ -41,37 +45,17 @@ public class BcAreaAction {
     @RequestMapping(value = "/list_area", method = RequestMethod.GET)
     @ResponseBody
     public ResponseResult listarea(HttpServletRequest request) throws Exception {
-        JSONArray array = new JSONArray();
+        String tableName = "BC_AREA";
+        String pColName = "P_AREA_NO";
+        String pColValue = "0";
+        String colName = "AREA_NO";
 
-        List<BcArea> areaList = bcAreaService.listArea("0");
-        for (BcArea bcArea : areaList){
-            JSONObject object = JSONObject.parseObject(JSON.toJSONString(bcArea));
-            object.put("children",getAreaArrayByPAreaNo(bcArea.getAreaNo()));
-            array.add(object);
-        }
+        //获取树形
+        JSONArray array = commonService.getJSONArray(tableName,pColName,colName,pColValue);
 
         return ResultUtil.success(array);
     }
 
-    List<Map<String,Object>> getAreaArrayByPAreaNo(String pAreaNo) throws IllegalAccessException{
-        JSONObject object = new JSONObject();
-        List<Map<String,Object>> list = new ArrayList<>();
-        JSONArray tmp = new JSONArray();
-        List<BcArea> resultList = bcAreaService.listArea(pAreaNo);
-        if(resultList != null && resultList.size()>0){
-            for (BcArea bcArea : resultList){
-                Map<String,Object> map = ObjectUtils.objectToMap(bcArea);
-
-                List<Map<String, Object>> nodeList = getAreaArrayByPAreaNo(bcArea.getAreaNo());
-                if (nodeList != null && nodeList.size()>0) {
-                    map.put("children", nodeList);
-                }
-                list.add(map);
-            }
-        }
-
-        return list;
-    }
 
     @RequestMapping(value = "/get_area", method = RequestMethod.GET)
     @ResponseBody
