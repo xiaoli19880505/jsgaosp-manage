@@ -14,6 +14,13 @@ import java.util.Map;
 @Repository
 public class CommonDaoImpl extends BaseJdbcDao implements CommonDao{
 
+    /**
+     * 根据父ID获取子数据
+     * @param tableName 表名
+     * @param pColName 父字段名
+     * @param pColValue 父字段名的值
+     * @return
+     */
     @Override
     public List<Map<String, Object>> getList(String tableName, String pColName, String pColValue) {
         String sql = "select * from "+tableName+" where "+pColName+"=:pColValue";
