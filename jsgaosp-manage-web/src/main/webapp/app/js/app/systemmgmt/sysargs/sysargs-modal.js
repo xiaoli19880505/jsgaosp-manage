@@ -2,7 +2,7 @@
 
 /* Controllers */
 // hospital_people_modal controller
-
+/*
 app.controller('ModalSystemUserInstanceCtrl', ['$scope', '$modalInstance','$http', 'items','BcUserService',  function ($scope, $modalInstance,$http, items,BcUserService) {
 
 	$scope.user=items[1];
@@ -77,4 +77,4 @@ app.controller('ModalSystemUserInstanceCtrl', ['$scope', '$modalInstance','$http
     	
     }
 }])
-;
+;*/

@@ -39,7 +39,7 @@ public class BcSysArgsDaoImpl extends BaseJdbcDao implements BcSysArgsDao {
 
 		sql = getPaginationString(sql, PageUtils.getStartNum((Integer) params.get("page")), PageUtils.pageSize);
 		List<BcSysArgs> list = getNamedParameterJdbcTemplate().query(sql, params, new BeanPropertyRowMapper(BcSysArgs.class));
-		pageData.setData(list);
+		pageData.setList(list);
 		return pageData;
 	}
 

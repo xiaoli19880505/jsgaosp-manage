@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.britecloud.marketingcloud.console.common.ResponseResult;
+import com.britecloud.marketingcloud.console.util.HuStringUtils;
 import com.britecloud.marketingcloud.console.util.ResultUtil;
 import com.britecloud.marketingcloud.domain.PageDataResult;
 import com.britecloud.marketingcloud.model.BcSysArgs;
@@ -42,21 +43,14 @@ public class BcSysArgsAction {
     @ResponseBody
     public ResponseResult listSysargs(Integer currentPage, String keyword) throws Exception {
         JSONObject jo = new JSONObject();
-        List<JSONObject> jsonList = new ArrayList<JSONObject>();
-        JSONArray jsonAry = null;
-        if (keyword.equals(""))
-            keyword = null;
+        keyword = HuStringUtils.nvl(keyword);
         Map params = new HashMap();
         params.put("keyword", keyword);
         params.put("page", currentPage);
         PageDataResult result = bcSysArgsService.listSysArgs(params);
-        List<BcSysArgs> list = result.getData();
-        jo.put("totalCount", result.getTotalCount());
-        jo.put("totalPage", result.getTotalPage());
-        jo.put("page", currentPage);
+        result.setPage(currentPage);
 
-//        jsonAry = new JSONArray(list);
-        return null;
+        return ResultUtil.success(result);
     }
 
     @RequestMapping(value = "/get_sysargs", method = RequestMethod.GET)

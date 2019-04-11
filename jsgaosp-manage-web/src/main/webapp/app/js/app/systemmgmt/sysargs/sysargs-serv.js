@@ -12,7 +12,8 @@ angular.module('app').factory('BcSysArgsService', ['res', 'GG',
                 	keyword:keyword,
                 	type:'list_sysargs'
                 }).$promise;
-            },
+            }
+            /*,
             createUser: function (user) {
             	var orgId = user.orgId;
                 return res.save(user,orgId).$promise;
@@ -36,7 +37,7 @@ angular.module('app').factory('BcSysArgsService', ['res', 'GG',
                 	userId:userId,
                 	type:"resetPwd"
                 }).$promise;
-            }
+            }*/
         };
         return service;
     }

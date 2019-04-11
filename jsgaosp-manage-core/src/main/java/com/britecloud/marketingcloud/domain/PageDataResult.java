@@ -9,6 +9,7 @@ public class PageDataResult<T> {
 
     private int totalCount;
     private int totalPage;
-    private List<T> data;
+    private int page;
+    private List<T> list;
 
 }

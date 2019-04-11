@@ -3,17 +3,17 @@
 /* Controllers */
 // hospital_people controller
 app.controller('SystemSysArgsManagerController',
-		['$scope', '$http', '$state', '$modal', '$stateParams', '$timeout', 'modalServ','BcSysArgsService','CompanyService', 'GG',
-           function ($scope, $http, $state, $modal, $stateParams,$timeout, modalServ,BcSysArgsService,CompanyService,GG) {
+		['$scope', '$http', '$state', '$modal', '$stateParams', '$timeout', 'modalServ','BcSysArgsService', 'GG',
+           function ($scope, $http, $state, $modal, $stateParams,$timeout, modalServ,BcSysArgsService,GG) {
 	
 	$scope.totalItems = 100;
     $scope.currentPage = 1;
     $scope.maxSize = 5;
     $scope.keyword="";
     // $scope.companyId =$scope.app.user.companyId
-    var user_height = $(window).height() - 330;
-    $("#SystemUserDiv").parent().css("overflow", "hidden");
-    $("#usersDiv").css("height", user_height);
+    // var user_height = $(window).height() - 330;
+    // $("#SystemUserDiv").parent().css("overflow", "hidden");
+    // $("#usersDiv").css("height", user_height);
     
     $scope.GGuser = GG.user;
     $scope.GGsysadmin = GG.sysadmin;
@@ -21,17 +21,18 @@ app.controller('SystemSysArgsManagerController',
     
     $scope.loadSysArgs=function(){
         BcSysArgsService.listSysArgs($scope.currentPage,$scope.keyword).then(function(res){
-    		$scope.sysargs=res.data;
-    		$scope.totalItems=res.totalCount;
-    		$scope.currentPage=res.page;
+        	console.log(res)
+    		$scope.sysargs=res.data.list;
+    		$scope.totalItems=res.data.totalCount;
+    		$scope.currentPage=res.data.page;
     		$scope.chooseUsers=[];
     	})
     }
-    $scope.search=function(){
+    /*$scope.search=function(){
     	$scope.loadSysArgs();
-    }
+    }*/
     
-    $scope.open = function (size, type) {
+    /*$scope.open = function (size, type) {
         var modalInstance = $modal.open({
             templateUrl: 'tpl/systemmgmt/usermgmt/user_modal_form.html',
             controller: 'ModalSystemUserInstanceCtrl',
@@ -53,9 +54,9 @@ app.controller('SystemSysArgsManagerController',
         }, function () {
             
         });
-    };
+    };*/
     
-   
+   /*
     $scope.resetPwd=function(userId){
     	if($scope.chooseUsers.length!=0){
 	    	modalServ.showModal({}, {
@@ -90,11 +91,12 @@ app.controller('SystemSysArgsManagerController',
 				title: "提示",  
 			}); 
 	    }
-    }
+    }*/
+
     $scope.loadSysArgs();
 	
     
-    $scope.chooseUsers = [];
+   /* $scope.chooseUsers = [];
     $scope.choose = function(chk,item,index){
     	item.indexs = index;
     	if(chk){
@@ -110,10 +112,10 @@ app.controller('SystemSysArgsManagerController',
     	}else {
     		$scope.chooseUsers=[];
     	}
-    }
+    }*/
 
     //删除modal
-    $scope.deleteModal=function(){
+   /* $scope.deleteModal=function(){
     	if($scope.chooseUsers.length!=0){
         	modalServ.showModal({}, {
         		bodyText: '       确定要删除这些用户吗?     '
@@ -147,9 +149,9 @@ app.controller('SystemSysArgsManagerController',
     				title: "提示",  
     			}); 
     		}			
-    }
+    }*/
 
-    $scope.update = function(){
+    /*$scope.update = function(){
     	if($scope.chooseUsers.length==1){
     		var chooseCreate = angular.copy($scope.chooseUsers[0]);
     		var modalInstance = $modal.open({
@@ -186,7 +188,7 @@ app.controller('SystemSysArgsManagerController',
     			title: "提示",  
     		}); 
     	}	
-    }
+    }*/
 }]);
 
 app.filter("hidePasswordFilter",function(){
