@@ -268,7 +268,12 @@ angular.module('app').constant('GG', {
 			text : '行政区划管理',
 			iconCls :'fa fa-caret-right',
 			sref : 'app.system.area'
-		}]
+		}, {
+            id : '8-4',
+            text : '系统参数',
+            iconCls :'fa fa-caret-right',
+            sref : 'app.system.sysargs'
+        }]
 	}],
 	colors : [ {
 		backgroundColor : '#FFFFFF'
