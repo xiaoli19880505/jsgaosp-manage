@@ -130,8 +130,8 @@ angular
 							 url : '/application',
 							 templateUrl : 'tpl/systemmgmt/application/application.html',
 							 deps : [
-								 'js/app/systemmgmt/application/application_ctrl.js',
-								 'js/app/systemmgmt/application/application_serv.js'
+								 'js/app/systemmgmt/application/application-ctrl.js',
+								 'js/app/systemmgmt/application/application-serv.js'
 
 								 ]
 						 },
