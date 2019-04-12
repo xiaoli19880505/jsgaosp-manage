@@ -20,28 +20,32 @@ app.controller('AreaController',function($scope,$http,$state,$timeout,modalServ,
 	//表示新增区划的父节点area_no
 	$scope.parentId=0;
 
-	$scope.totalItems = 1;
-    $scope.currentPage = 1;
+
+	//因无法改写树结构控件，额外定义以下三个变量来控制表单是否显示
+
+    //控制区划表单是否显示
+    $scope.form_is_show=false;
+
+	//表示提交（增改删）成功后，刷新树结构过程前后的临时状态变量
+	$scope.tmp_flag=false;
+
+	//表示树结构是否手动选中过，提交过（增改删）刷新树结构会触发选中
+	$scope.tree_selected=false;
 
 
-	$scope.getAreaInfo=function(){
-		AreaService.loadArea().then(function(data){
-			var arr = new Array();
-			arr.push(data);
-			console.log(arr);
-			console.log(arr.length)
-			$scope.area=data.data;
-		})
-	}
 
-	// $scope.submitForm=function(isValid){
-	// 	$scope.submitted = false;
-	// 	if(isValid){
-	// 		$scope.updateArea();
-	// 	}else{
-	// 		$scope.submitted = true;
-	// 	}
+
+	// $scope.getAreaInfo=function(){
+	// 	AreaService.loadArea().then(function(data){
+	// 		var arr = new Array();
+	// 		arr.push(data);
+	// 		console.log(arr);
+	// 		console.log(arr.length)
+	// 		$scope.area=data.data;
+	// 	})
 	// }
+
+
 
 	//获取区划列表
 	//$scope.getAreaInfo();
@@ -55,9 +59,14 @@ app.controller('AreaController',function($scope,$http,$state,$timeout,modalServ,
 		$scope.area_no = _branch.area_no;
 
 		$scope.flag=1;
+
+
+
+		is_show_form();
+
+
 		if (branch.area_no!= 0) {
 			$scope.output=_branch.area_name;
-
 			$scope.areaItem.area_name=_branch.area_name;
 			$scope.areaItem.area_no=_branch.area_no;
 			$scope.areaItem.id=_branch.id;
@@ -65,6 +74,7 @@ app.controller('AreaController',function($scope,$http,$state,$timeout,modalServ,
 			$scope.areaItem.p_area_no=_branch.p_area_no;
 			$scope.areaItem.children=_branch.children;
 			if(tree.get_parent_branch(branch)!=null){
+
 				$scope.p_area_no = tree.get_parent_branch(branch).area_no;
 
 			}_branch
@@ -75,6 +85,8 @@ app.controller('AreaController',function($scope,$http,$state,$timeout,modalServ,
 
 		}
 	};
+
+
 	$scope.area = [];
 	var tree = $scope.my_tree = {};
 
@@ -84,43 +96,25 @@ app.controller('AreaController',function($scope,$http,$state,$timeout,modalServ,
 	 */
 	$scope.loadArea = function() {
 		$scope.doing_async = true;
-
-
-
 		AreaService.loadArea().then(function(data) {
-
 			if (data.code=="10000") {
 				tmp=data.data;
-
-
 				$scope.area = tmp;
 				$scope.doing_async = false;
 			}
 		})
-
-
-
 	};
 
 	$scope.loadArea();
-
-	/**
-	 * 初始化
-	 */
-	$scope.getAreaInfoById = function() {
-		AreaService.getAreaInfo($scope.area_no).then(function(data) {
-			$scope.area = data;
-
-		})
-
-	}
 
 	/**
 	 * 增加一个节点
 	 */
 	$scope.add_a_Area = function() {
 		var b;
+		$scope.tree_selected=false;
 		b = tree.get_selected_branch();
+
 		if(b==null){
 			toastr.error('请先选择一个区划！');
 			return;
@@ -133,6 +127,7 @@ app.controller('AreaController',function($scope,$http,$state,$timeout,modalServ,
 
 		$scope.flag=0;
 
+
 		$scope.areaItem.area_name='未命名';
 		$scope.areaItem.area_no="";
 		$scope.areaItem.id="";
@@ -143,8 +138,8 @@ app.controller('AreaController',function($scope,$http,$state,$timeout,modalServ,
 		return tree.add_branch(b, {
 			area_name : '未命名',
 			data : {
-				something : 42,
-				"else" : 43
+				// something : 42,
+				// "else" : 43
 			}
 		});
 
@@ -170,13 +165,15 @@ app.controller('AreaController',function($scope,$http,$state,$timeout,modalServ,
 				modalServ.show(true, modalOptions).then(function() {
 					AreaService.deleteArea($scope.areaItem).then(function(data) {
 						if (data.code=="10000") {
-
+							$scope.tmp_flag=true;
 							$scope.loadArea();
 							$timeout(function() {
 								tree.expand_all();
 								tree.select_firstChild_branch();
-								clean_areaItem();
+								set_flag_false();
 							}, 0);
+
+
 							toastr.success('删除成功！');
 						}
 					})
@@ -192,29 +189,33 @@ app.controller('AreaController',function($scope,$http,$state,$timeout,modalServ,
 		if($scope.flag==1){
 			AreaService.updateArea($scope.areaItem).then(function(data){
 				if(data.code=="10000"){
-
+					$scope.tmp_flag=true;
 					toastr.success('更新区划成功！');
 					$scope.loadArea();
 					$timeout(function() {
 						tree.expand_all();
 						tree.select_firstChild_branch();
-						clean_areaItem();
+						set_flag_false();
 					}, 0);
+
+
 				}else{
 					toastr.error('更新区划失败！');
 
 				}
 			})
-		}else if($scope.flag==0){
+		}else{
 			AreaService.addArea($scope.areaItem).then(function(data){
-				if(data.code=="10000"){
-					toastr.success('新建区划成功！');
 
+				if(data.code=="10000"){
+					$scope.form_is_show=false;
+					$scope.tmp_flag=true;
+					toastr.success('新建区划成功！');
 					$scope.loadArea();
 					$timeout(function() {
 						tree.expand_all();
 						tree.select_firstChild_branch();
-						clean_areaItem();
+						set_flag_false();
 					}, 0);
 				}else{
 					toastr.error('新建区划失败！');
@@ -241,17 +242,28 @@ app.controller('AreaController',function($scope,$http,$state,$timeout,modalServ,
 
 	};
 	
-	//清除作用域里的区划对象，适用条件：
-	//1.增删改操作成功后
-	function clean_areaItem() {
 
+	
+	
+	function set_flag_false() {
 		$timeout(function() {
-			$scope.areaItem.area_name="";
-			$scope.areaItem.area_no="";
-			$scope.areaItem.id="";
-			$scope.areaItem.status="1";
-			$scope.areaItem.p_area_no="";
-		},1000)
+			$scope.tmp_flag=false;
+
+		}, 1000);
+	}
+
+	function  is_show_form() {
+		$scope.tree_selected=true;
+		if($scope.tmp_flag){
+			$scope.tree_selected=false;
+		}
+
+		if($scope.tree_selected ){
+			$scope.form_is_show=true;
+		}else{
+			$scope.form_is_show=false;
+		}
+
 
 	}
 
