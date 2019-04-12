@@ -112,6 +112,7 @@ angular
 
 								 ]
 						 },
+						
 						 /**系统参数**/
 						 {
                              state : 'app.system.sysargs',
@@ -124,6 +125,16 @@ angular
 
                              ]
                          },
+                         {
+							 state : 'app.system.application',
+							 url : '/application',
+							 templateUrl : 'tpl/systemmgmt/application/application.html',
+							 deps : [
+								 'js/app/systemmgmt/application/application_ctrl.js',
+								 'js/app/systemmgmt/application/application_serv.js'
+
+								 ]
+						 },
 			             /***设备管理***/
 			             {
 			            	 state : 'app.device',

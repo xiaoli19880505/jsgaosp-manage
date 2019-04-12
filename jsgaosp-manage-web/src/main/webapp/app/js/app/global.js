@@ -273,6 +273,11 @@ angular.module('app').constant('GG', {
             text : '系统参数',
             iconCls :'fa fa-caret-right',
             sref : 'app.system.sysargs'
+        }, {
+            id : '8-5',
+            text : '应用申报',
+            iconCls :'fa fa-caret-right',
+            sref : 'app.system.sysapplication'
         }]
 	}],
 	colors : [ {
