@@ -35,15 +35,6 @@ app.controller('SystemUserManagerController',
     	$scope.loadUsers();
     }
 
-   $scope.pageChanged = function () {
-				   BcUserService.listUser($scope.currentPage,$scope.keyword,$scope.companyId).then(function(data){
-					   $scope.users=data.sysUsers;
-					   $scope.totalItems=data.totalCount;
-					   $scope.currentPage=data.page;
-					   $scope.chooseUsers=[];
-				   })
-			   };
-
     $scope.open = function (size, type) {
         var modalInstance = $modal.open({
             templateUrl: 'tpl/systemmgmt/usermgmt/user_modal_form.html',

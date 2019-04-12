@@ -2,27 +2,27 @@
 /**
  * res 为自定义的$resource
  */
-angular.module('app').factory('BcSysArgsService', ['res', 'GG',
+angular.module('app').factory('BcCodeSortService', ['res', 'GG',
     function (res, GG) {
-        var res = res(GG.BASE + '/sysargs/:type');
+        var res = res(GG.BASE + '/codesort/:type');
         var service = {
-            listSysArgs: function (currentPage,keyword) {
+            listCodeSort: function (currentPage,keyword) {
                 return res.get({
                 	currentPage:currentPage,
                 	keyword:keyword,
-                	type:'list_sysargs'
+                	type:'list_codesort'
                 }).$promise;
             }
             ,
-            createArgs: function (args) {
-                return res.save(args).$promise;
+            createCodeSort: function (codesort) {
+                return res.save(codesort).$promise;
             },
-            updateArgs: function (args) {
-                return res.update(args).$promise;
+            updateCodeSort: function (codesort) {
+                return res.update(codesort).$promise;
             },
-            deleteArgs: function (argsId) {
+            deleteCodeSort: function (codeSortId) {
                 return res.delete({
-                	id:argsId
+                	codeSortId:codeSortId
                 }).$promise;
             },
             /*

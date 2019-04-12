@@ -3,9 +3,9 @@
 /* Controllers */
 // hospital_people_modal controller
 
-app.controller('ModalSysArgsInstanceCtrl', ['$scope', '$modalInstance','$http', 'items','BcSysArgsService',  function ($scope, $modalInstance,$http, items,BcSysArgsService) {
+app.controller('ModalCodeSortInstanceCtrl', ['$scope', '$modalInstance','$http', 'items','BcCodeSortService',  function ($scope, $modalInstance,$http, items,BcSysArgsService) {
 
-	$scope.args=items[1];
+	$scope.codesort=items[1];
 	$scope.flag=items[0]=="add";
 	if ($scope.flag) {
         $scope.title = '新增系统参数';
@@ -14,20 +14,20 @@ app.controller('ModalSysArgsInstanceCtrl', ['$scope', '$modalInstance','$http', 
     }
 	
 
-	$scope.addArgs=function(){
-		BcSysArgsService.createArgs($scope.args).then(function(data){
+	$scope.addCodeSort=function(){
+		BcCodeSortService.createCodeSort($scope.codesort).then(function(data){
 			if(data.code == "10000"){
-				 toastr.success('添加系统参数成功！');
+				 toastr.success('添加成功！');
 	             $modalInstance.close([true]);
 			}else{
-				toastr.error('添加系统参数失败！');
+				toastr.error('添加失败！');
 				$modalInstance.dismiss('cancel');
 			}
 		})
 	}
 	
-	$scope.updateArgs=function(){
-		BcSysArgsService.updateArgs($scope.args).then(function(data){
+	$scope.updateCodeSort=function(){
+		BcCodeSortService.updateCodeSort($scope.codesort).then(function(data){
 			if(data.code == "10000"){
 				 toastr.success('更新系统参数成功！');
 	             $modalInstance.close([true]);
@@ -44,10 +44,10 @@ app.controller('ModalSysArgsInstanceCtrl', ['$scope', '$modalInstance','$http', 
     	$scope.submitted = false;
     	if(isValid){
     		if ($scope.flag) {
-                $scope.addArgs();
+                $scope.addCodeSort();
             } else {
             	$scope.submitted = false;
-                $scope.updateArgs();
+                $scope.updateCodeSort();
             }
     	}else{
     		$scope.submitted = true;

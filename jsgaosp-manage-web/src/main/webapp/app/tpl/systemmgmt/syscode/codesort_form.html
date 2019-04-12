@@ -16,44 +16,22 @@
 		</div>
 
 		<div class="modal-body">
-			<form name="argsForm" class="form-validation form-horizontal" ng-submit="submitForm(argsForm.$valid)" novalidate>
-			    
+			<form name="codeSortForm" class="form-validation form-horizontal" ng-submit="submitForm(codeSortForm.$valid)" novalidate>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">系统<span style="color:red;">*</span></label>
+                    <label class="col-sm-2 control-label">字典名称<span style="color:red;">*</span></label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" placeholder="请输入系统" name="system" ng-model="args.system" required="required">
-                        <span style="color:red" ng-show="argsForm.system.$dirty && argsForm.system.$invalid">
-                            <span ng-show="argsForm.system.$error.required">请输入系统</span>
+                        <input type="text" class="form-control" placeholder="请输入字典名称" name="codeSortKey" ng-model="codesort.codeSortKey" required="required">
+                        <span style="color:red" ng-show="codeSortForm.codeSortKey.$dirty && codeSortForm.codeSortKey.$invalid">
+                            <span ng-show="codeSortForm.codeSortKey.$error.required">请输入字典名称</span>
                         </span>
                      </div>
                 </div>
-                
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">系统参数键<span style="color:red;">*</span></label>
+                    <label class="col-sm-2 control-label">字典说明<span style="color:red;">*</span></label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" placeholder="请输入系统参数键" name="argsKey" ng-model="args.argsKey" required="required">
-                        <span style="color:red" ng-show="argsForm.argsKey.$dirty && argsForm.argsKey.$invalid">
-                            <span ng-show="argsForm.argsKey.$error.required">请输入系统参数键</span>
-                        </span>
-                     </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">系统参数值<span style="color:red;">*</span></label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" placeholder="请输入系统参数值" name="argsValue" ng-model="args.argsValue" required="required">
-                        <span style="color:red" ng-show="argsForm.argsValue.$dirty && argsForm.argsValue.$invalid">
-                            <span ng-show="argsForm.argsValue.$error.required">请输入系统参数值</span>
-                        </span>
-                     </div>
-                </div>
-                
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">说明<span style="color:red;">*</span></label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" placeholder="请输入说明" name="memo" ng-model="args.memo" required="required">
-                        <span style="color:red" ng-show="argsForm.memo.$dirty && argsForm.memo.$invalid">
-                            <span ng-show="argsForm.memo.$error.required">请输入说明</span>
+                        <input type="text" class="form-control" placeholder="请输入字典说明" name="codeSortText" ng-model="codesort.codeSortText" required="required">
+                        <span style="color:red" ng-show="codeSortForm.codeSortText.$dirty && codeSortForm.codeSortText.$invalid">
+                            <span ng-show="codeSortForm.codeSortText.$error.required">请输入字典说明</span>
                         </span>
                      </div>
                 </div>
@@ -61,7 +39,7 @@
 		</div>
 		<div class="modal-footer">
 			<button type="reset" class="btn btn-dark" ng-click="cancel()">取消</button>
-            <button type="submit" class="btn btn-dark" ng-click="submitForm(argsForm.$valid)">保存</button>
+            <button type="submit" class="btn btn-dark" ng-click="submitForm(codeSortForm.$valid)">保存</button>
 		</div>
 	</div>
 </div>
