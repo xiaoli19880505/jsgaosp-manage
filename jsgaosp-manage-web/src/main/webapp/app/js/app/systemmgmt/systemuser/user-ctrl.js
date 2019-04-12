@@ -3,7 +3,7 @@
 /* Controllers */
 // hospital_people controller
 app.controller('SystemUserManagerController', 
-		['$scope', '$http', '$state', '$modal', '$stateParams', '$timeout', 'modalServ','BcUserService','CompanyService', 'GG',
+		['$scope', '$http', '$state', '$modal', '$stateParams', '$timeout', 'modalServ','BcUserService','CompanyService','GG',
            function ($scope, $http, $state, $modal, $stateParams,$timeout, modalServ,BcUserService,CompanyService,GG) {
 	
 	$scope.totalItems = 100;
@@ -30,7 +30,16 @@ app.controller('SystemUserManagerController',
     $scope.search=function(){
     	$scope.loadUsers();
     }
-    
+
+   $scope.pageChanged = function () {
+				   BcUserService.listUser($scope.currentPage,$scope.keyword,$scope.companyId).then(function(data){
+					   $scope.users=data.sysUsers;
+					   $scope.totalItems=data.totalCount;
+					   $scope.currentPage=data.page;
+					   $scope.chooseUsers=[];
+				   })
+			   };
+
     $scope.open = function (size, type) {
         var modalInstance = $modal.open({
             templateUrl: 'tpl/systemmgmt/usermgmt/user_modal_form.html',
