@@ -1,16 +1,12 @@
 package com.britecloud.marketingcloud.service.impl;
 
-import com.britecloud.marketingcloud.dao.BcAreaDao;
 import com.britecloud.marketingcloud.dao.BcSysArgsDao;
 import com.britecloud.marketingcloud.domain.PageDataResult;
-import com.britecloud.marketingcloud.model.BcArea;
 import com.britecloud.marketingcloud.model.BcSysArgs;
-import com.britecloud.marketingcloud.service.BcAreaService;
 import com.britecloud.marketingcloud.service.BcSysArgsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Map;
 
 @Service

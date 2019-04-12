@@ -112,6 +112,7 @@ angular
 
 								 ]
 						 },
+						
 						 /**系统参数**/
 						 {
                              state : 'app.system.sysargs',
@@ -123,7 +124,29 @@ angular
                                  'js/app/systemmgmt/sysargs/sysargs-modal.js'
 
                              ]
-                         },
+						 },
+						 /**数据字典管理 */
+						 {
+							state : 'app.system.codesort',
+							url : '/codesort',
+							templateUrl : 'tpl/systemmgmt/syscode/codesort.html',
+							deps : [
+								'js/app/systemmgmt/syscode/codesort-ctrl.js',
+								'js/app/systemmgmt/syscode/codesort-serv.js',
+								'js/app/systemmgmt/syscode/codesort-modal.js'
+
+							]
+						},
+                         {
+							 state : 'app.system.application',
+							 url : '/application',
+							 templateUrl : 'tpl/systemmgmt/application/application.html',
+							 deps : [
+								 'js/app/systemmgmt/application/application-ctrl.js',
+								 'js/app/systemmgmt/application/application-serv.js'
+
+								 ]
+						 },
 			             /***设备管理***/
 			             {
 			            	 state : 'app.device',

@@ -1,0 +1,67 @@
+<style>
+.help-block{
+	color:#F05050;
+	margin-bottom: 0px;
+	font-weight:bold;
+	font-style:oblique;
+}
+</style>
+<div class="modal-dialog" style="height: 100%;margin: -1px;padding: -1px;">
+	<div class="modal-content">
+		<div class="modal-header"
+			style="background: #000000; color: #ffffff;">
+			<button type="button" class="close" data-dismiss="modal"
+				aria-label="Close"></button>
+			<h4 class="modal-title">{{title}}</h4>
+		</div>
+
+		<div class="modal-body">
+			<form name="argsForm" class="form-validation form-horizontal" ng-submit="submitForm(argsForm.$valid)" novalidate>
+			    
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">系统<span style="color:red;">*</span></label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" placeholder="请输入系统" name="system" ng-model="args.system" required="required">
+                        <span style="color:red" ng-show="argsForm.system.$dirty && argsForm.system.$invalid">
+                            <span ng-show="argsForm.system.$error.required">请输入系统</span>
+                        </span>
+                     </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">系统参数键<span style="color:red;">*</span></label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" placeholder="请输入系统参数键" name="argsKey" ng-model="args.argsKey" required="required">
+                        <span style="color:red" ng-show="argsForm.argsKey.$dirty && argsForm.argsKey.$invalid">
+                            <span ng-show="argsForm.argsKey.$error.required">请输入系统参数键</span>
+                        </span>
+                     </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">系统参数值<span style="color:red;">*</span></label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" placeholder="请输入系统参数值" name="argsValue" ng-model="args.argsValue" required="required">
+                        <span style="color:red" ng-show="argsForm.argsValue.$dirty && argsForm.argsValue.$invalid">
+                            <span ng-show="argsForm.argsValue.$error.required">请输入系统参数值</span>
+                        </span>
+                     </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">说明<span style="color:red;">*</span></label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" placeholder="请输入说明" name="memo" ng-model="args.memo" required="required">
+                        <span style="color:red" ng-show="argsForm.memo.$dirty && argsForm.memo.$invalid">
+                            <span ng-show="argsForm.memo.$error.required">请输入说明</span>
+                        </span>
+                     </div>
+                </div>
+            </form>
+		</div>
+		<div class="modal-footer">
+			<button type="reset" class="btn btn-dark" ng-click="cancel()">取消</button>
+            <button type="submit" class="btn btn-dark" ng-click="submitForm(argsForm.$valid)">保存</button>
+		</div>
+	</div>
+</div>

@@ -18,7 +18,11 @@ app.controller('SystemUserManagerController',
     $scope.GGuser = GG.user;
     $scope.GGsysadmin = GG.sysadmin;
     //$scope.GGmaintain = GG.maintain;
-    
+	
+	$scope.pageChanged = function () {
+		$scope.loadUsers();
+	};
+
     $scope.loadUsers=function(){
     	BcUserService.listUser($scope.currentPage,$scope.keyword,$scope.companyId).then(function(data){
     		$scope.users=data.sysUsers;
@@ -195,7 +199,10 @@ app.controller('SystemUserManagerController',
     			title: "提示",  
     		}); 
     	}	
-    }
+	}
+	
+	
+
 }]);
 
 app.filter("hidePasswordFilter",function(){
