@@ -277,7 +277,7 @@ angular.module('app').constant('GG', {
             id : '8-5',
             text : '应用申报',
             iconCls :'fa fa-caret-right',
-            sref : 'app.system.sysapplication'
+            sref : 'app.system.application'
         }]
 	}],
 	colors : [ {
