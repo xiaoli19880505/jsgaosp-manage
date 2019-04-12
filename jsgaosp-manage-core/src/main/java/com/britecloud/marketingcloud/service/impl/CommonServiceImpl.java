@@ -26,6 +26,15 @@ public class CommonServiceImpl implements CommonService{
     }
 
 
+    /**
+     * 获取JSONArray
+     * @param tableName 表名
+     * @param pColName 父字段名
+     * @param colName 编号对应字段名
+     * @param pColValue 父字段名的值
+     * @return
+     * @throws Exception
+     */
     public JSONArray getJSONArray(String tableName, String pColName,String colName,String pColValue) throws Exception{
         JSONArray array = new JSONArray();
 
@@ -40,6 +49,15 @@ public class CommonServiceImpl implements CommonService{
         return array;
     }
 
+    /**
+     *
+     * @param tableName
+     * @param pColName
+     * @param colName
+     * @param pColValue
+     * @return
+     * @throws IllegalAccessException
+     */
     List<Map<String,Object>> getAreaArrayByPAreaNo(String tableName, String pColName,String colName, String pColValue) throws IllegalAccessException{
         JSONObject object = new JSONObject();
         List<Map<String,Object>> list = new ArrayList<>();

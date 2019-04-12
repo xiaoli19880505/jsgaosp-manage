@@ -2,54 +2,52 @@
 
 /* Controllers */
 // hospital_people_modal controller
-/*
-app.controller('ModalSystemUserInstanceCtrl', ['$scope', '$modalInstance','$http', 'items','BcUserService',  function ($scope, $modalInstance,$http, items,BcUserService) {
 
-	$scope.user=items[1];
+app.controller('ModalSysArgsInstanceCtrl', ['$scope', '$modalInstance','$http', 'items','BcSysArgsService',  function ($scope, $modalInstance,$http, items,BcSysArgsService) {
+
+	$scope.args=items[1];
 	$scope.flag=items[0]=="add";
-	$scope.userTypes = [{id:'ADMIN',name:'公司管理员'},{id:'USER',name:' 普通用户'}];
-	$scope.isUniqueMail = true;
-	$scope.user.companyId = items[2];
 	if ($scope.flag) {
-        $scope.title = '新增用户';
-        $scope.user.userType = "USER";
+        $scope.title = '新增系统参数';
     } else {
-        $scope.title = '编辑用户';
+        $scope.title = '编辑系统参数';
     }
 	
 
-	$scope.addUser=function(){
-		BcUserService.createUser($scope.user).then(function(data){
-			if(data.result){
-				 toastr.success('添加用户成功！');
+	$scope.addArgs=function(){
+		BcSysArgsService.createArgs($scope.args).then(function(data){
+			if(data.code == "10000"){
+				 toastr.success('添加系统参数成功！');
 	             $modalInstance.close([true]);
 			}else{
-				toastr.error('添加用户失败！');
+				toastr.error('添加系统参数失败！');
 				$modalInstance.dismiss('cancel');
 			}
 		})
 	}
 	
-	$scope.updateUser=function(){
-		BcUserService.updateUser($scope.user).then(function(data){
-			if(data.result){
-				 toastr.success('更新用户成功！');
+	$scope.updateArgs=function(){
+		BcSysArgsService.updateArgs($scope.args).then(function(data){
+			if(data.code == "10000"){
+				 toastr.success('更新系统参数成功！');
 	             $modalInstance.close([true]);
 			}else{
-				toastr.error('更新用户失败！');
+				toastr.error('更新系统参数失败！');
 				$modalInstance.dismiss('cancel');
 			}
 		})
 	}
 
+	//表单提交
     $scope.submitForm = function (isValid) {
+		console.log("isValid:"+isValid);
     	$scope.submitted = false;
     	if(isValid){
     		if ($scope.flag) {
-                $scope.addUser();
+                $scope.addArgs();
             } else {
             	$scope.submitted = false;
-                $scope.updateUser();
+                $scope.updateArgs();
             }
     	}else{
     		$scope.submitted = true;
@@ -59,22 +57,6 @@ app.controller('ModalSystemUserInstanceCtrl', ['$scope', '$modalInstance','$http
 
     $scope.cancel = function () {
         $modalInstance.dismiss('cancel');
-    };
-    
-    //验证邮箱唯一性
-    $scope.checkEmail = function(){
-    	if($scope.userEmail != ""){
-    		$http.get('/system/bcuser/checkEmail',{params: {
-    			email:$scope.user.userEmail
-			}}).success(function(data){
-				if(data.count >0){
-					$scope.isUniqueMail = false;
-				}else{
-					$scope.isUniqueMail = true;
-				}
-			})
-    	}
-    	
-    }
-}])
-;*/
+	};
+	
+}]);

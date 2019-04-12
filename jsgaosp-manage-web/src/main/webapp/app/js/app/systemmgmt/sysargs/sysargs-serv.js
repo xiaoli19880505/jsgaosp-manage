@@ -13,19 +13,19 @@ angular.module('app').factory('BcSysArgsService', ['res', 'GG',
                 	type:'list_sysargs'
                 }).$promise;
             }
-            /*,
-            createUser: function (user) {
-            	var orgId = user.orgId;
-                return res.save(user,orgId).$promise;
+            ,
+            createArgs: function (args) {
+                return res.save(args).$promise;
             },
-            updateUser: function (user) {
-                return res.update(user).$promise;
+            updateArgs: function (args) {
+                return res.update(args).$promise;
             },
-            deleteUser: function (userId) {
+            deleteArgs: function (argsId) {
                 return res.delete({
-                	userId:userId
+                	id:argsId
                 }).$promise;
             },
+            /*
             getUserInfo: function (id) {
                 return res.get({
                 	userId: id,

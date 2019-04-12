@@ -21,27 +21,29 @@ app.controller('SystemSysArgsManagerController',
     
     $scope.loadSysArgs=function(){
         BcSysArgsService.listSysArgs($scope.currentPage,$scope.keyword).then(function(res){
-        	console.log(res)
+			console.log(res)
     		$scope.sysargs=res.data.list;
     		$scope.totalItems=res.data.totalCount;
     		$scope.currentPage=res.data.page;
-    		$scope.chooseUsers=[];
+    		$scope.chooseArgs=[];
     	})
     }
     /*$scope.search=function(){
     	$scope.loadSysArgs();
     }*/
-    
-    /*$scope.open = function (size, type) {
+	
+	//弹出新增窗口
+    $scope.open = function (size, type) {
         var modalInstance = $modal.open({
-            templateUrl: 'tpl/systemmgmt/usermgmt/user_modal_form.html',
-            controller: 'ModalSystemUserInstanceCtrl',
+            templateUrl: 'tpl/systemmgmt/sysargs/sysargs_form.html',
+            controller: 'ModalSysArgsInstanceCtrl',
             size: size,
             backdrop: 'static',
             resolve: {
                 items: function () {
-                	var user = {};
-                    $scope.items = [type,user,$scope.companyId];
+                	var args = {};
+					$scope.items = [type,args];
+					console.log($scope.items)
                     return $scope.items;
                 }
             }
@@ -54,85 +56,48 @@ app.controller('SystemSysArgsManagerController',
         }, function () {
             
         });
-    };*/
-    
-   /*
-    $scope.resetPwd=function(userId){
-    	if($scope.chooseUsers.length!=0){
-	    	modalServ.showModal({}, {
-				bodyText: "确定要重置密码？"
-			}).then(function(result) {
-				var result = true;
-				angular.forEach($scope.chooseUsers,function(item){
-					BcUserService.resetPwd(item.userId).then(function(data) {
-	    				if(!data.result){
-	    					result = false;
-	    				}
-	    			});
-				});
-	    		if(result){
-					 toastr.success('重置成功！');
-					 $scope.loadSysArgs();
-				}else{
-					toastr.error('重置失败！');
-				}
-			});
-	    }else{
-	    	bootbox.alert({  
-				buttons: {  
-					ok: {  
-						label: '确定',  
-						className: 'btn-info btn-dark'  
-					}  
-				},  
-				message: '请先选择操作的数据！',  
-				callback: function() {  
-				},  
-				title: "提示",  
-			}); 
-	    }
-    }*/
+    };
 
     $scope.loadSysArgs();
 	
-    
-   /* $scope.chooseUsers = [];
+	//多选
+    $scope.chooseArgs = [];
     $scope.choose = function(chk,item,index){
     	item.indexs = index;
     	if(chk){
-    		$scope.chooseUsers.push(item);
+    		$scope.chooseArgs.push(item);
     	}else if(!chk){
-    		$scope.chooseUsers.splice($scope.chooseUsers.indexOf(item),1);
+    		$scope.chooseArgs.splice($scope.chooseArgs.indexOf(item),1);
     	}
     }
     	
     $scope.chooseAll = function(master){
     	if(master){
-    		$scope.chooseUsers=angularjs.copy($scope.users);
+    		$scope.chooseArgs=angularjs.copy($scope.sysargs);
     	}else {
-    		$scope.chooseUsers=[];
+    		$scope.chooseArgs=[];
     	}
-    }*/
+    }
 
     //删除modal
-   /* $scope.deleteModal=function(){
-    	if($scope.chooseUsers.length!=0){
+    $scope.deleteModal=function(){
+    	if($scope.chooseArgs.length!=0){
         	modalServ.showModal({}, {
-        		bodyText: '       确定要删除这些用户吗?     '
+        		bodyText: '       确定要删除这些记录吗?     '
     		}).then(function(result) {
     			var result = true;
-    			angular.forEach($scope.chooseUsers,function(item){
-    				BcUserService.deleteUser(item.userId).then(function(data) {
-	    				if(!data.result){
+    			angular.forEach($scope.chooseArgs,function(item){
+    				BcSysArgsService.deleteArgs(item.id).then(function(data) {
+	    				if(data.code != "10000"){
 	    					result = false;
 	    				}
 	    			});
     			});
     			if(result){
-					 toastr.success('删除用户成功！');
+					 toastr.success('删除成功！');
 					 $scope.loadSysArgs();
 				}else{
-					toastr.error('删除用户失败！');
+					toastr.error('删除失败！');
 				}
     		});
     		}else{
@@ -149,19 +114,20 @@ app.controller('SystemSysArgsManagerController',
     				title: "提示",  
     			}); 
     		}			
-    }*/
+    }
 
-    /*$scope.update = function(){
-    	if($scope.chooseUsers.length==1){
-    		var chooseCreate = angular.copy($scope.chooseUsers[0]);
+	//修改
+    $scope.update = function(){
+    	if($scope.chooseArgs.length==1){
+    		var chooseCreate = angular.copy($scope.chooseArgs[0]);
     		var modalInstance = $modal.open({
-    			templateUrl: 'tpl/systemmgmt/usermgmt/user_modal_form.html',
-                controller: 'ModalSystemUserInstanceCtrl',
+    			templateUrl: 'tpl/systemmgmt/sysargs/sysargs_form.html',
+                controller: 'ModalSysArgsInstanceCtrl',
                 size: '',
                 backdrop: 'static',
                 resolve: {
                     items: function () {
-                           return ['update',chooseCreate,$scope.companyId];
+                           return ['update',chooseCreate];
                     }
                 }
             });
@@ -169,7 +135,7 @@ app.controller('SystemSysArgsManagerController',
             modalInstance.result.then(function (items) {
                 if (items[0]) {//如果modal返回成功的话
                 	 $scope.loadSysArgs();
-                	 $scope.chooseUsers=[];
+                	 $scope.chooseArgs=[];
                 }
             }, function () {
                 //取消
@@ -188,7 +154,7 @@ app.controller('SystemSysArgsManagerController',
     			title: "提示",  
     		}); 
     	}	
-    }*/
+    }
 }]);
 
 app.filter("hidePasswordFilter",function(){
