@@ -278,6 +278,11 @@ angular.module('app').constant('GG', {
             text : '应用申报',
             iconCls :'fa fa-caret-right',
             sref : 'app.system.application'
+        }, {
+            id : '8-6',
+            text : '数据字典',
+            iconCls :'fa fa-caret-right',
+            sref : 'app.system.codesort'
         }]
 	}],
 	colors : [ {
