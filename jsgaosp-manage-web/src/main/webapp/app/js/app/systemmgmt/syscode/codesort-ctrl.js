@@ -1,10 +1,11 @@
 'use strict';
 
+
+
 /* Controllers */
-// hospital_people controller
 app.controller('SystemCodeSortController',
-		['$scope', '$http', '$state', '$modal', '$stateParams', '$timeout', 'modalServ','BcCodeSortService','BcCodeService', 'GG',
-           function ($scope, $http, $state, $modal, $stateParams,$timeout, modalServ,BcCodeSortService,BcCodeService,GG) {
+		['$scope', '$http', '$state', '$modal', '$stateParams', '$timeout', 'modalServ','BcCodeSortService','BcCodeService', 'GG','$rootScope',
+           function ($scope, $http, $state, $modal, $stateParams,$timeout, modalServ,BcCodeSortService,BcCodeService,GG,$rootScope) {
 	
 	$scope.totalItems = 100;
     $scope.currentPage = 1;
@@ -85,14 +86,15 @@ app.controller('SystemCodeSortController',
 	 * 点击数据字典行，加载数据字典明细
 	 */
 	$scope.loadCodeDetails=function(item){
-		console.log(item);
-		BcCodeService.listCode(1,item.codeSortId);
+		// console.log(item);
+		$rootScope.codeSortId=item.codeSortId
+		$scope.codeSortId = item.codeSortId;
+		// BcCodeService.listCode(1,item.codeSortId);
 	}
-}]);
-
+}])
 app.controller('SystemCodeController',
-		['$scope', '$http', '$state', '$modal', '$stateParams', '$timeout', 'modalServ','BcCodeService', 'GG',
-           function ($scope, $http, $state, $modal, $stateParams,$timeout, modalServ,BcCodeService,GG) {
+		['$scope', '$http', '$state', '$modal', '$stateParams', '$timeout', 'modalServ','BcCodeService', 'GG','$rootScope',
+           function ($scope, $http, $state, $modal, $stateParams,$timeout, modalServ,BcCodeService,GG,$rootScope) {
 	
 	$scope.totalItems = 100;
     $scope.currentPage = 1;
@@ -101,9 +103,17 @@ app.controller('SystemCodeController',
     
     $scope.GGuser = GG.user;
     $scope.GGsysadmin = GG.sysadmin;
-    
-    $scope.loadCodeDetails=function(){
-        BcCodeService.listCode($scope.currentPage).then(function(res){
+
+
+    console.log($rootScope);
+    var codeSortId=$rootScope.codeSortId;
+
+   $scope.$watch('codeSortId', function (newValue, oldValue) {
+	   $scope.loadCodeDetails(newValue)
+   });
+
+    $scope.loadCodeDetails=function(codeSortId){
+        BcCodeService.listCode($scope.currentPage,codeSortId).then(function(res){
 			console.log(res)
     		$scope.codedetails=res.data.list;
     		$scope.totalItems=res.data.totalCount;
@@ -113,7 +123,7 @@ app.controller('SystemCodeController',
 	
 	//搜索
     $scope.search=function(){
-    	$scope.loadCodeDetails();
+    	$scope.loadCodeDetails(codeSortId);
     }
 	
 	//弹出新增窗口
@@ -137,7 +147,7 @@ app.controller('SystemCodeController',
 
         modalInstance.result.then(function (items) {
             if (items[0]) {
-                $scope.loadCodeDetails();
+                $scope.loadCodeDetails(codeSortId);
             }
         }, function () {
             
@@ -153,7 +163,7 @@ app.controller('SystemCodeController',
 				if(data.code == "10000"){
 					 toastr.success('删除成功！');
 					 $("#toast-container").css("left", "46%");
-					 $scope.loadCodeDetails();
+					 $scope.loadCodeDetails(codeSortId);
 				}else{
 					toastr.error('删除失败！');
 					$("#toast-container").css("left", "46%");
@@ -163,7 +173,7 @@ app.controller('SystemCodeController',
     }
 	
 	$scope.pageChanged = function () {
-		$scope.loadCodeDetails();
+		$scope.loadCodeDetails(codeSortId);
 	};
 
 }]);

@@ -40,7 +40,7 @@ public class BcCodeAction {
         JSONObject jo = new JSONObject();
         Map params = new HashMap();
         params.put("page", currentPage);
-        params.put("codeSortId","codeSortId");
+        params.put("codeSortId",codeSortId);
         PageDataResult result = bcCodeService.listCode(params);
         result.setPage(currentPage);
 
