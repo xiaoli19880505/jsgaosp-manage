@@ -5,6 +5,9 @@
 
 app.controller('ModalSystemUserInstanceCtrl', ['$scope', '$modalInstance','$http', 'items','BcUserService',  function ($scope, $modalInstance,$http, items,BcUserService) {
 
+
+	$scope.modal_with="ul_lw";
+
 	$scope.user=items[1];
 	$scope.flag=items[0]=="add";
 	$scope.userTypes = [{id:'ADMIN',name:'公司管理员'},{id:'USER',name:' 普通用户'}];
@@ -101,7 +104,7 @@ app.controller('ModalSystemUserInstanceCtrl', ['$scope', '$modalInstance','$http
 //		console.log(_branch);
 		$scope.area_no = _branch.area_no;
 
-		$scope.flag=1;
+
 
 
 

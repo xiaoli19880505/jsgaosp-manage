@@ -5,6 +5,15 @@
 	font-weight:bold;
 	font-style:oblique;
 }
+ .area_modal{
+     padding: 20px;
+     background: white;
+     border-radius: 10px;
+     border:2px solid #0a1015;
+ }
+    .app.css{
+
+    }
 </style>
 <div class="modal-dialog" style="height: 100%;margin: -1px;padding: -1px;">
 	<div class="modal-content">
@@ -93,18 +102,18 @@
                 </div>
 
 
-                <div class="form-group">
+                <div class="form-group"  >
                     <label class="col-sm-2 control-label">区划</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" placeholder="请选择区划" name="area" ng-model="area_name_show"
                          ng-click="showAreaList()">
-                        <p ng-show="userForm.qq.$pristine&& submitted" class="help-block">请输入QQ号码</p>
+                        <p ng-show="userForm.qq.$pristine&& submitted" class="help-block">请选择区划</p>
 
                     </div>
                 </div>
 
-                <div class="row-row" ng-if="is_focus" style="height: 250px;">
-                    <div class="cell scrollable hover" style="height: 150px;overflow-y: auto;margin-left: 100px;">
+                <div class="row-row" ng-if="is_focus" class="area_modal" style="height: 160px;width:470px;margin-top:-15px;margin-left: 100px;display:block;position: absolute; background: white;padding: 20px;border: 1px solid #ccc;border-radius: 8px;">
+                    <div class="cell scrollable hover" style="height: 100px;overflow-y: auto;background: white;">
                         <div class="cell-inner">
                             <div class="padder">
                                 <div class="b-a bg-light dk r r-2x">
@@ -124,7 +133,7 @@
                             </div>
                         </div>
                     </div>
-                    <button type="button" ng-click="ensureArea()" class="btn btn-sm btn-info" style="margin-top: 20px;float: right;">确定</button>
+                    <button type="button" ng-click="ensureArea()" class="btn btn-sm btn-info" style="margin-top: 5px;float: right;">确定</button>
                 </div>
                 
             </form>
