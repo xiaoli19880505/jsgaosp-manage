@@ -1,0 +1,117 @@
+<style>
+.table th, .table td {
+	text-align: center;
+	height: 38px;
+	font-size: 12px;
+}
+
+.hover {
+	background: #D1EEEE;
+}
+
+.able {
+	color: #96CD00;
+}
+
+.disable {
+	color: red;
+}
+
+#SystemSysApplicationManagerController {
+	font-size: 12px;
+}
+</style>
+<div class="wrapper page" ng-controller="SystemSysApplicationManagerController"
+	id="SystemSysApplicationManagerController">
+	<div class="topbar">
+		<div class="breadcrumbs">
+			<a class="level level-zone level-zone-2 gd1">系统</a> <a class="level">系统参数管理</a>
+		</div>
+	</div>
+	<br>
+	<div class="page-intro vxnets">
+		<p class="lead">
+			<em>系统参数管理</em> 应用申报管理。
+		</p>
+	</div>
+	<div class="pane" style="height: 100%">
+		<div class="hbox hbox-auto-xs hbox-auto-sm">
+			<div class="col">
+				<div class="pane" style="height: 95%;">
+					<div class="panel-heading">
+						<div class=" pull-left">
+							<button class="btn btn-dark btn-sm" type="button"
+								ng-click="open('','add',null)">新增</button>
+							<button class="btn btn-dark btn-sm" type="button"
+								ng-disabled="chooseArgs.length == '0'" ng-click="update();">编辑</button>
+							<button class="btn btn-dark btn-sm" type="button"
+								ng-disabled="chooseArgs.length == '0'"
+								ng-click="deleteModal();">删除</button>
+						</div>
+					</div>
+					<br>
+					<div class=" panel-body" style="height: 80%">
+						<div style="height: 95%; min-height: 400px;">
+							<table class="table table-bordered  pull-center ">
+								<thead>
+									<tr>
+										<th style="width: 30px;"><label class="i-checks m-b-bone">
+												<input type="checkbox" ng-model="master"
+												ng-click="chooseAll(master)"> <i></i>
+										</label></th>
+										<th style="width: 80px;">#</th>
+										<th style="width: 150px;">所属系统</th>
+										<th>应用名称</th>
+										<th>应用状态</th>
+										<th>审批意见</th>
+										<th>创建时间</th>
+										<th>创建人</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr ng-repeat="applications in sysapplications"
+										onmouseover="style.backgroundColor='#F2F5F6'"
+										onmouseout="style.backgroundColor='#FFFFFF'"
+										style="cursor: pointer;">
+										<td><label class="i-checks m-b-bone"><input
+												ng-model="chk" ng-click="choose(chk,sysapplications,$index)"
+												type="checkbox" ng-checked="master" name="test[]"><i></i>
+										</label></td>
+										<td>{{$index+1}}</td>
+										<td>{{applications.sysId}}</td>
+										<td>{{applications.appName}}</td>
+										<td>{{applications.memo}}</td>
+										<td>{{applications.approvalOpinion}}</td>
+										<td>{{applications.createDate}}</td>
+										<td>{{applications.createUserId}}</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<div class="panel-footer" style="border: 0">
+						<div class="row">
+							<div class="col-sm-2 hidden-xs"></div>
+							<div class="col-sm-5 text-center">
+								<small class="text-muted inline m-t-sm m-b-sm">第{{currentPage}}页
+									共{{totalItems}}个 </small>
+							</div>
+							<div class="col-sm-5 text-right text-center-xs">
+								<pagination boundary-links="true" total-items="totalItems"
+									ng-model="currentPage" ng-change="pageChanged()"
+									max-size="maxSize" rotate="false"
+									class="pagination-sm m-t-none m-b" previous-text="&lsaquo;"
+									next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;">
+								</pagination>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+</div>
+

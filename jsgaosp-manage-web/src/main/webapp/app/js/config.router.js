@@ -131,7 +131,8 @@ angular
 							 templateUrl : 'tpl/systemmgmt/application/application.html',
 							 deps : [
 								 'js/app/systemmgmt/application/application-ctrl.js',
-								 'js/app/systemmgmt/application/application-serv.js'
+								 'js/app/systemmgmt/application/application-serv.js',
+								 'js/app/systemmgmt/application/application-modal.js'
 
 								 ]
 						 },
