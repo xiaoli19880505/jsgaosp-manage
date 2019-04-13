@@ -1,6 +1,6 @@
 --------------------------------------------
 --listCodeSort
-SELECT * FROM BC_CODE_SORT where CODE_SORT_TEXT like '%'||:keyword||'%'
+SELECT * FROM BC_CODE_SORT where (CODE_SORT_TEXT like '%'||:keyword||'%' or CODE_SORT_KEY like '%'||:keyword||'%')
 
 --------------------------------------------
 --saveCodeSort

@@ -22,10 +22,12 @@ app.controller('SystemCodeSortController',
     		$scope.currentPage=res.data.page;
     		$scope.chooseCodeSort=[];
     	})
-    }
-    /*$scope.search=function(){
+	}
+	
+	//搜索
+    $scope.search=function(){
     	$scope.loadCodeSort();
-    }*/
+    }
 	
 	//弹出新增窗口
     $scope.open = function (size, type,index) {
