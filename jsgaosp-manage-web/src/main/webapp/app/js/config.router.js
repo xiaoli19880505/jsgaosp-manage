@@ -124,7 +124,19 @@ angular
                                  'js/app/systemmgmt/sysargs/sysargs-modal.js'
 
                              ]
-                         },
+						 },
+						 /**数据字典管理 */
+						 {
+							state : 'app.system.codesort',
+							url : '/codesort',
+							templateUrl : 'tpl/systemmgmt/syscode/codesort.html',
+							deps : [
+								'js/app/systemmgmt/syscode/codesort-ctrl.js',
+								'js/app/systemmgmt/syscode/codesort-serv.js',
+								'js/app/systemmgmt/syscode/codesort-modal.js'
+
+							]
+						},
                          {
 							 state : 'app.system.application',
 							 url : '/application',

@@ -1,0 +1,45 @@
+<style>
+.help-block{
+	color:#F05050;
+	margin-bottom: 0px;
+	font-weight:bold;
+	font-style:oblique;
+}
+</style>
+<div class="modal-dialog" style="height: 100%;margin: -1px;padding: -1px;">
+	<div class="modal-content">
+		<div class="modal-header"
+			style="background: #000000; color: #ffffff;">
+			<button type="button" class="close" data-dismiss="modal"
+				aria-label="Close"></button>
+			<h4 class="modal-title">{{title}}</h4>
+		</div>
+
+		<div class="modal-body">
+			<form name="codeSortForm" class="form-validation form-horizontal" ng-submit="submitForm(codeSortForm.$valid)" novalidate>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">字典名称<span style="color:red;">*</span></label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" placeholder="请输入字典名称" name="codeSortKey" ng-model="codesort.codeSortKey" required="required">
+                        <span style="color:red" ng-show="codeSortForm.codeSortKey.$dirty && codeSortForm.codeSortKey.$invalid">
+                            <span ng-show="codeSortForm.codeSortKey.$error.required">请输入字典名称</span>
+                        </span>
+                     </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">字典说明<span style="color:red;">*</span></label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" placeholder="请输入字典说明" name="codeSortText" ng-model="codesort.codeSortText" required="required">
+                        <span style="color:red" ng-show="codeSortForm.codeSortText.$dirty && codeSortForm.codeSortText.$invalid">
+                            <span ng-show="codeSortForm.codeSortText.$error.required">请输入字典说明</span>
+                        </span>
+                     </div>
+                </div>
+            </form>
+		</div>
+		<div class="modal-footer">
+			<button type="reset" class="btn btn-dark" ng-click="cancel()">取消</button>
+            <button type="submit" class="btn btn-dark" ng-click="submitForm(codeSortForm.$valid)">保存</button>
+		</div>
+	</div>
+</div>

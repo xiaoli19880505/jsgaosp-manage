@@ -2,47 +2,42 @@
 
 /* Controllers */
 // hospital_people controller
-app.controller('SystemSysArgsManagerController',
-		['$scope', '$http', '$state', '$modal', '$stateParams', '$timeout', 'modalServ','BcSysArgsService', 'GG',
-           function ($scope, $http, $state, $modal, $stateParams,$timeout, modalServ,BcSysArgsService,GG) {
+app.controller('SystemCodeSortController',
+		['$scope', '$http', '$state', '$modal', '$stateParams', '$timeout', 'modalServ','BcCodeSortService', 'GG',
+           function ($scope, $http, $state, $modal, $stateParams,$timeout, modalServ,BcCodeSortService,GG) {
 	
 	$scope.totalItems = 100;
     $scope.currentPage = 1;
     $scope.maxSize = 5;
     $scope.keyword="";
-    // $scope.companyId =$scope.app.user.companyId
-    // var user_height = $(window).height() - 330;
-    // $("#SystemUserDiv").parent().css("overflow", "hidden");
-    // $("#usersDiv").css("height", user_height);
     
     $scope.GGuser = GG.user;
     $scope.GGsysadmin = GG.sysadmin;
-    //$scope.GGmaintain = GG.maintain;
     
-    $scope.loadSysArgs=function(){
-        BcSysArgsService.listSysArgs($scope.currentPage,$scope.keyword).then(function(res){
+    $scope.loadCodeSort=function(){
+        BcSysArgsService.listCodeSort($scope.currentPage,$scope.keyword).then(function(res){
 			console.log(res)
-    		$scope.sysargs=res.data.list;
+    		$scope.codesorts=res.data.list;
     		$scope.totalItems=res.data.totalCount;
     		$scope.currentPage=res.data.page;
-    		$scope.chooseArgs=[];
+    		$scope.chooseCodeSort=[];
     	})
     }
     /*$scope.search=function(){
-    	$scope.loadSysArgs();
+    	$scope.loadCodeSort();
     }*/
 	
 	//弹出新增窗口
     $scope.open = function (size, type) {
         var modalInstance = $modal.open({
-            templateUrl: 'tpl/systemmgmt/sysargs/sysargs_form.html',
-            controller: 'ModalSysArgsInstanceCtrl',
+            templateUrl: 'tpl/systemmgmt/syscode/codesort_form.html',
+            controller: 'ModalCodeSortInstanceCtrl',
             size: size,
             backdrop: 'static',
             resolve: {
                 items: function () {
-                	var args = {};
-					$scope.items = [type,args];
+                	var codesort = {};
+					$scope.items = [type,codesort];
 					console.log($scope.items)
                     return $scope.items;
                 }
@@ -51,43 +46,43 @@ app.controller('SystemSysArgsManagerController',
 
         modalInstance.result.then(function (items) {
             if (items[0]) {
-                $scope.loadSysArgs();
+                $scope.loadCodeSort();
             }
         }, function () {
             
         });
     };
 
-    $scope.loadSysArgs();
+    $scope.loadCodeSort();
 	
 	//多选
-    $scope.chooseArgs = [];
+    $scope.chooseCodeSort = [];
     $scope.choose = function(chk,item,index){
     	item.indexs = index;
     	if(chk){
-    		$scope.chooseArgs.push(item);
+    		$scope.chooseCodeSort.push(item);
     	}else if(!chk){
-    		$scope.chooseArgs.splice($scope.chooseArgs.indexOf(item),1);
+    		$scope.chooseCodeSort.splice($scope.chooseCodeSort.indexOf(item),1);
     	}
     }
     	
     $scope.chooseAll = function(master){
     	if(master){
-    		$scope.chooseArgs=angularjs.copy($scope.sysargs);
+    		$scope.chooseCodeSort=angularjs.copy($scope.sysargs);
     	}else {
-    		$scope.chooseArgs=[];
+    		$scope.chooseCodeSort=[];
     	}
     }
 
     //删除modal
     $scope.deleteModal=function(){
-    	if($scope.chooseArgs.length!=0){
+    	if($scope.chooseCodeSort.length!=0){
         	modalServ.showModal({}, {
         		bodyText: '       确定要删除这些记录吗?     '
     		}).then(function(result) {
     			var result = true;
-    			angular.forEach($scope.chooseArgs,function(item){
-    				BcSysArgsService.deleteArgs(item.id).then(function(data) {
+    			angular.forEach($scope.chooseCodeSort,function(item){
+    				BcSysArgsService.deleteCodeSort(item.codeSortId).then(function(data) {
 	    				if(data.code != "10000"){
 	    					result = false;
 	    				}
@@ -95,7 +90,7 @@ app.controller('SystemSysArgsManagerController',
     			});
     			if(result){
 					 toastr.success('删除成功！');
-					 $scope.loadSysArgs();
+					 $scope.loadCodeSort();
 				}else{
 					toastr.error('删除失败！');
 				}
@@ -118,11 +113,11 @@ app.controller('SystemSysArgsManagerController',
 
 	//修改
     $scope.update = function(){
-    	if($scope.chooseArgs.length==1){
-    		var chooseCreate = angular.copy($scope.chooseArgs[0]);
+    	if($scope.chooseCodeSort.length==1){
+    		var chooseCreate = angular.copy($scope.chooseCodeSort[0]);
     		var modalInstance = $modal.open({
-    			templateUrl: 'tpl/systemmgmt/sysargs/sysargs_form.html',
-                controller: 'ModalSysArgsInstanceCtrl',
+    			templateUrl: 'tpl/systemmgmt/syscode/codesort_form.html',
+                controller: 'ModalCodeSortInstanceCtrl',
                 size: '',
                 backdrop: 'static',
                 resolve: {
@@ -134,8 +129,8 @@ app.controller('SystemSysArgsManagerController',
 
             modalInstance.result.then(function (items) {
                 if (items[0]) {//如果modal返回成功的话
-                	 $scope.loadSysArgs();
-                	 $scope.chooseArgs=[];
+                	 $scope.loadCodeSort();
+                	 $scope.chooseCodeSort=[];
                 }
             }, function () {
                 //取消
@@ -157,7 +152,7 @@ app.controller('SystemSysArgsManagerController',
 	}
 	
 	$scope.pageChanged = function () {
-		$scope.loadSysArgs();
+		$scope.loadCodeSort();
 	   };
 }]);
 

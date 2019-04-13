@@ -3,7 +3,7 @@
 /* Controllers */
 // hospital_people controller
 app.controller('SystemUserManagerController', 
-		['$scope', '$http', '$state', '$modal', '$stateParams', '$timeout', 'modalServ','BcUserService','CompanyService', 'GG',
+		['$scope', '$http', '$state', '$modal', '$stateParams', '$timeout', 'modalServ','BcUserService','CompanyService','GG',
            function ($scope, $http, $state, $modal, $stateParams,$timeout, modalServ,BcUserService,CompanyService,GG) {
 	
 	$scope.totalItems = 100;
@@ -18,7 +18,11 @@ app.controller('SystemUserManagerController',
     $scope.GGuser = GG.user;
     $scope.GGsysadmin = GG.sysadmin;
     //$scope.GGmaintain = GG.maintain;
-    
+	
+	$scope.pageChanged = function () {
+		$scope.loadUsers();
+	};
+
     $scope.loadUsers=function(){
     	BcUserService.listUser($scope.currentPage,$scope.keyword,$scope.companyId).then(function(data){
     		$scope.users=data.sysUsers;
@@ -30,7 +34,7 @@ app.controller('SystemUserManagerController',
     $scope.search=function(){
     	$scope.loadUsers();
     }
-    
+
     $scope.open = function (size, type) {
         var modalInstance = $modal.open({
             templateUrl: 'tpl/systemmgmt/usermgmt/user_modal_form.html',
@@ -186,7 +190,10 @@ app.controller('SystemUserManagerController',
     			title: "提示",  
     		}); 
     	}	
-    }
+	}
+	
+	
+
 }]);
 
 app.filter("hidePasswordFilter",function(){

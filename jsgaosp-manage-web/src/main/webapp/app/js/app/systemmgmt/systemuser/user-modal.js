@@ -76,5 +76,91 @@ app.controller('ModalSystemUserInstanceCtrl', ['$scope', '$modalInstance','$http
     	}
     	
     }
+
+
+    $scope.is_focus=false;
+
+    //以下用于操作区划数结构
+
+
+	//选中的区划的对象属性
+	$scope.areaItem= {
+		"area_name":"",
+		"area_no":"",
+		"p_area_no":"",
+		"id":"",
+		"status":"",
+		"children":""
+	};
+
+	var _branch = "";
+	$scope.keyword="";
+
+	$scope.getArea = function(branch) {
+		_branch = branch;
+//		console.log(_branch);
+		$scope.area_no = _branch.area_no;
+
+		$scope.flag=1;
+
+
+
+
+		if (branch.area_no!= 0) {
+			$scope.output=_branch.area_name;
+			$scope.areaItem.area_name=_branch.area_name;
+			$scope.areaItem.area_no=_branch.area_no;
+			$scope.areaItem.id=_branch.id;
+			$scope.areaItem.status=_branch.status;
+			$scope.areaItem.p_area_no=_branch.p_area_no;
+			$scope.areaItem.children=_branch.children;
+			if(tree.get_parent_branch(branch)!=null){
+
+				$scope.p_area_no = tree.get_parent_branch(branch).area_no;
+
+			}_branch
+
+
+			$scope.parentId=branch.area_no;
+
+
+		}
+	};
+
+	$scope.area_name_show ="";
+
+	$scope.ensureArea=function(){
+		$scope.is_focus=false;
+		//$scope.area_name_show =angular.copy($scope.areaItem.area_name);
+		$scope.area_name_show =$scope.areaItem.area_name;
+	}
+
+	$scope.showAreaList=function(){
+
+		$scope.loadArea();
+		$scope.is_focus=true;
+
+	}
+
+	$scope.area = [];
+	var tree = $scope.my_tree = {};
+
+	var tmp=[];
+	/**
+	 * 加载地区树形结构
+	 */
+	$scope.loadArea = function() {
+		$scope.doing_async = true;
+
+		$http.get('/area/list_area').success(function(data){
+			if (data.code=="10000") {
+				tmp=data.data;
+				$scope.area = tmp;
+				$scope.doing_async = false;
+			}
+		})
+	};
+
+
 }])
 ;
