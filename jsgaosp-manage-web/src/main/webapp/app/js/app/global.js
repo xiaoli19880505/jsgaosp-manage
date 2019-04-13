@@ -159,20 +159,15 @@ angular.module('app').constant('GG', {
         }]
     },{
         active: false,
-        text: '网络拓扑',
+        text: '应用管理',
         iconCls: 'glyphicon glyphicon-stats  icon-envelope text-danger',
         sref : '#',
         funcs: [{
-            id: '5-0',
-            text: '物理拓扑',
-            iconCls :'fa fa-caret-right',
-            sref: 'app.log.query'
-        },{
-            id: '5-1',
-            text: 'Mib浏览和管理',
-            iconCls :'fa fa-caret-right',
-            sref: 'app.access.statistic'
-        }]
+			id : '5-0',
+			text : '应用申报',
+			iconCls :'fa fa-caret-right',
+			sref : 'app.system.application'
+		}]
     },{
 		active : false,
 		text : '业务监控',
@@ -273,12 +268,14 @@ angular.module('app').constant('GG', {
             text : '系统参数',
             iconCls :'fa fa-caret-right',
             sref : 'app.system.sysargs'
-        }, {
-            id : '8-5',
-            text : '应用申报',
-            iconCls :'fa fa-caret-right',
-            sref : 'app.system.application'
-        }, {
+        },
+		// 	{
+		// 	id : '8-5',
+		// 	text : '测试版块',
+		// 	iconCls :'fa fa-caret-right',
+		// 	sref : 'app.system.test'
+		// },
+			{
             id : '8-6',
             text : '数据字典',
             iconCls :'fa fa-caret-right',
