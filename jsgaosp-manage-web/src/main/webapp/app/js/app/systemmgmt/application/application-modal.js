@@ -3,25 +3,28 @@
 /* Controllers */
 // hospital_people_modal controller
 
-app.controller('ModalSysApplicationsInstanceCtrl', ['$scope', '$modalInstance','$http', 'items','BcSysApplicationService',  function ($scope, $modalInstance,$http, items,BcSysApplicationService) {
+app.controller('ModalSysApplicationsInstanceCtrl', ['$scope', '$modalInstance','$http', 'items','BcSysApplicationService',  
+	function ($scope, $modalInstance,$http, items,BcSysApplicationService) {
 
 	$scope.applications=items[1];
 	$scope.flag=items[0]=="add";
 	if ($scope.flag) {
-        $scope.title = '新增系统参数';
+        $scope.title = '新增应用申请';
     } else {
-        $scope.title = '编辑系统参数';
+        $scope.title = '编辑应用申请';
     }
 	
 
 	$scope.addApplications=function(){
 		BcSysApplicationService.createApplications($scope.applications).then(function(data){
 			if(data.code == "10000"){
-				 toastr.success('添加系统参数成功！');
-	             $modalInstance.close([true]);
+				 toastr.success('添加成功！');
+				 $("#toast-container").css("left", "46%");
+				 $modalInstance.close([true]);
 			}else{
-				toastr.error('添加系统参数失败！');
-				$modalInstance.dismiss('cancel');
+				 toastr.success('添加失败！');
+				 $("#toast-container").css("left", "46%");
+				 $modalInstance.close([true]);
 			}
 		})
 	}
@@ -29,10 +32,11 @@ app.controller('ModalSysApplicationsInstanceCtrl', ['$scope', '$modalInstance','
 	$scope.updateApplications=function(){
 		BcSysApplicationService.updateApplications($scope.applications).then(function(data){
 			if(data.code == "10000"){
-				 toastr.success('更新系统参数成功！');
+				toastr.success('更新应用申请成功！');
+				 $("#toast-container").css("left", "46%");
 	             $modalInstance.close([true]);
 			}else{
-				toastr.error('更新系统参数失败！');
+				toastr.error('更新应用申请失败！');
 				$modalInstance.dismiss('cancel');
 			}
 		})

@@ -18,7 +18,7 @@ import com.britecloud.marketingcloud.utils.PageUtils;
 import com.britecloud.marketingcloud.utils.UUIDUtils;
 
 @Repository
-public class BcSysApplicatonDaoImpl extends BaseJdbcDao implements BcSysApplicatonDao{
+public class BcSysApplicatonDaoImpl extends BaseJdbcDao implements BcSysApplicatonDao {
 
 	@Override
 	public PageDataResult<BcSysApplicationEntity> listSysApplications(Map params) {
@@ -30,7 +30,8 @@ public class BcSysApplicatonDaoImpl extends BaseJdbcDao implements BcSysApplicat
 		pageData.setTotalPage(PageUtils.getTotalPage(totalCount));
 
 		sql = getPaginationString(sql, PageUtils.getStartNum((Integer) params.get("page")), PageUtils.pageSize);
-		List<BcSysApplicationEntity> list = getNamedParameterJdbcTemplate().query(sql, params, new BeanPropertyRowMapper(BcSysApplicationEntity.class));
+		List<BcSysApplicationEntity> list = getNamedParameterJdbcTemplate().query(sql, params,
+				new BeanPropertyRowMapper(BcSysApplicationEntity.class));
 		pageData.setList(list);
 		return pageData;
 	}
@@ -38,16 +39,30 @@ public class BcSysApplicatonDaoImpl extends BaseJdbcDao implements BcSysApplicat
 	@Override
 	public void saveSysArgs(BcSysApplicationEntity args) {
 		args.setId(UUIDUtils.generateUUID());
-        String sql = loadSQL("saveSysApplication");
-        SqlParameterSource parameters = new BeanPropertySqlParameterSource(args);
-        getNamedParameterJdbcTemplate().update(sql, parameters);
+		String sql = loadSQL("saveSysApplication");
+		SqlParameterSource parameters = new BeanPropertySqlParameterSource(args);
+		getNamedParameterJdbcTemplate().update(sql, parameters);
 	}
 
 	@Override
 	public int existsArgsKey(BcSysApplicationEntity args) {
 		SqlParameterSource parameters = new BeanPropertySqlParameterSource(args);
 		String sql = loadSQL("existsArgsKey");
-		return getNamedParameterJdbcTemplate().queryForInt(sql,parameters);
+		return getNamedParameterJdbcTemplate().queryForInt(sql, parameters);
+	}
+
+	@Override
+	public void updateSysApplication(BcSysApplicationEntity args) {
+		String sql = loadSQL("updateSysApplication");
+		SqlParameterSource parameters = new BeanPropertySqlParameterSource(args);
+		getNamedParameterJdbcTemplate().update(sql, parameters);
+	}
+
+	@Override
+	public void deleteSysApplication(BcSysApplicationEntity args) {
+		String sql = loadSQL("deleteSysApplication");
+		SqlParameterSource parameters = new BeanPropertySqlParameterSource(args);
+		getNamedParameterJdbcTemplate().update(sql, parameters);
 	}
 
 }

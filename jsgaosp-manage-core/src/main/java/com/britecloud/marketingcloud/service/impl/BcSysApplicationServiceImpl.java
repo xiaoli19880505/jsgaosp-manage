@@ -34,4 +34,16 @@ public class BcSysApplicationServiceImpl implements BcSysApplicationService{
 		return BcSysApplicatonDao.existsArgsKey(args);
 	}
 
+	@Override
+	public void updateSysApplication(BcSysApplicationEntity args) {
+		BcSysApplicatonDao.updateSysApplication(args);
+		
+	}
+
+	@Override
+	public void deleteSysApplication(BcSysApplicationEntity args) {
+
+		BcSysApplicatonDao.deleteSysApplication(args);
+	}
+
 }

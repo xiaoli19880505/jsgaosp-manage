@@ -22,7 +22,7 @@ angular.module('app').factory('BcSysApplicationService', ['res', 'GG',
             },
             deleteApplications: function (Id) {
                 return res.delete({
-                	id:Id
+                	Id:Id
                 }).$promise;
             },
         };
