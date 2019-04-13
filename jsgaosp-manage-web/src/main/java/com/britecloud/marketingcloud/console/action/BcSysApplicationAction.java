@@ -77,23 +77,23 @@ public class BcSysApplicationAction {
         return ResultUtil.error("10001","保存失败！");
     }
 
-   /* @RequestMapping(method = RequestMethod.PUT)
+    @RequestMapping(method = RequestMethod.PUT)
     @ResponseBody
-    public ResponseResult updateSysargs(BcSysArgs args){
+    public ResponseResult updateSysargs(BcSysApplicationEntity args){
         if(args != null){
-            bcSysArgsService.updateSysArgs(args);
+        	BcSysApplicationService.updateSysApplication(args);
             return ResultUtil.success();
         }
         return ResultUtil.error("10001","更新失败！");
-    }*/
+    }
 
-   /* @RequestMapping( method = RequestMethod.DELETE)
+    @RequestMapping( method = RequestMethod.DELETE)
     @ResponseBody
-    public ResponseResult deleteSysargs(BcSysArgs args){
+    public ResponseResult deleteSysargs(BcSysApplicationEntity args){
         if(args != null && StringUtils.isNotEmpty(args.getId())){
-            bcSysArgsService.deleteSysArgs(args);
+        	BcSysApplicationService.deleteSysApplication(args);
             return ResultUtil.success();
         }
         return ResultUtil.error("10001","删除失败！");
-    }*/
+    }
 }

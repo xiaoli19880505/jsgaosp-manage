@@ -12,4 +12,6 @@ public interface BcSysApplicationService {
 	
 	void saveSysArgs(BcSysApplicationEntity args);
 	int existsArgsKey(BcSysApplicationEntity args);
+	void updateSysApplication(BcSysApplicationEntity args);
+	void deleteSysApplication(BcSysApplicationEntity args);
 }

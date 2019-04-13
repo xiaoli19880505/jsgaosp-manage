@@ -1,6 +1,6 @@
 <style>
 	.w-md {
-		width: 440px;
+		width: 500px;
 	}
 	.root{
 		display: flex;
@@ -8,7 +8,7 @@
 </style>
 <!-- hbox layout -->
 <div class="root">
-	<div class="hbox hbox-auto-xs bg-light" ng-controller="SystemCodeSortController">
+	<div class="hbox hbox-auto-xs bg-light bg-cell" ng-controller="SystemCodeSortController">
 		<div class="col w-md lt b-r">
 			<div class="vbox">
 				<div class="row wrapper">
@@ -38,7 +38,7 @@
 						<tr ng-repeat="sort in codesorts"
 							onmouseover="style.backgroundColor='#F2F5F6'"
 							onmouseout="style.backgroundColor='#FFFFFF'"
-							style="cursor: pointer;" ng-click="codedetails(sort)">
+							style="cursor: pointer;" ng-click="loadCodeDetails(sort)">
 							<td>{{$index+1}}</td>
 							<td>{{sort.codeSortKey}}</td>
 							<td>{{sort.codeSortText}}</td>
@@ -81,7 +81,7 @@
 	</div>
 
 
-	<div class="hbox hbox-auto-xs bg-light" ng-controller="SystemCodeController">
+	<div class="hbox hbox-auto-xs bg-light bg-cell" ng-controller="SystemCodeController">
 		<div class="col w-md lt b-r">
 			<div class="vbox">
 				<div class="row wrapper">
@@ -109,7 +109,7 @@
 							<td>{{code.codeText}}</td>
 							<td>
 								<a class="fa fa-pencil fa-fw m-r-xs" title="修改"
-								   ng-click="open('','update',$index)"></a>
+									ng-click="open('','update',$index)"></a>
 								<a class="fa fa-times fa-fw" title="删除" ng-click="deleteCode(code.codeId)"></a>
 							</td>
 						</tr>
