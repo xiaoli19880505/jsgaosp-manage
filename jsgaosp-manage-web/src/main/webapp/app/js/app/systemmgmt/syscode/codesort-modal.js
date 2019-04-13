@@ -3,8 +3,10 @@
 /* Controllers */
 // hospital_people_modal controller
 
-app.controller('ModalCodeSortInstanceCtrl', ['$scope', '$modalInstance','$http', 'items','BcCodeSortService',  
+app.controller('ModalCodeSortInstanceCtrl', ['$scope', '$modalInstance','$http', 'items','BcCodeSortService',
 	function ($scope, $modalInstance,$http, items,BcCodeSortService) {
+
+
 
 	$scope.codesort=items[1];
 	$scope.flag=items[0]=="add";
@@ -32,6 +34,8 @@ app.controller('ModalCodeSortInstanceCtrl', ['$scope', '$modalInstance','$http',
 	
 	$scope.updateCodeSort=function(){
 		BcCodeSortService.updateCodeSort($scope.codesort).then(function(data){
+
+			console.log(toastr)
 			if(data.code == "10000"){
 				 toastr.success('更新数据字典成功！');
 				 $("#toast-container").css("left", "46%");
