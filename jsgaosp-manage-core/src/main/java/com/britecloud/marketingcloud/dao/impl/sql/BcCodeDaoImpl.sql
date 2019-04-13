@@ -15,3 +15,19 @@ update BC_CODE_SORT set CODE_SORT_KEY=:codeSortKey,CODE_SORT_TEXT=:codeSortText 
 --deleteCodeSort
 delete from BC_CODE_SORT where CODE_SORT_ID=:codeSortId;
 
+--------------------------------------------
+--listCode
+SELECT * from BC_CODE where CODE_SORT_ID=:codeSortId;
+
+--------------------------------------------
+--saveCode
+INSERT INTO BC_CODE(CODE_ID,CODE_SORT_ID,CODE_KEY,CODE_TEXT,STATUS)
+VALUES(:codeId,:codeSortId,:codeKey,:codeText,:status);
+
+--------------------------------------------
+--updateCode
+update BC_CODE set CODE_KEY=:codeKey,CODE_TEXT=:codeText where CODE_ID=:codeId;
+
+--------------------------------------------
+--deleteCode
+delete from BC_CODE where CODE_ID=:codeId;

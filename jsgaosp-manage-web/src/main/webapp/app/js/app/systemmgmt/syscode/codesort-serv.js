@@ -24,20 +24,38 @@ angular.module('app').factory('BcCodeSortService', ['res', 'GG',
                 return res.delete({
                 	codeSortId:codeSortId
                 }).$promise;
-            },
-            /*
-            getUserInfo: function (id) {
+            }
+        };
+        return service;
+    }
+]);
+
+/**
+ * res 为自定义的$resource
+ */
+angular.module('app').factory('BcCodeService', ['res', 'GG',
+    function (res, GG) {
+        var res = res(GG.BASE + '/code/:type');
+        var service = {
+            listCode: function (currentPage,keyword) {
                 return res.get({
-                	userId: id,
-                    type:'getInfo'
+                	currentPage:currentPage,
+                	keyword:keyword,
+                	type:'list_code'
                 }).$promise;
+            }
+            ,
+            createCode: function (codedetail) {
+                return res.save(codedetail).$promise;
             },
-            resetPwd: function (userId) {
-                return res.get({
-                	userId:userId,
-                	type:"resetPwd"
+            updateCode: function (codedetail) {
+                return res.update(codedetail).$promise;
+            },
+            deleteCode: function (codeId) {
+                return res.delete({
+                	codeId:codeId
                 }).$promise;
-            }*/
+            }
         };
         return service;
     }

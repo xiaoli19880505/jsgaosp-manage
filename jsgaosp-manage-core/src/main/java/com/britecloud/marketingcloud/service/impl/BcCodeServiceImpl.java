@@ -2,6 +2,7 @@ package com.britecloud.marketingcloud.service.impl;
 
 import com.britecloud.marketingcloud.dao.BcCodeDao;
 import com.britecloud.marketingcloud.domain.PageDataResult;
+import com.britecloud.marketingcloud.model.BcCode;
 import com.britecloud.marketingcloud.model.BcCodeSort;
 import com.britecloud.marketingcloud.service.BcCodeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,5 +34,25 @@ public class BcCodeServiceImpl implements BcCodeService {
     @Override
     public void deleteCodeSort(BcCodeSort codeSort) {
         bcCodeDao.deleteCodeSort(codeSort);
+    }
+
+    @Override
+    public PageDataResult<BcCode> listCode(Map params) {
+        return bcCodeDao.listCode(params);
+    }
+
+    @Override
+    public void saveCode(BcCode code) {
+        bcCodeDao.saveCode(code);
+    }
+
+    @Override
+    public void updateCode(BcCode code) {
+        bcCodeDao.updateCode(code);
+    }
+
+    @Override
+    public void deleteCode(BcCode code) {
+        bcCodeDao.deleteCode(code);
     }
 }
