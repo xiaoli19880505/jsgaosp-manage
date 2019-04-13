@@ -96,6 +96,9 @@ app.controller('SystemSysApplicationManagerController',
     	$scope.loadSysApplications();
     }
 
+    $scope.pageChanged = function () {
+		$scope.loadSysApplications();
+	};
 
 	/*//修改
     $scope.update = function(){
