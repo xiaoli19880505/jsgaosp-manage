@@ -15,7 +15,7 @@ app.controller('SystemCodeSortController',
     $scope.GGsysadmin = GG.sysadmin;
     
     $scope.loadCodeSort=function(){
-        BcSysArgsService.listCodeSort($scope.currentPage,$scope.keyword).then(function(res){
+        BcCodeSortService.listCodeSort($scope.currentPage,$scope.keyword).then(function(res){
 			console.log(res)
     		$scope.codesorts=res.data.list;
     		$scope.totalItems=res.data.totalCount;
@@ -28,7 +28,7 @@ app.controller('SystemCodeSortController',
     }*/
 	
 	//弹出新增窗口
-    $scope.open = function (size, type) {
+    $scope.open = function (size, type,index) {
         var modalInstance = $modal.open({
             templateUrl: 'tpl/systemmgmt/syscode/codesort_form.html',
             controller: 'ModalCodeSortInstanceCtrl',
@@ -36,9 +36,11 @@ app.controller('SystemCodeSortController',
             backdrop: 'static',
             resolve: {
                 items: function () {
-                	var codesort = {};
+					var codesort = {};
+					if(index != null){
+						codesort = $scope.codesorts[index];
+					}
 					$scope.items = [type,codesort];
-					console.log($scope.items)
                     return $scope.items;
                 }
             }
@@ -68,88 +70,29 @@ app.controller('SystemCodeSortController',
     	
     $scope.chooseAll = function(master){
     	if(master){
-    		$scope.chooseCodeSort=angularjs.copy($scope.sysargs);
+    		$scope.chooseCodeSort=angularjs.copy($scope.codesort);
     	}else {
     		$scope.chooseCodeSort=[];
     	}
-    }
-
-    //删除modal
-    $scope.deleteModal=function(){
-    	if($scope.chooseCodeSort.length!=0){
-        	modalServ.showModal({}, {
-        		bodyText: '       确定要删除这些记录吗?     '
-    		}).then(function(result) {
-    			var result = true;
-    			angular.forEach($scope.chooseCodeSort,function(item){
-    				BcSysArgsService.deleteCodeSort(item.codeSortId).then(function(data) {
-	    				if(data.code != "10000"){
-	    					result = false;
-	    				}
-	    			});
-    			});
-    			if(result){
+	}
+	
+	//删除数据字典
+	$scope.deleteCodeSort=function(codeSortId,codeSortKey){
+    	modalServ.showModal({}, {
+			bodyText: "确定要删除数据字典【"+codeSortKey+"】?"
+		}).then(function(result) {
+			BcCodeSortService.deleteCodeSort(codeSortId).then(function(data) {
+				if(data.code == "10000"){
 					 toastr.success('删除成功！');
+					 $("#toast-container").css("left", "46%");
 					 $scope.loadCodeSort();
 				}else{
 					toastr.error('删除失败！');
+					$("#toast-container").css("left", "46%");
 				}
-    		});
-    		}else{
-    			bootbox.alert({  
-    				buttons: {  
-    					ok: {  
-    						label: '确定',  
-    						className: 'btn-info btn-dark'  
-    					}  
-    				},  
-    				message: '请先选择操作的数据！',  
-    				callback: function() {  
-    				},  
-    				title: "提示",  
-    			}); 
-    		}			
+			});
+		});
     }
-
-	//修改
-    $scope.update = function(){
-    	if($scope.chooseCodeSort.length==1){
-    		var chooseCreate = angular.copy($scope.chooseCodeSort[0]);
-    		var modalInstance = $modal.open({
-    			templateUrl: 'tpl/systemmgmt/syscode/codesort_form.html',
-                controller: 'ModalCodeSortInstanceCtrl',
-                size: '',
-                backdrop: 'static',
-                resolve: {
-                    items: function () {
-                           return ['update',chooseCreate];
-                    }
-                }
-            });
-
-            modalInstance.result.then(function (items) {
-                if (items[0]) {//如果modal返回成功的话
-                	 $scope.loadCodeSort();
-                	 $scope.chooseCodeSort=[];
-                }
-            }, function () {
-                //取消
-            });
-    	}else{
-    		bootbox.alert({  
-    			buttons: {  
-    				ok: {  
-    					label: '确定',  
-    					className: 'btn-info btn-dark'  
-    				}  
-    			},  
-    			message: '请先选择一个操作的数据！',  
-    			callback: function() {  
-    			},  
-    			title: "提示",  
-    		}); 
-    	}	
-	}
 	
 	$scope.pageChanged = function () {
 		$scope.loadCodeSort();

@@ -1,109 +1,82 @@
-<style>
-.table th, .table td {
-	text-align: center;
-	height: 38px;
-	font-size: 12px;
-}
-
-.hover {
-	background: #D1EEEE;
-}
-
-.able {
-	color: #96CD00;
-}
-
-.disable {
-	color: red;
-}
-
-#SystemCodeSortController {
-	font-size: 12px;
-}
-</style>
-<div class="wrapper page" ng-controller="SystemCodeSortController"
-	id="SystemCodeSortController">
-	<div class="topbar">
-		<div class="breadcrumbs">
-			<a class="level level-zone level-zone-2 gd1">系统管理</a> <a class="level">数据字典管理</a>
-		</div>
+<!-- hbox layout -->
+<div class="hbox hbox-auto-xs bg-light" ng-init="app.settings.asideFixed = true;app.settings.asideDock = false; app.settings.container = false; app.hideAside = false; app.hideFooter = true;" id="SystemUserDiv" ng-controller="SystemCodeSortController">
+	<div class="bg-light lter b-b wrapper-md ng-scope">
+	  <h1 class="m-n font-thin h3">数据字典管理</h1>
 	</div>
-	<br>
-	<div class="page-intro vxnets">
-		<p class="lead">
-			<em>数据字典管理</em> 
-		</p>
-	</div>
-	<div class="pane" style="height: 100%">
-		<div class="hbox hbox-auto-xs hbox-auto-sm">
-			<div class="col">
-				<div class="pane" style="height: 95%;">
-					<div class="panel-heading">
-						<div class=" pull-left">
-							<button class="btn btn-dark btn-sm" type="button"
-								ng-click="open('','add',null)">新增</button>
-							<button class="btn btn-dark btn-sm" type="button"
-								ng-disabled="chooseArgs.length == '0'" ng-click="update();">编辑</button>
-							<button class="btn btn-dark btn-sm" type="button"
-								ng-disabled="chooseArgs.length == '0'"
-								ng-click="deleteModal();">删除</button>
-						</div>
-					</div>
-					<br>
-					<div class=" panel-body" style="height: 80%">
-						<div style="height: 95%; min-height: 400px;">
-							<table class="table table-bordered  pull-center ">
-								<thead>
-									<tr>
-										<th style="width: 30px;"><label class="i-checks m-b-bone">
-												<input type="checkbox" ng-model="master"
-												ng-click="chooseAll(master)"> <i></i>
-										</label></th>
-										<th style="width: 80px;">#</th>
-										<th>字典名称</th>
-										<th>字典说明</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr ng-repeat="sort in codesorts"
-										onmouseover="style.backgroundColor='#F2F5F6'"
-										onmouseout="style.backgroundColor='#FFFFFF'"
-										style="cursor: pointer;">
-										<td><label class="i-checks m-b-bone"><input
-												ng-model="chk" ng-click="choose(chk,codesort,$index)"
-												type="checkbox" ng-checked="master" name="test[]"><i></i>
-										</label></td>
-										<td>{{$index+1}}</td>
-										<td>{{sort.codeSortKey}}</td>
-										<td>{{sort.codeSortText}}</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
-					<div class="panel-footer" style="border: 0">
-						<div class="row">
-							<div class="col-sm-2 hidden-xs"></div>
-							<div class="col-sm-5 text-center">
-								<small class="text-muted inline m-t-sm m-b-sm">第{{currentPage}}页
-									共{{totalItems}}个 </small>
-							</div>
-							<div class="col-sm-5 text-right text-center-xs">
-								<pagination boundary-links="true" total-items="totalItems"
-									ng-model="currentPage" ng-change="pageChanged()"
-									max-size="maxSize" rotate="false"
-									class="pagination-sm m-t-none m-b" previous-text="&lsaquo;"
-									next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;">
-								</pagination>
-
-							</div>
-						</div>
-					</div>
-				</div>
+	
+	<div class="wrapper-md ng-scope">
+		<div class="panel panel-default">
+			<div class="row wrapper">
+		  <div class="col-sm-5 m-b-xs">
+		  <button type="button" ng-click="open('','add',null)" class="btn btn-sm btn-info">新增</button>
+		  </div>
+		  <div class="col-sm-4">
+		  </div>
+		  <div class="col-sm-3">
+			<div class="input-group">
+			  <input type="text" class="input-sm form-control" placeholder="请输入字典名称" ng-model="keyword">
+			  <span class="input-group-btn">
+				<button class="btn btn-sm btn-default" type="button" ng-click="search()">搜索</button>
+			  </span>
 			</div>
-
+		  </div>
+		</div>
+			<div class="table-responsive" show-scroll>
+				<table class="table table-striped b-t b-light">
+					<thead>
+						<tr>
+							<th>序号</th>
+							<th>字典名称</th>
+							<th>字典说明</th>
+							<th>操作</th>
+						</tr>
+					</thead>
+					<tr ng-repeat="sort in codesorts"
+						onmouseover="style.backgroundColor='#F2F5F6'"
+						onmouseout="style.backgroundColor='#FFFFFF'"
+						style="cursor: pointer;">
+						<td>{{$index+1}}</td>
+						<td>{{sort.codeSortKey}}</td>
+						<td>{{sort.codeSortText}}</td>
+						<td>
+							<a class="fa fa-pencil fa-fw m-r-xs" title="修改"
+							   ng-click="open('','update',$index)"></a>
+							<a class="fa fa-times fa-fw" title="删除" ng-click="deleteCodeSort(sort.codeSortId,sort.codeSortKey)"></a>
+						</td>
+					</tr>
+				</table>
+			</div>
+			
+				<footer class="panel-footer" style="padding-bottom: 0">
+					<div class="row">
+						<div class="col-sm-2 hidden-xs">
+						</div>
+						<div class="col-sm-4 text-center">
+							<small class="text-muted inline m-t-sm m-b-sm">第{{currentPage}}页
+								共{{totalItems}}个
+							</small>
+						</div>
+						<div class="col-sm-6 text-right text-center-xs">
+							<pagination
+									boundary-links="true"
+									total-items="totalItems"
+									ng-model="currentPage"
+									ng-change="pageChanged()"
+									max-size="maxSize"
+									rotate="false"
+									class="pagination-sm m-t-none m-b"
+									previous-text="&lsaquo;"
+									next-text="&rsaquo;"
+									first-text="&laquo;"
+									last-text="&raquo;">
+							</pagination>
+						</div>
+					</div>
+				</footer>
 		</div>
 	</div>
-
 </div>
+	
+	<!-- /hbox layout -->
+
 

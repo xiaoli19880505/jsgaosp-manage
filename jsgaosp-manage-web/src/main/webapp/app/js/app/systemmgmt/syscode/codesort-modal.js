@@ -3,14 +3,15 @@
 /* Controllers */
 // hospital_people_modal controller
 
-app.controller('ModalCodeSortInstanceCtrl', ['$scope', '$modalInstance','$http', 'items','BcCodeSortService',  function ($scope, $modalInstance,$http, items,BcSysArgsService) {
+app.controller('ModalCodeSortInstanceCtrl', ['$scope', '$modalInstance','$http', 'items','BcCodeSortService',  
+	function ($scope, $modalInstance,$http, items,BcCodeSortService) {
 
 	$scope.codesort=items[1];
 	$scope.flag=items[0]=="add";
 	if ($scope.flag) {
-        $scope.title = '新增系统参数';
+        $scope.title = '新增数据字典';
     } else {
-        $scope.title = '编辑系统参数';
+        $scope.title = '编辑数据字典';
     }
 	
 
@@ -18,9 +19,12 @@ app.controller('ModalCodeSortInstanceCtrl', ['$scope', '$modalInstance','$http',
 		BcCodeSortService.createCodeSort($scope.codesort).then(function(data){
 			if(data.code == "10000"){
 				 toastr.success('添加成功！');
-	             $modalInstance.close([true]);
+				 $("#toast-container").css("left", "46%");
+				 $modalInstance.close([true]);
+
 			}else{
 				toastr.error('添加失败！');
+				$("#toast-container").css("left", "46%");
 				$modalInstance.dismiss('cancel');
 			}
 		})
@@ -29,10 +33,12 @@ app.controller('ModalCodeSortInstanceCtrl', ['$scope', '$modalInstance','$http',
 	$scope.updateCodeSort=function(){
 		BcCodeSortService.updateCodeSort($scope.codesort).then(function(data){
 			if(data.code == "10000"){
-				 toastr.success('更新系统参数成功！');
+				 toastr.success('更新数据字典成功！');
+				 $("#toast-container").css("left", "46%");
 	             $modalInstance.close([true]);
 			}else{
-				toastr.error('更新系统参数失败！');
+				toastr.error('更新数据字典失败！');
+				$("#toast-container").css("left", "46%");
 				$modalInstance.dismiss('cancel');
 			}
 		})
