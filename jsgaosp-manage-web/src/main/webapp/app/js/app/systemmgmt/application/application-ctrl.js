@@ -25,7 +25,7 @@ app.controller('SystemSysApplicationManagerController',
     }
 	
 	//弹出新增窗口
-    $scope.open = function (size, type) {
+    $scope.open = function (size, type,index) {
         var modalInstance = $modal.open({
             templateUrl: 'tpl/systemmgmt/application/applications_form.html',
             controller: 'ModalSysApplicationsInstanceCtrl',
@@ -33,9 +33,11 @@ app.controller('SystemSysApplicationManagerController',
             backdrop: 'static',
             resolve: {
                 items: function () {
-                	var applications = {};
+					var applications = {};
+					if(index != null){
+						applications = $scope.sysapplications[index];
+					}
 					$scope.items = [type,applications];
-					console.log($scope.items)
                     return $scope.items;
                 }
             }
@@ -71,44 +73,34 @@ app.controller('SystemSysApplicationManagerController',
     	}
     }
 
-    //删除modal
-    $scope.deleteModal=function(){
-    	if($scope.chooseArgs.length!=0){
-        	modalServ.showModal({}, {
-        		bodyText: '       确定要删除这些记录吗?     '
-    		}).then(function(result) {
-    			var result = true;
-    			angular.forEach($scope.chooseArgs,function(item){
-    				BcSysArgsService.deleteArgs(item.id).then(function(data) {
-	    				if(data.code != "10000"){
-	    					result = false;
-	    				}
-	    			});
-    			});
-    			if(result){
+  //删除数据字典
+	$scope.deleteApplication=function(Id,appName){
+    	modalServ.showModal({}, {
+			bodyText: "确定要删除应用申请【"+appName+"】?"
+		}).then(function(result) {
+			BcSysApplicationService.deleteApplications(Id).then(function(data) {
+				if(data.code == "10000"){
 					 toastr.success('删除成功！');
+					 $("#toast-container").css("left", "46%");
 					 $scope.loadSysApplications();
 				}else{
 					toastr.error('删除失败！');
+					$("#toast-container").css("left", "46%");
 				}
-    		});
-    		}else{
-    			bootbox.alert({  
-    				buttons: {  
-    					ok: {  
-    						label: '确定',  
-    						className: 'btn-info btn-dark'  
-    					}  
-    				},  
-    				message: '请先选择操作的数据！',  
-    				callback: function() {  
-    				},  
-    				title: "提示",  
-    			}); 
-    		}			
+			});
+		});
+    
+    }
+	//搜索
+    $scope.search=function(){
+    	$scope.loadSysApplications();
     }
 
-	//修改
+    $scope.pageChanged = function () {
+		$scope.loadSysApplications();
+	};
+
+	/*//修改
     $scope.update = function(){
     	if($scope.chooseArgs.length==1){
     		var chooseCreate = angular.copy($scope.chooseArgs[0]);
@@ -146,7 +138,7 @@ app.controller('SystemSysApplicationManagerController',
     			title: "提示",  
     		}); 
     	}	
-    }
+    }*/
 }]);
 
 app.filter("hidePasswordFilter",function(){
