@@ -86,7 +86,7 @@ app.controller('SystemCodeSortController',
 	 */
 	$scope.loadCodeDetails=function(item){
 		console.log(item);
-		BcCodeService.listCode(1);
+		BcCodeService.listCode(1,item.codeSortId);
 	}
 }]);
 

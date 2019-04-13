@@ -36,10 +36,11 @@ public class BcCodeAction {
      */
     @RequestMapping(value = "/list_code", method = RequestMethod.GET)
     @ResponseBody
-    public ResponseResult listCode(Integer currentPage) throws Exception {
+    public ResponseResult listCode(Integer currentPage,String codeSortId) throws Exception {
         JSONObject jo = new JSONObject();
         Map params = new HashMap();
         params.put("page", currentPage);
+        params.put("codeSortId","codeSortId");
         PageDataResult result = bcCodeService.listCode(params);
         result.setPage(currentPage);
 

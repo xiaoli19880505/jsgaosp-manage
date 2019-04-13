@@ -37,10 +37,10 @@ angular.module('app').factory('BcCodeService', ['res', 'GG',
     function (res, GG) {
         var res = res(GG.BASE + '/code/:type');
         var service = {
-            listCode: function (currentPage,keyword) {
+            listCode: function (currentPage,codeSortId) {
                 return res.get({
                 	currentPage:currentPage,
-                	keyword:keyword,
+                	codeSortId:codeSortId,
                 	type:'list_code'
                 }).$promise;
             }
