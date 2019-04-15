@@ -148,6 +148,17 @@ angular
 
 								 ]
 						 },
+						 {
+							 state : 'app.system.approve',
+							 url : '/approve',
+							 templateUrl : 'tpl/systemmgmt/approve/approve.html',
+							 deps : [
+								 'js/app/systemmgmt/approve/approve-ctrl.js',
+								 'js/app/systemmgmt/approve/approve-serv.js',
+								 'js/app/systemmgmt/approve/approve-modal.js'
+								 
+								 ]
+						 },
 			             /***设备管理***/
 			             {
 			            	 state : 'app.device',
