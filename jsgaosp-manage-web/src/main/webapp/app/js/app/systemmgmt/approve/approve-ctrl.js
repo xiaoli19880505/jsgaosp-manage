@@ -99,6 +99,8 @@ app.controller('SystemSysApproveController',
     $scope.pageChanged = function () {
 		$scope.loadSysApplroves();
 	};
+	
+	
 
 	/*//修改
     $scope.update = function(){

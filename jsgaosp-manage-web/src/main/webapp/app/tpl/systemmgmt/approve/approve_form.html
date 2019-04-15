@@ -28,7 +28,7 @@
                     <label class="col-sm-2 control-label">所在区域:</label>{{approves.areaNo}}
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">业务类型:</label>{{approves.memo}}
+                    <label class="col-sm-2 control-label">业务类型:</label>{{approves.ywType}}
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">行政类别:</label>{{approves.xzType}}
@@ -38,8 +38,7 @@
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">审批结果:<span style="color:red;">*</span></label>
-                    <select ng-model="status" ng-options="x for (x, y) in statues"></select>
-                    <h1>你选择的值是: {{status}}</h1>
+                    <select ng-init="sta = status[0]" ng-model="selectedName" ng-options="x for x in status"></select>
                 </div>
                 
             </form>
