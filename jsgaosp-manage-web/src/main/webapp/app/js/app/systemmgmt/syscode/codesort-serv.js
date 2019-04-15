@@ -12,8 +12,13 @@ angular.module('app').factory('BcCodeSortService', ['res', 'GG',
                 	keyword:keyword,
                 	type:'list_codesort'
                 }).$promise;
-            }
-            ,
+            },
+            getCodeSortById:function(codeSortId){
+                return res.get({
+                    codeSortId:codeSortId,
+                    type:'get_codesort'
+                }).$promise;
+            },
             createCodeSort: function (codesort) {
                 return res.save(codesort).$promise;
             },

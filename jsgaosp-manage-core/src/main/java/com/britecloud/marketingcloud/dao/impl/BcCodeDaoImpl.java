@@ -4,6 +4,7 @@ import com.britecloud.marketingcloud.consants.Constants;
 import com.britecloud.marketingcloud.core.dao.jdbc.BaseJdbcDao;
 import com.britecloud.marketingcloud.dao.BcCodeDao;
 import com.britecloud.marketingcloud.domain.PageDataResult;
+import com.britecloud.marketingcloud.model.BcArea;
 import com.britecloud.marketingcloud.model.BcCode;
 import com.britecloud.marketingcloud.model.BcCodeSort;
 import com.britecloud.marketingcloud.utils.PageUtils;
@@ -13,6 +14,7 @@ import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.stereotype.Repository;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -40,6 +42,19 @@ public class BcCodeDaoImpl extends BaseJdbcDao implements BcCodeDao {
 		List<BcCodeSort> list = getNamedParameterJdbcTemplate().query(sql, params, new BeanPropertyRowMapper(BcCodeSort.class));
 		pageData.setList(list);
 		return pageData;
+	}
+
+	@Override
+	public BcCodeSort getCodeSortById(BcCodeSort codeSort) {
+		String sql = loadSQL("getCodeSortById");
+		Map paramMap = new HashMap();
+		paramMap.put("codeSortId", codeSort.getCodeSortId());
+		List<BcCodeSort> list = getNamedParameterJdbcTemplate().query(sql, paramMap,
+				new BeanPropertyRowMapper(BcCodeSort.class));
+		if (list == null || list.isEmpty()) {
+			return null;
+		}
+		return list.iterator().next();
 	}
 
 	@Override

@@ -41,4 +41,6 @@ public interface BcCodeDao {
     void updateCode(BcCode code);
 
     void deleteCode(BcCode code);
+
+    BcCodeSort getCodeSortById(BcCodeSort codeSort);
 }

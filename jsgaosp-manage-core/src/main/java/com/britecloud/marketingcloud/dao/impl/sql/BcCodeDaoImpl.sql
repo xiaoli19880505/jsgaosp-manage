@@ -31,3 +31,7 @@ update BC_CODE set CODE_KEY=:codeKey,CODE_TEXT=:codeText where CODE_ID=:codeId;
 --------------------------------------------
 --deleteCode
 delete from BC_CODE where CODE_ID=:codeId;
+
+--------------------------------------------
+--getCodeSortById
+SELECT * from BC_CODE_SORT where CODE_SORT_ID =:codeSortId

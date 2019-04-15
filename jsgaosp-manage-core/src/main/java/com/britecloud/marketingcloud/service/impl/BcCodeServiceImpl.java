@@ -55,4 +55,9 @@ public class BcCodeServiceImpl implements BcCodeService {
     public void deleteCode(BcCode code) {
         bcCodeDao.deleteCode(code);
     }
+
+    @Override
+    public BcCodeSort getCodeSortById(BcCodeSort codeSort) {
+        return bcCodeDao.getCodeSortById(codeSort);
+    }
 }
