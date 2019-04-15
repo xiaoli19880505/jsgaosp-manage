@@ -93,9 +93,11 @@ app.controller('SystemCodeSortController',
 	}
 }])
 app.controller('SystemCodeController',
-		['$scope', '$http', '$state', '$modal', '$stateParams', '$timeout', 'modalServ','BcCodeService', 'GG','$rootScope',
-           function ($scope, $http, $state, $modal, $stateParams,$timeout, modalServ,BcCodeService,GG,$rootScope) {
-	
+['$scope', '$http', '$state', '$modal', '$stateParams', '$timeout', 'modalServ','BcCodeService', 'GG','$rootScope','BcCodeSortService',
+function ($scope, $http, $state, $modal, $stateParams,$timeout, modalServ,BcCodeService,GG,$rootScope,BcCodeSortService) {
+	/**
+	 * 数据字典明细Controller 
+	 */
 	$scope.totalItems = 100;
     $scope.currentPage = 1;
     $scope.maxSize = 5;
@@ -108,22 +110,27 @@ app.controller('SystemCodeController',
     console.log($rootScope);
     var codeSortId=$rootScope.codeSortId;
 
+   //监控codeSortId
    $scope.$watch('codeSortId', function (newValue, oldValue) {
-	   $scope.loadCodeDetails(newValue)
+	   $scope.loadCodeDetails(newValue);
+	   
    });
 
     $scope.loadCodeDetails=function(codeSortId){
         BcCodeService.listCode($scope.currentPage,codeSortId).then(function(res){
-			console.log(res)
     		$scope.codedetails=res.data.list;
     		$scope.totalItems=res.data.totalCount;
     		$scope.currentPage=res.data.page;
-    	})
+		});
+		//获取标题
+		BcCodeSortService.getCodeSortById(codeSortId).then(function(res){
+			$scope.codeSortText = res.data.codeSortText;
+		});
 	}
 	
 	//搜索
     $scope.search=function(){
-    	$scope.loadCodeDetails(codeSortId);
+    	$scope.loadCodeDetails($rootScope.codeSortId);
     }
 	
 	//弹出新增窗口
@@ -138,6 +145,8 @@ app.controller('SystemCodeController',
 					var code = {};
 					if(index != null){
 						code = $scope.codedetails[index];
+					}else{
+						code.codeSortId = $rootScope.codeSortId;
 					}
 					$scope.items = [type,code];
                     return $scope.items;
@@ -147,7 +156,7 @@ app.controller('SystemCodeController',
 
         modalInstance.result.then(function (items) {
             if (items[0]) {
-                $scope.loadCodeDetails(codeSortId);
+                $scope.loadCodeDetails($rootScope.codeSortId);
             }
         }, function () {
             
@@ -163,7 +172,7 @@ app.controller('SystemCodeController',
 				if(data.code == "10000"){
 					 toastr.success('删除成功！');
 					 $("#toast-container").css("left", "46%");
-					 $scope.loadCodeDetails(codeSortId);
+					 $scope.loadCodeDetails($rootScope.codeSortId);
 				}else{
 					toastr.error('删除失败！');
 					$("#toast-container").css("left", "46%");
@@ -173,7 +182,7 @@ app.controller('SystemCodeController',
     }
 	
 	$scope.pageChanged = function () {
-		$scope.loadCodeDetails(codeSortId);
+		$scope.loadCodeDetails($rootScope.codeSortId);
 	};
 
 }]);

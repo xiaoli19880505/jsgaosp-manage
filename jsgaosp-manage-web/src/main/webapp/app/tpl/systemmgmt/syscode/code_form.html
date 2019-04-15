@@ -1,10 +1,4 @@
 <style>
-.help-block{
-	color:#F05050;
-	margin-bottom: 0px;
-	font-weight:bold;
-	font-style:oblique;
-}
 </style>
 <div class="modal-body wrapper-lg">
     <div class="row">
@@ -12,22 +6,22 @@
             <h3 class="m-t-none m-b font-thin">{{title}}</h3>
 
             <div class="modal-body">
-                <form name="codeSortForm" class="form-validation form-horizontal" ng-submit="submitForm(codeSortForm.$valid)"    novalidate>
+                <form name="codeForm" class="form-validation form-horizontal" ng-submit="submitForm(codeForm.$valid)"    novalidate>
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">字典名称<span style="color:red;">*</span></label>
+                        <label class="col-sm-2 control-label">键说明<span style="color:red;">*</span></label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" placeholder="请输入字典名称" name="codeSortKey" ng-model="codesort.codeSortKey" required="required">
-                            <span style="color:red" ng-show="codeSortForm.codeSortKey.$dirty && codeSortForm.codeSortKey.$invalid">
-                                <span ng-show="codeSortForm.codeSortKey.$error.required">请输入字典名称</span>
+                            <input type="text" class="form-control" placeholder="请输入键说明" name="codeKey" ng-model="codedetail.codeKey" required="required">
+                            <span style="color:red" ng-show="codeForm.codeKey.$dirty && codeForm.codeKey.$invalid">
+                                <span ng-show="codeForm.codeKey.$error.required">请输入键说明</span>
                             </span>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">字典说明<span style="color:red;">*</span></label>
+                        <label class="col-sm-2 control-label">文本说明<span style="color:red;">*</span></label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" placeholder="请输入字典说明" name="codeSortText" ng-model="codesort.codeSortText" required="required">
-                            <span style="color:red" ng-show="codeSortForm.codeSortText.$dirty && codeSortForm.codeSortText.$invalid">
-                                <span ng-show="codeSortForm.codeSortText.$error.required">请输入字典说明</span>
+                            <input type="text" class="form-control" placeholder="请输入文本说明" name="codeText" ng-model="codedetail.codeText" required="required">
+                            <span style="color:red" ng-show="codeForm.codeText.$dirty && codeForm.codeText.$invalid">
+                                <span ng-show="codeForm.codeText.$error.required">请输入文本说明</span>
                             </span>
                         </div>
                     </div>

@@ -50,6 +50,20 @@ public class BcCodeSortAction {
         return ResultUtil.success(result);
     }
 
+    /**
+     * 根据主键
+     * 加载数据字典
+     * @param codeSort
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping(value = "/get_codesort", method = RequestMethod.GET)
+    @ResponseBody
+    public ResponseResult getCodeSortById(BcCodeSort codeSort) throws Exception {
+        BcCodeSort result = bcCodeService.getCodeSortById(codeSort);
+        return ResultUtil.success(result);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     @ResponseBody
     public ResponseResult saveCodeSort(BcCodeSort codeSort){
