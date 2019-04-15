@@ -25,6 +25,8 @@ public interface BcAreaDao {
 
     BcArea getAreaById(String id);
 
+    BcArea getAreaByAreaNo(String areaNo);
+
     /**
      * 根据areaNo判断是否存在
      * @param area

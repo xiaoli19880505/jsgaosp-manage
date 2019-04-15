@@ -39,6 +39,11 @@ public class BcAreaServiceImpl implements BcAreaService {
         return bcAreaDao.getAreaById(id);
     }
 
+    @Override
+    public BcArea getAreaByAreaNo(String areaNo) {
+        return bcAreaDao.getAreaByAreaNo(areaNo);
+    }
+
     /**
      * 根据areaNo判断是否存在
      * @param area

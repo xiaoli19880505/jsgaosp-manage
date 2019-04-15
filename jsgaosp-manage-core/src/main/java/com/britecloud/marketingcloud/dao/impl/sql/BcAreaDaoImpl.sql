@@ -23,4 +23,7 @@ SELECT * from bc_area WHERE  ID = :id;
 --existsAreaNo
 SELECT COUNT(1) from bc_area WHERE area_no=:areaNo;
 
+--------------------------------------------
+--getAreaByAreaNo
+SELECT * from bc_area WHERE  area_no = :areaNo;
 
