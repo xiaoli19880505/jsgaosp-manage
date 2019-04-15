@@ -33,4 +33,6 @@ public interface BcCodeService {
     void updateCode(BcCode code);
 
     void deleteCode(BcCode code);
+
+    BcCodeSort getCodeSortById(BcCodeSort codeSort);
 }
