@@ -1,0 +1,119 @@
+<style>
+.help-block{
+	color:#F05050;
+	margin-bottom: 0px;
+	font-weight:bold;
+	font-style:oblique;
+}
+</style>
+<div class="modal-dialog" style="height: 100%;margin: -1px;padding: -1px;">
+	<div class="modal-content">
+		<div class="modal-header"
+			style="background: #000000; color: #ffffff;">
+			<button type="button" class="close" data-dismiss="modal"
+				aria-label="Close"></button>
+			<h4 class="modal-title">{{title}}</h4>
+		</div>
+
+		<div class="modal-body">
+			<form name="sysApplicantForm" class="form-validation form-horizontal" ng-submit="submitForm(sysApplicantForm.$valid)" >
+			    
+
+                
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">系统名称<span style="color:red;">*</span></label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" placeholder="请输入系统名称" name="sysName" ng-model="sysApplicant.sysName" required>
+                            <p ng-show="sysApplicantForm.sysName.$pristine&& submitted" class="help-block">请输入系统名称。。</p>
+                     </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">所属区划<span style="color:red;">*</span></label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" placeholder="请选择所属区划" name="areaName" ng-model="area_name_show"
+                               ng-click="showAreaList()" required onfocus="this.blur();">
+                        <p ng-show="sysApplicantForm.areaName.$pristine&& submitted" class="help-block">请选择所属区划</p>
+                    </div>
+                </div>
+
+
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">系统类型<span style="color:red;">*</span></label>
+                    <div class="col-sm-10">
+                        <select class="form-control" name="selectedSysType" ng-init="selectedSysTypeId=sysTypeList[0].codeKey"  ng-model="selectedSysTypeId" ng-options=" item.codeKey as item.codeText for item in sysTypeList" required>
+                            <option value="" style="display: none">-----请选择系统类型----</option>
+                        </select>
+
+                        <p ng-show="sysApplicantForm.areaName.$pristine&& submitted" class="help-block">请选择系统类型</p>
+                     </div>
+                </div>
+
+
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">接入类型<span style="color:red;">*</span></label>
+                    <div class="col-sm-10">
+                        <select class="form-control"  name="selectedAccessType" ng-init="selectedAccessType=accessTypeList[0].codeKey" ng-model="selectedAccessTypeId" ng-options=" item.codeKey as item.codeText for item in accessTypeList" required>
+                            <option value="" style="display: none">-----请选择接入类型----</option>
+                        </select>
+
+                        <p ng-show="sysApplicantForm.areaName.$pristine&& submitted" class="help-block">请选择接入类型</p>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">系统地址<span style="color:red;">*</span></label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" placeholder="请输入系统地址" name="onlineAddr" ng-model="applications.onlineAddr" required>
+                        <p ng-show="sysApplicantForm.areaName.$pristine&& submitted" class="help-block">请选择系统类型</p>
+                     </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">系统描述</label>
+                    <div class="col-lg-6">
+                        <textarea class="form-control ng-pristine ng-valid ng-touched" rows="6" name="memo" ng-model="sysApplicant.memo" placeholder="请输入系统描述"></textarea>
+                    </div>
+                </div>
+
+                  <div class="form-group" ng-if="selectedSysType.codeKey==0">
+                    <label class="col-sm-2 control-label">工作号二维码<span style="color:red;">*</span></label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" placeholder="请输入所在区域" name="areaNo" ng-model="applications.areaNo" required>
+                        <p ng-show="sysApplicantForm.areaName.$pristine&& submitted" class="help-block">请选择系统类型</p>
+                     </div>
+                </div>
+
+                <div class="row-row" ng-if="is_focus" class="area_modal" style="height: 160px;width:470px;margin-top:-15px;margin-left: 100px;display:block;position: absolute; background: white;padding: 20px;border: 1px solid #ccc;border-radius: 8px;">
+                    <div class="cell scrollable hover" style="height: 100px;overflow-y: auto;background: white;">
+                        <div class="cell-inner">
+                            <div class="padder">
+                                <div class="b-a bg-light dk r r-2x">
+                                    <span ng-if="doing_async">...loading...</span>
+                                    <abn-tree
+                                            tree-data         = "area"
+                                            tree-control      = "my_tree"
+                                            on-select         = "getArea(branch)"
+                                            expand-level      = "2"
+                                            initial-selection = "新城大厦机房"
+                                            icon-leaf			= "fa fa-hospital-o"
+                                            icon-expand       = "fa fa-plus"
+                                            icon-collapse     = "fa fa-minus"
+                                    >
+                                    </abn-tree>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" ng-click="ensureArea()" class="btn btn-sm btn-info" style="margin-top: 5px;float: right;">确定</button>
+                </div>
+            </form>
+		</div>
+		<div class="modal-footer">
+			<button type="reset" class="btn btn-dark" ng-click="cancel()">取消</button>
+            <button type="submit" class="btn btn-dark" ng-click="submitForm(sysApplicantForm.$valid)">保存</button>
+		</div>
+	</div>
+</div>
