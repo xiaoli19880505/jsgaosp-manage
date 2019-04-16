@@ -4,8 +4,11 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.britecloud.marketingcloud.dao.BcAreaDao;
+import com.britecloud.marketingcloud.dao.BcCodeDao;
 import com.britecloud.marketingcloud.dao.CommonDao;
 import com.britecloud.marketingcloud.model.BcArea;
+import com.britecloud.marketingcloud.model.BcCode;
+import com.britecloud.marketingcloud.model.BcCodeSort;
 import com.britecloud.marketingcloud.service.CommonService;
 import com.britecloud.marketingcloud.utils.MapUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +23,10 @@ public class CommonServiceImpl implements CommonService{
 
     @Autowired
     private CommonDao commonDao;
+
+    @Autowired
+    private BcCodeDao bcCodeDao;
+
     @Override
     public List<Map<String, Object>> getList(String tableName, String pColName, String pColValue) {
         return commonDao.getList(tableName,pColName,pColValue);
@@ -78,4 +85,8 @@ public class CommonServiceImpl implements CommonService{
         return list;
     }
 
+    @Override
+    public List<BcCode> getCodeList(BcCodeSort codeSort) {
+        return bcCodeDao.getCodeList(codeSort);
+    }
 }

@@ -4,6 +4,7 @@ package com.britecloud.marketingcloud.dao;
 import com.britecloud.marketingcloud.model.BcArea;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 项目名称:省公安
@@ -25,7 +26,7 @@ public interface BcAreaDao {
 
     BcArea getAreaById(String id);
 
-    BcArea getAreaByAreaNo(String areaNo);
+    Map<String,Object> getAreaByAreaNo(String areaNo);
 
     /**
      * 根据areaNo判断是否存在

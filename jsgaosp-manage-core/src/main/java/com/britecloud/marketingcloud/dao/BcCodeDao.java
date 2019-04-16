@@ -43,4 +43,6 @@ public interface BcCodeDao {
     void deleteCode(BcCode code);
 
     BcCodeSort getCodeSortById(BcCodeSort codeSort);
+
+    List<BcCode> getCodeList(BcCodeSort codeSort);
 }

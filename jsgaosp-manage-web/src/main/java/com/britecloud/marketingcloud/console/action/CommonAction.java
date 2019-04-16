@@ -6,8 +6,11 @@ import com.alibaba.fastjson.JSONObject;
 import com.britecloud.marketingcloud.console.common.ResponseResult;
 import com.britecloud.marketingcloud.console.util.ResultUtil;
 import com.britecloud.marketingcloud.model.BcArea;
+import com.britecloud.marketingcloud.model.BcCode;
+import com.britecloud.marketingcloud.model.BcCodeSort;
 import com.britecloud.marketingcloud.service.BcAreaService;
 import com.britecloud.marketingcloud.service.CommonService;
+import com.britecloud.marketingcloud.utils.MapUtils;
 import com.britecloud.marketingcloud.utils.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +19,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
+import java.util.Map;
 
 /**
  * 公共Action
@@ -44,11 +49,26 @@ public class CommonAction {
         String pColValue = pAreaNo;
         String colName = "AREA_NO";
 
-        JSONObject root = JSONObject.parseObject(JSON.toJSONString(bcAreaService.getAreaByAreaNo(pAreaNo)));
+        Map<String,Object> newMap = MapUtils.transToLowerCase(bcAreaService.getAreaByAreaNo(pAreaNo));
+
+        JSONObject root = JSONObject.parseObject(JSON.toJSONString(newMap));
 
         //获取树形
         JSONArray array = commonService.getJSONArray(tableName,pColName,colName,pColValue);
         root.put("children",array);
         return ResultUtil.success(root);
+    }
+
+    /**
+     * 加载数据字典列表
+     * @param codeSort
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping(value = "/list_code", method = RequestMethod.GET)
+    @ResponseBody
+    public ResponseResult listcode(BcCodeSort codeSort) throws Exception {
+        List<BcCode> codeList = commonService.getCodeList(codeSort);
+        return ResultUtil.success(codeList);
     }
 }

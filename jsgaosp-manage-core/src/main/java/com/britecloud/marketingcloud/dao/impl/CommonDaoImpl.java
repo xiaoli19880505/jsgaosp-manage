@@ -29,4 +29,8 @@ public class CommonDaoImpl extends BaseJdbcDao implements CommonDao{
         paramMap.put("pColValue",pColValue);
         return getNamedParameterJdbcTemplate().queryForList(sql, paramMap);
     }
+
+
+
+
 }
