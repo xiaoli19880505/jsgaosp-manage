@@ -38,9 +38,19 @@
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">审批结果:<span style="color:red;">*</span></label>
-                    <select ng-init="sta = status[0]" ng-model="selectedName" ng-options="x for x in status"></select>
+                    <select  ng-model="approves.status" ng-init="selectedStatus"  ng-options="x.code as x.text for x in status">
+                  
+                    </select>
                 </div>
-                
+                 <div class="form-group">
+                    <label class="col-sm-2 control-label">审批意见:<span style="color:red;">*</span></label>
+                    <div class="col-sm-10" text-angular>
+                        <input type="text" class="form-control" placeholder="请输入审批意见" name="approvalOpinion" ng-model="approves.approvalOpinion" required="required">
+                        <span style="color:red" ng-show="approvesForm.approvalOpinion.$dirty && approvesForm.approvalOpinion.$invalid">
+                            <span ng-show="approvesForm.appName.$error.required">请输入审批意见</span>
+                        </span>
+                     </div>
+                </div>
             </form>
 		</div>
 		<div class="modal-footer">
