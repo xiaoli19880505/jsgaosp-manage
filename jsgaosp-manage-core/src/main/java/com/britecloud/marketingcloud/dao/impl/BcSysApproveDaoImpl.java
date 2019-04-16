@@ -16,19 +16,20 @@ import org.springframework.stereotype.Repository;
 import com.britecloud.marketingcloud.consants.Constants;
 import com.britecloud.marketingcloud.core.dao.jdbc.BaseJdbcDao;
 import com.britecloud.marketingcloud.dao.BcSysApplicatonDao;
+import com.britecloud.marketingcloud.dao.BcSysApproveDao;
 import com.britecloud.marketingcloud.domain.PageDataResult;
 import com.britecloud.marketingcloud.model.BcSysApplicationEntity;
 import com.britecloud.marketingcloud.utils.PageUtils;
 import com.britecloud.marketingcloud.utils.UUIDUtils;
 
 @Repository
-public class BcSysApplicatonDaoImpl extends BaseJdbcDao implements BcSysApplicatonDao {
+public class BcSysApproveDaoImpl extends BaseJdbcDao implements BcSysApproveDao {
 
 	@Override
-	public PageDataResult<BcSysApplicationEntity> listSysApplications(Map params) {
+	public PageDataResult<BcSysApplicationEntity> listApproves(Map params) {
 		PageDataResult<BcSysApplicationEntity> pageData = new PageDataResult<BcSysApplicationEntity>();
 
-		String sql = loadSQL("listSysAppliactions", params);
+		String sql = loadSQL("listSysApproves", params);
 		Integer totalCount = getNamedParameterJdbcTemplate().queryForInt(getTotalCountString(sql), params);
 		pageData.setTotalCount(totalCount);
 		pageData.setTotalPage(PageUtils.getTotalPage(totalCount));
@@ -60,8 +61,8 @@ public class BcSysApplicatonDaoImpl extends BaseJdbcDao implements BcSysApplicat
 	}
 
 	@Override
-	public void updateSysApplication(BcSysApplicationEntity args) {
-		String sql = loadSQL("updateSysApplication");
+	public void updateApprove(BcSysApplicationEntity args) {
+		String sql = loadSQL("updateApprove");
 		SqlParameterSource parameters = new BeanPropertySqlParameterSource(args);
 		getNamedParameterJdbcTemplate().update(sql, parameters);
 	}
@@ -72,5 +73,6 @@ public class BcSysApplicatonDaoImpl extends BaseJdbcDao implements BcSysApplicat
 		SqlParameterSource parameters = new BeanPropertySqlParameterSource(args);
 		getNamedParameterJdbcTemplate().update(sql, parameters);
 	}
+
 
 }

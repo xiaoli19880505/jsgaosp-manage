@@ -14,10 +14,18 @@ app.controller('ModalApproveCtrl', ['$scope', '$modalInstance','$http', 'items',
         $scope.title = '编辑应用申请';
     }
 	
-
+	$scope.status= [{
+		"text":"通过",
+		"code":"03"
+	},{
+		"text":"不通过",
+		"code":"04"
+	}];
+	
+	$scope.selectedStatus=$scope.status[1];
 	
 	$scope.updateApprove=function(){
-		BcSysApplicationService.updateApprove($scope.approve).then(function(data){
+		BcSysApproveService.updateApprove($scope.approves).then(function(data){
 			if(data.code == "10000"){
 				toastr.success('审批成功！');
 				 $("#toast-container").css("left", "46%");

@@ -1,6 +1,5 @@
 package com.britecloud.marketingcloud.model;
 
-import java.util.Date;
 
 import lombok.Data;
 @Data
@@ -18,9 +17,9 @@ public class BcSysApplicationEntity {
 	private String memo;
 	private String status;
 	private String approvalOpinion;
-	private Date createDate;
+	private String createDate;
 	private String createUserId;
-	private Date approvalDate;
+	private String approvalDate;
 	private String approvalUserId;
 	private String blType;
 }

@@ -1,5 +1,5 @@
 ------------------------------------------
---listSysAppliactions
+--listSysApproves
 SELECT id as id,
        sys_id as sys_id,
        app_name as app_name,
@@ -19,7 +19,7 @@ SELECT id as id,
        bl_type as bl_type
   FROM bc_declare_app
 where (app_name like '%'||:keyword||'%' 
-or sys_id like '%'||:keyword||'%')
+or sys_id like '%'||:keyword||'%') and status ='02' order by create_date asc
 
 --------------------------------------------
 --saveSysApplication
@@ -27,7 +27,7 @@ INSERT INTO bc_declare_app(id,sys_id,app_name,guide_addr,online_addr,online_qaq_
 VALUES(:Id,:sysId,:appName,:guideAddr,:onlineAddr,:onlineQaqAddr,:areaNo,:ywType,:xzType,:memo,:status,:approvalOpinion,to_date(:createDate,'yyyy-MM-dd HH24:mi:ss'),:createUserId,to_date(:approvalDate,'yyyy-MM-dd HH24:mi:ss'),:approvalUserId,:blType);
 
 --------------------------------------------
---updateSysApplication
+--updateApprove
 update bc_declare_app set sys_id=:sysId,
 app_name=:appName,
 guide_addr=:guideAddr,
@@ -39,9 +39,9 @@ xz_type=:xzType,
 memo=:memo,
 status=:status,
 approval_opinion=:approvalOpinion,
-create_date=:createDate,
+create_date=to_date(:createDate,'yyyy-MM-dd HH24:mi:ss'),
 create_user_id=:createUserId,
-approval_date=:approvalDate,
+approval_date=to_date(:approvalDate,'yyyy-MM-dd HH24:mi:ss'),
 approval_user_id=:approvalUserId,
 bl_type=:blType
 where id=:Id;
