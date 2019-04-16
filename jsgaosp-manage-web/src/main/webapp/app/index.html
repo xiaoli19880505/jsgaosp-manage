@@ -1,135 +1,150 @@
 <!DOCTYPE html>
 <html lang="zh" data-ng-app="app">
-	<head>
-		<meta charset="utf-8" />
-		<title>江苏省公安厅一体化－后台管理</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-	   
-        <link rel="stylesheet" href="css/compaign.css" type="text/css" />
-		<link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
-		<link rel="stylesheet" href="css/animate.css" type="text/css" />
-		<link rel="stylesheet" href="css/font-awesome.min.css" type="text/css" />
-		<link rel="stylesheet" href="css/simple-line-icons.css" type="text/css" />
-		<link rel="stylesheet" href="css/font.css" type="text/css" />
-		<link rel="stylesheet" href="css/app.css" type="text/css" />
-		<link rel="stylesheet" href="css/style.css" type="text/css" />
-		<link rel="stylesheet" href="../assets/modules/angular-bootstrap-nav-tree/abn_tree.css" type="text/css" />
-		<link rel="stylesheet" href="../assets/modules/angularjs-toaster/toaster.css" type="text/css" />
-		<link rel="stylesheet" href="../assets/jquery/toastr/toastr.min.css" type="text/css" />
-		<link rel="stylesheet" href="../assets/modules/bootstrap-datetimepicker/bootstrap-datetimepicker.min.css" type="text/css" />
-		<!-- <link rel="stylesheet" href="../assets/jquery/mermaid/mermaid.css"/>
+<head>
+<meta charset="utf-8" />
+<title>江苏省公安厅一体化－后台管理</title>
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<link rel="stylesheet" href="css/compaign.css" type="text/css" />
+<link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
+<link rel="stylesheet" href="css/animate.css" type="text/css" />
+<link rel="stylesheet" href="css/font-awesome.min.css" type="text/css" />
+<link rel="stylesheet" href="css/simple-line-icons.css" type="text/css" />
+<link rel="stylesheet" href="css/font.css" type="text/css" />
+<link rel="stylesheet" href="css/app.css" type="text/css" />
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet"
+	href="../assets/modules/angular-bootstrap-nav-tree/abn_tree.css"
+	type="text/css" />
+<link rel="stylesheet"
+	href="../assets/modules/angularjs-toaster/toaster.css" type="text/css" />
+<link rel="stylesheet" href="../assets/jquery/toastr/toastr.min.css"
+	type="text/css" />
+<link rel="stylesheet"
+	href="../assets/modules/bootstrap-datetimepicker/bootstrap-datetimepicker.min.css"
+	type="text/css" />
+<!-- <link rel="stylesheet" href="../assets/jquery/mermaid/mermaid.css"/>
     	<link rel="stylesheet" href="../assets/jquery/mermaid/mermaid.forest.css"/> -->
-    	<link rel="stylesheet" href="css/process.min.css"/>
-    	<link rel="stylesheet" href="css/tab.css" type="text/css" />
-    	
-    	<link rel="stylesheet" href="../assets/color-picker/dist/color-picker.min.css" type="text/css" />
-    	<!-- notebook -->
-    	<!-- 
+<link rel="stylesheet" href="css/process.min.css" />
+<link rel="stylesheet" href="css/tab.css" type="text/css" />
+
+<link rel="stylesheet"
+	href="../assets/color-picker/dist/color-picker.min.css" type="text/css" />
+<!-- notebook -->
+<!-- 
     	<link rel="stylesheet" href="../assets/notebook/css/font-awesome.css" type="text/css" />
     	<link rel="stylesheet" href="../assets/notebook/css/jquery.notebook.css" type="text/css" />
     	<link rel="stylesheet" href="../assets/notebook/css/style.css" type="text/css" />
     	 -->
-    	 
-    	 <link rel="stylesheet" href="../assets/ckeditor/ng-ckeditor.css" type="text/css" />
-	</head>
 
-	<body ng-controller="AppCtrl">
-		<div class="app" id="app" ng-class="{'app-header-fixed':app.settings.headerFixed, 'app-aside-fixed':app.settings.asideFixed, 'app-aside-folded':app.settings.asideFolded, 'app-aside-dock':app.settings.asideDock, 'container':app.settings.container}" ui-view></div>
+<link rel="stylesheet" href="../assets/ckeditor/ng-ckeditor.css"
+	type="text/css" />
+</head>
 
-		<!-- jQuery -->
-		<script src="../assets/jquery/jquery.min.js"></script>
+<body ng-controller="AppCtrl">
+	<div class="app" id="app"
+		ng-class="{'app-header-fixed':app.settings.headerFixed, 'app-aside-fixed':app.settings.asideFixed, 'app-aside-folded':app.settings.asideFolded, 'app-aside-dock':app.settings.asideDock, 'container':app.settings.container}"
+		ui-view></div>
 
-		<!-- Angular -->
-		<script src="../assets/angular/angular.js"></script>
+	<!-- jQuery -->
+	<script src="../assets/jquery/jquery.min.js"></script>
 
-		<script src="../assets/angular/angular-animate/angular-animate.js"></script>
-		<script src="../assets/angular/angular-cookies/angular-cookies.js"></script>
-		<script src="../assets/angular/angular-resource/angular-resource.js"></script>
-		<script src="../assets/angular/angular-sanitize/angular-sanitize.js"></script>
-		<script src="../assets/angular/angular-touch/angular-touch.js"></script>
-		<!-- ../assets -->
-		<script src="../assets/modules/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js"></script>
-		<script src="../assets/modules/bootstrap-datetimepicker/bootstrap-datetimepicker.zh-CN.js"></script>
-		<script src="../assets/angular/angular-ui-router/angular-ui-router.js"></script>
-		<script src="../assets/angular/ngstorage/ngStorage.js"></script>
-       
-		<!-- bootstrap -->
-		<script src="../assets/angular/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-		<script src="../assets/jquery/bootstrap.js"></script>
-		<!-- lazyload -->
-		<script src="../assets/angular/oclazyload/ocLazyLoad.js"></script>
-		<!-- translate -->
-		<script src="../assets/angular/angular-translate/angular-translate.js"></script>
-		<script src="../assets/angular/angular-translate/loader-static-files.js"></script>
-		<script src="../assets/angular/angular-translate/storage-cookie.js"></script>
-		<script src="../assets/angular/angular-translate/storage-local.js"></script>
-		<!-- toaster -->
-		<script src="../assets/modules/angularjs-toaster/toaster.js"></script>
-		<!-- echarts -->
-		<script src="../assets/echarts/echarts-all.js"></script>
-		<!-- color-picker -->
-		<script src="../assets/color-picker/dist/color-picker.min.js"></script>
-		
-		<script src="../assets/ng-file-upload/dist/ng-file-upload-all.js"></script>
-		
-		<!-- toaster end -->
-		<!-- App -->
-		<script src="js/app.js"></script>
-		<script src="js/config.js"></script>
-		<script src="js/config.lazyload.js"></script>
-		<script src="js/config.router.js"></script>
-		<script src="js/main.js"></script>
-		<script src="js/services/ui-load.js"></script>
-		<script src="js/filters/fromNow.js"></script>
-		<script src="js/directives/setnganimate.js"></script>
-		<script src="js/directives/ui-butterbar.js"></script>
-		<script src="js/directives/ui-focus.js"></script>
-		<script src="js/directives/ui-fullscreen.js"></script>
-		<script src="js/directives/ui-jq.js"></script>
-		<script src="js/directives/ui-module.js"></script>
-		<script src="js/directives/ui-nav.js"></script>
-		<script src="js/directives/ui-scroll.js"></script>
-		<script src="js/directives/ui-shift.js"></script>
-		<script src="js/directives/ui-toggleclass.js"></script>
-		<script src="js/directives/ui-validate.js"></script>
-		<script src="js/controllers/bootstrap.js"></script>
-		<script src="js/controllers/bootbox.js"></script>
-		
-		<!-- <script src="js/controllers/ng-file-upload.min.js"></script> -->
-		<script src="js/ace_editor/ace.js"></script>
-		<!-- Lazy loading -->
-		<!-- 修改默认rest api -->
-		<script src="js/app/res.js"></script>
-		<!-- 修改默认rest api end -->
-		<!-- 登录拦截 -->
-		<script src="js/app/auth.js"></script>
-		<!-- 登录拦截  end -->
-		<!-- AJAX 时间差 -->
-		<script src="js/app/timediff.js"></script>
-		<!-- AJAX 时间差 end -->
-		<!-- 全局参数-->
-		<script src="js/app/global.js"></script>
-		<!-- 全局参数  end -->
-		<!-- 确认MODAL框-->
-		<script src="js/app/modal.js"></script>
-		<!-- 确认MODAL框 end -->
-		<!-- 机构模态框-->
-		<script src="js/app/org_modal_serv.js"></script>
-		<script src="js/app/org_modal.js"></script>
-		<!-- 机构模态框 end -->
-		<script src="../assets/modules/angular-bootstrap-nav-tree/abn_tree_directive.js"></script>
-		<script src="../assets/jquery/toastr/toastr.min.js"></script>
-		
-		<script src="js/directives/echart.js"></script>
-		<script src="js/directives/custom/accordion.js"></script>
-		
-		<!-- notebook -->
-		<script src="../assets/notebook/js/jquery.notebook.js"></script>
-		
-		<!-- ckeditor -->
-		<script src="../assets/ckeditor/fix.js"></script>
-		<script src="../assets/ckeditor/ckeditor.js"></script>
-		<script src="../assets/ckeditor//ng-ckeditor.js"></script>
-		
-	</body>
+	<!-- Angular -->
+	<script src="../assets/angular/angular.js"></script>
+
+	<script src="../assets/angular/angular-animate/angular-animate.js"></script>
+	<script src="../assets/angular/angular-cookies/angular-cookies.js"></script>
+	<script src="../assets/angular/angular-resource/angular-resource.js"></script>
+	<script src="../assets/angular/angular-sanitize/angular-sanitize.js"></script>
+	<script src="../assets/angular/angular-touch/angular-touch.js"></script>
+	<!-- ../assets -->
+	<script
+		src="../assets/modules/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js"></script>
+	<script
+		src="../assets/modules/bootstrap-datetimepicker/bootstrap-datetimepicker.zh-CN.js"></script>
+	<script src="../assets/angular/angular-ui-router/angular-ui-router.js"></script>
+	<script src="../assets/angular/ngstorage/ngStorage.js"></script>
+
+	<!-- bootstrap -->
+	<script src="../assets/angular/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+	<script src="../assets/jquery/bootstrap.js"></script>
+	<!-- lazyload -->
+	<script src="../assets/angular/oclazyload/ocLazyLoad.js"></script>
+	<!-- translate -->
+	<script src="../assets/angular/angular-translate/angular-translate.js"></script>
+	<script
+		src="../assets/angular/angular-translate/loader-static-files.js"></script>
+	<script src="../assets/angular/angular-translate/storage-cookie.js"></script>
+	<script src="../assets/angular/angular-translate/storage-local.js"></script>
+	<!-- toaster -->
+	<script src="../assets/modules/angularjs-toaster/toaster.js"></script>
+	<!-- echarts -->
+	<script src="../assets/echarts/echarts-all.js"></script>
+	<!-- color-picker -->
+	<script src="../assets/color-picker/dist/color-picker.min.js"></script>
+
+	<script src="../assets/ng-file-upload/dist/ng-file-upload-all.js"></script>
+
+	<!-- toaster end -->
+	<!-- App -->
+	<script src="js/app.js"></script>
+	<script src="js/config.js"></script>
+	<script src="js/config.lazyload.js"></script>
+	<script src="js/config.router.js"></script>
+	<script src="js/main.js"></script>
+	<script src="js/services/ui-load.js"></script>
+	<script src="js/filters/fromNow.js"></script>
+	<script src="js/directives/setnganimate.js"></script>
+	<script src="js/directives/ui-butterbar.js"></script>
+	<script src="js/directives/ui-focus.js"></script>
+	<script src="js/directives/ui-fullscreen.js"></script>
+	<script src="js/directives/ui-jq.js"></script>
+	<script src="js/directives/ui-module.js"></script>
+	<script src="js/directives/ui-nav.js"></script>
+	<script src="js/directives/ui-scroll.js"></script>
+	<script src="js/directives/ui-shift.js"></script>
+	<script src="js/directives/ui-toggleclass.js"></script>
+	<script src="js/directives/ui-validate.js"></script>
+	<script src="js/controllers/bootstrap.js"></script>
+	<script src="js/controllers/bootbox.js"></script>
+
+	<!-- <script src="js/controllers/ng-file-upload.min.js"></script> -->
+	<script src="js/ace_editor/ace.js"></script>
+	<!-- Lazy loading -->
+	<!-- 修改默认rest api -->
+	<script src="js/app/res.js"></script>
+	<!-- 修改默认rest api end -->
+	<!-- 登录拦截 -->
+	<script src="js/app/auth.js"></script>
+	<!-- 登录拦截  end -->
+	<!-- AJAX 时间差 -->
+	<script src="js/app/timediff.js"></script>
+	<!-- AJAX 时间差 end -->
+	<!-- 全局参数-->
+	<script src="js/app/global.js"></script>
+	<!-- 全局参数  end -->
+	<!-- 确认MODAL框-->
+	<script src="js/app/modal.js"></script>
+	<!-- 确认MODAL框 end -->
+	<!-- 机构模态框-->
+	<script src="js/app/org_modal_serv.js"></script>
+	<script src="js/app/org_modal.js"></script>
+	<!-- 机构模态框 end -->
+	<script src="../assets/modules/angular-bootstrap-nav-tree/abn_tree_directive.js"></script>
+
+	<script src="../assets/jquery/toastr/toastr.min.js"></script>
+
+	<script src="js/directives/echart.js"></script>
+	<script src="js/directives/custom/accordion.js"></script>
+
+	<!-- notebook -->
+	<script src="../assets/notebook/js/jquery.notebook.js"></script>
+
+	<!-- ckeditor -->
+	<script src="../assets/ckeditor/fix.js"></script>
+	<script src="../assets/ckeditor/ckeditor.js"></script>
+	<script src="../assets/ckeditor//ng-ckeditor.js"></script>
+
+</body>
 </html>

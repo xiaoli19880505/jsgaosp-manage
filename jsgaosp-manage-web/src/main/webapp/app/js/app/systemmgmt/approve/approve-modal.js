@@ -14,15 +14,8 @@ app.controller('ModalApproveCtrl', ['$scope', '$modalInstance','$http', 'items',
         $scope.title = '编辑应用申请';
     }
 	
-	$scope.status= [{
-		"text":"通过",
-		"code":"03"
-	},{
-		"text":"不通过",
-		"code":"04"
-	}];
 	
-	$scope.selectedStatus=$scope.status[1];
+
 	
 	$scope.updateApprove=function(){
 		BcSysApproveService.updateApprove($scope.approves,$sessionStorage.user.userId).then(function(data){
@@ -53,5 +46,19 @@ app.controller('ModalApproveCtrl', ['$scope', '$modalInstance','$http', 'items',
     $scope.cancel = function () {
         $modalInstance.dismiss('cancel');
 	};
+	
+	$scope.approves.status= "";
+	$scope.approvesStatusList= [];
+	
+	//获得应用审核状态
+    $scope.getAccessType=function () {
+		$http.get('/common/list_code?codeSortKey=approves_status').success(function(data){
+			if (data.code=="10000") {
+				$scope.approvesStatusList=data.data;
+
+			}
+		})
+	}
+    $scope.getAccessType();
 	
 }]);

@@ -3,8 +3,8 @@
 /* Controllers */
 // hospital_people controller
 app.controller('SystemSysApplicationManagerController',
-		['$scope', '$http', '$state', '$modal', '$stateParams', '$timeout', 'modalServ','BcSysApplicationService', 'GG',
-           function ($scope, $http, $state, $modal, $stateParams,$timeout, modalServ,BcSysApplicationService,GG) {
+		['$scope', '$http', '$state', '$modal', '$stateParams', '$timeout', 'modalServ','BcSysApplicationService', 'GG','$sessionStorage',
+           function ($scope, $http, $state, $modal, $stateParams,$timeout, modalServ,BcSysApplicationService,GG,$sessionStorage) {
 	
 	$scope.totalItems = 100;
     $scope.currentPage = 1;
@@ -15,7 +15,7 @@ app.controller('SystemSysApplicationManagerController',
     $scope.GGsysadmin = GG.sysadmin;
     
     $scope.loadSysApplications=function(){
-    	BcSysApplicationService.listApplications($scope.currentPage,$scope.keyword).then(function(res){
+    	BcSysApplicationService.listApplications($scope.currentPage,$scope.keyword,$sessionStorage.user.userId).then(function(res){
 			console.log(res)
     		$scope.sysapplications=res.data.list;
     		$scope.totalItems=res.data.totalCount;
