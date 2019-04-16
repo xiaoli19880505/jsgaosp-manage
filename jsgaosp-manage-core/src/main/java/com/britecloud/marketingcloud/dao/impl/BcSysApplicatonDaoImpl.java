@@ -45,7 +45,7 @@ public class BcSysApplicatonDaoImpl extends BaseJdbcDao implements BcSysApplicat
 		args.setId(UUIDUtils.generateUUID());
 		args.setStatus("02");
 		Date date = new Date(); 
-		DateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss"); 
+		DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
 		args.setCreateDate(format.format(date));
 		String sql = loadSQL("saveSysApplication");
 		SqlParameterSource parameters = new BeanPropertySqlParameterSource(args);
@@ -61,6 +61,9 @@ public class BcSysApplicatonDaoImpl extends BaseJdbcDao implements BcSysApplicat
 
 	@Override
 	public void updateSysApplication(BcSysApplicationEntity args) {
+		Date date = new Date(); 
+		DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
+		args.setApprovalDate(format.format(date));
 		String sql = loadSQL("updateSysApplication");
 		SqlParameterSource parameters = new BeanPropertySqlParameterSource(args);
 		getNamedParameterJdbcTemplate().update(sql, parameters);

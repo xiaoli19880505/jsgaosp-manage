@@ -38,7 +38,7 @@
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">审批结果:<span style="color:red;">*</span></label>
-                    <select  ng-model="approves.status" ng-init="selectedStatus"  ng-options="x.code as x.text for x in status">
+                    <select  ng-model="approves.status" ng-init="approves.status ='通过' "  ng-options="x.code as x.text for x in status">
                   
                     </select>
                 </div>

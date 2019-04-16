@@ -3,19 +3,19 @@
 /* Controllers */
 // hospital_people controller
 app.controller('SystemSysApproveController',
-		['$scope', '$http', '$state', '$modal', '$stateParams', '$timeout', 'modalServ','BcSysApproveService', 'GG',
-           function ($scope, $http, $state, $modal, $stateParams,$timeout, modalServ,BcSysApproveService,GG) {
+		['$scope', '$http', '$state', '$modal', '$stateParams', '$timeout', 'modalServ','BcSysApproveService', 'GG','$sessionStorage',
+           function ($scope, $http, $state, $modal, $stateParams,$timeout, modalServ,BcSysApproveService,GG,$sessionStorage) {
 	
 	$scope.totalItems = 100;
     $scope.currentPage = 1;
     $scope.maxSize = 5;
     $scope.keyword="";
-    
+    $scope.userId = $sessionStorage.user.userId;
     $scope.GGuser = GG.user;
     $scope.GGsysadmin = GG.sysadmin;
     
     $scope.loadSysApplroves=function(){
-    	BcSysApproveService.listApproves($scope.currentPage,$scope.keyword).then(function(res){
+    	BcSysApproveService.listApproves($scope.currentPage,$scope.keyword,$scope.userId).then(function(res){
 			console.log(res)
     		$scope.approves=res.data.list;
     		$scope.totalItems=res.data.totalCount;

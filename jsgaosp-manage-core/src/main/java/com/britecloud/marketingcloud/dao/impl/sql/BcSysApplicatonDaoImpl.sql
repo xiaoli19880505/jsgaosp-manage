@@ -19,7 +19,7 @@ SELECT id as id,
        bl_type as bl_type
   FROM bc_declare_app
 where (app_name like '%'||:keyword||'%' 
-or sys_id like '%'||:keyword||'%')
+or sys_id like '%'||:keyword||'%') and create_user_id =:userId;
 
 --------------------------------------------
 --saveSysApplication
@@ -41,7 +41,7 @@ status=:status,
 approval_opinion=:approvalOpinion,
 create_date=:createDate,
 create_user_id=:createUserId,
-approval_date=:approvalDate,
+approval_date=to_date(:approvalDate,'yyyy-MM-dd HH24:mi:ss'),
 approval_user_id=:approvalUserId,
 bl_type=:blType
 where id=:Id;

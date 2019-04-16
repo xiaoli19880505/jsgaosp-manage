@@ -34,8 +34,6 @@
 							<th>应用名称</th>
 							<th>应用状态</th>
 							<th>审批意见</th>
-							<th>提交时间</th>
-							<th>提交人</th>
 							<th>操作</th>
 						</tr>
 					</thead>
@@ -48,8 +46,6 @@
 						<td>{{approve.appName}}</td>
 						<td>{{approve.status}}</td>
 						<td>{{approve.approvalOpinion}}</td>
-						<td>{{approve.approvalDate}}</td>
-						<td>{{approve.approvalUserId}}</td>
 						<td><a class="fa fa-pencil fa-fw m-r-xs" title="审批"
 							ng-click="open('','update',$index)"></a><!--  <a
 							class="fa fa-times fa-fw" title="删除"

@@ -34,8 +34,7 @@
 							<th>应用名称</th>
 							<th>应用状态</th>
 							<th>审批意见</th>
-							<th>创建时间</th>
-							<th>创建人</th>
+							<th>申请时间</th>
 							<th>操作</th>
 						</tr>
 					</thead>
@@ -49,7 +48,6 @@
 						<td>{{applications.status}}</td>
 						<td>{{applications.approvalOpinion}}</td>
 						<td>{{applications.createDate}}</td>
-						<td>{{applications.createUserId}}</td>
 						<td><a class="fa fa-pencil fa-fw m-r-xs" title="修改"
 							ng-click="open('','update',$index)"></a> <a
 							class="fa fa-times fa-fw" title="删除"
