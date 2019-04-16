@@ -10,6 +10,9 @@ package com.britecloud.marketingcloud.service.impl;
 
 import java.util.Map;
 
+import com.britecloud.marketingcloud.dao.BcLogDao;
+import com.britecloud.marketingcloud.model.BcLoginLog;
+import com.britecloud.marketingcloud.utils.DateUtils;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,6 +31,9 @@ public class SysUserMgmtServiceImpl implements SysUserMgmtService {
 
     @Autowired
     private SysUserJdbcDao sysUserJdbcDao;
+
+    @Autowired
+    private BcLogDao bcLogDao;
 
     public void setUserJdbcDao(SysUserJdbcDaoImpl sysUserJdbcDao) {
         this.sysUserJdbcDao = sysUserJdbcDao;
@@ -61,8 +67,18 @@ public class SysUserMgmtServiceImpl implements SysUserMgmtService {
         if (StringUtils.isNotBlank(email) && StringUtils.isNotBlank(passwd)) {
         	BcUser user = sysUserJdbcDao.getUserByEmail(email);
             if (user != null)
-                if (user.getUserPwd().equals(passwd))
+                if (user.getUserPwd().equals(passwd)) {
+                    //保存登录日志
+                    BcLoginLog loginLog = new BcLoginLog();
+                    loginLog.setType("System");
+                    loginLog.setTitle("用户登录");
+                    loginLog.setContent(String.format("登录用户名：%s,userid:%s", user.getUserEmail(),user.getUserId()));
+                    String time = DateUtils.currentDateToString(DateUtils.DEFAULT_DATETIME_FORMAT);
+                    loginLog.setTriggerTime(time);
+                    loginLog.setSource(user.getUserEmail());
+                    bcLogDao.saveLoginLog(loginLog);
                     return user;
+                }
         }
         return null;
     }
