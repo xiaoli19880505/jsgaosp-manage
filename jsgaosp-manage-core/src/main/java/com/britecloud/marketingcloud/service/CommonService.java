@@ -1,6 +1,8 @@
 package com.britecloud.marketingcloud.service;
 
 import com.alibaba.fastjson.JSONArray;
+import com.britecloud.marketingcloud.model.BcCode;
+import com.britecloud.marketingcloud.model.BcCodeSort;
 
 import java.util.List;
 import java.util.Map;
@@ -25,4 +27,6 @@ public interface CommonService {
      * @return
      */
     public JSONArray getJSONArray(String tableName, String pColName, String colName, String pColValue) throws Exception;
+
+    List<BcCode> getCodeList(BcCodeSort codeSort);
 }

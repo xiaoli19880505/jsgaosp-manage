@@ -1,5 +1,7 @@
 package com.britecloud.marketingcloud.dao;
 
+import com.britecloud.marketingcloud.model.BcCode;
+
 import java.util.List;
 import java.util.Map;
 
@@ -13,4 +15,6 @@ public interface CommonDao {
      * @return
      */
     List<Map<String,Object>> getList(String tableName,String pColName,String pColValue);
+
+
 }

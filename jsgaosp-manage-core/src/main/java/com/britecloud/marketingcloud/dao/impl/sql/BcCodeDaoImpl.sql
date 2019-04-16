@@ -35,3 +35,12 @@ delete from BC_CODE where CODE_ID=:codeId;
 --------------------------------------------
 --getCodeSortById
 SELECT * from BC_CODE_SORT where CODE_SORT_ID =:codeSortId
+
+--------------------------------------------
+--getCodeList
+SELECT *
+FROM BC_CODE C
+WHERE C.CODE_SORT_ID =
+      (SELECT S.CODE_SORT_ID
+       FROM BC_CODE_SORT S
+       WHERE S.CODE_SORT_KEY = :codeSortKey);
