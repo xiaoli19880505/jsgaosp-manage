@@ -62,6 +62,9 @@ public class BcSysApproveDaoImpl extends BaseJdbcDao implements BcSysApproveDao 
 
 	@Override
 	public void updateApprove(BcSysApplicationEntity args) {
+		Date date = new Date(); 
+		DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
+		args.setApprovalDate(format.format(date));
 		String sql = loadSQL("updateApprove");
 		SqlParameterSource parameters = new BeanPropertySqlParameterSource(args);
 		getNamedParameterJdbcTemplate().update(sql, parameters);

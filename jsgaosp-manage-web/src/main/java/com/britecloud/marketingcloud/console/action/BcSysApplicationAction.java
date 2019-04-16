@@ -13,9 +13,12 @@ import com.alibaba.fastjson.JSONObject;
 import com.britecloud.marketingcloud.console.common.ResponseResult;
 import com.britecloud.marketingcloud.console.util.HuStringUtils;
 import com.britecloud.marketingcloud.console.util.ResultUtil;
+import com.britecloud.marketingcloud.core.security.ClientSession;
+import com.britecloud.marketingcloud.core.security.ClientSessionHolder;
 import com.britecloud.marketingcloud.domain.PageDataResult;
 import com.britecloud.marketingcloud.model.BcSysApplicationEntity;
 import com.britecloud.marketingcloud.model.BcSysArgs;
+import com.britecloud.marketingcloud.model.BcUser;
 import com.britecloud.marketingcloud.service.BcSysApplicationService;
 import com.britecloud.marketingcloud.service.BcSysArgsService;
 import com.britecloud.marketingcloud.utils.StringUtils;
@@ -38,12 +41,13 @@ public class BcSysApplicationAction {
      */
     @RequestMapping(value = "/list_applications", method = RequestMethod.GET)
     @ResponseBody
-    public ResponseResult listSysargs(Integer currentPage, String keyword) throws Exception {
+    public ResponseResult listSysargs(Integer currentPage, String keyword,String userId) throws Exception {
         JSONObject jo = new JSONObject();
         keyword = HuStringUtils.nvl(keyword);
         Map params = new HashMap();
         params.put("keyword", keyword);
         params.put("page", currentPage);
+        params.put("userId", userId);
         PageDataResult result = BcSysApplicationService.listSysApplications(params);
         result.setPage(currentPage);
 
@@ -89,8 +93,9 @@ public class BcSysApplicationAction {
 
     @RequestMapping( method = RequestMethod.DELETE)
     @ResponseBody
-    public ResponseResult deleteSysargs(BcSysApplicationEntity args){
+    public ResponseResult deleteSysargs(BcSysApplicationEntity args,String userId){
         if(args != null && StringUtils.isNotEmpty(args.getId())){
+        	args.setApprovalUserId(userId);
         	BcSysApplicationService.deleteSysApplication(args);
             return ResultUtil.success();
         }

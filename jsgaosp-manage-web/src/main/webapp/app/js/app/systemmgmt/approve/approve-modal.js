@@ -3,8 +3,8 @@
 /* Controllers */
 // hospital_people_modal controller
 
-app.controller('ModalApproveCtrl', ['$scope', '$modalInstance','$http', 'items','BcSysApproveService',  
-	function ($scope, $modalInstance,$http, items,BcSysApproveService) {
+app.controller('ModalApproveCtrl', ['$scope', '$modalInstance','$http', 'items','BcSysApproveService','$sessionStorage',
+	function ($scope, $modalInstance,$http, items,BcSysApproveService,$sessionStorage) {
 
 	$scope.approves=items[1];
 	$scope.flag=items[0]=="add";
@@ -25,7 +25,7 @@ app.controller('ModalApproveCtrl', ['$scope', '$modalInstance','$http', 'items',
 	$scope.selectedStatus=$scope.status[1];
 	
 	$scope.updateApprove=function(){
-		BcSysApproveService.updateApprove($scope.approves).then(function(data){
+		BcSysApproveService.updateApprove($scope.approves,$sessionStorage.user.userId).then(function(data){
 			if(data.code == "10000"){
 				toastr.success('审批成功！');
 				 $("#toast-container").css("left", "46%");
