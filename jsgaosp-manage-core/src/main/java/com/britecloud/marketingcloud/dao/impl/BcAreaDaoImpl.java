@@ -82,16 +82,13 @@ public class BcAreaDaoImpl extends BaseJdbcDao implements BcAreaDao {
 	}
 
 	@Override
-	public BcArea getAreaByAreaNo(String areaNo) {
+	public Map<String,Object> getAreaByAreaNo(String areaNo) {
 		String sql = loadSQL("getAreaByAreaNo");
 		Map paramMap = new HashMap();
 		paramMap.put("areaNo", areaNo);
-		List<BcArea> list = getNamedParameterJdbcTemplate().query(sql, paramMap,
-				new BeanPropertyRowMapper(BcArea.class));
-		if (list == null || list.isEmpty()) {
-			return null;
-		}
-		return list.iterator().next();
+		Map<String,Object> objectMap = getNamedParameterJdbcTemplate().queryForMap(sql, paramMap);
+
+		return objectMap;
 	}
 
 }

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class BcAreaServiceImpl implements BcAreaService {
@@ -40,7 +41,7 @@ public class BcAreaServiceImpl implements BcAreaService {
     }
 
     @Override
-    public BcArea getAreaByAreaNo(String areaNo) {
+    public Map<String,Object> getAreaByAreaNo(String areaNo) {
         return bcAreaDao.getAreaByAreaNo(areaNo);
     }
 
