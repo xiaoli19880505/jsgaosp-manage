@@ -14,7 +14,8 @@ angular.module('app').factory('BcSysApproveService', ['res', 'GG',
                 }).$promise;
             }
             ,
-            updateApprove: function (approves) {
+            updateApprove: function (approves,userId) {
+            	approves.approvalUserId=userId;
                 return res.update(approves).$promise;
             },
             deleteApplications: function (Id) {

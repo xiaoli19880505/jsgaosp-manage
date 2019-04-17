@@ -9,11 +9,11 @@
 	<div class="wrapper-md ng-scope">
 		<div class="panel panel-default">
 			<div class="row wrapper">
-				<div class="col-sm-5 m-b-xs">
+				 <div class="col-sm-5 m-b-xs">
 					<button type="button" ng-click="open('','add',null)"
 						class="btn btn-sm btn-info">新增</button>
-				</div>
-				<div class="col-sm-4"></div>
+				</div> 
+				
 				<div class="col-sm-3">
 					<div class="input-group">
 						<input type="text" class="input-sm form-control"
@@ -30,12 +30,13 @@
 					<thead>
 						<tr>
 							<th>序号</th>
-							<th>所属系统</th>
 							<th>应用名称</th>
+							<th>系统名称</th>
+							<th>系统类型</th>
+							<th>系统描述</th>
 							<th>应用状态</th>
 							<th>审批意见</th>
 							<th>创建时间</th>
-							<th>创建人</th>
 							<th>操作</th>
 						</tr>
 					</thead>
@@ -44,13 +45,14 @@
 						onmouseout="style.backgroundColor='#FFFFFF'"
 						style="cursor: pointer;">
 						<td>{{$index+1}}</td>
-						<td>{{applications.sysId}}</td>
 						<td>{{applications.appName}}</td>
+						<td>{{applications.sysId}}</td>
+						<td>{{applications.blType}}</td>
+						<td>{{applications.memo}}</td>
 						<td>{{applications.status}}</td>
 						<td>{{applications.approvalOpinion}}</td>
 						<td>{{applications.createDate}}</td>
-						<td>{{applications.createUserId}}</td>
-						<td><a class="fa fa-pencil fa-fw m-r-xs" title="修改"
+						<td><a class="fa fa-pencil fa-fw m-r-xs" title="编辑"
 							ng-click="open('','update',$index)"></a> <a
 							class="fa fa-times fa-fw" title="删除"
 							ng-click="deleteApplication(applications.id,applications.appName)"></a>
