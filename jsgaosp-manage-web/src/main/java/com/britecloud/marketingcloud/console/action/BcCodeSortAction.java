@@ -2,6 +2,7 @@ package com.britecloud.marketingcloud.console.action;
 
 import com.alibaba.fastjson.JSONObject;
 import com.britecloud.marketingcloud.console.common.ResponseResult;
+import com.britecloud.marketingcloud.console.configuration.OperationLogAnn;
 import com.britecloud.marketingcloud.console.util.HuStringUtils;
 import com.britecloud.marketingcloud.console.util.ResultUtil;
 import com.britecloud.marketingcloud.domain.PageDataResult;
@@ -36,6 +37,7 @@ public class BcCodeSortAction {
      * @return
      * @throws Exception
      */
+    @OperationLogAnn(value = "加载数据字典主表列表")
     @RequestMapping(value = "/list_codesort", method = RequestMethod.GET)
     @ResponseBody
     public ResponseResult listCodeSort(Integer currentPage, String keyword) throws Exception {
