@@ -50,6 +50,11 @@ public class BcSysApplicantAction {
         status = HuStringUtils.nvl(status);
         Map params = new HashMap();
         params.put("sysName", sysName);
+
+
+        if("".equals(status)){
+            status=null;
+        }
         params.put("status",status);
         params.put("page", currentPage);
         PageDataResult result = bcThirdPartySysService.listThirdPartySys(params);
@@ -87,7 +92,7 @@ public class BcSysApplicantAction {
         return ResultUtil.error("10001","更新失败！");
     }
 
-    @RequestMapping(value = "/deleteThirdPartySys",method = RequestMethod.DELETE)
+    @RequestMapping(method = RequestMethod.DELETE)
     @ResponseBody
     public ResponseResult deleteSysargs(BcThirdPartySysEntity args){
         if(args != null && StringUtils.isNotEmpty(args.getId())){

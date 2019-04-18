@@ -6,10 +6,11 @@ angular.module('app').factory('ThirdPartySysService', ['res', 'GG',
     function (res, GG) {
         var res = res(GG.BASE + '/thirdPartySysApplicant/:type');
         var service = {
-            listApplications: function (currentPage,keyword) {
+            listApplications: function (currentPage,sysName,status) {
                 return res.get({
                 	currentPage:currentPage,
-                	keyword:keyword,
+                	sysName:sysName,
+                    status:status,
                 	type:'listThirdPartySys'
                 }).$promise;
             }

@@ -168,6 +168,7 @@ angular
 									 'js/app/systemmgmt/application/sys_applicant/applicant-serv.js',
 									 'js/app/systemmgmt/application/sys_applicant/applicant-modal.js'
 
+
 								 ]
 						 },
 			             /***设备管理***/

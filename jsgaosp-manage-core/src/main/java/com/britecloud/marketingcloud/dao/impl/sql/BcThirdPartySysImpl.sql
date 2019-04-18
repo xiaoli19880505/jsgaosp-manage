@@ -1,11 +1,22 @@
 ------------------------------------------
 --listThirdPartySys
-SELECT * FROM BC_DECLARE_SYS  where sys_name like '%'||:sysName||'%' and STATUS =:status
+SELECT s.*,
+       GET_CODE_TEXT('sys_type', s.sys_type) as sys_type_text,
+       GET_CODE_TEXT('status', s.status) as status_type_text,
+       GET_CODE_TEXT('access_type', s.access_type) as access_type_text
+  FROM BC_DECLARE_SYS s
+ where s.sys_name like '%%'
+--<dynamic>
+  --<isNotNull property="status" prepend="AND">
+         STATUS =:status
+  --</isNotNull>
+--</dynamic>
+
 
 --------------------------------------------
 --saveThirdPartySys
-INSERT INTO bc_declare_sys(id,sys_name,area_no,sys_type,sys_url,memo,qr_code,status,approval_opinion,create_date,create_user_id,approval_date,approval_user_id)
-VALUES(:id,:sysName,:areaNo,:sysType,:sysUrl,:memo,:qrCode,:status,:approvalOpinion,:createDate,:createUserId,:approvalDate,:approvalUserId);
+INSERT INTO bc_declare_sys(id,sys_name,area_no,sys_type,sys_url,memo,qr_code,status,approval_opinion,create_date,create_user_id,access_type)
+VALUES(:id,:sysName,:areaNo,:sysType,:sysUrl,:memo,:qrCode,:status,:approvalOpinion,sysdate,:createUserId,:accessType);
 
 --------------------------------------------
 --updateThirdPartySys
@@ -22,6 +33,7 @@ create_date=:createDate,
 create_user_id=:createUserId,
 approval_date=:approvalDate,
 approval_user_id=:approvalUserId,
+access_type=:accessType
 where id=:id;
 
 --------------------------------------------

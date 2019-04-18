@@ -14,7 +14,7 @@ app.controller('ModalSysApplicantInstanceCtrl', ['$scope', '$modalInstance','$ht
 		sysUrl:"",
 		memo:"",
 		qrCode:"",
-		status:"",
+		status:"02",
 		approvalOpinion:"",
 		createDate:"",
 		createUserId:"",
@@ -22,18 +22,40 @@ app.controller('ModalSysApplicantInstanceCtrl', ['$scope', '$modalInstance','$ht
 		approvalUserId:"",
 		accessType:""
 	}
+//用于修改操作时回显区划
+		$scope.getAreaName=function () {
+			$http.get('/common/list_area_json?pAreaNo='+$sessionStorage.user.areaNo).success(function(data){
+				if (data.code=="10000") {
 
-	$scope.applications=items[1];
+					$scope.area_name_show=data.data.area_name;
+				}
+			})
+		}
+
+
+
+		console.log(items);
+		if(items !=undefined){
+
+			$scope.getAreaName();
+			$scope.sysApplicant=items[1];
+		}
+
+
 	$scope.flag=items[0]=="add";
+
+
 	if ($scope.flag) {
         $scope.title = '新增系统申报';
     } else {
         $scope.title = '编辑系统申报';
     }
-	
+
 
 	$scope.addApplications=function(){
-		ThirdPartySysService.createApplications($scope.applications).then(function(data){
+		$scope.sysApplicant.status="02";
+		ThirdPartySysService.createApplications($scope.sysApplicant).then(function(data){
+
 			if(data.code == "10000"){
 				 toastr.success('添加成功！');
 				 $("#toast-container").css("left", "46%");
@@ -47,7 +69,7 @@ app.controller('ModalSysApplicantInstanceCtrl', ['$scope', '$modalInstance','$ht
 	}
 	
 	$scope.updateApplications=function(){
-		ThirdPartySysService.updateApplications($scope.applications).then(function(data){
+		ThirdPartySysService.updateApplications($scope.sysApplicant).then(function(data){
 			if(data.code == "10000"){
 				toastr.success('更新系统申报成功！');
 				 $("#toast-container").css("left", "46%");
@@ -62,8 +84,7 @@ app.controller('ModalSysApplicantInstanceCtrl', ['$scope', '$modalInstance','$ht
 	//表单提交
     $scope.submitForm = function (isValid) {
 
-	    alert($scope.selectedSysTypeId);
-		console.log("isValid:"+isValid);
+		console.log($scope.sysApplicant);
     	$scope.submitted = false;
     	if(isValid){
     		if ($scope.flag) {
@@ -104,14 +125,8 @@ app.controller('ModalSysApplicantInstanceCtrl', ['$scope', '$modalInstance','$ht
 
 		$scope.getArea = function(branch) {
 			_branch = branch;
-
+			$scope.sysApplicant.areaNo=_branch.area_no;
 			$scope.area_no = _branch.area_no;
-
-
-
-
-
-
 			if (branch.area_no!= 0) {
 				$scope.output=_branch.area_name;
 				$scope.areaItem.area_name=_branch.area_name;
@@ -121,15 +136,9 @@ app.controller('ModalSysApplicantInstanceCtrl', ['$scope', '$modalInstance','$ht
 				$scope.areaItem.p_area_no=_branch.p_area_no;
 				$scope.areaItem.children=_branch.children;
 				if(tree.get_parent_branch(branch)!=null){
-
 					$scope.p_area_no = tree.get_parent_branch(branch).area_no;
-
 				}_branch
-
-
 				$scope.parentId=branch.area_no;
-
-
 			}
 		};
 
@@ -154,6 +163,8 @@ app.controller('ModalSysApplicantInstanceCtrl', ['$scope', '$modalInstance','$ht
 
 		$scope.area = [];
 		var tree = $scope.my_tree = {};
+
+
 
 		var tmp=[];
 		/**
@@ -194,6 +205,7 @@ app.controller('ModalSysApplicantInstanceCtrl', ['$scope', '$modalInstance','$ht
 			})
 		}
 
+
 		/**
 		 * 获得系统类型
 		 */
@@ -205,6 +217,8 @@ app.controller('ModalSysApplicantInstanceCtrl', ['$scope', '$modalInstance','$ht
 				}
 			})
 		}
+
+
 		$scope.getSysType();
 		$scope.getAccessType();
 
@@ -214,4 +228,72 @@ app.controller('ModalSysApplicantInstanceCtrl', ['$scope', '$modalInstance','$ht
 			console.log(newValue)
 
 		});
+
+
+
+
+
 	}]);
+
+
+
+app.controller('MyCtrl', ['$scope', 'Upload', function ($scope, Upload) {
+
+	$scope.$watch('file', function (file) {
+		$scope.upload($scope.file);
+	});
+
+
+
+	/* optional: set default directive values */
+//Upload.setDefaults( {ngf-keep:false ngf-accept:'image/*', ...} );
+
+	function cutToBase64(m_this,txtName,prefix){
+		var file = m_this;
+		var URL = window.URL || window.webkitURL;
+		var blob = URL.createObjectURL(file);
+		var base64;
+		var img = new Image();
+		img.src = blob;
+		img.onload = function() {
+			var that = this;
+			var canvas = document.createElement('canvas');
+			var ctx = canvas.getContext('2d');
+			var w = that.width;
+			var h = that.height;
+			$(canvas).attr({
+				width: that.width,
+				height: that.height
+			});
+			ctx.drawImage(that, 0, 0, w, h);
+			// 生成base64            
+			var ext = file.name.substring(file.name.lastIndexOf(".")+1).toLowerCase();
+			base64 = canvas.toDataURL('image/'+ext);
+			$scope.upload(base64,file.name,txtName,prefix);
+		}
+	}
+
+
+	$scope.upload = function (file) {
+		Upload.upload(
+			{
+				headers:{
+					"Access-Control-Allow-Headers":"*",
+					"Content-Type":"application/x-www-form-urlencoded"
+				},
+				url: 'http://192.168.0.86:9002/fileupload/base64Img',
+				file: file
+			})
+			.progress(function (evt) {
+				var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+				console.log('progress: ' + progressPercentage + '% ' + evt.config.file.name);
+			})
+			.success(function (data, status, headers, config) {
+				console.log('file ' + config.file.name + 'uploaded. Response: ' + data);
+			})
+			.error(function (data, status, headers, config) {
+				console.log('error status: ' + status);
+			})
+		};
+
+}]);

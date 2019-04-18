@@ -1,11 +1,9 @@
 package com.britecloud.marketingcloud.service.impl;
 
-import com.britecloud.marketingcloud.dao.BcSysApplicatonDao;
 import com.britecloud.marketingcloud.dao.BcThirdPartySysDao;
 import com.britecloud.marketingcloud.domain.PageDataResult;
-import com.britecloud.marketingcloud.model.BcSysApplicationEntity;
 import com.britecloud.marketingcloud.model.BcThirdPartySysEntity;
-import com.britecloud.marketingcloud.service.BcSysApplicationService;
+import com.britecloud.marketingcloud.model.expand.BcThirdPartySysEntityExpand;
 import com.britecloud.marketingcloud.service.BcThirdPartySysService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,7 +18,7 @@ public class BcThirdPartySysServiceImpl implements BcThirdPartySysService {
 
 
 	@Override
-	public PageDataResult<BcThirdPartySysEntity> listThirdPartySys(Map params) {
+	public PageDataResult<BcThirdPartySysEntityExpand> listThirdPartySys(Map params) {
 		return bcThirdPartySysDao.listThirdPartySys(params);
 	}
 

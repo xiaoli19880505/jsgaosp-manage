@@ -20,5 +20,6 @@ public class BcThirdPartySysEntity {
 	private String createUserId;
 	private Date approvalDate;
 	private String approvalUserId;
+	private String accessType;
 
 }

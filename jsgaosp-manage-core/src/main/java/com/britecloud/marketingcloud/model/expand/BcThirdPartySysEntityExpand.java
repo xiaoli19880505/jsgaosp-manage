@@ -1,0 +1,27 @@
+package com.britecloud.marketingcloud.model.expand;
+
+import lombok.Data;
+
+import java.util.Date;
+@Data
+public class BcThirdPartySysEntityExpand {
+    private String id;
+    private String sysName;
+    private String areaNo;
+    private String sysType;
+    private String sysUrl;
+    private String memo;
+    private String qrCode;
+    private String status;
+    private String approvalOpinion;
+    private Date createDate;
+    private String createUserId;
+    private Date approvalDate;
+    private String approvalUserId;
+    private String accessType;
+
+    private String accessTypeText;
+    private String sysTypeText;
+    private String statusTypeText;
+
+}

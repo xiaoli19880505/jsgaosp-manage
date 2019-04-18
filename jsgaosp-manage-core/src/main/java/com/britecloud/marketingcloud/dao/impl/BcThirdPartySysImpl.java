@@ -1,11 +1,10 @@
 package com.britecloud.marketingcloud.dao.impl;
 
 import com.britecloud.marketingcloud.core.dao.jdbc.BaseJdbcDao;
-import com.britecloud.marketingcloud.dao.BcSysApplicatonDao;
 import com.britecloud.marketingcloud.dao.BcThirdPartySysDao;
 import com.britecloud.marketingcloud.domain.PageDataResult;
-import com.britecloud.marketingcloud.model.BcSysApplicationEntity;
 import com.britecloud.marketingcloud.model.BcThirdPartySysEntity;
+import com.britecloud.marketingcloud.model.expand.BcThirdPartySysEntityExpand;
 import com.britecloud.marketingcloud.utils.PageUtils;
 import com.britecloud.marketingcloud.utils.UUIDUtils;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -21,8 +20,8 @@ public class BcThirdPartySysImpl extends BaseJdbcDao implements BcThirdPartySysD
 
 
 	@Override
-	public PageDataResult<BcThirdPartySysEntity> listThirdPartySys(Map params) {
-		PageDataResult<BcThirdPartySysEntity> pageData = new PageDataResult<BcThirdPartySysEntity>();
+	public PageDataResult<BcThirdPartySysEntityExpand> listThirdPartySys(Map params) {
+		PageDataResult<BcThirdPartySysEntityExpand> pageData = new PageDataResult<BcThirdPartySysEntityExpand>();
 
 		String sql = loadSQL("listThirdPartySys", params);
 		Integer totalCount = getNamedParameterJdbcTemplate().queryForInt(getTotalCountString(sql), params);
@@ -30,8 +29,8 @@ public class BcThirdPartySysImpl extends BaseJdbcDao implements BcThirdPartySysD
 		pageData.setTotalPage(PageUtils.getTotalPage(totalCount));
 
 		sql = getPaginationString(sql, PageUtils.getStartNum((Integer) params.get("page")), PageUtils.pageSize);
-		List<BcThirdPartySysEntity> list = getNamedParameterJdbcTemplate().query(sql, params,
-				new BeanPropertyRowMapper(BcThirdPartySysEntity.class));
+		List<BcThirdPartySysEntityExpand> list = getNamedParameterJdbcTemplate().query(sql, params,
+				new BeanPropertyRowMapper(BcThirdPartySysEntityExpand.class));
 		pageData.setList(list);
 		return pageData;
 	}
@@ -60,7 +59,7 @@ public class BcThirdPartySysImpl extends BaseJdbcDao implements BcThirdPartySysD
 
 	@Override
 	public void deleteThirdPartySys(BcThirdPartySysEntity args) {
-		String sql = loadSQL("deleteSysApplication");
+		String sql = loadSQL("deleteThirdPartySys");
 		SqlParameterSource parameters = new BeanPropertySqlParameterSource(args);
 		getNamedParameterJdbcTemplate().update(sql, parameters);
 	}
