@@ -59,6 +59,7 @@ public class BcCodeSortAction {
      * @return
      * @throws Exception
      */
+    @OperationLogAnn(value = "根据主键加载数据字典")
     @RequestMapping(value = "/get_codesort", method = RequestMethod.GET)
     @ResponseBody
     public ResponseResult getCodeSortById(BcCodeSort codeSort) throws Exception {
@@ -78,6 +79,7 @@ public class BcCodeSortAction {
         return ResultUtil.error("10001","保存失败！");
     }
 
+    @OperationLogAnn(value = "更新数据字典")
     @RequestMapping(method = RequestMethod.PUT)
     @ResponseBody
     public ResponseResult updateCodeSort(BcCodeSort codeSort){
@@ -88,6 +90,7 @@ public class BcCodeSortAction {
         return ResultUtil.error("10001","更新失败！");
     }
 
+    @OperationLogAnn(value = "删除数据字典")
     @RequestMapping( method = RequestMethod.DELETE)
     @ResponseBody
     public ResponseResult deleteCodeSort(BcCodeSort codeSort){

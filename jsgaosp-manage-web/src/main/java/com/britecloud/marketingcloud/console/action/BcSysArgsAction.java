@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.britecloud.marketingcloud.console.common.ResponseResult;
+import com.britecloud.marketingcloud.console.configuration.OperationLogAnn;
 import com.britecloud.marketingcloud.console.util.HuStringUtils;
 import com.britecloud.marketingcloud.console.util.ResultUtil;
 import com.britecloud.marketingcloud.domain.PageDataResult;
@@ -39,6 +40,7 @@ public class BcSysArgsAction {
      * @return
      * @throws Exception
      */
+    @OperationLogAnn(value = "加载系统参数列表")
     @RequestMapping(value = "/list_sysargs", method = RequestMethod.GET)
     @ResponseBody
     public ResponseResult listSysargs(Integer currentPage, String keyword) throws Exception {
@@ -53,6 +55,7 @@ public class BcSysArgsAction {
         return ResultUtil.success(result);
     }
 
+    @OperationLogAnn(value = "根据主键获取系统参数")
     @RequestMapping(value = "/get_sysargs", method = RequestMethod.GET)
     @ResponseBody
     public BcSysArgs getSysargsById(BcSysArgs args){
@@ -62,6 +65,7 @@ public class BcSysArgsAction {
         return new BcSysArgs();
     }
 
+    @OperationLogAnn(value = "保存系统参数")
     @RequestMapping(method = RequestMethod.POST)
     @ResponseBody
     public ResponseResult saveSysargs(BcSysArgs args){
@@ -80,6 +84,7 @@ public class BcSysArgsAction {
         return ResultUtil.error("10001","保存失败！");
     }
 
+    @OperationLogAnn(value = "修改系统参数")
     @RequestMapping(method = RequestMethod.PUT)
     @ResponseBody
     public ResponseResult updateSysargs(BcSysArgs args){
@@ -90,6 +95,7 @@ public class BcSysArgsAction {
         return ResultUtil.error("10001","更新失败！");
     }
 
+    @OperationLogAnn(value = "删除系统参数")
     @RequestMapping( method = RequestMethod.DELETE)
     @ResponseBody
     public ResponseResult deleteSysargs(BcSysArgs args){

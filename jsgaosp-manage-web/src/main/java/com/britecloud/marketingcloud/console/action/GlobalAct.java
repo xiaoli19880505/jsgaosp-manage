@@ -45,7 +45,7 @@ public class GlobalAct {
 	private SysCompanyMgmtService sysCompanyService;
     @Autowired
     private SysRoleUserMgmtService sysRoleUserMgmtService;
-    
+
 	@RequestMapping(value = "/global/in", method = RequestMethod.POST)
 	@ResponseBody
 	public String login(HttpServletRequest request) throws Exception {
