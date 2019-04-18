@@ -58,6 +58,8 @@ app.controller('ModalSysApplicationsInstanceCtrl', ['$scope', '$modalInstance','
     	}
         
     };
+    
+
 
     $scope.cancel = function () {
         $modalInstance.dismiss('cancel');

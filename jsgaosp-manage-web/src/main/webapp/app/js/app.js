@@ -16,7 +16,6 @@ angular.module('app', [
     'oc.lazyLoad',
     'pascalprecht.translate',
     'angularBootstrapNavTree',
-    'angularBootstrapNavTree2',
     'toaster',
     'myaccordion',
     'ngFileUpload',

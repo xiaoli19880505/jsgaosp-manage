@@ -2,6 +2,7 @@ package com.britecloud.marketingcloud.service.impl;
 
 import com.britecloud.marketingcloud.dao.BcLogDao;
 import com.britecloud.marketingcloud.model.BcLoginLog;
+import com.britecloud.marketingcloud.model.OperationLog;
 import com.britecloud.marketingcloud.service.BcLogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,5 +25,10 @@ public class BcLogServiceImpl implements BcLogService{
     @Override
     public void saveLoginLog(BcLoginLog loginLog) {
         bcLogDao.saveLoginLog(loginLog);
+    }
+
+    @Override
+    public void saveOperationLog(OperationLog operationLog) {
+        bcLogDao.saveOperationLog(operationLog);
     }
 }
