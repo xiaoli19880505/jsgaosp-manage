@@ -17,4 +17,6 @@ public interface BcThirdPartySysDao {
 	void updateThirdPartySys(BcThirdPartySysEntity args);
 	
 	void deleteThirdPartySys(BcThirdPartySysEntity args);
+
+	void approveSysAppliant(BcThirdPartySysEntity args);
 }

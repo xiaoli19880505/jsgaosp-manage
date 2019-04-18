@@ -3,6 +3,8 @@ package com.britecloud.marketingcloud.console.action;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.britecloud.marketingcloud.console.common.ResponseResult;
+import com.britecloud.marketingcloud.console.configuration.OperationLogAnn;
+import com.britecloud.marketingcloud.console.util.DateUtils;
 import com.britecloud.marketingcloud.console.util.HuStringUtils;
 import com.britecloud.marketingcloud.console.util.ResultUtil;
 import com.britecloud.marketingcloud.domain.PageDataResult;
@@ -36,22 +38,42 @@ public class BcSysApplicantAction {
     @Autowired
     private CommonService commonService;
 
-    /**
-     *
-     * @param
-     * @return
-     * @throws Exception
-     */
+
+    @OperationLogAnn(value = "业务人员获得自己申报的应用系统列表")
     @RequestMapping(value = "listThirdPartySys",method = RequestMethod.GET)
     @ResponseBody
-    public ResponseResult listarea(Integer currentPage,String sysName,String status) throws Exception {
+    public ResponseResult listSysApplicantbyOwner(Integer currentPage,String sysName,String status,String createUserId) throws Exception {
         JSONObject jo = new JSONObject();
         sysName = HuStringUtils.nvl(sysName);
         status = HuStringUtils.nvl(status);
         Map params = new HashMap();
         params.put("sysName", sysName);
+        if(HuStringUtils.isEmpty(createUserId)){
+            return ResultUtil.error("10001","未获得用户id");
+        }
+        if("".equals(status)){
+            status=null;
+        }
+        params.put("createUserId",createUserId);
+        params.put("status",status);
+        params.put("page", currentPage);
+        PageDataResult result = bcThirdPartySysService.listThirdPartySys(params);
+        result.setPage(currentPage);
+
+        return ResultUtil.success(result);
+    }
 
 
+
+    @OperationLogAnn(value = "审核人员获得待审核的应用系统列表")
+    @RequestMapping(value = "listThirdPartySysForApproval",method = RequestMethod.GET)
+    @ResponseBody
+    public ResponseResult listSysApplicantForApproval(Integer currentPage,String sysName,String status) throws Exception {
+        JSONObject jo = new JSONObject();
+        sysName = HuStringUtils.nvl(sysName);
+        status = HuStringUtils.nvl(status);
+        Map params = new HashMap();
+        params.put("sysName", sysName);
         if("".equals(status)){
             status=null;
         }
@@ -64,6 +86,7 @@ public class BcSysApplicantAction {
     }
 
 
+    @OperationLogAnn(value = "业务人员应用系统申报")
     @RequestMapping(method = RequestMethod.POST)
     @ResponseBody
     public ResponseResult saveSysApplications(BcThirdPartySysEntity args){
@@ -82,16 +105,17 @@ public class BcSysApplicantAction {
         return ResultUtil.error("10001","保存失败！");
     }
 
+    @OperationLogAnn(value = "业务人员修改应用系统申报")
     @RequestMapping(method = RequestMethod.PUT)
     @ResponseBody
     public ResponseResult updateSysargs(BcThirdPartySysEntity args){
-        if(args != null){
+      if(args != null){
             bcThirdPartySysService.updateBcThirdPartySysEntity(args);
             return ResultUtil.success();
         }
         return ResultUtil.error("10001","更新失败！");
     }
-
+    @OperationLogAnn(value = "业务人员删除应用系统申报")
     @RequestMapping(method = RequestMethod.DELETE)
     @ResponseBody
     public ResponseResult deleteSysargs(BcThirdPartySysEntity args){
@@ -100,5 +124,16 @@ public class BcSysApplicantAction {
             return ResultUtil.success();
         }
         return ResultUtil.error("10001","删除失败！");
+    }
+
+    @OperationLogAnn(value = "审核人员审核应用系统申报")
+    @RequestMapping(value = "approveSysApplicant",method = RequestMethod.GET)
+    @ResponseBody
+    public ResponseResult approveSysApplicant(BcThirdPartySysEntity args){
+        if(args != null){
+            bcThirdPartySysService.approveSysApplicant(args);
+            return ResultUtil.success();
+        }
+        return ResultUtil.error("10001","更新失败！");
     }
 }

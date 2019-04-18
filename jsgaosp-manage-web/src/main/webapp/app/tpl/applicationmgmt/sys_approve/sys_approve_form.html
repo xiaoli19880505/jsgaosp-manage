@@ -1,0 +1,100 @@
+<style>
+.help-block{
+	color:#F05050;
+	margin-bottom: 0px;
+	font-weight:bold;
+	font-style:oblique;
+}
+
+
+</style>
+<div class="modal-dialog" style="height: 100%;margin: -1px;padding: -1px;">
+	<div class="modal-content">
+		<div class="modal-header"
+			style="background: #000000; color: #ffffff;">
+			<button type="button" class="close" data-dismiss="modal"
+				aria-label="Close"></button>
+			<h4 class="modal-title">{{title}}</h4>
+		</div>
+
+		<div class="modal-body">
+			<form name="sysApplicantForm" class="form-validation form-horizontal" ng-submit="submitForm(sysApplicantForm.$valid)" >
+			    
+
+                
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">系统名称</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" readonly="readonly" placeholder="请输入系统名称" name="sysName" ng-model="sysApplicant.sysName" required>
+                     </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">所属区划</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" readonly="readonly" placeholder="请选择所属区划" name="areaName" ng-model="area_name_show">
+                    </div>
+                </div>
+
+
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">系统类型</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" readonly="readonly" name="selectedSysType"  ng-model="sysApplicant.sysTypeText" required>
+                     </div>
+                </div>
+
+
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">接入类型</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" readonly="readonly"  name="selectedAccessType"    ng-model="sysApplicant.accessTypeText"  required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">系统地址</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" readonly="readonly" placeholder="请输入系统地址"  name="sysUrl" ng-model="sysApplicant.sysUrl" required>
+                     </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">系统描述</label>
+                    <div class="col-lg-10">
+                        <textarea class="form-control ng-pristine ng-valid ng-touched" readonly="readonly" rows="6" name="memo"   ng-model="sysApplicant.memo" placeholder="请输入系统描述"></textarea>
+                    </div>
+                </div>
+
+                <div class="form-group" ng-if="selectedSysTypeId=='02'">
+                    <label class="col-sm-2 control-label">工作号二维码<span style="color:red;">*</span></label>
+                    <div class="col-sm-10">
+                        <div ng-app="fileUpload" ng-controller="MyCtrl">
+                            <input type="file"  ngf-select ng-model="file">上传二维码图片</input>
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <div style="text-align: right;"  ng-if="isPass">
+                    <button type="button" class="btn btn-dark" ng-click="approve(true)">通过</button>
+                    <button type="button" class="btn btn-dark" ng-click="approve(false)">不通过</button>
+                </div>
+                <div class="form-group" ng-if="isPass==false">
+                    <label class="col-lg-2 control-label">审核意见<span style="color:red;">*</span></label>
+                    <div class="col-lg-10">
+                        <textarea class="form-control ng-pristine ng-valid ng-touched indisabled" rows="6" name="approvalOpinion"   ng-model="sysApplicant.approvalOpinion" placeholder="请输入审核意见" required=""></textarea>
+                    </div>
+                </div>
+
+            </form>
+		</div>
+		<div class="modal-footer"  ng-if="isPass==false">
+			<button type="reset" class="btn btn-dark" ng-click="cancel()">取消</button>
+            <button type="submit" class="btn btn-dark" ng-click="submitForm(sysApplicantForm.$valid)">提交</button>
+		</div>
+	</div>
+</div>

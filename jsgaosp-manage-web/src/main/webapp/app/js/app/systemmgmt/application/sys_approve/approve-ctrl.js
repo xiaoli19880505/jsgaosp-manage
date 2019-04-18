@@ -3,9 +3,9 @@
 /* Controllers */
 // hospital_people controller
 
-app.controller('SysApplicantController',
-		['$scope', '$http', '$state', '$modal', '$stateParams', '$timeout', 'modalServ','ThirdPartySysService', 'GG','$sessionStorage',
-           function ($scope, $http, $state, $modal, $stateParams,$timeout, modalServ,ThirdPartySysService,GG,$sessionStorage) {
+app.controller('SysApproveController',
+		['$scope', '$http', '$state', '$modal', '$stateParams', '$timeout', 'modalServ','SysApproveService', 'GG','$sessionStorage',
+           function ($scope, $http, $state, $modal, $stateParams,$timeout, modalServ,SysApproveService,GG,$sessionStorage) {
 	
 	$scope.totalItems = 100;
     $scope.currentPage = 1;
@@ -17,7 +17,7 @@ app.controller('SysApplicantController',
     $scope.GGsysadmin = GG.sysadmin;
     
     $scope.loadSysApplications=function(){
-		ThirdPartySysService.listApplications($scope.currentPage,$scope.sysNameKey,$scope.sysApplicantStatusKey,$sessionStorage.user.userId).then(function(res){
+        SysApproveService.listApplicantforApprova($scope.currentPage,$scope.sysNameKey,$scope.sysApplicantStatusKey).then(function(res){
     		$scope.sysapplicants=res.data.list;
     		$scope.totalItems=res.data.totalCount;
     		$scope.currentPage=res.data.page;
@@ -28,8 +28,8 @@ app.controller('SysApplicantController',
 	//弹出新增窗口
     $scope.open = function (size, type,index) {
         var modalInstance = $modal.open({
-            templateUrl: 'tpl/applicationmgmt/sys_applicant/sys_applicant_form.html',
-            controller: 'ModalSysApplicantInstanceCtrl',
+            templateUrl: 'tpl/applicationmgmt/sys_approve/sys_approve_form.html',
+            controller: 'ModalSysApproveInstanceCtrl',
             size: size,
             backdrop: 'static',
             resolve: {
@@ -56,27 +56,6 @@ app.controller('SysApplicantController',
     $scope.loadSysApplications();
 	
 
-    	
-
-
-
-	$scope.deleteApplication=function(Id,sysName){
-    	modalServ.showModal({}, {
-			bodyText: "确定要删除系统申报【"+sysName+"】?"
-		}).then(function(result) {
-			ThirdPartySysService.deleteApplications(Id).then(function(data) {
-				if(data.code == "10000"){
-					 toastr.success('删除成功！');
-					 $("#toast-container").css("left", "46%");
-					 $scope.loadSysApplications();
-				}else{
-					toastr.error('删除失败！');
-					$("#toast-container").css("left", "46%");
-				}
-			});
-		});
-    
-    }
 	//搜索
     $scope.search=function(){
     	$scope.loadSysApplications();

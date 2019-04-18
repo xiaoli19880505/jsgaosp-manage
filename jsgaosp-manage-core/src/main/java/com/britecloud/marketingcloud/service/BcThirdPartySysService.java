@@ -9,9 +9,11 @@ import java.util.Map;
 public interface BcThirdPartySysService {
 
 	PageDataResult<BcThirdPartySysEntityExpand> listThirdPartySys(Map params);
-	
+
+
 	void saveSysArgs(BcThirdPartySysEntity args);
 	int existsArgsKey(BcThirdPartySysEntity args);
 	void updateBcThirdPartySysEntity(BcThirdPartySysEntity args);
 	void deleteBcThirdPartySysEntity(BcThirdPartySysEntity args);
+	void approveSysApplicant(BcThirdPartySysEntity args);
 }

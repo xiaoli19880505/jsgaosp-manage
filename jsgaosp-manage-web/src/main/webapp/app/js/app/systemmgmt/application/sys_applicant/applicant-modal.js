@@ -16,9 +16,7 @@ app.controller('ModalSysApplicantInstanceCtrl', ['$scope', '$modalInstance','$ht
 		qrCode:"",
 		status:"02",
 		approvalOpinion:"",
-		createDate:"",
 		createUserId:"",
-		approvalDate:"",
 		approvalUserId:"",
 		accessType:""
 	}
@@ -37,8 +35,7 @@ app.controller('ModalSysApplicantInstanceCtrl', ['$scope', '$modalInstance','$ht
 		console.log(items);
 		if(items !=undefined){
 
-			$scope.getAreaName();
-			$scope.sysApplicant=items[1];
+
 		}
 
 
@@ -47,13 +44,17 @@ app.controller('ModalSysApplicantInstanceCtrl', ['$scope', '$modalInstance','$ht
 
 	if ($scope.flag) {
         $scope.title = '新增系统申报';
+		$scope.area_name_show="";
     } else {
         $scope.title = '编辑系统申报';
+		$scope.getAreaName();
+		$scope.sysApplicant=items[1];
     }
 
 
 	$scope.addApplications=function(){
 		$scope.sysApplicant.status="02";
+		$scope.sysApplicant.createUserId=$sessionStorage.user.userId;
 		ThirdPartySysService.createApplications($scope.sysApplicant).then(function(data){
 
 			if(data.code == "10000"){

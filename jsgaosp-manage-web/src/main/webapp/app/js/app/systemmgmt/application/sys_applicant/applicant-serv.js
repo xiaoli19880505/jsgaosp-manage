@@ -6,11 +6,12 @@ angular.module('app').factory('ThirdPartySysService', ['res', 'GG',
     function (res, GG) {
         var res = res(GG.BASE + '/thirdPartySysApplicant/:type');
         var service = {
-            listApplications: function (currentPage,sysName,status) {
+            listApplications: function (currentPage,sysName,status,createUserId) {
                 return res.get({
                 	currentPage:currentPage,
                 	sysName:sysName,
                     status:status,
+                    createUserId:createUserId,
                 	type:'listThirdPartySys'
                 }).$promise;
             }
@@ -21,6 +22,7 @@ angular.module('app').factory('ThirdPartySysService', ['res', 'GG',
             ).$promise;
             },
             updateApplications: function (applications) {
+                delete applications.createDate;
                 return res.update(applications).$promise;
             },
             deleteApplications: function (Id) {

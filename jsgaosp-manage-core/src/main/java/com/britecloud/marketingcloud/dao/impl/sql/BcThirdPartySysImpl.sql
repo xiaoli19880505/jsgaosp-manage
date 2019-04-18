@@ -2,10 +2,17 @@
 --listThirdPartySys
 SELECT s.*,
        GET_CODE_TEXT('sys_type', s.sys_type) as sys_type_text,
-       GET_CODE_TEXT('status', s.status) as status_type_text,
+       GET_CODE_TEXT('sys_status', s.status) as status_type_text,
        GET_CODE_TEXT('access_type', s.access_type) as access_type_text
   FROM BC_DECLARE_SYS s
- where s.sys_name like '%%'
+ where s.sys_name like '%'||:sysName||'%'
+
+ --<dynamic>
+  --<isNotNull property="createUserId" prepend="AND">
+         create_user_id=:createUserId
+  --</isNotNull>
+--</dynamic>
+
 --<dynamic>
   --<isNotNull property="status" prepend="AND">
          STATUS =:status
@@ -29,8 +36,6 @@ memo=:memo,
 qr_code=:qrCode,
 status=:status,
 approval_opinion=:approvalOpinion,
-create_date=:createDate,
-create_user_id=:createUserId,
 approval_date=:approvalDate,
 approval_user_id=:approvalUserId,
 access_type=:accessType
@@ -47,3 +52,14 @@ SELECT * from bc_declare_sys WHERE  id=:id;
 --------------------------------------------
 --existsArgsKey
 SELECT COUNT(0) from bc_declare_sys WHERE sys_name=:sysName;
+
+--------------------------------------------
+--approveSysApplicant
+
+UPDATE bc_declare_sys SET
+status=:status,
+approval_opinion=:approvalOpinion,
+approval_user_id=:approvalUserId,
+approval_date=sysdate
+WHERE id=:id;
+

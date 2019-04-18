@@ -149,13 +149,13 @@ angular
 								 ]
 						 },
 						 {
-							 state : 'app.system.approve',
+							 state : 'app.system.sys_approve',
 							 url : '/approve',
-							 templateUrl : 'tpl/systemmgmt/approve/approve.html',
+							 templateUrl : 'tpl/applicationmgmt/sys_approve/sys_approve.html',
 							 deps : [
-								 'js/app/systemmgmt/approve/approve-ctrl.js',
-								 'js/app/systemmgmt/approve/approve-serv.js',
-								 'js/app/systemmgmt/approve/approve-modal.js'
+								 'js/app/systemmgmt/application/sys_approve/approve-ctrl.js',
+								 'js/app/systemmgmt/application/sys_approve/approve-serv.js',
+								 'js/app/systemmgmt/application/sys_approve/approve-modal.js'
 								 
 								 ]
 						 },

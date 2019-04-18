@@ -1,18 +1,15 @@
 <!-- hbox layout -->
 <div class="hbox hbox-auto-xs bg-light"
 	ng-init="app.settings.asideFixed = true;app.settings.asideDock = false; app.settings.container = false; app.hideAside = false; app.hideFooter = true;"
-	id="SystemUserDiv" ng-controller="SysApplicantController">
+	id="SystemUserDiv" ng-controller="SysApproveController">
 	<div class="bg-light lter b-b wrapper-md ng-scope">
-		<h1 class="m-n font-thin h3">应用系统申报</h1>
+		<h1 class="m-n font-thin h3">应用系统审核</h1>
 	</div>
 
 	<div class="wrapper-md ng-scope">
 		<div class="panel panel-default">
 			<div class="row wrapper">
-				<div class="col-sm-5 m-b-xs">
-					<button type="button" ng-click="open('','add',null)"
-						class="btn btn-sm btn-info">新增</button>
-				</div>
+				<div class="col-sm-5"></div>
 				<div class="col-sm-4">
 					<div class="form-group query-m-r" style="display: inline-block;">
 						<label class="control-label">请选择状态</label>
@@ -57,7 +54,7 @@
 						<td>{{applicant.createDate|date:'yyyy-MM-dd'}}</td>
 						<td  >
 							<!--<a class="fa fa-pencil fa-fw m-r-xs" title="修改" ng-click="open('','update',$index)"></a> -->
-							<a  ng-if="applicant.status=='03'" class="fa fa-times fa-fw" title="删除" ng-click="deleteApplication(applicant.id,applicant.sysName)"></a>
+							<a class="fa fa-pencil fa-fw" ng-if="applicant.status=='02'" title="审核" ng-click="open('','update',$index)"></a>
 						</td>
 					</tr>
 				</table>

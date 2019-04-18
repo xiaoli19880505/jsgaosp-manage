@@ -41,4 +41,9 @@ public class BcThirdPartySysServiceImpl implements BcThirdPartySysService {
 	public void deleteBcThirdPartySysEntity(BcThirdPartySysEntity args) {
 		bcThirdPartySysDao.deleteThirdPartySys(args);
 	}
+
+	@Override
+	public void approveSysApplicant(BcThirdPartySysEntity args) {
+		bcThirdPartySysDao.approveSysAppliant(args);
+	}
 }

@@ -63,4 +63,11 @@ public class BcThirdPartySysImpl extends BaseJdbcDao implements BcThirdPartySysD
 		SqlParameterSource parameters = new BeanPropertySqlParameterSource(args);
 		getNamedParameterJdbcTemplate().update(sql, parameters);
 	}
+
+	@Override
+	public void approveSysAppliant(BcThirdPartySysEntity args) {
+		String sql = loadSQL("approveSysApplicant");
+		SqlParameterSource parameters = new BeanPropertySqlParameterSource(args);
+		getNamedParameterJdbcTemplate().update(sql, parameters);
+	}
 }
