@@ -24,19 +24,24 @@
 					</div>
 					<label class="col-sm-1 control-label">系统类型</label>
 					<div class="col-sm-2">
-						<select name="blType" ng-model="applications.blType"
-							class="input-sm form-control" ng-init="applications.appName='-1'">
-							<option value='-1'>---全部类型---</option>
-							<option ng-repeat="bean in services.data"
-								value="{{bean.serviceDesc}}">{{bean.serviceDesc}}</option>
-
+						<select style="display: inline-block; width: auto;"
+							class="form-control ng-pristine ng-valid ng-touched"
+							ng-change="loadSysApplications()" style="width: 150px;"
+							ng-model="applications.type">
+							<option value="">不限</option>
+							<option ng-repeat="x in sysApplicantTypeList"
+								value="{{x.codeKey}}">{{x.codeText}}</option>
 						</select>
 					</div>
 					<label class="col-sm-1 control-label">状态</label>
 					<div class="col-sm-2">
-						<select   style="display: inline-block;width: auto;" class="form-control ng-pristine ng-valid ng-touched" ng-change="loadSysApplications()"  style="width: 150px;" ng-model="applications.status" >
-							<option value=""  >不限</option>
-							<option ng-repeat="x in sysApplicantStatusList" value="{{x.codeKey}}">{{x.codeText}}</option>
+						<select style="display: inline-block; width: auto;"
+							class="form-control ng-pristine ng-valid ng-touched"
+							ng-change="loadSysApplications()" style="width: 150px;"
+							ng-model="applications.status">
+							<option value="">不限</option>
+							<option ng-repeat="x in sysApplicantStatusList"
+								value="{{x.codeKey}}">{{x.codeText}}</option>
 						</select>
 					</div>
 				</div>
@@ -54,10 +59,10 @@
 							name="endDate" ng-model="applications.endDate" />
 					</div>
 					<div class="col-sm-1 m-b-xs">
-					<button type="button" ng-click="open('','add',null)"
-						class="btn btn-sm btn-default">申报</button>
-				</div>
-					
+						<button type="button" ng-click="open('','add',null)"
+							class="btn btn-sm btn-default">申报</button>
+					</div>
+
 					<div class="col-sm-2">
 						<button class="btn btn-sm btn-default" type="button"
 							ng-click="search()">查询</button>
@@ -87,8 +92,8 @@
 						style="cursor: pointer;">
 						<td>{{$index+1}}</td>
 						<td>{{applications.appName}}</td>
-						<td>{{applications.sysId}}</td>
-						<td>{{applications.blType}}</td>
+						<td>{{applications.sysName}}</td>
+						<td>{{applications.sysType}}</td>
 						<td>{{applications.memo}}</td>
 						<td>{{applications.status}}</td>
 						<td>{{applications.approvalOpinion}}</td>

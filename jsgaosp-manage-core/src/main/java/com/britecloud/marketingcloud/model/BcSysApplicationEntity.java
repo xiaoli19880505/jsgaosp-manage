@@ -22,4 +22,7 @@ public class BcSysApplicationEntity {
 	private String approvalDate;
 	private String approvalUserId;
 	private String blType;
+	
+	private String sysName ;
+	private String sysType;
 }
