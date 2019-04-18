@@ -1,7 +1,8 @@
 <!-- hbox layout -->
 <div class="hbox hbox-auto-xs bg-light"
 	ng-init="app.settings.asideFixed = true;app.settings.asideDock = false; app.settings.container = false; app.hideAside = false; app.hideFooter = true;"
-	id="SystemUserDiv" ng-controller="SystemSysApplicationManagerController">
+	id="SystemUserDiv"
+	ng-controller="SystemSysApplicationManagerController">
 	<div class="bg-light lter b-b wrapper-md ng-scope">
 		<h1 class="m-n font-thin h3">应用申请</h1>
 	</div>
@@ -9,22 +10,62 @@
 	<div class="wrapper-md ng-scope">
 		<div class="panel panel-default">
 			<div class="row wrapper">
-				 <div class="col-sm-5 m-b-xs">
-					<button type="button" ng-click="open('','add',null)"
-						class="btn btn-sm btn-info">新增</button>
-				</div> 
-				
-				<div class="col-sm-3">
-					<div class="input-group">
-						<input type="text" class="input-sm form-control"
-							placeholder="请输入关键词" ng-model="keyword"> <span
-							class="input-group-btn">
-							<button class="btn btn-sm btn-default" type="button"
-								ng-click="search()">搜索</button>
-						</span>
+
+				<div class="form-group" style="margin-top: 20px">
+					<label class="col-sm-1 control-label">应用名称</label>
+					<div class="col-sm-2">
+						<input type="text" class="input-sm form-control" id="test1"
+							name="appName" ng-model="applications.appName" />
+					</div>
+					<label class="col-sm-1 control-label">所属系统</label>
+					<div class="col-sm-2">
+						<input type="text" class="input-sm form-control" id="test1"
+							name="sysId" ng-model="applications.sysId" />
+					</div>
+					<label class="col-sm-1 control-label">系统类型</label>
+					<div class="col-sm-2">
+						<select name="blType" ng-model="applications.blType"
+							class="input-sm form-control" ng-init="applications.appName='-1'">
+							<option value='-1'>---全部类型---</option>
+							<option ng-repeat="bean in services.data"
+								value="{{bean.serviceDesc}}">{{bean.serviceDesc}}</option>
+
+						</select>
+					</div>
+					<label class="col-sm-1 control-label">状态</label>
+					<div class="col-sm-2">
+						<select   style="display: inline-block;width: auto;" class="form-control ng-pristine ng-valid ng-touched" ng-change="loadSysApplications()"  style="width: 150px;" ng-model="applications.status" >
+							<option value=""  >不限</option>
+							<option ng-repeat="x in sysApplicantStatusList" value="{{x.codeKey}}">{{x.codeText}}</option>
+						</select>
 					</div>
 				</div>
 			</div>
+			<div class="row wrapper">
+				<div class="form-group">
+					<label class="col-sm-1 control-label">开始时间</label>
+					<div class="col-sm-2">
+						<input type="text" class="input-sm form-control" id="test1"
+							name="createDate" ng-model="applications.createDate" />
+					</div>
+					<label class="col-sm-1 control-label">结束时间</label>
+					<div class="col-sm-2">
+						<input type="text" class="input-sm form-control" id="test2"
+							name="endDate" ng-model="applications.endDate" />
+					</div>
+					<div class="col-sm-1 m-b-xs">
+					<button type="button" ng-click="open('','add',null)"
+						class="btn btn-sm btn-default">申报</button>
+				</div>
+					
+					<div class="col-sm-2">
+						<button class="btn btn-sm btn-default" type="button"
+							ng-click="search()">查询</button>
+					</div>
+
+				</div>
+			</div>
+
 			<div class="table-responsive" show-scroll>
 				<table class="table table-striped b-t b-light">
 					<thead>
