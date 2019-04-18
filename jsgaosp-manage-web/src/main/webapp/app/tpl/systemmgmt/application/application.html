@@ -20,14 +20,14 @@
 					<label class="col-sm-1 control-label">所属系统</label>
 					<div class="col-sm-2">
 						<input type="text" class="input-sm form-control" id="test1"
-							name="sysId" ng-model="applications.sysId" />
+							name="sysName" ng-model="applications.sysName" />
 					</div>
 					<label class="col-sm-1 control-label">系统类型</label>
 					<div class="col-sm-2">
 						<select style="display: inline-block; width: auto;"
 							class="form-control ng-pristine ng-valid ng-touched"
 							ng-change="loadSysApplications()" style="width: 150px;"
-							ng-model="applications.type">
+							ng-model="applications.sys_type">
 							<option value="">不限</option>
 							<option ng-repeat="x in sysApplicantTypeList"
 								value="{{x.codeKey}}">{{x.codeText}}</option>

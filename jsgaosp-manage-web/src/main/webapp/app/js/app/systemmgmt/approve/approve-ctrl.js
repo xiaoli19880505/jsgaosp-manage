@@ -2,22 +2,22 @@
 
 /* Controllers */
 // hospital_people controller
-app.controller('SystemSysApplicationManagerController',
-		['$scope', '$http', '$state', '$modal', '$stateParams', '$timeout', 'modalServ','BcSysApplicationService', 'GG','$sessionStorage',
-           function ($scope, $http, $state, $modal, $stateParams,$timeout, modalServ,BcSysApplicationService,GG,$sessionStorage) {
+app.controller('SystemSysApproveController',
+		['$scope', '$http', '$state', '$modal', '$stateParams', '$timeout', 'modalServ','BcSysApproveService', 'GG','$sessionStorage',
+           function ($scope, $http, $state, $modal, $stateParams,$timeout, modalServ,BcSysApproveService,GG,$sessionStorage) {
 	
 	$scope.totalItems = 100;
     $scope.currentPage = 1;
     $scope.maxSize = 5;
     $scope.keyword="";
-    
+    $scope.userId = $sessionStorage.user.userId;
     $scope.GGuser = GG.user;
     $scope.GGsysadmin = GG.sysadmin;
     
-    $scope.loadSysApplications=function(){
-    	BcSysApplicationService.listApplications($scope.currentPage,$scope.keyword,$sessionStorage.user.userId).then(function(res){
+    $scope.loadSysApplroves=function(){
+    	BcSysApproveService.listApproves($scope.currentPage,$scope.keyword,$scope.userId).then(function(res){
 			console.log(res)
-    		$scope.sysapplications=res.data.list;
+    		$scope.approves=res.data.list;
     		$scope.totalItems=res.data.totalCount;
     		$scope.currentPage=res.data.page;
     		$scope.chooseArgs=[];
@@ -27,17 +27,17 @@ app.controller('SystemSysApplicationManagerController',
 	//弹出新增窗口
     $scope.open = function (size, type,index) {
         var modalInstance = $modal.open({
-            templateUrl: 'tpl/systemmgmt/application/applications_form.html',
-            controller: 'ModalSysApplicationsInstanceCtrl',
+            templateUrl: 'tpl/systemmgmt/approve/approve_form.html',
+            controller: 'ModalApproveCtrl',
             size: size,
             backdrop: 'static',
             resolve: {
                 items: function () {
-					var applications = {};
+					var approve = {};
 					if(index != null){
-						applications = $scope.sysapplications[index];
+						approve = $scope.approves[index];
 					}
-					$scope.items = [type,applications];
+					$scope.items = [type,approve];
                     return $scope.items;
                 }
             }
@@ -45,14 +45,14 @@ app.controller('SystemSysApplicationManagerController',
 
         modalInstance.result.then(function (items) {
             if (items[0]) {
-                $scope.loadSysApplications();
+                $scope.loadSysApplroves();
             }
         }, function () {
             
         });
     };
 
-    $scope.loadSysApplications();
+    $scope.loadSysApplroves();
 	
 	//多选
     $scope.chooseArgs = [];
@@ -93,30 +93,13 @@ app.controller('SystemSysApplicationManagerController',
     }
 	//搜索
     $scope.search=function(){
-    	$scope.loadSysApplications();
+    	$scope.loadSysApplroves();
     }
 
     $scope.pageChanged = function () {
-		$scope.loadSysApplications();
+		$scope.loadSysApplroves();
 	};
 	
-	
-	/*$scope.sysApplicantStatusList=[];
-	   $scope.getAccessType=function () {
-		   $http.get('/common/list_code?codeSortKey=app_status').success(function(data){
-			   if (data.code=="10000") {
-				   $scope.sysApplicantStatusList=data.data;
-
-			   }
-		   })
-	   }
-	   $scope.getAccessType();
-
-	   $scope.$watch('$scope.applications.status', function (newValue, oldValue) {
-		   $scope.loadSysApplications();
-
-	   });
-	}]);*/
 
 	/*//修改
     $scope.update = function(){
