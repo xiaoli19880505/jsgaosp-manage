@@ -1,25 +1,26 @@
 ------------------------------------------
 --listSysAppliactions
-SELECT id as id,
-       sys_id as sys_id,
-       app_name as app_name,
-       guide_addr as guide_addr,
-       online_addr as online_addr,
-       online_qaq_addr as online_qaq_addr,
-       area_no as area_no,
-       yw_type as yw_type,
-       xz_type as xz_type,
-       memo as memo,
-       status as status,
-       approval_opinion as approval_opinion,
-       to_char(create_date,'yyyy-MM-dd HH24:mi:ss') as create_date,
-       create_user_id as create_user_id,
-       to_char(approval_date,'yyyy-MM-dd HH24:mi:ss') as approval_date,
-       approval_user_id as approval_user_id,
-       bl_type as bl_type
-  FROM bc_declare_app
-where (app_name like '%'||:keyword||'%' 
-or sys_id like '%'||:keyword||'%') and create_user_id =:userId;
+select t2.sys_name,
+       get_code_text('sys_type', t2.sys_type) as sys_type,
+       t1.id as id,
+       t1.sys_id as sys_id,
+       t1.app_name as app_name,
+       t1.guide_addr as guide_addr,
+       t1.online_addr as online_addr,
+       t1.online_qaq_addr as online_qaq_addr,
+       t1.area_no as area_no,
+       t1.yw_type as yw_type,
+       t1.xz_type as xz_type,
+       t1.memo as memo,
+       t1.status as status,
+       t1.approval_opinion as approval_opinion,
+       to_char(t1.create_date, 'yyyy-MM-dd HH24:mi:ss') as create_date,
+       t1.create_user_id as create_user_id,
+       to_char(t1.approval_date, 'yyyy-MM-dd HH24:mi:ss') as approval_date,
+       t1.approval_user_id as approval_user_id,
+       t1.bl_type as bl_type
+  from bc_declare_app t1, bc_declare_sys t2
+where t1.sys_id = t2.id and t1.create_user_id =:userId;
 
 --------------------------------------------
 --saveSysApplication

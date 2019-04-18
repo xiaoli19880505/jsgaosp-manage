@@ -2,6 +2,7 @@ package com.britecloud.marketingcloud.console.action;
 
 import com.alibaba.fastjson.JSONObject;
 import com.britecloud.marketingcloud.console.common.ResponseResult;
+import com.britecloud.marketingcloud.console.configuration.OperationLogAnn;
 import com.britecloud.marketingcloud.console.util.HuStringUtils;
 import com.britecloud.marketingcloud.console.util.ResultUtil;
 import com.britecloud.marketingcloud.domain.PageDataResult;
@@ -29,11 +30,12 @@ public class BcCodeAction {
     private BcCodeService bcCodeService;
 
     /**
-     * 加载数据字典主表列表
+     * 加载数据字典列表
      * @param currentPage
      * @return
      * @throws Exception
      */
+    @OperationLogAnn(value = "加载数据字典详情列表")
     @RequestMapping(value = "/list_code", method = RequestMethod.GET)
     @ResponseBody
     public ResponseResult listCode(Integer currentPage,String codeSortId) throws Exception {
@@ -47,6 +49,7 @@ public class BcCodeAction {
         return ResultUtil.success(result);
     }
 
+    @OperationLogAnn(value = "保存数据字典详情")
     @RequestMapping(method = RequestMethod.POST)
     @ResponseBody
     public ResponseResult saveCode(BcCode code){
@@ -59,6 +62,7 @@ public class BcCodeAction {
         return ResultUtil.error("10001","保存失败！");
     }
 
+    @OperationLogAnn(value = "修改数据字典详情")
     @RequestMapping(method = RequestMethod.PUT)
     @ResponseBody
     public ResponseResult updateCode(BcCode code){
@@ -69,6 +73,7 @@ public class BcCodeAction {
         return ResultUtil.error("10001","更新失败！");
     }
 
+    @OperationLogAnn(value = "删除数据字典详情")
     @RequestMapping( method = RequestMethod.DELETE)
     @ResponseBody
     public ResponseResult deleteCode(BcCode code){

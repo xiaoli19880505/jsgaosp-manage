@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.britecloud.marketingcloud.console.common.ResponseResult;
+import com.britecloud.marketingcloud.console.configuration.OperationLogAnn;
 import com.britecloud.marketingcloud.console.util.ResultUtil;
 import com.britecloud.marketingcloud.model.BcArea;
 import com.britecloud.marketingcloud.model.BcCode;
@@ -41,6 +42,7 @@ public class CommonAction {
      * @return
      * @throws Exception
      */
+    @OperationLogAnn(value = "根据父级编号加载行政区划")
     @RequestMapping(value = "/list_area_json", method = RequestMethod.GET)
     @ResponseBody
     public ResponseResult listarea(String pAreaNo) throws Exception {
@@ -65,6 +67,7 @@ public class CommonAction {
      * @return
      * @throws Exception
      */
+    @OperationLogAnn(value = "根据CodeSortKey加载数据字典详情列表")
     @RequestMapping(value = "/list_code", method = RequestMethod.GET)
     @ResponseBody
     public ResponseResult listcode(BcCodeSort codeSort) throws Exception {

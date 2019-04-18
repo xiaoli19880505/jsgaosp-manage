@@ -99,6 +99,40 @@ app.controller('SystemSysApplicationManagerController',
     $scope.pageChanged = function () {
 		$scope.loadSysApplications();
 	};
+	//获取状态
+	$scope.sysApplicantStatusList=[];
+	   $scope.getAccessType=function () {
+		   $http.get('/common/list_code?codeSortKey=app_status').success(function(data){
+			   if (data.code=="10000") {
+				   $scope.sysApplicantStatusList=data.data;
+
+			   }
+		   })
+	   }
+	   $scope.getAccessType();
+
+	   $scope.$watch('$scope.applications.status', function (newValue, oldValue) {
+		   $scope.loadSysApplications();
+
+	   });
+	   
+	   //系统类型
+	   $scope.sysApplicantTypeList=[];
+	   $scope.getAccessType=function () {
+		   $http.get('/common/list_code?codeSortKey=sys_type').success(function(data){
+			   if (data.code=="10000") {
+				   $scope.sysApplicantTypeList=data.data;
+
+			   }
+		   })
+	   }
+	   $scope.getAccessType();
+
+	   $scope.$watch('$scope.applications.type', function (newValue, oldValue) {
+		   $scope.loadSysApplications();
+
+	   });
+
 
 	/*//修改
     $scope.update = function(){

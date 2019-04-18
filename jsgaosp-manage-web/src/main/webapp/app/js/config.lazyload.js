@@ -86,13 +86,6 @@ angular.module('app')
                   ]
               },
               {
-                  name: 'angularBootstrapNavTree2',
-                  files: [
-                      '../assets/modules/angular-bootstrap-nav-tree/abn2_tree_directive.js',
-                      '../assets/modules/angular-bootstrap-nav-tree/abn_tree.css'
-                  ]
-              },
-              {
                   name: 'toaster',
                   files: [
                       '../assets/modules/angularjs-toaster/toaster.js',

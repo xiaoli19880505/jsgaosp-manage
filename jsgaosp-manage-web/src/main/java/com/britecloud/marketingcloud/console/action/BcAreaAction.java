@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.britecloud.marketingcloud.console.common.ResponseResult;
+import com.britecloud.marketingcloud.console.configuration.OperationLogAnn;
 import com.britecloud.marketingcloud.console.util.ObjectUtils;
 import com.britecloud.marketingcloud.console.util.ResultUtil;
 import com.britecloud.marketingcloud.model.BcArea;
@@ -42,6 +43,7 @@ public class BcAreaAction {
      * @return
      * @throws Exception
      */
+    @OperationLogAnn(value = "加载行政区划")
     @RequestMapping(value = "/list_area", method = RequestMethod.GET)
     @ResponseBody
     public ResponseResult listarea(HttpServletRequest request) throws Exception {
@@ -56,7 +58,7 @@ public class BcAreaAction {
         return ResultUtil.success(array);
     }
 
-
+    @OperationLogAnn(value = "根据主键获取行政区划")
     @RequestMapping(value = "/get_area", method = RequestMethod.GET)
     @ResponseBody
     public ResponseResult getAreaById(String id){
@@ -71,6 +73,7 @@ public class BcAreaAction {
      * @param area
      * @return
      */
+    @OperationLogAnn(value = "保存行政区划")
     @RequestMapping(value = "/save_area", method = RequestMethod.GET)
     @ResponseBody
     public ResponseResult saveArea(BcArea area){
@@ -94,6 +97,7 @@ public class BcAreaAction {
      * @param area
      * @return
      */
+    @OperationLogAnn(value = "修改行政区划")
     @RequestMapping(value = "/update_area", method = RequestMethod.GET)
     @ResponseBody
     public ResponseResult updateArea(BcArea area){
@@ -109,6 +113,7 @@ public class BcAreaAction {
      * @param area
      * @return
      */
+    @OperationLogAnn(value = "删除行政区划")
     @RequestMapping(value = "/delete_area", method = RequestMethod.GET)
     @ResponseBody
     public ResponseResult deleteArea(BcArea area){

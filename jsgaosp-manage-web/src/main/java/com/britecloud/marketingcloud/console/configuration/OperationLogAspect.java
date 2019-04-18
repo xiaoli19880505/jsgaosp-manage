@@ -33,7 +33,7 @@ public class OperationLogAspect {
     //切面 配置通知
     @AfterReturning("logPoinCut()")
     public void saveOperationLog(JoinPoint joinPoint) {
-        System.out.println("切面。。。。。");
+        System.out.println("--保存操作日志--");
         //保存日志
         OperationLog operationLog = new OperationLog();
 
@@ -58,7 +58,12 @@ public class OperationLogAspect {
         //请求的参数
         Object[] args = joinPoint.getArgs();
         //将参数所在的数组转换成json
-        String params = JSON.toJSONString(args);
+        String params = "";
+        try {
+            params = JSON.toJSONString(args);
+        }catch (Exception ex){
+            params = "";
+        }
         operationLog.setParams(params);
 
         Object userObject = ClientUtils.get(ClientUtils.CURRENT_USER);
