@@ -1,0 +1,114 @@
+<style>
+.help-block{
+	color:#F05050;
+	margin-bottom: 0px;
+	font-weight:bold;
+	font-style:oblique;
+}
+</style>
+<div class="modal-dialog" style="height: 100%;margin: -1px;padding: -1px;">
+	<div class="modal-content">
+		<div class="modal-header"
+			style="background: #000000; color: #ffffff;">
+			<button type="button" class="close" data-dismiss="modal"
+				aria-label="Close"></button>
+			<h4 class="modal-title">{{title}}</h4>
+		</div>
+
+		<div class="modal-body">
+			<form name="applicationsForm" class="form-validation form-horizontal" ng-submit="submitForm(applicationsForm.$valid)" novalidate>
+			    
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">所属系统<span style="color:red;">*</span></label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" placeholder="请选择所属系统" name="sysId" ng-model="applications.sysId" required="required">
+                        <span style="color:red" ng-show="applicationsForm.sysId.$dirty && applicationsForm.sysId.$invalid">
+                            <span ng-show="applicationsForm.sysId.$error.required">请选择所属系统</span>
+                        </span>
+                     </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">应用名称<span style="color:red;">*</span></label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" placeholder="请输入应用名称" name="appName" ng-model="applications.appName" required="required">
+                        <span style="color:red" ng-show="applicationsForm.appName.$dirty && applicationsForm.appName.$invalid">
+                            <span ng-show="applicationsForm.appName.$error.required">请输入应用名称</span>
+                        </span>
+                     </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">办事指南地址<span style="color:red;">*</span></label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" placeholder="请输入办事指南地址" name="guideAddr" ng-model="applications.guideAddr" required="required">
+                        <span style="color:red" ng-show="applicationsForm.guideAddr.$dirty && applicationsForm.guideAddr.$invalid">
+                            <span ng-show="applicationsForm.guideAddr.$error.required">请输入办事指南地址</span>
+                        </span>
+                     </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">在线办理地址<span style="color:red;">*</span></label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" placeholder="请输入在线办理地址" name="onlineAddr" ng-model="applications.onlineAddr" required="required">
+                        <span style="color:red" ng-show="applicationsForm.onlineAddr.$dirty && applicationsForm.onlineAddr.$invalid">
+                            <span ng-show="applicationsForm.onlineAddr.$error.required">请输入在线办理地址</span>
+                        </span>
+                     </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">在线咨询地址<span style="color:red;">*</span></label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" placeholder="请输入在线咨询地址" name="onlineQaqAddr" ng-model="applications.onlineQaqAddr" required="required">
+                        <span style="color:red" ng-show="applicationsForm.onlineQaqAddr.$dirty && applicationsForm.onlineQaqAddr.$invalid">
+                            <span ng-show="applicationsForm.onlineQaqAddr.$error.required">请输入在线咨询地址</span>
+                        </span>
+                     </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">所在区域<span style="color:red;">*</span></label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" placeholder="请输入所在区域" name="areaNo" ng-model="applications.areaNo" required="required">
+                        <span style="color:red" ng-show="applicationsForm.areaNo.$dirty && applicationsForm.areaNo.$invalid">
+                            <span ng-show="applicationsForm.areaNo.$error.required">请输入所在区域</span>
+                        </span>
+                     </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">业务类型<span style="color:red;">*</span></label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" placeholder="请输入业务类型" name="ywType" ng-model="applications.ywType" required="required">
+                        <span style="color:red" ng-show="applicationsForm.ywType.$dirty && applicationsForm.ywType.$invalid">
+                            <span ng-show="applicationsForm.ywType.$error.required">请输入业务类型</span>
+                        </span>
+                     </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">行政类别<span style="color:red;">*</span></label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" placeholder="请输入行政类别" name="xzType" ng-model="applications.xzType" required="required">
+                        <span style="color:red" ng-show="applicationsForm.xzType.$dirty && applicationsForm.xzType.$invalid">
+                            <span ng-show="applicationsForm.xzType.$error.required">请输入行政类别</span>
+                        </span>
+                     </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">描述<span style="color:red;">*</span></label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" placeholder="请输入描述" name="memo" ng-model="applications.memo" required="required">
+                        <span style="color:red" ng-show="applicationsForm.memo.$dirty && applicationsForm.memo.$invalid">
+                            <span ng-show="applicationsForm.memo.$error.required">请输入描述</span>
+                        </span>
+                     </div>
+                </div>
+                
+                
+            </form>
+		</div>
+		<div class="modal-footer">
+			<button type="reset" class="btn btn-dark" ng-click="cancel()">取消</button>
+            <button type="submit" class="btn btn-dark" ng-click="submitForm(applicationsForm.$valid)">保存</button>
+		</div>
+	</div>
+</div>

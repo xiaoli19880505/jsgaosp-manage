@@ -138,19 +138,52 @@ angular
 							]
 						},
                          {
-							 state : 'app.system.application',
+							 state : 'app.system.app_applicant',
 							 url : '/application',
-							 templateUrl : 'tpl/systemmgmt/application/application.html',
+							 templateUrl : 'tpl/applicationmgmt/app_applicant/app_applicant.html',
 							 deps : [
-								 'js/app/systemmgmt/application/application-ctrl.js',
-								 'js/app/systemmgmt/application/application-serv.js',
-								 'js/app/systemmgmt/application/application-modal.js'
+								 'js/app/systemmgmt/application/app_applicant/application-ctrl.js',
+								 'js/app/systemmgmt/application/app_applicant/application-serv.js',
+								 'js/app/systemmgmt/application/app_applicant/application-modal.js'
 
 								 ]
 						 },
 						 {
+							 state : 'app.system.app_approve',
+							 url : '/app_approve',
+							 templateUrl : 'tpl/applicationmgmt/app_approve/app_approve.html',
+							 deps : [
+								 'js/app/systemmgmt/application/app_approve/approve-ctrl.js',
+								 'js/app/systemmgmt/application/app_approve/approve-serv.js',
+								 'js/app/systemmgmt/application/app_approve/approve-modal.js'
+
+							 ]
+						 },
+						 {
+							 state : 'app.system.app_manage',
+							 url : '/app_manage',
+							 templateUrl : 'tpl/applicationmgmt/app_manage/app_manage.html',
+							 deps : [
+								 'js/app/systemmgmt/application/app_manage/manage-ctrl.js',
+								 'js/app/systemmgmt/application/app_manage/manage-serv.js',
+								 'js/app/systemmgmt/application/app_manage/manage-modal.js'
+
+							 ]
+						 },
+                         {
+                             state : 'app.system.app_version',
+                             url : '/app_version',
+                             templateUrl : 'tpl/applicationmgmt/app_version/app_version.html',
+                             deps : [
+                                 'js/app/systemmgmt/application/app_version/version-ctrl.js',
+                                 'js/app/systemmgmt/application/app_version/version-serv.js',
+                                 'js/app/systemmgmt/application/app_version/version-modal.js'
+
+                             ]
+                         },
+						 {
 							 state : 'app.system.sys_approve',
-							 url : '/approve',
+							 url : '/sys_approve',
 							 templateUrl : 'tpl/applicationmgmt/sys_approve/sys_approve.html',
 							 deps : [
 								 'js/app/systemmgmt/application/sys_approve/approve-ctrl.js',

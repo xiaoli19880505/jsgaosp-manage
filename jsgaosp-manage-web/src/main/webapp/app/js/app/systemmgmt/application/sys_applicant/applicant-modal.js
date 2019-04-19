@@ -20,6 +20,8 @@ app.controller('ModalSysApplicantInstanceCtrl', ['$scope', '$modalInstance','$ht
 		approvalUserId:"",
 		accessType:""
 	}
+
+		$scope.selectedSysTypeId="";
 //用于修改操作时回显区划
 		$scope.getAreaName=function () {
 			$http.get('/common/list_area_json?pAreaNo='+$sessionStorage.user.areaNo).success(function(data){
@@ -192,7 +194,7 @@ app.controller('ModalSysApplicantInstanceCtrl', ['$scope', '$modalInstance','$ht
 		$scope.accessTypeList=[];
 		//$scope.sysTypeList=[{"codeId":"0c065b92f2384ea79596511df12362a1","codeSortId":"2fe76c5e247f4af7b0caef846d425492","codeKey":"02","codeText":"微警务","status":"1"},{"codeId":"e1c1a30e8e3a471894ba57d4b6b9d4b9","codeSortId":"2fe76c5e247f4af7b0caef846d425492","codeKey":"01","codeText":"江苏公安旗舰店","status":"1"},{"codeId":"a26cd2de8ee54ea2a088a19992020626","codeSortId":"2fe76c5e247f4af7b0caef846d425492","codeKey":"99","codeText":"其它系统","status":"1"}];
 		$scope.selectedAccessTypeId="";
-		$scope.selectedSysTypeId="";
+
 		/**
 		 * 获得接入类型
 		 */

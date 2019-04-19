@@ -1,0 +1,81 @@
+<!-- hbox layout -->
+<div class="hbox hbox-auto-xs bg-light"
+	ng-init="app.settings.asideFixed = true;app.settings.asideDock = false; app.settings.container = false; app.hideAside = false; app.hideFooter = true;"
+	id="SystemUserDiv" ng-controller="SystemSysApproveController">
+	<div class="bg-light lter b-b wrapper-md ng-scope">
+		<h1 class="m-n font-thin h3">应用审批</h1>
+	</div>
+
+	<div class="wrapper-md ng-scope">
+		<div class="panel panel-default">
+			<div class="row wrapper">
+				<!-- <div class="col-sm-5 m-b-xs">
+					<button type="button" ng-click="open('','add',null)"
+						class="btn btn-sm btn-info">新增</button>
+				</div> -->
+				<div class="col-sm-9"></div>
+				<div class="col-sm-3">
+					<div class="input-group">
+						<input type="text" class="input-sm form-control"
+							placeholder="请输入关键词" ng-model="keyword"> <span
+							class="input-group-btn">
+							<button class="btn btn-sm btn-default" type="button"
+								ng-click="search()">搜索</button>
+						</span>
+					</div>
+				</div>
+			</div>
+			<div class="table-responsive" show-scroll>
+				<table class="table table-striped b-t b-light">
+					<thead>
+						<tr>
+							<th>序号</th>
+							<th>所属系统</th>
+							<th>应用名称</th>
+							<th>应用状态</th>
+							<th>审批意见</th>
+							<th>操作</th>
+						</tr>
+					</thead>
+					<tr ng-repeat="approve in approves"
+						onmouseover="style.backgroundColor='#F2F5F6'"
+						onmouseout="style.backgroundColor='#FFFFFF'"
+						style="cursor: pointer;">
+						<td>{{$index+1}}</td>
+						<td>{{approve.sysId}}</td>
+						<td>{{approve.appName}}</td>
+						<td>{{approve.status}}</td>
+						<td>{{approve.approvalOpinion}}</td>
+						<td><a class="fa fa-pencil fa-fw m-r-xs" title="审批"
+							ng-click="open('','update',$index)"></a><!--  <a
+							class="fa fa-times fa-fw" title="删除"
+							ng-click="deleteApplication(applications.id,applications.appName)"></a> -->
+						</td>
+					</tr>
+				</table>
+			</div>
+
+			<footer class="panel-footer" style="padding-bottom: 0">
+				<div class="row">
+					<div class="col-sm-2 hidden-xs"></div>
+					<div class="col-sm-4 text-center">
+						<small class="text-muted inline m-t-sm m-b-sm">第{{currentPage}}页
+							共{{totalItems}}个 </small>
+					</div>
+					<div class="col-sm-6 text-right text-center-xs">
+						<pagination boundary-links="true" total-items="totalItems"
+							ng-model="currentPage" ng-change="pageChanged()"
+							max-size="maxSize" rotate="false"
+							class="pagination-sm m-t-none m-b" previous-text="&lsaquo;"
+							next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;">
+						</pagination>
+					</div>
+				</div>
+			</footer>
+		</div>
+	</div>
+</div>
+
+<!-- /hbox layout -->
+
+
