@@ -31,6 +31,14 @@ public class CommonDaoImpl extends BaseJdbcDao implements CommonDao{
     }
 
 
-
-
+    /**
+     * 查询当前登录人，已经添加的系统列表
+     * @param params 登录人的areaNO
+     * @return
+     */
+    @Override
+    public List<Map<String, Object>> getSysList(Map<String, String> params) {
+        String sql = loadSQL("getSysList");
+        return getNamedParameterJdbcTemplate().queryForList(sql, params);
+    }
 }
