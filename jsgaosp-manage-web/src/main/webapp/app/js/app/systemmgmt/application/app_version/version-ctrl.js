@@ -2,9 +2,9 @@
 
 /* Controllers */
 // hospital_people controller
-app.controller('SystemSysApplicationManagerController',
-		['$scope', '$http', '$state', '$modal', '$stateParams', '$timeout', 'modalServ','BcSysApplicationService', 'GG','$sessionStorage',
-           function ($scope, $http, $state, $modal, $stateParams,$timeout, modalServ,BcSysApplicationService,GG,$sessionStorage) {
+app.controller('SysVersionController',
+		['$scope', '$http', '$state', '$modal', '$stateParams', '$timeout', 'modalServ','BcSysVersionService', 'GG','$sessionStorage',
+           function ($scope, $http, $state, $modal, $stateParams,$timeout, modalServ,BcSysVersionService,GG,$sessionStorage) {
 	
 	$scope.totalItems = 100;
     $scope.currentPage = 1;
@@ -14,64 +14,61 @@ app.controller('SystemSysApplicationManagerController',
     $scope.GGuser = GG.user;
     $scope.GGsysadmin = GG.sysadmin;
     
-    $scope.loadSysApplications=function(){
-    	BcSysApplicationService.listApplications($scope.currentPage,$scope.keyword,$sessionStorage.user.userId).then(function(res){
+    $scope.loadSysVersion=function(){
+    	BcSysVersionService.listVersion($scope.currentPage,$scope.keyword,$sessionStorage.user.userId).then(function(res){
 			console.log(res)
-    		$scope.sysapplications=res.data.list;
+    		$scope.sysversion=res.data.list;
     		$scope.totalItems=res.data.totalCount;
     		$scope.currentPage=res.data.page;
     		$scope.chooseArgs=[];
     	})
     }
-	
+  
+ 
 	//弹出新增窗口
-    $scope.open = function (size, type,index) {
+    $scope.open = function () {
+    	$scope.sysversions={};
+    	$scope.sysversions.Id = $scope.sysversion[0].id;
+    	$scope.sysversions.appName = $scope.sysversion[0].appName;
+    	$scope.sysversions.sysId = $scope.sysversion[0].sysId;
+    	$scope.sysversions.areaNo = $scope.sysversion[0].areaNo;
+    	$scope.sysversions.sysType = $scope.sysversion[0].sysType;
+    	$scope.sysversions.version = $scope.sysversion[0].version;
+    	BcSysVersionService.listHisVersion($scope.currentPage,$scope.sysversions).then(function(res){
+			console.log(res)
+    		$scope.sysversion=res.data.list;
+    		$scope.totalItems=res.data.totalCount;
+    		$scope.currentPage=res.data.page;
+    		$scope.chooseArgs=[];
+    	})
         var modalInstance = $modal.open({
-            templateUrl: 'tpl/systemmgmt/application/applications_form.html',
-            controller: 'ModalSysApplicationsInstanceCtrl',
-            size: size,
+            templateUrl: 'tpl/applicationmgmt/app_version/app_version_form.html',
+            controller: 'ModalSysVersionCtrl',
             backdrop: 'static',
             resolve: {
                 items: function () {
 					var applications = {};
-					if(index != null){
-						applications = $scope.sysapplications[index];
-					}
-					$scope.items = [type,applications];
+					applications=$scope.sysversion;
+					 $scope.title = '版本管理';
+					$scope.items = [applications];
                     return $scope.items;
                 }
             }
+       
         });
 
-        modalInstance.result.then(function (items) {
+    	
+        /*modalInstance.result.then(function (items) {
             if (items[0]) {
-                $scope.loadSysApplications();
+                $scope.loadSysVersion();
             }
         }, function () {
             
-        });
+        });*/
     };
 
-    $scope.loadSysApplications();
+    $scope.loadSysVersion();
 	
-	//多选
-    $scope.chooseArgs = [];
-    $scope.choose = function(chk,item,index){
-    	item.indexs = index;
-    	if(chk){
-    		$scope.chooseArgs.push(item);
-    	}else if(!chk){
-    		$scope.chooseArgs.splice($scope.chooseArgs.indexOf(item),1);
-    	}
-    }
-    	
-    $scope.chooseAll = function(master){
-    	if(master){
-    		$scope.chooseArgs=angularjs.copy($scope.sysargs);
-    	}else {
-    		$scope.chooseArgs=[];
-    	}
-    }
 
   //删除数据字典
 	$scope.deleteApplication=function(Id,appName){
@@ -82,7 +79,7 @@ app.controller('SystemSysApplicationManagerController',
 				if(data.code == "10000"){
 					 toastr.success('删除成功！');
 					 $("#toast-container").css("left", "46%");
-					 $scope.loadSysApplications();
+					 $scope.loadSysVersion();
 				}else{
 					toastr.error('删除失败！');
 					$("#toast-container").css("left", "46%");
@@ -93,11 +90,11 @@ app.controller('SystemSysApplicationManagerController',
     }
 	//搜索
     $scope.search=function(){
-    	$scope.loadSysApplications();
+    	$scope.loadSysVersion();
     }
 
     $scope.pageChanged = function () {
-		$scope.loadSysApplications();
+		$scope.loadSysVersion();
 	};
 	//获取状态
 	$scope.sysApplicantStatusList=[];
@@ -112,7 +109,7 @@ app.controller('SystemSysApplicationManagerController',
 	   $scope.getAccessType();
 
 	   $scope.$watch('$scope.applications.status', function (newValue, oldValue) {
-		   $scope.loadSysApplications();
+		   $scope.loadSysVersion();
 
 	   });
 	   
@@ -129,7 +126,7 @@ app.controller('SystemSysApplicationManagerController',
 	   $scope.getAccessType();
 
 	   $scope.$watch('$scope.applications.type', function (newValue, oldValue) {
-		   $scope.loadSysApplications();
+		   $scope.loadSysVersion();
 
 	   });
 
@@ -152,7 +149,7 @@ app.controller('SystemSysApplicationManagerController',
 
             modalInstance.result.then(function (items) {
                 if (items[0]) {//如果modal返回成功的话
-                	 $scope.loadSysApplications();
+                	 $scope.loadSysVersion();
                 	 $scope.chooseArgs=[];
                 }
             }, function () {

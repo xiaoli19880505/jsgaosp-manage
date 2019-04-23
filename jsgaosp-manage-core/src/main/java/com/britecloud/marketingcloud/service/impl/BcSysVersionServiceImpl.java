@@ -29,9 +29,21 @@ public class BcSysVersionServiceImpl implements BcSysVersionService{
 	}
 
 	@Override
-	public void updateVersion(BcSysApplicationEntity args) {
+	public void insertVersion(BcSysApplicationEntity args) {
 		// TODO Auto-generated method stub
-		bcSysVersionDao.updateVersion(args);
+		bcSysVersionDao.insertVersion(args);
+	}
+
+	@Override
+	public PageDataResult<BcSysApplicationEntity> listHisSysVersions(Map params) {
+		// TODO Auto-generated method stub
+		return bcSysVersionDao.listHisSysVersions(params);
+	}
+
+	@Override
+	public void deleteVersion(BcSysApplicationEntity args) {
+		// TODO Auto-generated method stub
+		bcSysVersionDao.deleteVersion(args);
 	}
 	
 	
