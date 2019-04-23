@@ -45,38 +45,32 @@ public class BcSysAppDaoImpl extends BaseJdbcDao implements BcSysAppDao{
 		return pageData;
 	}
 
-//	@Override
-	public void saveSysArgs(BcSysApplicationEntity args) {
+	@Override
+	public void saveApp(BcSysApplicationEntity args) {
 		args.setId(UUIDUtils.generateUUID());
 		args.setStatus("02");
-		Date date = new Date(); 
-		DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
-		args.setCreateDate(format.format(date));
-		String sql = loadSQL("saveSysApplication");
+		String sql = loadSQL("saveSysApp");
 		SqlParameterSource parameters = new BeanPropertySqlParameterSource(args);
 		getNamedParameterJdbcTemplate().update(sql, parameters);
 	}
 
-//	@Override
-	public int existsArgsKey(BcSysApplicationEntity args) {
+	@Override
+	public int existsAppName(BcSysApplicationEntity args) {
 		SqlParameterSource parameters = new BeanPropertySqlParameterSource(args);
-		String sql = loadSQL("existsArgsKey");
+		String sql = loadSQL("existsAppName");
 		return getNamedParameterJdbcTemplate().queryForInt(sql, parameters);
 	}
 
-//	@Override
-	public void updateSysApplication(BcSysApplicationEntity args) {
-		Date date = new Date(); 
-		DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
-		args.setApprovalDate(format.format(date));
-		String sql = loadSQL("updateSysApplication");
+	@Override
+	public void updateSysApp(BcSysApplicationEntity args) {
+		String sql = loadSQL("updateSysApp");
 		SqlParameterSource parameters = new BeanPropertySqlParameterSource(args);
 		getNamedParameterJdbcTemplate().update(sql, parameters);
 	}
 
-//	@Override
-	public void deleteSysApplication(BcSysApplicationEntity args) {
-		String sql = loadSQL("deleteSysApplication");
+	@Override
+	public void deleteSysApp(BcSysApplicationEntity args) {
+		String sql = loadSQL("deleteSysApp");
 		SqlParameterSource parameters = new BeanPropertySqlParameterSource(args);
 		getNamedParameterJdbcTemplate().update(sql, parameters);
 	}

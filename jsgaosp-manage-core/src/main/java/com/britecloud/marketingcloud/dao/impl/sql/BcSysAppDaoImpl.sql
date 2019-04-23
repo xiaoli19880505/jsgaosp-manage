@@ -1,5 +1,5 @@
 ------------------------------------------
---listSysAppliactions
+--listAppReport
 select t2.sys_name as sysName,
        get_code_text('sys_type', t2.sys_type) as sysType,
        t1.id as id,
@@ -27,14 +27,15 @@ where t1.sys_id = t2.id
       AND t1.create_date BETWEEN to_date(:startDate,'YYYY/MM/DD') AND to_date(:endDate,'YYYY/MM/DD')
       AND t2.id like '%'||:sysId||'%'
       AND t2.sys_type LIKE '%'||:sysType||'%'
+      AND T1.AREA_NO LIKE :areaNo||'%'
 
 --------------------------------------------
---saveSysApplication
-INSERT INTO bc_declare_app(id,sys_id,app_name,guide_addr,online_addr,online_qaq_addr,area_no,yw_type,xz_type,memo,status,approval_opinion,create_date,create_user_id,approval_date,approval_user_id,bl_type)
-VALUES(:Id,:sysId,:appName,:guideAddr,:onlineAddr,:onlineQaqAddr,:areaNo,:ywType,:xzType,:memo,:status,:approvalOpinion,to_date(:createDate,'yyyy-MM-dd HH24:mi:ss'),:createUserId,to_date(:approvalDate,'yyyy-MM-dd HH24:mi:ss'),:approvalUserId,:blType);
+--saveSysApp
+INSERT INTO bc_declare_app(id,sys_id,app_name,guide_addr,online_addr,online_qaq_addr,area_no,yw_type,xz_type,memo,status,approval_opinion,create_date,create_user_id,bl_type)
+VALUES(:Id,:sysId,:appName,:guideAddr,:onlineAddr,:onlineQaqAddr,:areaNo,:ywType,:xzType,:memo,:status,:approvalOpinion,sysdate,:createUserId,:blType);
 
 --------------------------------------------
---updateSysApplication
+--updateSysApp
 update bc_declare_app set sys_id=:sysId,
 app_name=:appName,
 guide_addr=:guideAddr,
@@ -48,19 +49,17 @@ status=:status,
 approval_opinion=:approvalOpinion,
 create_date=:createDate,
 create_user_id=:createUserId,
-approval_date=to_date(:approvalDate,'yyyy-MM-dd HH24:mi:ss'),
-approval_user_id=:approvalUserId,
 bl_type=:blType
 where id=:Id;
 
 --------------------------------------------
---deleteSysApplication
+--deleteSysApp
 delete from bc_declare_app where id=:Id;
 
 --------------------------------------------
---getSysApplicationById
+--getSysAppById
 SELECT * from bc_declare_app WHERE  id=:Id;
 
 --------------------------------------------
---existsArgsKey
+--existsAppName
 SELECT COUNT(0) from bc_declare_app WHERE app_name=:appName;

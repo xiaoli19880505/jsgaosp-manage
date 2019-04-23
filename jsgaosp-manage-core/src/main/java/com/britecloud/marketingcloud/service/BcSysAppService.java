@@ -13,4 +13,12 @@ public interface BcSysAppService {
      * @return
      */
     PageDataResult<BcSysApplicationEntity> listAppReport(Map params);
+
+    void saveApp(BcSysApplicationEntity args);
+
+    int existsAppName(BcSysApplicationEntity args);
+
+    void updateSysApp(BcSysApplicationEntity args);
+
+    void deleteSysApp(BcSysApplicationEntity args);
 }

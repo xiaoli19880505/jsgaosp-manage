@@ -1,4 +1,4 @@
-package com.britecloud.marketingcloud.console.action;
+package com.britecloud.marketingcloud.console.action.app;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
@@ -11,9 +11,12 @@ import com.britecloud.marketingcloud.domain.PageDataResult;
 import com.britecloud.marketingcloud.model.BcArea;
 import com.britecloud.marketingcloud.model.BcSysApplicationEntity;
 import com.britecloud.marketingcloud.model.BcThirdPartySysEntity;
+import com.britecloud.marketingcloud.model.BcUser;
 import com.britecloud.marketingcloud.service.BcAreaService;
+import com.britecloud.marketingcloud.service.BcSysAppService;
 import com.britecloud.marketingcloud.service.BcThirdPartySysService;
 import com.britecloud.marketingcloud.service.CommonService;
+import com.britecloud.marketingcloud.utils.SessionUtils;
 import com.britecloud.marketingcloud.utils.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,7 +37,7 @@ import java.util.Map;
 public class BcSysAppReportAction {
 
     @Autowired
-    private BcThirdPartySysService bcThirdPartySysService;
+    private BcSysAppService bcSysAppService;
 
     @Autowired
     private CommonService commonService;
@@ -43,64 +46,43 @@ public class BcSysAppReportAction {
     @OperationLogAnn(value = "查询申报列表")
     @RequestMapping(value = "/list_report",method = RequestMethod.GET)
     @ResponseBody
-    public ResponseResult listSysApplicantbyOwner(Integer currentPage,BcSysApplicationEntity param) throws Exception {
+    public ResponseResult listSysApplicantbyOwner(HttpServletRequest request,Integer currentPage,BcSysApplicationEntity app) throws Exception {
         JSONObject jo = new JSONObject();
+        BcUser user= SessionUtils.getCurrentUser(request);
 
         //查询参数
         Map params = new HashMap();
-        params.put("status",HuStringUtils.nvl(param.getStatus())); //应用状态
-        params.put("appName",HuStringUtils.nvl(param.getAppName()));//应用名称
-        params.put("sysType",HuStringUtils.nvl(param.getSysType()));//系统类型 编码
-        if(StringUtils.isNotEmpty(param.getCreateDate())){
-            params.put("startDate",param.getCreateDate().split("-")[0]);
-            params.put("endDate",param.getCreateDate().split("-")[1]);
+        params.put("status",HuStringUtils.nvl(app.getStatus())); //应用状态
+        params.put("appName",HuStringUtils.nvl(app.getAppName()));//应用名称
+        params.put("sysType",HuStringUtils.nvl(app.getSysType()));//系统类型 编码
+        if(StringUtils.isNotEmpty(app.getCreateDate())){
+            params.put("startDate",app.getCreateDate().split("-")[0]);
+            params.put("endDate",app.getCreateDate().split("-")[1]);
         }else {
             params.put("startDate","");
             params.put("endDate","");
         }
-        params.put("sysId",param.getSysId());
+        params.put("sysId",app.getSysId());
         params.put("page", currentPage);
-        PageDataResult result = bcThirdPartySysService.listThirdPartySys(params);
+        params.put("areaNo",user.getAreaNo());
+        PageDataResult result = bcSysAppService.listAppReport(params);
         result.setPage(currentPage);
 
         return ResultUtil.success(result);
     }
 
-
-
-    @OperationLogAnn(value = "审核人员获得待审核的应用系统列表")
-    @RequestMapping(value = "listThirdPartySysForApproval",method = RequestMethod.GET)
-    @ResponseBody
-    public ResponseResult listSysApplicantForApproval(Integer currentPage,String sysName,String status) throws Exception {
-        JSONObject jo = new JSONObject();
-        sysName = HuStringUtils.nvl(sysName);
-        status = HuStringUtils.nvl(status);
-        Map params = new HashMap();
-        params.put("sysName", sysName);
-        if("".equals(status)){
-            status=null;
-        }
-        params.put("status",status);
-        params.put("page", currentPage);
-        PageDataResult result = bcThirdPartySysService.listThirdPartySys(params);
-        result.setPage(currentPage);
-
-        return ResultUtil.success(result);
-    }
-
-
-    @OperationLogAnn(value = "业务人员应用系统申报")
+    @OperationLogAnn(value = "业务人员保存应用系统")
     @RequestMapping(method = RequestMethod.POST)
     @ResponseBody
-    public ResponseResult saveSysApplications(BcThirdPartySysEntity args){
+    public ResponseResult saveSysApp(BcSysApplicationEntity args){
         if(args != null){
             if(StringUtils.isNotEmpty(args.getSysName())){
                 //判断argsKey是否存在
-                int num = bcThirdPartySysService.existsArgsKey(args);
+                int num = bcSysAppService.existsAppName(args);
                 if(num>0){
-                    return ResultUtil.error("10002","系统参数键已存在!");
+                    return ResultUtil.error("10002","应用名称已存在!");
                 }else {
-                    bcThirdPartySysService.saveSysArgs(args);
+                    bcSysAppService.saveApp(args);
                     return ResultUtil.success();
                 }
             }
@@ -108,35 +90,27 @@ public class BcSysAppReportAction {
         return ResultUtil.error("10001","保存失败！");
     }
 
-    @OperationLogAnn(value = "业务人员修改应用系统申报")
+    @OperationLogAnn(value = "业务人员修改应用系统")
     @RequestMapping(method = RequestMethod.PUT)
     @ResponseBody
-    public ResponseResult updateSysargs(BcThirdPartySysEntity args){
+    public ResponseResult updateSysApp(BcSysApplicationEntity args){
         if(args != null){
-            bcThirdPartySysService.updateBcThirdPartySysEntity(args);
+            bcSysAppService.updateSysApp(args);
             return ResultUtil.success();
         }
         return ResultUtil.error("10001","更新失败！");
     }
-    @OperationLogAnn(value = "业务人员删除应用系统申报")
+
+    @OperationLogAnn(value = "业务人员删除应用系统")
     @RequestMapping(method = RequestMethod.DELETE)
     @ResponseBody
-    public ResponseResult deleteSysargs(BcThirdPartySysEntity args){
+    public ResponseResult deleteSysApp(BcSysApplicationEntity args){
         if(args != null && StringUtils.isNotEmpty(args.getId())){
-            bcThirdPartySysService.deleteBcThirdPartySysEntity(args);
+            bcSysAppService.deleteSysApp(args);
             return ResultUtil.success();
         }
         return ResultUtil.error("10001","删除失败！");
     }
 
-    @OperationLogAnn(value = "审核人员审核应用系统申报")
-    @RequestMapping(value = "approveSysApplicant",method = RequestMethod.GET)
-    @ResponseBody
-    public ResponseResult approveSysApplicant(BcThirdPartySysEntity args){
-        if(args != null){
-            bcThirdPartySysService.approveSysApplicant(args);
-            return ResultUtil.success();
-        }
-        return ResultUtil.error("10001","更新失败！");
-    }
+
 }
