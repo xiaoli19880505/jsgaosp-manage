@@ -51,11 +51,39 @@ public class BcSysVersionDaoImpl extends BaseJdbcDao implements BcSysVersionDao 
 	}
 
 	@Override
-	public void updateVersion(BcSysApplicationEntity args) {
+	public void insertVersion(BcSysApplicationEntity args) {
+		args.setId(UUIDUtils.generateUUID());
+		args.setStatus("02");
 		Date date = new Date(); 
-		DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
-		args.setApprovalDate(format.format(date));
-		String sql = loadSQL("updateVersion");
+		DateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss"); 
+		args.setCreateDate(format.format(date));
+		String sql = loadSQL("insertVersion");
+		SqlParameterSource parameters = new BeanPropertySqlParameterSource(args);
+		getNamedParameterJdbcTemplate().update(sql, parameters);
+	}
+
+
+	@Override
+	public PageDataResult<BcSysApplicationEntity> listHisSysVersions(Map params) {
+		PageDataResult<BcSysApplicationEntity> pageData = new PageDataResult<BcSysApplicationEntity>();
+
+		String sql = loadSQL("listHisSysVersions", params);
+		Integer totalCount = getNamedParameterJdbcTemplate().queryForInt(getTotalCountString(sql), params);
+		pageData.setTotalCount(totalCount);
+		pageData.setTotalPage(PageUtils.getTotalPage(totalCount));
+
+		sql = getPaginationString(sql, PageUtils.getStartNum((Integer) params.get("page")), PageUtils.pageSize);
+		List<BcSysApplicationEntity> list = getNamedParameterJdbcTemplate().query(sql, params,
+				new BeanPropertyRowMapper(BcSysApplicationEntity.class));
+		pageData.setList(list);
+		return pageData;
+	}
+
+
+	@Override
+	public void deleteVersion(BcSysApplicationEntity args) {
+		
+		String sql = loadSQL("deleteVersion");
 		SqlParameterSource parameters = new BeanPropertySqlParameterSource(args);
 		getNamedParameterJdbcTemplate().update(sql, parameters);
 	}

@@ -89,4 +89,14 @@ public class CommonServiceImpl implements CommonService{
     public List<BcCode> getCodeList(BcCodeSort codeSort) {
         return bcCodeDao.getCodeList(codeSort);
     }
+
+    /**
+     * 查询当前登录人，已经添加的系统列表
+     * @param params 登录人的areaNO
+     * @return
+     */
+    @Override
+    public List<Map<String, Object>> getSysList(Map<String, String> params){
+        return commonDao.getSysList(params);
+    }
 }

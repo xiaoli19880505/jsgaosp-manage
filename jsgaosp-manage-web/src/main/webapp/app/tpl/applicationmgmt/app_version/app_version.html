@@ -2,7 +2,7 @@
 <div class="hbox hbox-auto-xs bg-light"
 	ng-init="app.settings.asideFixed = true;app.settings.asideDock = false; app.settings.container = false; app.hideAside = false; app.hideFooter = true;"
 	id="SystemUserDiv"
-	ng-controller="SystemSysApplicationManagerController">
+	ng-controller="SysVersionController">
 	<div class="bg-light lter b-b wrapper-md ng-scope">
 		<h1 class="m-n font-thin h3">应用申请</h1>
 	</div>
@@ -15,19 +15,19 @@
 					<label class="col-sm-1 control-label">应用名称</label>
 					<div class="col-sm-2">
 						<input type="text" class="input-sm form-control" id="test1"
-							name="appName" ng-model="applications.appName" />
+							name="appName" ng-model="version.appName" />
 					</div>
 					<label class="col-sm-1 control-label">所属系统</label>
 					<div class="col-sm-2">
 						<input type="text" class="input-sm form-control" id="test1"
-							name="sysName" ng-model="applications.sysName" />
+							name="sysName" ng-model="version.sysName" />
 					</div>
 					<label class="col-sm-1 control-label">系统类型</label>
 					<div class="col-sm-2">
 						<select style="display: inline-block; width: auto;"
 							class="form-control ng-pristine ng-valid ng-touched"
 							ng-change="loadSysApplications()" style="width: 150px;"
-							ng-model="applications.sys_type">
+							ng-model="version.sys_type">
 							<option value="">不限</option>
 							<option ng-repeat="x in sysApplicantTypeList"
 								value="{{x.codeKey}}">{{x.codeText}}</option>
@@ -38,7 +38,7 @@
 						<select style="display: inline-block; width: auto;"
 							class="form-control ng-pristine ng-valid ng-touched"
 							ng-change="loadSysApplications()" style="width: 150px;"
-							ng-model="applications.status">
+							ng-model="version.status">
 							<option value="">不限</option>
 							<option ng-repeat="x in sysApplicantStatusList"
 								value="{{x.codeKey}}">{{x.codeText}}</option>
@@ -51,12 +51,12 @@
 					<label class="col-sm-1 control-label">开始时间</label>
 					<div class="col-sm-2">
 						<input type="text" class="input-sm form-control" id="test1"
-							name="createDate" ng-model="applications.createDate" />
+							name="createDate" ng-model="version.createDate" />
 					</div>
 					<label class="col-sm-1 control-label">结束时间</label>
 					<div class="col-sm-2">
 						<input type="text" class="input-sm form-control" id="test2"
-							name="endDate" ng-model="applications.endDate" />
+							name="endDate" ng-model="version.endDate" />
 					</div>
 					<div class="col-sm-1 m-b-xs">
 						<button type="button" ng-click="open('','add',null)"
@@ -80,28 +80,28 @@
 							<th>系统名称</th>
 							<th>系统类型</th>
 							<th>系统描述</th>
-							<th>应用状态</th>
+							<th>版本号</th>
 							<th>审批意见</th>
 							<th>创建时间</th>
 							<th>操作</th>
 						</tr>
 					</thead>
-					<tr ng-repeat="applications in sysapplications"
+					<tr ng-repeat="version in sysversion"
 						onmouseover="style.backgroundColor='#F2F5F6'"
 						onmouseout="style.backgroundColor='#FFFFFF'"
 						style="cursor: pointer;">
 						<td>{{$index+1}}</td>
-						<td>{{applications.appName}}</td>
-						<td>{{applications.sysName}}</td>
-						<td>{{applications.sysType}}</td>
-						<td>{{applications.memo}}</td>
-						<td>{{applications.status}}</td>
-						<td>{{applications.approvalOpinion}}</td>
-						<td>{{applications.createDate}}</td>
+						<td>{{version.appName}}</td>
+						<td>{{version.sysName}}</td>
+						<td>{{version.sysType}}</td>
+						<td>{{version.memo}}</td>
+						<td>{{version.version}}</td>
+						<td>{{version.approvalOpinion}}</td>
+						<td>{{version.createDate}}</td>
 						<td><a class="fa fa-pencil fa-fw m-r-xs" title="编辑"
-							ng-click="open('','update',$index)"></a> <a
+							ng-click="open('','update',$index)"></a><!--  <a
 							class="fa fa-times fa-fw" title="删除"
-							ng-click="deleteApplication(applications.id,applications.appName)"></a>
+							ng-click="deleteApplication(version.id,version.appName)"></a> -->
 						</td>
 					</tr>
 				</table>

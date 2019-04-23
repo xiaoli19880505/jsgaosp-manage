@@ -9,9 +9,11 @@ import com.britecloud.marketingcloud.console.util.ResultUtil;
 import com.britecloud.marketingcloud.model.BcArea;
 import com.britecloud.marketingcloud.model.BcCode;
 import com.britecloud.marketingcloud.model.BcCodeSort;
+import com.britecloud.marketingcloud.model.BcUser;
 import com.britecloud.marketingcloud.service.BcAreaService;
 import com.britecloud.marketingcloud.service.CommonService;
 import com.britecloud.marketingcloud.utils.MapUtils;
+import com.britecloud.marketingcloud.utils.SessionUtils;
 import com.britecloud.marketingcloud.utils.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,8 +22,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Consumer;
 
 /**
  * 公共Action
@@ -73,5 +78,34 @@ public class CommonAction {
     public ResponseResult listcode(BcCodeSort codeSort) throws Exception {
         List<BcCode> codeList = commonService.getCodeList(codeSort);
         return ResultUtil.success(codeList);
+    }
+
+    /**
+     * 查询当前登录人已添加的系统
+     * @param request
+     * @return
+     * @throws Exception
+     */
+    @OperationLogAnn(value = "查询当前登录人已添加的系统")
+    @RequestMapping(value = "/list_sys", method = RequestMethod.GET)
+    @ResponseBody
+    public ResponseResult listSys(HttpServletRequest request) throws Exception {
+        BcUser user= SessionUtils.getCurrentUser(request);
+        if(user == null){
+            return ResultUtil.error("10005","未登录");
+        }
+        Map<String,String> params = new HashMap<>();
+        params.put("areaNo",user.getAreaNo());
+        List<Map<String,Object>> sysList = commonService.getSysList(params);
+        List<Map<String,Object>> newList = new ArrayList<>();
+        sysList.stream().forEach(new Consumer<Map<String, Object>>() {
+            @Override
+            public void accept(Map<String, Object> stringObjectMap) {
+                newList.add(MapUtils.transToLowerCase(stringObjectMap));
+            }
+        });
+
+
+        return ResultUtil.success(newList);
     }
 }

@@ -29,4 +29,11 @@ public interface CommonService {
     public JSONArray getJSONArray(String tableName, String pColName, String colName, String pColValue) throws Exception;
 
     List<BcCode> getCodeList(BcCodeSort codeSort);
+
+    /**
+     * 查询当前登录人，已经添加的系统列表
+     * @param params 登录人的areaNO
+     * @return
+     */
+    public List<Map<String, Object>> getSysList(Map<String, String> params);
 }
