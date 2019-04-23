@@ -7,7 +7,7 @@ html {
 }
 
 body {
-  font-family: "Microsoft Yahei","Hiragino Sans GB","STHeiti","宋体","Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Microsoft Yahei","Hiragino Sans GB","STHeiti","瀹嬩綋","Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   -webkit-font-smoothing: antialiased;
   line-height: 1.42857143;
@@ -4138,7 +4138,7 @@ a.text-#000000:hover {
 }
 
 .wrapper {
-  padding: 15px;
+  padding: 1px;
 }
 
 .wrapper-md {
@@ -5128,7 +5128,7 @@ a.text-#000000:hover {
   }
 }
 /**
- * 自定义 
+ * 鑷畾涔� 
  */
  .svgCls svg{
 	height:400px;
