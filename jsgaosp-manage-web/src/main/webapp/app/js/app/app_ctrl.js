@@ -2,7 +2,7 @@
  * Created by DK on 2015/8/10.
  */
 angular.module('app')
-    .controller('appCtrl', function ($scope, $translate, $localStorage, $window, GG, $state, $http, $modal,$sessionStorage) {
+    .controller('appCtrl',function ($scope, $translate, $localStorage, $window, GG, $state, $http, $modal,$sessionStorage) {
         //http 认证权限
         $scope.pFilter = function (data,usertype) {
             data = data.toString();
@@ -10,6 +10,9 @@ angular.module('app')
             //如果用户的类型为ADMIN拥有最高权限
             var current_role_type = $window.sessionStorage.getItem("user_current_roleType");
             if(GG.user == current_role_type){//普通用户
+
+
+
             	group = angular.copy(GG.user_role_fun);
             }else if(GG.sysadmin = current_role_type){//拥有本公司最高权限有所有权限
             	group = angular.copy(GG.sysadmin_role_fun);
@@ -38,6 +41,8 @@ angular.module('app')
             return group;
         };
 
+
+        //获取一些全局参数
         $http.get("/global/info")
             .success(function (data) {
             	var perm = "";
@@ -53,6 +58,27 @@ angular.module('app')
                 $scope.app.groups = null;
                 toastr.error("获取权限失败!请重试");
             });
+
+
+        //获取数据字典列表
+        // var  codeKeyList=['sys_type','xz_type','yw_type'];
+        // var  codeList={};
+        // angular.forEach(codeKeyList,function (item) {
+        //     $http.get('/common/list_code?codeSortKey='+item)
+        //         .success(function(data) {
+        //             alert(data)
+        //             codeList[item]=(data.data);
+        //         })
+        //         .error(function(){
+        //             alert("获取数据字典失败")
+        //
+        //         });
+        // })
+
+        // $scope.app.codeList = data.codeList;
+
+
+
 
         $scope.update = function () {
             var modalInstance = $modal.open({
