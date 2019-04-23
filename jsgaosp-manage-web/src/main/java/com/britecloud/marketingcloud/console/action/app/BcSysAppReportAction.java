@@ -62,7 +62,7 @@ public class BcSysAppReportAction {
             params.put("startDate","");
             params.put("endDate","");
         }
-        params.put("sysId",app.getSysId());
+        params.put("sysId",HuStringUtils.nvl(app.getSysId()));//所选系统
         params.put("page", currentPage);
         params.put("areaNo",user.getAreaNo());
         PageDataResult result = bcSysAppService.listAppReport(params);

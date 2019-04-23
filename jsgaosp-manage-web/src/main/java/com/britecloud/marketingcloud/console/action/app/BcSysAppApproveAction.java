@@ -58,7 +58,7 @@ public class BcSysAppApproveAction {
             params.put("startDate","");
             params.put("endDate","");
         }
-        params.put("sysId",app.getSysId());
+        params.put("sysId",HuStringUtils.nvl(app.getSysId()));
         params.put("page", currentPage);
         params.put("areaNo",user.getAreaNo());
         PageDataResult result = bcSysAppService.listAppReport(params);
@@ -70,9 +70,9 @@ public class BcSysAppApproveAction {
     @OperationLogAnn(value = "审核人员审核应用系统申报")
     @RequestMapping(method = RequestMethod.PUT)
     @ResponseBody
-    public ResponseResult updateSysApp(BcSysApplicationEntity args){
+    public ResponseResult approveSysApp(BcSysApplicationEntity args){
         if(args != null){
-            bcSysAppService.updateSysApp(args);
+            bcSysAppService.approveSysApp(args);
             return ResultUtil.success();
         }
         return ResultUtil.error("10001","更新失败！");

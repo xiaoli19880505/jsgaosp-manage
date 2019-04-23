@@ -39,4 +39,20 @@ public class BcSysAppServiceImpl implements BcSysAppService {
     public void deleteSysApp(BcSysApplicationEntity args) {
         bcSysAppDao.deleteSysApp(args);
     }
+
+    /**
+     * 审核应用
+     * @param args
+     */
+    @Override
+    public void approveSysApp(BcSysApplicationEntity args) {
+        //TODO 审核通过或者不通过
+
+
+
+
+    }
+
+
+
 }
