@@ -27,7 +27,7 @@ app.controller('SystemSysApplicationManagerController',
 	//弹出新增窗口
     $scope.open = function (size, type,index) {
         var modalInstance = $modal.open({
-            templateUrl: 'tpl/systemmgmt/application/app_applicant/applications_form.html',
+            templateUrl: 'tpl/applicationmgmt/app_applicant/app_applicant_form.html',
             controller: 'ModalSysApplicationsInstanceCtrl',
             size: size,
             backdrop: 'static',

@@ -30,7 +30,8 @@ app.controller('ModalSysApplicationsInstanceCtrl', ['$scope', '$modalInstance','
 	}
 	
 	$scope.updateApplications=function(){
-		BcSysApplicationService.updateApplications($scope.applications,$sessionStorage.user).then(function(data){
+		$scope.applications.userId = $sessionStorage.user.userId;
+		BcSysApplicationService.updateApplications($scope.applications).then(function(data){
 			if(data.code == "10000"){
 				toastr.success('更新应用申请成功！');
 				 $("#toast-container").css("left", "46%");
