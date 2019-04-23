@@ -9,17 +9,10 @@ app.controller('SystemSysApplicationManagerController',
 	$scope.totalItems = 100;
     $scope.currentPage = 1;
     $scope.maxSize = 5;
-    $scope.appName="";
-    $scope.sysNo="";
-    $scope.sysType="";
-    $scope.status="";
-    $scope.selectTime = "";
+    $scope.keyword="";
     
     $scope.GGuser = GG.user;
     $scope.GGsysadmin = GG.sysadmin;
-
-
-
     
     $scope.loadSysApplications=function(){
     	BcSysApplicationService.listApplications($scope.currentPage,$scope.keyword,$sessionStorage.user.userId).then(function(res){
@@ -34,7 +27,7 @@ app.controller('SystemSysApplicationManagerController',
 	//弹出新增窗口
     $scope.open = function (size, type,index) {
         var modalInstance = $modal.open({
-            templateUrl: 'tpl/applicationmgmt/app_applicant/app_applicant_form.html',
+            templateUrl: 'tpl/systemmgmt/application/applications_form.html',
             controller: 'ModalSysApplicationsInstanceCtrl',
             size: size,
             backdrop: 'static',
@@ -122,54 +115,64 @@ app.controller('SystemSysApplicationManagerController',
 		   $scope.loadSysApplications();
 
 	   });
-		//系统类型
-	   $scope.sysTypeList=[];
-	   $scope.getsysTypeList=function () {
+	   
+	   //系统类型
+	   $scope.sysApplicantTypeList=[];
+	   $scope.getAccessType=function () {
 		   $http.get('/common/list_code?codeSortKey=sys_type').success(function(data){
 			   if (data.code=="10000") {
-				   $scope.sysTypeList=data.data;
-				   console.log( $scope.sysTypeList);
+				   $scope.sysApplicantTypeList=data.data;
+
 			   }
 		   })
 	   }
-
-	   $scope.getsysTypeList();
-
-	   $scope.$watch('$scope.selectTime', function (newValue, oldValue) {
-		   console.log($scope.selectTime);
-
-	   });
+	   $scope.getAccessType();
 
 	   $scope.$watch('$scope.applications.type', function (newValue, oldValue) {
 		   $scope.loadSysApplications();
 
 	   });
 
-			   $scope.setSelectTime = function() {
-				   var timeFormat = {
-					   format : function(time) {
-						   var year = time.getFullYear();
-						   var month = (time.getMonth() + 1) >= 10 ? (time.getMonth() + 1)
-							   : "0" + (time.getMonth() + 1);
-						   var day = (time.getDate()) >= 10 ? (time.getDate()) : "0"
-							   + (time.getDate());
-						   return year + "/" + month + "/" + day
-					   }
-				   }
 
-				   var selectStartTime = new Date();
-				   selectStartTime.setDate(1);
-				   selectStartTime.setMonth(selectStartTime.getMonth() - 1);
-				   var selectEndTime = new Date();
-				   $scope.selectTime = timeFormat.format(selectStartTime) + " ,-"
-					   + timeFormat.format(selectEndTime);
-			   }
+	/*//修改
+    $scope.update = function(){
+    	if($scope.chooseArgs.length==1){
+    		var chooseCreate = angular.copy($scope.chooseArgs[0]);
+    		var modalInstance = $modal.open({
+    			templateUrl: 'tpl/systemmgmt/application/applications_form.html',
+                controller: 'ModalSysApplicationsInstanceCtrl',
+                size: '',
+                backdrop: 'static',
+                resolve: {
+                    items: function () {
+                           return ['update',chooseCreate];
+                    }
+                }
+            });
 
-			   $scope.init = function() {
-				   $scope.setSelectTime();
-			   }
-			   $scope.init();
-
+            modalInstance.result.then(function (items) {
+                if (items[0]) {//如果modal返回成功的话
+                	 $scope.loadSysApplications();
+                	 $scope.chooseArgs=[];
+                }
+            }, function () {
+                //取消
+            });
+    	}else{
+    		bootbox.alert({  
+    			buttons: {  
+    				ok: {  
+    					label: '确定',  
+    					className: 'btn-info btn-dark'  
+    				}  
+    			},  
+    			message: '请先选择一个操作的数据！',  
+    			callback: function() {  
+    			},  
+    			title: "提示",  
+    		}); 
+    	}	
+    }*/
 }]);
 
 app.filter("hidePasswordFilter",function(){
@@ -183,41 +186,3 @@ app.filter("hidePasswordFilter",function(){
 	}
 });
 
-
-
-
-/**
- * 时间选择器
- */
-app.directive('datepickerrang', function() {
-	var timeFormat = {
-		format : function(time) {
-			var year = time.getFullYear();
-			var month = (time.getMonth() + 1) >= 10 ? (time.getMonth() + 1)
-				: "0" + (time.getMonth() + 1);
-			var day = (time.getDate()) >= 10 ? (time.getDate()) : "0"
-				+ (time.getDate());
-			return year + "/" + month + "/" + day
-		}
-	}
-	return {
-		restrict : 'EA',
-		scope : false,
-		link : function(scope, element, attrs) {
-			var selectStartTime = new Date();
-			selectStartTime.setDate(1);
-			selectStartTime.setMonth(selectStartTime.getMonth() - 1);
-			var selectEndTime = new Date();
-			scope.selectTime = timeFormat.format(selectStartTime) + " -"
-				+ timeFormat.format(selectEndTime);
-
-			element.daterangepicker({
-				format : 'YYYY-MM-DD',
-				startDate : selectStartTime,
-				endDate : selectEndTime,
-			}, function(start, end, label) {
-				scope.selectTime = element.val();
-			})
-		}
-	}
-});
