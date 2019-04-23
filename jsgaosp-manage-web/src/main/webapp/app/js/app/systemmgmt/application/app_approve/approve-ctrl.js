@@ -27,7 +27,7 @@ app.controller('SystemSysApproveController',
 	//弹出新增窗口
     $scope.open = function (size, type,index) {
         var modalInstance = $modal.open({
-            templateUrl: 'tpl/systemmgmt/approve/approve_form.html',
+            templateUrl: 'tpl/systemmgmt/application/app_approve/approve_form.html',
             controller: 'ModalApproveCtrl',
             size: size,
             backdrop: 'static',
