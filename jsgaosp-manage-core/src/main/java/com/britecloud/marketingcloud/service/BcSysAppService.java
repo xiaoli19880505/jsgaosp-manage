@@ -21,4 +21,7 @@ public interface BcSysAppService {
     void updateSysApp(BcSysApplicationEntity args);
 
     void deleteSysApp(BcSysApplicationEntity args);
+
+    void approveSysApp(BcSysApplicationEntity args);
+
 }
