@@ -1,7 +1,7 @@
 package com.britecloud.marketingcloud.service;
 
 import com.alibaba.fastjson.JSONArray;
-import com.britecloud.marketingcloud.model.BcCode;
+
 import com.britecloud.marketingcloud.model.BcCodeSort;
 
 import java.util.List;
@@ -28,7 +28,7 @@ public interface CommonService {
      */
     public JSONArray getJSONArray(String tableName, String pColName, String colName, String pColValue) throws Exception;
 
-    List<BcCode> getCodeList(BcCodeSort codeSort);
+//    List<BcCodeSort> getCodeList(BcCodeSort codeSort);
 
     /**
      * 查询当前登录人，已经添加的系统列表

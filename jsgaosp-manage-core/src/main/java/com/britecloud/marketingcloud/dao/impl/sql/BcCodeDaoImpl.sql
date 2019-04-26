@@ -1,11 +1,39 @@
 --------------------------------------------
 --listCodeSort
 SELECT * FROM BC_CODE_SORT where (CODE_SORT_TEXT like '%'||:keyword||'%' or CODE_SORT_KEY like '%'||:keyword||'%')
+ --<dynamic>
+  --<isNotNull property="pCodeSortId" prepend="AND">
+        P_CODE_SORT_ID =:pCodeSortId
+  --</isNotNull>
+--</dynamic>
+AND  HAS_CHILD='1'
+AND  STATUS='1'
+AND  (ORG_ID IS NULL
+ --<dynamic>
+  --<isNotNull property="orgId" prepend="OR">
+        ORG_ID =:orgId
+  --</isNotNull>
+--</dynamic>
+)
+
 
 --------------------------------------------
+--listCodeSortDetailBypCodeSortId
+SELECT * FROM BC_CODE_SORT where (CODE_SORT_TEXT like '%'||:keyword||'%' or CODE_SORT_KEY like '%'||:keyword||'%')
+
+--  --<dynamic>
+--   --<isNotNull property="pCodeSortId" prepend="AND">
+--         P_CODE_SORT_ID =:pCodeSortId
+--   --</isNotNull>
+-- --</dynamic>
+and  P_CODE_SORT_ID =:pCodeSortId
+
+AND  HAS_CHILD='0'
+AND  STATUS='1'
+--------------------------------------------
 --saveCodeSort
-INSERT INTO BC_CODE_SORT(CODE_SORT_ID,CODE_SORT_KEY,CODE_SORT_TEXT,STATUS)
-VALUES(:codeSortId,:codeSortKey,:codeSortText,:status);
+INSERT INTO BC_CODE_SORT(CODE_SORT_ID,CODE_SORT_KEY,CODE_SORT_TEXT,STATUS,ORG_ID,P_CODE_SORT_ID,HAS_CHILD)
+VALUES(:codeSortId,:codeSortKey,:codeSortText,:status,:orgId,:pCodeSortId,:hasChild);
 
 --------------------------------------------
 --updateCodeSort
@@ -13,34 +41,15 @@ update BC_CODE_SORT set CODE_SORT_KEY=:codeSortKey,CODE_SORT_TEXT=:codeSortText 
 
 --------------------------------------------
 --deleteCodeSort
-delete from BC_CODE_SORT where CODE_SORT_ID=:codeSortId;
+update BC_CODE_SORT set STATUS='0' where CODE_SORT_ID=:codeSortId;
 
 --------------------------------------------
 --listCode
-SELECT * from BC_CODE where CODE_SORT_ID=:codeSortId;
+SELECT * from BC_CODE where CODE_SORT_ID=:codeSortId AND STATUS='1';
+
 
 --------------------------------------------
---saveCode
-INSERT INTO BC_CODE(CODE_ID,CODE_SORT_ID,CODE_KEY,CODE_TEXT,STATUS)
-VALUES(:codeId,:codeSortId,:codeKey,:codeText,:status);
+--getCodeSortByPId
+SELECT * from BC_CODE_SORT where P_CODE_SORT_ID =:codeSortId AND STATUS='1' AND HAS_CHILD='0'
 
---------------------------------------------
---updateCode
-update BC_CODE set CODE_KEY=:codeKey,CODE_TEXT=:codeText where CODE_ID=:codeId;
 
---------------------------------------------
---deleteCode
-delete from BC_CODE where CODE_ID=:codeId;
-
---------------------------------------------
---getCodeSortById
-SELECT * from BC_CODE_SORT where CODE_SORT_ID =:codeSortId
-
---------------------------------------------
---getCodeList
-SELECT *
-FROM BC_CODE C
-WHERE C.CODE_SORT_ID =
-      (SELECT S.CODE_SORT_ID
-       FROM BC_CODE_SORT S
-       WHERE S.CODE_SORT_KEY = :codeSortKey);

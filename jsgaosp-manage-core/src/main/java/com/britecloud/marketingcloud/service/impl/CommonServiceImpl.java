@@ -7,7 +7,7 @@ import com.britecloud.marketingcloud.dao.BcAreaDao;
 import com.britecloud.marketingcloud.dao.BcCodeDao;
 import com.britecloud.marketingcloud.dao.CommonDao;
 import com.britecloud.marketingcloud.model.BcArea;
-import com.britecloud.marketingcloud.model.BcCode;
+
 import com.britecloud.marketingcloud.model.BcCodeSort;
 import com.britecloud.marketingcloud.service.CommonService;
 import com.britecloud.marketingcloud.utils.MapUtils;
@@ -56,6 +56,8 @@ public class CommonServiceImpl implements CommonService{
         return array;
     }
 
+
+
     /**
      *
      * @param tableName
@@ -85,10 +87,10 @@ public class CommonServiceImpl implements CommonService{
         return list;
     }
 
-    @Override
-    public List<BcCode> getCodeList(BcCodeSort codeSort) {
-        return bcCodeDao.getCodeList(codeSort);
-    }
+//    @Override
+//    public List<BcCodeSort> getCodeList(BcCodeSort codeSort) {
+//        return bcCodeDao.listCodeSort();
+//    }
 
     /**
      * 查询当前登录人，已经添加的系统列表

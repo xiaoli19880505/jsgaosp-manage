@@ -4,8 +4,6 @@ import com.britecloud.marketingcloud.consants.Constants;
 import com.britecloud.marketingcloud.core.dao.jdbc.BaseJdbcDao;
 import com.britecloud.marketingcloud.dao.BcCodeDao;
 import com.britecloud.marketingcloud.domain.PageDataResult;
-import com.britecloud.marketingcloud.model.BcArea;
-import com.britecloud.marketingcloud.model.BcCode;
 import com.britecloud.marketingcloud.model.BcCodeSort;
 import com.britecloud.marketingcloud.utils.PageUtils;
 import com.britecloud.marketingcloud.utils.UUIDUtils;
@@ -45,8 +43,23 @@ public class BcCodeDaoImpl extends BaseJdbcDao implements BcCodeDao {
 	}
 
 	@Override
+	public PageDataResult<BcCodeSort> listCodeSortDetailBypCodeSortId(Map params) {
+		PageDataResult<BcCodeSort> pageData = new PageDataResult<BcCodeSort>();
+
+		String sql = loadSQL("listCodeSortDetailBypCodeSortId", params);
+		Integer totalCount = getNamedParameterJdbcTemplate().queryForInt(getTotalCountString(sql), params);
+		pageData.setTotalCount(totalCount);
+		pageData.setTotalPage(PageUtils.getTotalPage(totalCount));
+
+		sql = getPaginationString(sql, PageUtils.getStartNum((Integer) params.get("page")), PageUtils.pageSize);
+		List<BcCodeSort> list = getNamedParameterJdbcTemplate().query(sql, params, new BeanPropertyRowMapper(BcCodeSort.class));
+		pageData.setList(list);
+		return pageData;
+	}
+
+	@Override
 	public BcCodeSort getCodeSortById(BcCodeSort codeSort) {
-		String sql = loadSQL("getCodeSortById");
+		String sql = loadSQL("getCodeSortByPId");
 		Map paramMap = new HashMap();
 		paramMap.put("codeSortId", codeSort.getCodeSortId());
 		List<BcCodeSort> list = getNamedParameterJdbcTemplate().query(sql, paramMap,
@@ -55,6 +68,11 @@ public class BcCodeDaoImpl extends BaseJdbcDao implements BcCodeDao {
 			return null;
 		}
 		return list.iterator().next();
+	}
+
+	@Override
+	public BcCodeSort getCodeSortBypOrgNo(BcCodeSort codeSort) {
+		return null;
 	}
 
 	@Override
@@ -80,48 +98,5 @@ public class BcCodeDaoImpl extends BaseJdbcDao implements BcCodeDao {
 		getNamedParameterJdbcTemplate().update(sql, parameters);
 	}
 
-	@Override
-	public PageDataResult<BcCode> listCode(Map params) {
-		PageDataResult<BcCode> pageData = new PageDataResult<BcCode>();
 
-		String sql = loadSQL("listCode", params);
-		Integer totalCount = getNamedParameterJdbcTemplate().queryForInt(getTotalCountString(sql), params);
-		pageData.setTotalCount(totalCount);
-		pageData.setTotalPage(PageUtils.getTotalPage(totalCount));
-
-		sql = getPaginationString(sql, PageUtils.getStartNum((Integer) params.get("page")), PageUtils.pageSize);
-		List<BcCode> list = getNamedParameterJdbcTemplate().query(sql, params, new BeanPropertyRowMapper(BcCode.class));
-		pageData.setList(list);
-		return pageData;
-	}
-
-	@Override
-	public void saveCode(BcCode code) {
-		code.setCodeId(UUIDUtils.generateUUID());
-		code.setStatus(Constants.STATUS_ENABLE);
-		String sql = loadSQL("saveCode");
-		SqlParameterSource parameters = new BeanPropertySqlParameterSource(code);
-		getNamedParameterJdbcTemplate().update(sql, parameters);
-	}
-
-	@Override
-	public void updateCode(BcCode code) {
-		String sql = loadSQL("updateCode");
-		SqlParameterSource parameters = new BeanPropertySqlParameterSource(code);
-		getNamedParameterJdbcTemplate().update(sql, parameters);
-	}
-
-	@Override
-	public void deleteCode(BcCode code) {
-		String sql = loadSQL("deleteCode");
-		SqlParameterSource parameters = new BeanPropertySqlParameterSource(code);
-		getNamedParameterJdbcTemplate().update(sql, parameters);
-	}
-
-	@Override
-	public List<BcCode> getCodeList(BcCodeSort codeSort) {
-		String sql = loadSQL("getCodeList");
-		SqlParameterSource paramMap = new BeanPropertySqlParameterSource(codeSort);
-		return getNamedParameterJdbcTemplate().query(sql, paramMap,new BeanPropertyRowMapper(BcCode.class));
-	}
 }

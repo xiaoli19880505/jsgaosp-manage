@@ -3,7 +3,7 @@ package com.britecloud.marketingcloud.dao;
 
 import com.britecloud.marketingcloud.consants.Constants;
 import com.britecloud.marketingcloud.domain.PageDataResult;
-import com.britecloud.marketingcloud.model.BcCode;
+
 import com.britecloud.marketingcloud.model.BcCodeSort;
 import com.britecloud.marketingcloud.model.BcSysArgs;
 import com.britecloud.marketingcloud.utils.PageUtils;
@@ -28,21 +28,16 @@ public interface BcCodeDao {
 
     PageDataResult<BcCodeSort> listCodeSort(Map params);
 
+    PageDataResult<BcCodeSort> listCodeSortDetailBypCodeSortId(Map params);
+
 	void saveCodeSort(BcCodeSort codeSort);
 
     void updateCodeSort(BcCodeSort codeSort);
 
     void deleteCodeSort(BcCodeSort codeSort);
 
-    PageDataResult<BcCode> listCode(Map params);
-
-    void saveCode(BcCode code);
-
-    void updateCode(BcCode code);
-
-    void deleteCode(BcCode code);
-
     BcCodeSort getCodeSortById(BcCodeSort codeSort);
+    BcCodeSort getCodeSortBypOrgNo(BcCodeSort codeSort);
 
-    List<BcCode> getCodeList(BcCodeSort codeSort);
+
 }

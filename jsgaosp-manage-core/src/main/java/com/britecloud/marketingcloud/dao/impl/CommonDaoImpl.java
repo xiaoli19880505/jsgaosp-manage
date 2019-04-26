@@ -23,7 +23,14 @@ public class CommonDaoImpl extends BaseJdbcDao implements CommonDao{
      */
     @Override
     public List<Map<String, Object>> getList(String tableName, String pColName, String pColValue) {
-        String sql = "select * from "+tableName+" where "+pColName+"=:pColValue";
+
+        String sql ="";
+        if(null==pColValue){
+            sql="select * from "+tableName+" where "+pColName+" is null";
+        }else{
+            sql ="select * from "+tableName+" where "+pColName+"=:pColValue";
+        }
+
 
         Map<String, String> paramMap = new HashMap<String, String>();
         paramMap.put("pColValue",pColValue);

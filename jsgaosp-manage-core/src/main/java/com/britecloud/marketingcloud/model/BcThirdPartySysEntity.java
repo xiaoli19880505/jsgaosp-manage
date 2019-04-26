@@ -7,6 +7,8 @@ import java.util.Date;
 @Data
 public class BcThirdPartySysEntity {
 
+
+
 	private String id;
 	private String sysName;
 	private String areaNo;

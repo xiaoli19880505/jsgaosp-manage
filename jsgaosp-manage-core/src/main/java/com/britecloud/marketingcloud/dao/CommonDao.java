@@ -1,6 +1,6 @@
 package com.britecloud.marketingcloud.dao;
 
-import com.britecloud.marketingcloud.model.BcCode;
+
 
 import java.util.List;
 import java.util.Map;

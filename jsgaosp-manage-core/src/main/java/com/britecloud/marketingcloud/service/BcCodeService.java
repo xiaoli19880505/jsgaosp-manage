@@ -2,7 +2,6 @@
 package com.britecloud.marketingcloud.service;
 
 import com.britecloud.marketingcloud.domain.PageDataResult;
-import com.britecloud.marketingcloud.model.BcCode;
 import com.britecloud.marketingcloud.model.BcCodeSort;
 
 import java.util.Map;
@@ -20,19 +19,12 @@ public interface BcCodeService {
 
     PageDataResult<BcCodeSort> listCodeSort(Map params);
 
+    PageDataResult<BcCodeSort> listCodeSortDetailBypCodeSortId(Map params);
 	void saveCodeSort(BcCodeSort codeSort);
 
     void updateCodeSort(BcCodeSort codeSort);
 
     void deleteCodeSort(BcCodeSort codeSort);
-
-    PageDataResult<BcCode> listCode(Map params);
-
-    void saveCode(BcCode code);
-
-    void updateCode(BcCode code);
-
-    void deleteCode(BcCode code);
 
     BcCodeSort getCodeSortById(BcCodeSort codeSort);
 }

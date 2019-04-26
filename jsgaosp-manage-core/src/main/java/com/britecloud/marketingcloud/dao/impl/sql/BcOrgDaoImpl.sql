@@ -1,0 +1,41 @@
+--------------------------------------------
+--listOrg
+SELECT * FROM bc_org where P_ORG_NO=:pOrgNo;
+
+--------------------------------------------
+--saveOrg
+INSERT INTO bc_org(org_no,org_name,p_org_no,status,org_type,memo,charge_person,office_tel,mobile_tel,address)
+VALUES(:orgNo,:orgName,:pOrgNo,:status,:orgType,:memo,:chargePerson,:officeTel,:moblieTel,:address);
+
+--------------------------------------------
+--updateOrg
+update bc_org set
+org_no=:orgNo,
+org_name=:orgName,
+p_org_no=:pOrgNo,
+org_type=:orgType,
+memo=:memo,
+charge_person=:chargePerson,
+office_tel=:officeTel,
+mobile_tel=:moblieTel,
+address=:address
+where org_no=:orgNo
+
+--------------------------------------------
+--deleteOrg
+update bc_org set
+status='0'
+where org_no=:orgNo
+
+--------------------------------------------
+--getOrgById
+SELECT * from bc_org WHERE  org_no = :orgNo;
+
+--------------------------------------------
+--existsOrgName
+SELECT COUNT(1) from bc_org WHERE org_name=:orgName;
+
+--------------------------------------------
+--getOrgByOrgNo
+SELECT * from bc_org WHERE  org_no = :orgNo;
+

@@ -8,8 +8,8 @@ SELECT s.*,
  where s.sys_name like '%'||:sysName||'%'
 
  --<dynamic>
-  --<isNotNull property="createUserId" prepend="AND">
-         create_user_id=:createUserId
+  --<isNotNull property="areaNo" prepend="AND">
+         area_no like  :areaNo||'%'
   --</isNotNull>
 --</dynamic>
 
