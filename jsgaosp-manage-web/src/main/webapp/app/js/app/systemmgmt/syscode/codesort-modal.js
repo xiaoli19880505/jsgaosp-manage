@@ -18,6 +18,7 @@ app.controller('ModalCodeSortInstanceCtrl', ['$scope', '$modalInstance','$http',
 	
 
 	$scope.addCodeSort=function(){
+		$scope.codesort.hasChild="1";
 		BcCodeSortService.createCodeSort($scope.codesort).then(function(data){
 			if(data.code == "10000"){
 				 toastr.success('添加成功！');
@@ -74,8 +75,8 @@ app.controller('ModalCodeSortInstanceCtrl', ['$scope', '$modalInstance','$http',
 /**
  * 加载和编辑字典明细
  */
-app.controller('ModalCodeInstanceCtrl', ['$scope', '$modalInstance','$http', 'items','BcCodeService',  
-	function ($scope, $modalInstance,$http, items,BcCodeService) {
+app.controller('ModalCodeInstanceCtrl', ['$scope', '$modalInstance','$http', 'items','BcCodeSortDetailService','$rootScope',
+	function ($scope, $modalInstance,$http, items,BcCodeSortDetailService,$rootScope) {
 
 	$scope.codedetail=items[1];
 	$scope.flag=items[0]=="add";
@@ -87,7 +88,9 @@ app.controller('ModalCodeInstanceCtrl', ['$scope', '$modalInstance','$http', 'it
 	
 
 	$scope.addCode=function(){
-		BcCodeService.createCode($scope.codedetail).then(function(data){
+		$scope.codedetail.pCodeSortId=$rootScope.codeSortId;
+		$scope.codedetail.hasChild="0";
+		BcCodeSortDetailService.createCode($scope.codedetail).then(function(data){
 			if(data.code == "10000"){
 				 toastr.success('添加成功！');
 				 $("#toast-container").css("left", "46%");
@@ -102,7 +105,7 @@ app.controller('ModalCodeInstanceCtrl', ['$scope', '$modalInstance','$http', 'it
 	}
 	
 	$scope.updateCode=function(){
-		BcCodeService.updateCode($scope.codedetail).then(function(data){
+		BcCodeSortDetailService.updateCode($scope.codedetail).then(function(data){
 			if(data.code == "10000"){
 				 toastr.success('更新成功！');
 				 $("#toast-container").css("left", "46%");

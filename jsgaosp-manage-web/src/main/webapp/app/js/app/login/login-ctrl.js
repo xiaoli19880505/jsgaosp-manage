@@ -18,7 +18,7 @@ app.controller('LoginController', ['$scope', '$http', '$state',
                 } else {
 
                    // 获取数据字典列表
-                    var  codeKeyList=['sys_type','xz_type','yw_type'];
+                    var  codeKeyList=['sys_type','xz_type','yw_type','sys_status','app_status'];
                     var  codeList={};
                     angular.forEach(codeKeyList,function (item) {
                         commonServ.getCodeListByColName(item).then(function(data){

@@ -4,19 +4,19 @@
  */
 angular.module('app').factory('BcCodeSortService', ['res', 'GG',
     function (res, GG) {
-        var res = res(GG.BASE + '/codesort/:type');
+        var res = res(GG.BASE + '/code_sort/:type');
         var service = {
             listCodeSort: function (currentPage,keyword) {
                 return res.get({
                 	currentPage:currentPage,
                 	keyword:keyword,
-                	type:'list_codesort'
+                	type:'list_code_sort'
                 }).$promise;
             },
             getCodeSortById:function(codeSortId){
                 return res.get({
-                    codeSortId:codeSortId,
-                    type:'get_codesort'
+                    pCodeSortId:codeSortId,
+                    type:'list_code_detail'
                 }).$promise;
             },
             createCodeSort: function (codesort) {
@@ -38,15 +38,15 @@ angular.module('app').factory('BcCodeSortService', ['res', 'GG',
 /**
  * res 为自定义的$resource
  */
-angular.module('app').factory('BcCodeService', ['res', 'GG',
+angular.module('app').factory('BcCodeSortDetailService', ['res', 'GG',
     function (res, GG) {
-        var res = res(GG.BASE + '/code/:type');
+        var res = res(GG.BASE + '/code_sort_detail/:type');
         var service = {
             listCode: function (currentPage,codeSortId) {
                 return res.get({
                 	currentPage:currentPage,
-                	codeSortId:codeSortId,
-                	type:'list_code'
+                	pCodeSortId:codeSortId,
+                	type:'list_code_detail'
                 }).$promise;
             }
             ,
@@ -58,7 +58,7 @@ angular.module('app').factory('BcCodeService', ['res', 'GG',
             },
             deleteCode: function (codeId) {
                 return res.delete({
-                	codeId:codeId
+                	codeSortId:codeId
                 }).$promise;
             }
         };

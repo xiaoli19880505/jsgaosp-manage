@@ -8,8 +8,11 @@ import com.britecloud.marketingcloud.console.util.ResultUtil;
 import com.britecloud.marketingcloud.domain.PageDataResult;
 import com.britecloud.marketingcloud.model.BcCodeSort;
 import com.britecloud.marketingcloud.model.BcSysArgs;
+import com.britecloud.marketingcloud.model.BcUser;
 import com.britecloud.marketingcloud.service.BcCodeService;
 import com.britecloud.marketingcloud.service.BcSysArgsService;
+import com.britecloud.marketingcloud.utils.MapUtils;
+import com.britecloud.marketingcloud.utils.SessionUtils;
 import com.britecloud.marketingcloud.utils.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,14 +20,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.function.Consumer;
 
 /**
  * 数据字典主表Action
  */
 @RestController
-@RequestMapping("/codesort")
+@RequestMapping("/code_sort")
 public class BcCodeSortAction {
 
     @Autowired
@@ -38,14 +45,20 @@ public class BcCodeSortAction {
      * @throws Exception
      */
     @OperationLogAnn(value = "加载数据字典主表列表")
-    @RequestMapping(value = "/list_codesort", method = RequestMethod.GET)
+    @RequestMapping(value = "/list_code_sort", method = RequestMethod.GET)
     @ResponseBody
-    public ResponseResult listCodeSort(Integer currentPage, String keyword) throws Exception {
+    public ResponseResult listCodeSort(HttpServletRequest request,Integer currentPage, String keyword) throws Exception {
         JSONObject jo = new JSONObject();
         keyword = HuStringUtils.nvl(keyword);
+
+        BcUser user= SessionUtils.getCurrentUser(request);
+        if(user == null){
+            return ResultUtil.error("10005","未登录");
+        }
         Map params = new HashMap();
         params.put("keyword", keyword);
         params.put("page", currentPage);
+        params.put("orgId",user.getOrgNo());
         PageDataResult result = bcCodeService.listCodeSort(params);
         result.setPage(currentPage);
 

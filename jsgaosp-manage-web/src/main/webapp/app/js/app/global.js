@@ -272,7 +272,7 @@ angular.module('app').constant('GG', {
 			id : '8-0',
 			text : '组织管理',
 			iconCls :'fa fa-caret-right',
-			sref : 'app.system.company'
+			sref : 'app.system.org'
 		}, {
 			id : '8-1',
 			text : '账号管理',

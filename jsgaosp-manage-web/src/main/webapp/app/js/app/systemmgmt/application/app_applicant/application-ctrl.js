@@ -3,8 +3,8 @@
 /* Controllers */
 // hospital_people controller
 app.controller('SystemSysApplicationManagerController',
-    ['$scope', '$http', '$state', '$modal', '$stateParams', '$timeout', 'modalServ','BcSysApplicationService', 'GG','$sessionStorage',
-        function ($scope, $http, $state, $modal, $stateParams,$timeout, modalServ,BcSysApplicationService,GG,$sessionStorage) {
+    ['$scope', '$http', '$state', '$modal', '$stateParams', '$timeout', 'modalServ','BcSysApplicationService', 'GG','$sessionStorage','commonServ',
+        function ($scope, $http, $state, $modal, $stateParams,$timeout, modalServ,BcSysApplicationService,GG,$sessionStorage,commonServ) {
 
             $scope.totalItems = 100;
             $scope.currentPage = 1;
@@ -134,6 +134,11 @@ app.controller('SystemSysApplicationManagerController',
             }
 
             $scope.getsysTypeList();
+
+            commonServ.getSysListByArea().then(function(data){
+                $scope.sysList=data.data;
+
+            });
 
             $scope.$watch('$scope.selectTime', function (newValue, oldValue) {
                 console.log($scope.selectTime);

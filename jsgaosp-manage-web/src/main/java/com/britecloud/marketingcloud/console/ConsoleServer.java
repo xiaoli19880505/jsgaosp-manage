@@ -21,7 +21,6 @@ import com.britecloud.marketingcloud.core.ContextHolder;
 
 @SpringBootApplication
 @ComponentScan(basePackages = "com.britecloud")
-@Configuration
 public class ConsoleServer extends WebMvcConfigurerAdapter {
 
 	@Bean

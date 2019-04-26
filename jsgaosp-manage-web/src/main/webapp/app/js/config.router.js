@@ -95,12 +95,34 @@ angular
 			            	         'js/app/systemmgmt/systemuser/user-modal.js' ]
 			             },
 			             {
-			            	 state : 'app.system.company',
-			            	 url : '/company',
-			            	 templateUrl : 'tpl/systemmgmt/commgmt/company.html',
-			            	 deps : [
-			            	         'js/app/systemmgmt/commgmt/company_serv.js',
-			            	         'js/app/systemmgmt/commgmt/company_ctrl.js' ]
+			            	 // state : 'app.system.company',
+			            	 // url : '/company',
+			            	 // templateUrl : 'tpl/systemmgmt/commgmt/company.html',
+			            	 // deps : [
+			            	 //         // 'js/app/systemmgmt/commgmt/company_serv.js',
+			            	 //         'js/app/systemmgmt/commgmt/company_ctrl.js',
+								//  		'js/app/systemmgmt/commgmt/target_serv.js'
+							 // ]
+
+
+							 state : 'app.system.org',
+							 url : '/org',
+							 templateUrl : 'tpl/systemmgmt/orgmgmt/org.html',
+							 resolve: {
+								 deps: [
+									 '$ocLazyLoad',
+									 function ($ocLazyLoad) {
+										 return $ocLazyLoad.load('ui.select').then(
+											 function () {
+												 return $ocLazyLoad.load([
+													 '/app/js/app/systemmgmt/orgmgmt/org_ctrl.js',
+													 '/app/js/app/systemmgmt/orgmgmt/org_serv.js'
+												 ]);
+											 }
+										 );
+									 }
+								 ]
+							 }
 			             },
 						 {
 							 state : 'app.system.area',
@@ -144,7 +166,11 @@ angular
 							 deps : [
 								 'js/app/systemmgmt/application/app_applicant/application-ctrl.js',
 								 'js/app/systemmgmt/application/app_applicant/application-serv.js',
-								 'js/app/systemmgmt/application/app_applicant/application-modal.js'
+								 'js/app/systemmgmt/application/app_applicant/application-modal.js',
+								 '/assets/bs-datetimepicker/moment.min.js',
+								 '/assets/bs-datetimepicker/daterangepicker.min.js',
+								 '/assets/bs-datetimepicker/daterangepicker.zh-CN.js',
+								 '/assets/bs-datetimepicker/daterangepicker.css'
 
 								 ]
 						 },

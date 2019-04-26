@@ -12,7 +12,8 @@ app.controller('SysApplicantController',
     $scope.maxSize = 5;
     $scope.sysNameKey="";
     $scope.sysApplicantStatusKey="";
-    
+    $scope.sysTypeKey="";
+
     $scope.GGuser = GG.user;
     $scope.GGsysadmin = GG.sysadmin;
     
@@ -89,16 +90,19 @@ app.controller('SysApplicantController',
    /**
 	* 获得业务状态列表
 	*/
-	$scope.sysApplicantStatusList=[];
-   $scope.getAccessType=function () {
-	   $http.get('/common/list_code?codeSortKey=app_status').success(function(data){
-		   if (data.code=="10000") {
-			   $scope.sysApplicantStatusList=data.data;
+	$scope.sysApplicantStatusList=$sessionStorage.codeList.sys_status;
+   // $scope.getAccessType=function () {
+	//    $http.get('/common/list_code?codeSortKey=app_status').success(function(data){
+	// 	   if (data.code=="10000") {
+	// 		   $scope.sysApplicantStatusList=data.data;
+	// 		   console.log($scope.sysApplicantStatusList);
+	// 	   }
+	//    })
+   // }
+   // $scope.getAccessType();
 
-		   }
-	   })
-   }
-   $scope.getAccessType();
+
+
 
    $scope.$watch('$scope.sysApplicantStatusKey', function (newValue, oldValue) {
 	   $scope.loadSysApplications();

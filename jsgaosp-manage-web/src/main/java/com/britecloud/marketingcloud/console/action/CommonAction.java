@@ -7,7 +7,6 @@ import com.britecloud.marketingcloud.console.common.ResponseResult;
 import com.britecloud.marketingcloud.console.configuration.OperationLogAnn;
 import com.britecloud.marketingcloud.console.util.ResultUtil;
 import com.britecloud.marketingcloud.model.BcArea;
-import com.britecloud.marketingcloud.model.BcCode;
 import com.britecloud.marketingcloud.model.BcCodeSort;
 import com.britecloud.marketingcloud.model.BcUser;
 import com.britecloud.marketingcloud.service.BcAreaService;
@@ -76,8 +75,9 @@ public class CommonAction {
     @RequestMapping(value = "/list_code", method = RequestMethod.GET)
     @ResponseBody
     public ResponseResult listcode(BcCodeSort codeSort) throws Exception {
-        List<BcCode> codeList = commonService.getCodeList(codeSort);
-        return ResultUtil.success(codeList);
+//        List<BcCodeSort> codeList = commonService.getCodeList(codeSort);
+//        return ResultUtil.success(codeList);
+        return null;
     }
 
     /**

@@ -60,22 +60,7 @@ angular.module('app')
             });
 
 
-        //获取数据字典列表
-        // var  codeKeyList=['sys_type','xz_type','yw_type'];
-        // var  codeList={};
-        // angular.forEach(codeKeyList,function (item) {
-        //     $http.get('/common/list_code?codeSortKey='+item)
-        //         .success(function(data) {
-        //             alert(data)
-        //             codeList[item]=(data.data);
-        //         })
-        //         .error(function(){
-        //             alert("获取数据字典失败")
-        //
-        //         });
-        // })
 
-        // $scope.app.codeList = data.codeList;
 
 
 

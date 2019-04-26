@@ -15,8 +15,8 @@ app.controller('ModalSysApplicationsInstanceCtrl', ['$scope', '$modalInstance','
 		}
 
 		commonServ.getCodeListByColName("xz_type").then(function(data){
-			$scope.xzTypeList=data.data;
-		});
+            $scope.xzTypeList=data.data;
+        });
 
 		commonServ.getCodeListByColName("yw_type").then(function(data){
 			$scope.ywTypeList=data.data;

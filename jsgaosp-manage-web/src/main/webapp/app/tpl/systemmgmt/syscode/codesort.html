@@ -105,12 +105,12 @@
 							onmouseout="style.backgroundColor='#FFFFFF'"
 							style="cursor: pointer;">
 							<td>{{$index+1}}</td>
-							<td>{{code.codeKey}}</td>
-							<td>{{code.codeText}}</td>
+							<td>{{code.codeSortKey}}</td>
+							<td>{{code.codeSortText}}</td>
 							<td>
 								<a class="fa fa-pencil fa-fw m-r-xs" title="修改"
 									ng-click="open('','update',$index)"></a>
-								<a class="fa fa-times fa-fw" title="删除" ng-click="deleteCode(code.codeId)"></a>
+								<a class="fa fa-times fa-fw" title="删除" ng-click="deleteCode(code.codeSortId)"></a>
 							</td>
 						</tr>
 					</table>

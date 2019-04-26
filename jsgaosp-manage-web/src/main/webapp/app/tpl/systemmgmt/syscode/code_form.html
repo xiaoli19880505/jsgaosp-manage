@@ -10,18 +10,18 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label">键说明<span style="color:red;">*</span></label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" placeholder="请输入键说明" name="codeKey" ng-model="codedetail.codeKey" required="required">
+                            <input type="text" class="form-control" placeholder="请输入键说明" name="codeSortKey" ng-model="codedetail.codeSortKey" required="required">
                             <span style="color:red" ng-show="codeForm.codeKey.$dirty && codeForm.codeKey.$invalid">
-                                <span ng-show="codeForm.codeKey.$error.required">请输入键说明</span>
+                                <span ng-show="codeForm.codeSortKey.$error.required">请输入键说明</span>
                             </span>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 control-label">文本说明<span style="color:red;">*</span></label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" placeholder="请输入文本说明" name="codeText" ng-model="codedetail.codeText" required="required">
-                            <span style="color:red" ng-show="codeForm.codeText.$dirty && codeForm.codeText.$invalid">
-                                <span ng-show="codeForm.codeText.$error.required">请输入文本说明</span>
+                            <input type="text" class="form-control" placeholder="请输入文本说明" name="codeSortText" ng-model="codedetail.codeSortText" required="required">
+                            <span style="color:red" ng-show="codeForm.codeSortText.$dirty && codeForm.codeText.$invalid">
+                                <span ng-show="codeForm.codeSortText.$error.required">请输入文本说明</span>
                             </span>
                         </div>
                     </div>

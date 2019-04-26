@@ -15,8 +15,6 @@ angular.module('app').service(
 								size : size,
 								backdrop : 'static',
 							});
-
-
 							return modalInstance.result.then(
 									function(items) {
 										if (items[0]) {

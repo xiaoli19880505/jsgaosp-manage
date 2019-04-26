@@ -18,6 +18,7 @@ angular.module('app', [
     'angularBootstrapNavTree',
     'toaster',
     'myaccordion',
+    // 'treeGrid',
     'ngFileUpload',
     'ui.colorpicker',
     'ngCkeditor'

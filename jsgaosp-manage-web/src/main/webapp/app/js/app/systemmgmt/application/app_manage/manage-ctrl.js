@@ -99,80 +99,40 @@ app.controller('SystemSysApplicationManagerController',
     $scope.pageChanged = function () {
 		$scope.loadSysApplications();
 	};
-	//获取状态
-	$scope.sysApplicantStatusList=[];
-	   $scope.getAccessType=function () {
-		   $http.get('/common/list_code?codeSortKey=app_status').success(function(data){
-			   if (data.code=="10000") {
-				   $scope.sysApplicantStatusList=data.data;
 
-			   }
-		   })
-	   }
-	   $scope.getAccessType();
 
-	   $scope.$watch('$scope.applications.status', function (newValue, oldValue) {
-		   $scope.loadSysApplications();
 
-	   });
 	   
 	   //系统类型
 	   $scope.sysApplicantTypeList=[];
-	   $scope.getAccessType=function () {
+	   $scope.getsysTypeList=function () {
 		   $http.get('/common/list_code?codeSortKey=sys_type').success(function(data){
 			   if (data.code=="10000") {
-				   $scope.sysApplicantTypeList=data.data;
+				   $scope.sysList=data.data;
 
 			   }
 		   })
 	   }
-	   $scope.getAccessType();
-
-	   $scope.$watch('$scope.applications.type', function (newValue, oldValue) {
-		   $scope.loadSysApplications();
-
-	   });
 
 
-	/*//修改
-    $scope.update = function(){
-    	if($scope.chooseArgs.length==1){
-    		var chooseCreate = angular.copy($scope.chooseArgs[0]);
-    		var modalInstance = $modal.open({
-    			templateUrl: 'tpl/systemmgmt/application/applications_form.html',
-                controller: 'ModalSysApplicationsInstanceCtrl',
-                size: '',
-                backdrop: 'static',
-                resolve: {
-                    items: function () {
-                           return ['update',chooseCreate];
-                    }
-                }
-            });
 
-            modalInstance.result.then(function (items) {
-                if (items[0]) {//如果modal返回成功的话
-                	 $scope.loadSysApplications();
-                	 $scope.chooseArgs=[];
-                }
-            }, function () {
-                //取消
-            });
-    	}else{
-    		bootbox.alert({  
-    			buttons: {  
-    				ok: {  
-    					label: '确定',  
-    					className: 'btn-info btn-dark'  
-    				}  
-    			},  
-    			message: '请先选择一个操作的数据！',  
-    			callback: function() {  
-    			},  
-    			title: "提示",  
-    		}); 
-    	}	
-    }*/
+	   $scope.getsysTypeList();
+
+	   //对应地区的系统列表
+	   // $scope.sysApplicantTypeList=[];
+	   // $scope.getsysList=function () {
+		//    $http.get('/common/list_code?codeSortKey=sys_type').success(function(data){
+		// 	   if (data.code=="10000") {
+		// 		   $scope.sysList=data.data;
+	   //
+		// 	   }
+		//    })
+	   // }
+	   // $scope.getsysList();
+
+
+
+
 }]);
 
 app.filter("hidePasswordFilter",function(){

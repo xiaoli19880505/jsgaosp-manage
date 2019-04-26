@@ -4,8 +4,8 @@
 
 /* Controllers */
 app.controller('SystemCodeSortController',
-		['$scope', '$http', '$state', '$modal', '$stateParams', '$timeout', 'modalServ','BcCodeSortService','BcCodeService', 'GG','$rootScope',
-           function ($scope, $http, $state, $modal, $stateParams,$timeout, modalServ,BcCodeSortService,BcCodeService,GG,$rootScope) {
+		['$scope', '$http', '$state', '$modal', '$stateParams', '$timeout', 'modalServ','BcCodeSortService', 'GG','$rootScope',
+           function ($scope, $http, $state, $modal, $stateParams,$timeout, modalServ,BcCodeSortService,GG,$rootScope) {
 	
 	$scope.totalItems = 100;
     $scope.currentPage = 1;
@@ -89,12 +89,13 @@ app.controller('SystemCodeSortController',
 		// console.log(item);
 		$rootScope.codeSortId=item.codeSortId
 		$scope.codeSortId = item.codeSortId;
-		// BcCodeService.listCode(1,item.codeSortId);
+		$rootScope.codeSortText = item.codeSortText;
+
 	}
 }])
 app.controller('SystemCodeController',
-['$scope', '$http', '$state', '$modal', '$stateParams', '$timeout', 'modalServ','BcCodeService', 'GG','$rootScope','BcCodeSortService',
-function ($scope, $http, $state, $modal, $stateParams,$timeout, modalServ,BcCodeService,GG,$rootScope,BcCodeSortService) {
+['$scope', '$http', '$state', '$modal', '$stateParams', '$timeout', 'modalServ','BcCodeSortDetailService', 'GG','$rootScope','BcCodeSortService',
+function ($scope, $http, $state, $modal, $stateParams,$timeout, modalServ,BcCodeSortDetailService,GG,$rootScope,BcCodeSortService) {
 	/**
 	 * 数据字典明细Controller 
 	 */
@@ -117,15 +118,17 @@ function ($scope, $http, $state, $modal, $stateParams,$timeout, modalServ,BcCode
    });
 
     $scope.loadCodeDetails=function(codeSortId){
-        BcCodeService.listCode($scope.currentPage,codeSortId).then(function(res){
+		BcCodeSortDetailService.listCode($scope.currentPage,codeSortId).then(function(res){
     		$scope.codedetails=res.data.list;
     		$scope.totalItems=res.data.totalCount;
     		$scope.currentPage=res.data.page;
+
 		});
 		//获取标题
-		BcCodeSortService.getCodeSortById(codeSortId).then(function(res){
-			$scope.codeSortText = res.data.codeSortText;
-		});
+		$scope.codeSortText=	$rootScope.codeSortText;
+		// BcCodeSortService.getCodeSortById(codeSortId).then(function(res){
+		// 	$scope.codeSortText = res.data.codeSortText;
+		// });
 	}
 	
 	//搜索
@@ -168,7 +171,7 @@ function ($scope, $http, $state, $modal, $stateParams,$timeout, modalServ,BcCode
     	modalServ.showModal({}, {
 			bodyText: "确定要删除吗?"
 		}).then(function(result) {
-			BcCodeService.deleteCode(codeId).then(function(data) {
+			BcCodeSortDetailService.deleteCode(codeId).then(function(data) {
 				if(data.code == "10000"){
 					 toastr.success('删除成功！');
 					 $("#toast-container").css("left", "46%");
