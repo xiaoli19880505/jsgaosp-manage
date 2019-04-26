@@ -30,4 +30,5 @@ public class ApplicationEntity {
 	private String create_user_id;
 	private String ver_create_date; //版本创建时间
 	private String ver_create_user_id; //版本创建人
+	private String approval_status;
 }

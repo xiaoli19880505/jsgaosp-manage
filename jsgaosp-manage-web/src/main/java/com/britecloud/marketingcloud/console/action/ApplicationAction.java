@@ -44,8 +44,6 @@ public class ApplicationAction {
         }
         return ResultUtil.error("10001","更新失败！");
     }
-	
-	
 	@RequestMapping(value = "/list_applications", method = RequestMethod.GET)
 	@ResponseBody
 	public ResponseResult listApplications(Integer currentPage) throws Exception {

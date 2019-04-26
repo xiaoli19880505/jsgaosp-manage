@@ -33,7 +33,8 @@ update bc_declare_app_info set
    version = :version,
    working_status = :working_status,
    server_type = :server_type,
-   icon_url = :icon_url
+   icon_url = :icon_url,
+   approval_status = :approval_status
    where id=:id;
 --------------------------------------------
 --listApplication
@@ -61,7 +62,8 @@ update bc_declare_app_info set
        i.version,
        i.working_status,
        i.server_type,
-       i.icon_url
+       i.icon_url,
+       i.approval_status
   from bc_declare_app a, bc_declare_app_info i
  where a.id = i.app_id
  --<dynamic>
