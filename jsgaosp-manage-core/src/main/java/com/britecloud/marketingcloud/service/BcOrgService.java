@@ -13,6 +13,8 @@ public interface BcOrgService {
 
     List<BcOrg> listOrg(String pOrgNo);
 
+    List<BcOrg> listDepartmentByOrgId(String pOrgNo);
+
     void saveOrg(BcOrg org);
 
     void updateOrg(BcOrg org);

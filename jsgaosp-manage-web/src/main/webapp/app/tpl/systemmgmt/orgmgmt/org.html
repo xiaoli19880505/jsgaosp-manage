@@ -1,101 +1,198 @@
 <!-- hbox layout -->
 <style>
-	.help-block {
-		color: #F05050;
-		margin-bottom: 0px;
-		font-weight: bold;
-		font-style: oblique;
-	}
+    .help-block {
+        color: #F05050;
+        margin-bottom: 0px;
+        font-weight: bold;
+        font-style: oblique;
+    }
+    .self11_div{
+        padding: 20px;
+        padding-top: 0;
+    }
 </style>
 <div class="hbox hbox-auto-xs bg-light"
-	 ng-init="app.settings.asideFixed = true;app.settings.asideDock = false; app.settings.container = false; app.hideAside = false; app.hideFooter = true;"
-	 ng-controller="OrgController">
-	<!-- column -->
-	<div class="col w-xl lt b-r">
-		<div class="vbox">
-			<div class="wrapper">
-				<span class="h4">组织管理</span>
-			</div>
-			<div class="wrapper b-t m-t-xxs">
-			</div>
-			<div class="row-row">
-				<div class="cell scrollable hover">
-					<div class="cell-inner">
-						<div class="padder">
-							<div class="m-b">
-								<button type="button" ng-click="add_a_org()" class="btn btn-sm btn-info">新增</button>
-								<button type="button" ng-click="delete_a_org()" class="btn btn-sm btn-danger">删除</button>
-								<!--<button type="button" ng-click="synchronous_a_org()" class="btn btn-sm btn-success">同步</button>-->
-							</div>
-							<div class="b-a bg-light dk r r-2x">
-								<span ng-if="doing_async">...loading...</span>
-								<abn-tree
-										tree-data         = "org"
-										tree-control      = "my_tree"
-										on-select         = "getOrg(branch)"
-										expand-level      = "2"
-										initial-selection = "新城大厦机房"
-										icon-leaf			= "fa fa-hospital-o"
-										icon-expand       = "fa fa-plus"
-										icon-collapse     = "fa fa-minus"
-								>
-								</abn-tree>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- /column -->
-
-	<!-- column -->
-	<div class="col">
-		<div class="vbox">
-			<div class="wrapper bg-light lt b-b">
-				<span class="text-muted h4">编辑</span>
-			</div>
-			<div class="row-row"  ng-show="form_is_show">
-				<div class="row wrapper">
-					<div class="col-sm-5 m-b-xs">
-						<button type="button"  ng-click="submitForm(orgForm.$valid)" class="btn btn-sm btn-success">保存</button>
-					</div>
-					<div class="col-sm-4">
-					</div>
-
-				</div>
+     ng-init="app.settings.asideFixed = true;app.settings.asideDock = false; app.settings.container = false; app.hideAside = false; app.hideFooter = true;"
+     ng-controller="OrgController">
+    <!-- column -->
+    <div class="col w-xl lt b-r">
+        <div class="vbox">
+            <div class="wrapper">
+                <span class="h4">组织管理</span>
+            </div>
+            <div class="wrapper b-t m-t-xxs">
+            </div>
+            <div class="row-row">
+                <div class="cell scrollable hover">
+                    <div class="cell-inner">
+                        <div class="padder">
+                            <div class="m-b">
+                                <button type="button" ng-click="add_a_org()" class="btn btn-sm btn-info">新增</button>
+                                <button type="button" ng-click="delete_a_org()" class="btn btn-sm btn-danger">删除
+                                </button>
+                                <!--<button type="button" ng-click="synchronous_a_org()" class="btn btn-sm btn-success">同步</button>-->
+                            </div>
+                            <div class="b-a bg-light dk r r-2x">
+                                <span ng-if="doing_async">...loading...</span>
+                                <abn-tree
+                                        tree-data="org"
+                                        tree-control="my_tree"
+                                        on-select="getOrg(branch)"
+                                        expand-level="2"
+                                        initial-selection="新城大厦机房"
+                                        icon-leaf="fa fa-hospital-o"
+                                        icon-expand="fa fa-plus"
+                                        icon-collapse="fa fa-minus"
+                                >
+                                </abn-tree>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
-				<form name="areaForm" class="form-validation form-horizontal"  ng-submit="submitForm(orgForm.$valid)" novalidate>
+    <div class="col w lt b-r">
+        <div class="vbox">
+            <div class="wrapper">
+                <span class="h4">下属部门管理</span>
+            </div>
+            <div class="wrapper b-t m-t-xxs">
+            </div>
 
-					<div class="form-group">
-						<label class="col-sm-2 control-label">名称<span style="color:red;">*</span></label>
-						<div class="col-sm-10">
-							<input type="text" class="form-control" placeholder="请输入名称" name="org_name" ng-model="orgItem.org_name"
-								   required>
-							<!--<p ng-show="areaForm.area_name.$pristine&& submitted" class="help-block">请输入名称</p>
-							<p ng-show="areaForm.area_name.$error.minlength&& submitted" class="help-block">名称不得少于2个字符</p>
-							<p ng-show="areaForm.area_name.$error.maxlength&& submitted" class="help-block">名称不得大于5个字符</p>-->
-						</div>
-					</div>
+            <div class="self11_div">
+                <a class="btn btn-info btn-sm" ng-click="addDepartment()"
+                   style="margin-bottom: 10px;">新增</a>
+                <div class="cell-inner">
+                    <span ng-show="departmentList.length==0">暂无部门信息！</span>
 
-					<div class="form-group">
-						<label class="col-sm-2 control-label">编号<span style="color:red;">*</span></label>
-						<div class="col-sm-10">
-							<input type="text" class="form-control" placeholder="请输入数字编号" name="org_no" ng-model="orgItem.org_no"
-								   ng-pattern="/^(\d*)$/" required>
-							<!--<p ng-show="areaForm.area_no.$pristine&& submitted" class="help-block">请输入编号</p>-->
+                    <div class="list-group">
+                        <a ng-repeat="item in departmentList"  ng-click="selectDepartment(item)"
+                           class="list-group-item  hover-anchor"
+                           ng-class="{'hover': item.selected }">
+                                                    <span  ng-click='deleteDepartment(item)'
+                                                          class="pull-right text-muted hover-action">
+                                                        <i class="fa fa-times"></i>
+                                                    </span>
+                            <span class="block text-ellipsis">
+                                                        {{item.orgName}}
+                                                    </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-							<p ng-show="orgForm.org_no.$invalid&&!orgForm.org_no.$pristine&&submitted" class="help-block">请输入数字</p>
-							<!--<p ng-show="!areaForm.area_no.$invalid && submitted" class="help-block">请输入正确的编号</p>-->
-						</div>
-					</div>
+    <div class="col lt b-r">
+        <div class="vbox">
+            <div class="wrapper">
+                <span class="h4">编辑</span>
+            </div>
+            <div class="wrapper b-t m-t-xxs">
+            </div>
+            <div class="row-row">
+                <div class="cell scrollable hover">
+                    <div class="cell-inner">
+                        <div class="padder">
+
+                            <div class="row wrapper">
+                                <div class="col-sm-5 m-b-xs">
+                                    <button type="button" ng-click="submitForm(orgForm.$valid)"
+                                            class="btn btn-sm btn-success">保存
+                                    </button>
+                                </div>
+                                <div class="col-sm-4">
+                                </div>
+
+                            </div>
+
+                            <form name="orgForm" class="form-validation form-horizontal"
+                                  ng-submit="submitForm(orgForm.$valid)" novalidate>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">名称<span style="color:red;">*</span></label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" placeholder="请输入名称" name="org_name"
+                                               ng-model="orgItem.orgName"
+                                               required>
+                                        <!--<p ng-show="areaForm.area_name.$pristine&& submitted" class="help-block">请输入名称</p>-->
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">地址<span style="color:red;">*</span></label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" placeholder="请输入地址" name="address"
+                                               ng-model="orgItem.address"
+                                               required>
+
+                                        <p ng-show="orgForm.address.$invalid&&!orgForm.address.$pristine&&submitted"
+                                           class="help-block">请输入地址</p>
+
+                                    </div>
+                                </div>
 
 
-				</form>
-			</div>
-		</div>
-	</div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">负责人<span style="color:red;">*</span></label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" placeholder="请输入负责人" name="chargePerson"
+                                               ng-model="orgItem.chargePerson"
+                                               required>
+
+                                        <p ng-show="orgForm.chargePerson.$invalid&&!orgForm.chargePerson.$pristine&&submitted"
+                                           class="help-block">请输入负责人</p>
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">固定电话<span style="color:red;">*</span></label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" placeholder="请输入固定电话" name="officeTel"
+                                               ng-model="orgItem.officeTel"
+                                               required>
+
+                                        <p ng-show="orgForm.officeTel.$invalid&&!orgForm.officeTel.$pristine&&submitted"
+                                           class="help-block">请输入固定电话</p>
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">移动电话<span style="color:red;">*</span></label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" placeholder="请输入移动电话" name="mobileTel"
+                                               ng-model="orgItem.mobileTel"
+                                               required>
+
+                                        <p ng-show="orgForm.mobileTel.$invalid&&!orgForm.mobileTel.$pristine&&submitted"
+                                           class="help-block">请输入移动电话</p>
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">备注</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" name="memo" ng-model="orgItem.memo"
+                                        >
+
+
+                                    </div>
+                                </div>
+
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <!-- /column -->
 </div>

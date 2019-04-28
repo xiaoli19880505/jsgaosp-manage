@@ -18,6 +18,9 @@ app.controller('OrgController',function($scope,$http,$state,$timeout,modalServ,O
 	//初始化为1
 	$scope.flag=1;
 
+	$scope.operate_type="org";
+
+
 	//表示新增组织的父节点
 	$scope.parentId=0;
 
@@ -39,35 +42,63 @@ app.controller('OrgController',function($scope,$http,$state,$timeout,modalServ,O
 	$scope.keyword="";
 
 	$scope.getOrg = function(branch) {
+
+		$scope.operate_type="org";
 		_branch = branch;
 //		console.log(_branch);
 		$scope.org_no = _branch.org_no;
 
-		$scope.flag=1;
 
-
-
+		if(_branch.org_no==null){
+			$scope.flag=0;
+		}else{
+			$scope.flag=1;
+		}
 		is_show_form();
-
-
 		if (branch.org_no!= 0) {
 			$scope.output=_branch.org_name;
-			$scope.orgItem.org_name=_branch.org_name;
-			$scope.orgItem.org_no=_branch.org_no;
-			$scope.orgItem.p_org_no=_branch.p_org_no;
+			$scope.orgItem.orgName=_branch.org_name;
+			$scope.orgItem.orgNo=_branch.org_no;
+			$scope.orgItem.pOrgNo=_branch.p_org_no;
 			$scope.orgItem.children=_branch.children;
+			$scope.orgItem.address=_branch.address;
+			$scope.orgItem.memo=_branch.memo;
+			$scope.orgItem.officeTel=_branch.office_tel;
+			$scope.orgItem.mobileTel=_branch.mobile_tel;
+			$scope.orgItem.chargePerson=_branch.charge_person;
+			$scope.orgItem.orgType=_branch.orgType;
 			if(tree.get_parent_branch(branch)!=null){
 
 				$scope.p_org_no = tree.get_parent_branch(branch).org_no;
-
+				$scope.parentId=$scope.p_org_no;
 			}_branch
 
 
-			$scope.parentId=branch.org_no;
+
 
 
 		}
 	};
+
+	$scope.departmentList=[];
+	$scope.loadDepartmentList=function(orgNo){
+		OrgService.loadDepartmentList(orgNo).then(function (data) {
+			if (data.code=="10000"){
+				$scope.departmentList=data.data;
+			}
+		})
+	}
+
+
+	$scope.$watch('org_no', function (newVal, oldVal) {
+		if ($scope.org_no != null) {
+			$scope.loadDepartmentList(newVal);
+		}
+	})
+
+
+
+
 
 
 	$scope.org = [];
@@ -94,6 +125,7 @@ app.controller('OrgController',function($scope,$http,$state,$timeout,modalServ,O
 	 * 增加一个节点
 	 */
 	$scope.add_a_org = function() {
+		$scope.operate_type="org";
 		var b;
 		$scope.tree_selected=false;
 		b = tree.get_selected_branch();
@@ -103,16 +135,13 @@ app.controller('OrgController',function($scope,$http,$state,$timeout,modalServ,O
 			return;
 		}
 
-		if(b.children==""){
-			toastr.error('不能在部门下增加子节点！');
-			return;
-		}
+
 
 		$scope.flag=0;
 
 
 		$scope.orgItem.org_name='未命名';
-		$scope.orgItem.p_org_no=$scope.parentId;
+		$scope.orgItem.pOrgNo=$scope.parentId;
 
 
 		return tree.add_branch(b, {
@@ -125,6 +154,26 @@ app.controller('OrgController',function($scope,$http,$state,$timeout,modalServ,O
 
 	};
 
+
+	$scope.selectDepartment=function(item){
+		$scope.orgItem=item;
+		$scope.operate_type="department";
+	}
+
+	$scope.deleteDepartment=function(item){
+		if(item.orgNo==null){
+			toastr.warning('请先选择组织!');
+			return;
+		}
+
+		OrgService.deleteOrg(item).then(function (data) {
+			if(data.code=="10000"){
+				toastr.success('删除成功！');
+			}else{
+				toastr.error('删除失败！');
+			}
+		})
+	}
 	/**
 	 * 删除一个节点
 	 */
@@ -162,45 +211,66 @@ app.controller('OrgController',function($scope,$http,$state,$timeout,modalServ,O
 	}
 
 
+	$scope.addDepartment=function(){
+		var b;
+		$scope.tree_selected=false;
+		b = tree.get_selected_branch();
+
+		if(b==null){
+			toastr.error('请先选择一个组织！');
+			return;
+		}
+		$scope.orgItem={};
+		$scope.orgItem.pOrgNo=$scope.org_no;
+		$scope.operate_type="department";
+	}
+
 	$scope.updateOrg=function(){
 
-		if($scope.flag==1){
-			OrgService.updateOrg($scope.orgItem).then(function(data){
-				if(data.code=="10000"){
-					$scope.tmp_flag=true;
-					toastr.success('更新组织成功！');
-					$scope.loadOrg();
-					$timeout(function() {
-						tree.expand_all();
-						tree.select_firstChild_branch();
-						set_flag_false();
-					}, 0);
+		if($scope.operate_type=="org"){
+
+			if($scope.flag==1){
+				OrgService.updateOrg($scope.orgItem).then(function(data){
+					if(data.code=="10000"){
+						$scope.tmp_flag=true;
+						toastr.success('更新组织成功！');
+						$scope.loadOrg();
+						$timeout(function() {
+							tree.expand_all();
+							tree.select_firstChild_branch();
+							set_flag_false();
+						}, 0);
 
 
-				}else{
-					toastr.error('更新组织失败！');
+					}else{
+						toastr.error('更新组织失败！');
 
-				}
-			})
+					}
+				})
+			}else{
+				$scope.orgItem.pOrgNo=$scope.parentId;
+				OrgService.addOrg($scope.orgItem).then(function(data){
+					if(data.code=="10000"){
+						$scope.form_is_show=false;
+						$scope.tmp_flag=true;
+						toastr.success('新建组织成功！');
+						$scope.loadOrg();
+						$timeout(function() {
+							tree.expand_all();
+							tree.select_firstChild_branch();
+							set_flag_false();
+						}, 0);
+					}else{
+						toastr.error('新建组织失败！');
+
+					}
+				})
+			}
 		}else{
-			OrgService.addOrg($scope.orgItem).then(function(data){
 
-				if(data.code=="10000"){
-					$scope.form_is_show=false;
-					$scope.tmp_flag=true;
-					toastr.success('新建组织成功！');
-					$scope.loadOrg();
-					$timeout(function() {
-						tree.expand_all();
-						tree.select_firstChild_branch();
-						set_flag_false();
-					}, 0);
-				}else{
-					toastr.error('新建组织失败！');
 
-				}
-			})
 		}
+
 
 	}
 

@@ -52,6 +52,19 @@ public class BcOrgAction {
         return ResultUtil.success(array);
     }
 
+    /**
+     * 获取组织下属部门
+     * @param pOrgNo
+     * @return
+     * @throws Exception
+     */
+    @OperationLogAnn(value = "获取组织下属部门")
+    @RequestMapping(value = "/listDepartmentByOrgId", method = RequestMethod.GET)
+    @ResponseBody
+    public ResponseResult listDepartmentByOrgId(String pOrgNo) throws Exception {
+        return ResultUtil.success(bcOrgService.listDepartmentByOrgId(pOrgNo));
+    }
+
     @OperationLogAnn(value = "根据主键获取组织")
     @RequestMapping(value = "/get_org", method = RequestMethod.GET)
     @ResponseBody
@@ -72,16 +85,17 @@ public class BcOrgAction {
     @ResponseBody
     public ResponseResult saveOrg(BcOrg org){
         if(org != null){
-            if(StringUtils.isNotEmpty(org.getOrgNo())){
                 //判断areaName是否存在
                 int num = bcOrgService.existsOrgName(org);
                 if(num>0){
                     return ResultUtil.error("10002","组织名称已存在!");
                 }else {
+                    org.setOrgType("01");
+                    org.setStatus("1");
                     bcOrgService.saveOrg(org);
                     return ResultUtil.success();
                 }
-            }
+
         }
         return ResultUtil.error("10001","保存失败！");
     }
@@ -96,6 +110,8 @@ public class BcOrgAction {
     @ResponseBody
     public ResponseResult updateOrg(BcOrg org){
         if(org != null){
+            org.setOrgType("01");
+            org.setStatus("1");
             bcOrgService.updateOrg(org);
             return ResultUtil.success();
         }

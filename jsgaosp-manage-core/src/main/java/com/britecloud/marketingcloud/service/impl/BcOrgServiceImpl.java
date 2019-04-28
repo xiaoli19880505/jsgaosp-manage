@@ -24,6 +24,11 @@ public class BcOrgServiceImpl implements BcOrgService {
     }
 
     @Override
+    public List<BcOrg> listDepartmentByOrgId(String pOrgNo) {
+        return bcOrgDao.listDepartmentByOrgId(pOrgNo);
+    }
+
+    @Override
     public void saveOrg(BcOrg org) {
        bcOrgDao.saveOrg(org);
     }

@@ -18,29 +18,31 @@ angular.module('app').factory('OrgService', ['res', 'GG',
                 }).$promise;
             },
             updateOrg: function (orgItem) {
-
-                return res.get({
-
-                    orgName:orgItem.org_name,
-                    orgNo:orgItem.org_no,
-                    pOrgNo:orgItem.p_org_no,
-                    type:'update_org'
-                }).$promise;
+                orgItem.type="update_org";
+                delete  orgItem.status;
+                delete  orgItem.orgType;
+                return res.get(
+                    orgItem
+                ).$promise;
             },
             addOrg: function (orgItem) {
-                return res.get({
-                    orgName:orgItem.org_name,
-                    orgNo:orgItem.org_no,
-                    pOrgNo:orgItem.p_org_no,
-                    type:'save_org'
+                orgItem.type="save_org";
+                return res.get(orgItem).$promise;
+            },
+            loadDepartmentList:function(orgNo){
+              return res.get ( {
+                    pOrgNo:orgNo,
+                    type:'listDepartmentByOrgId'
                 }).$promise;
+            },
+            addDepatemnt: function (orgItem) {
+                orgItem.type="save_org";
+                return res.get(orgItem).$promise;
             },
             deleteOrg: function (orgItem) {
                 return res.get({
-                    orgId: orgItem.orgNo,
+                    orgNo: orgItem.orgNo,
                     type:"delete_org"
-
-
                 }).$promise;
             }
 
