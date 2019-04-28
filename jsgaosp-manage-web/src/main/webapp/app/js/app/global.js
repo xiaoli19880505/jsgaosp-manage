@@ -164,10 +164,11 @@ angular.module('app').constant('GG', {
         sref : '#',
         funcs: [{
 			id : '5-0',
-			text : '应用申报',
+			text : '应用版本管理',
 			iconCls :'fa fa-caret-right',
-			sref : 'app.system.app_applicant'
-		},{
+			sref : 'app.system.application'
+		},
+		{
 			id : '5-1',
 			text : '应用审批',
 			iconCls :'fa fa-caret-right',
@@ -192,7 +193,13 @@ angular.module('app').constant('GG', {
 				text : '应用系统审批',
 				iconCls :'fa fa-caret-right',
 				sref : 'app.system.sys_approve'
-			}]
+			},{
+				id : '5-6',
+				text : '应用申报',
+				iconCls :'fa fa-caret-right',
+				sref : 'app.system.app_applicant'
+			}
+			]
     },{
 		active : false,
 		text : '业务监控',

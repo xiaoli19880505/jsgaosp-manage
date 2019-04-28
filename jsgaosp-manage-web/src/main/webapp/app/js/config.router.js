@@ -159,7 +159,7 @@ angular
 
 							]
 						},
-                         {
+                      /*   {
 							 state : 'app.system.app_applicant',
 							 url : '/application',
 							 templateUrl : 'tpl/applicationmgmt/app_applicant/app_applicant.html',
@@ -173,7 +173,7 @@ angular
 								 '/assets/bs-datetimepicker/daterangepicker.css'
 
 								 ]
-						 },
+						 },*/
 						 {
 							 state : 'app.system.app_approve',
 							 url : '/app_approve',
@@ -184,6 +184,17 @@ angular
 								 'js/app/systemmgmt/application/app_approve/approve-modal.js'
 
 							 ]
+						 },
+						 {
+							 state : 'app.system.application',
+							 url : '/application',
+							 templateUrl : 'tpl//application/application.html',
+							 deps : [
+								 'js/app/application/application-ctrl.js',
+								 'js/app/application/application-serv.js',
+								 'js/app/application/application-modal.js'
+								 
+								 ]
 						 },
 						 {
 							 state : 'app.system.app_manage',
