@@ -10,49 +10,7 @@
 <div class="hbox hbox-auto-xs bg-light"
      ng-init="app.settings.asideFixed = true;app.settings.asideDock = false; app.settings.container = false; app.hideAside = false; app.hideFooter = true;"
      ng-controller="AreaController">
-    <!-- column -->
-    <div class="col w-xl lt b-r">
-        <div class="vbox">
-            <div class="wrapper">
-                <span class="h4">行政区划管理</span>
-            </div>
-            <div class="wrapper b-t m-t-xxs">
-
-				<!--<div class="input-group">-->
-					<!--<input type="text" class="form-control input-sm ng-valid ng-dirty ng-valid-parse ng-touched" placeholder="请输入关键字" ng-model="keyword">-->
-					<!--<span class="input-group-addon input-sm" ng-click="search()"><i class="fa fa-search"></i></span>-->
-				<!--</div>-->
-			</div>
-            <div class="row-row">
-				<div class="cell scrollable hover">
-					<div class="cell-inner">
-						<div class="padder">
-							<div class="m-b">
-								<button type="button" ng-click="add_a_Area()" class="btn btn-sm btn-info">新增</button>
-								<button type="button" ng-click="delete_a_Area()" class="btn btn-sm btn-danger">删除</button>
-								<!--<button type="button" ng-click="synchronous_a_org()" class="btn btn-sm btn-success">同步</button>-->
-							</div>
-							<div class="b-a bg-light dk r r-2x">
-								<span ng-if="doing_async">...loading...</span>
-							        <abn-tree 
-							          tree-data         = "area"
-							          tree-control      = "my_tree" 
-							          on-select         = "getArea(branch)"
-							          expand-level      = "2" 
-							          initial-selection = "新城大厦机房"
-							          icon-leaf			= "fa fa-hospital-o"
-							          icon-expand       = "fa fa-plus"
-							          icon-collapse     = "fa fa-minus"
-							          >
-						        </abn-tree>
-						      </div>
-						</div>
-					</div>
-				</div>
-			</div>
-        </div>
-    </div>
-    <!-- /column -->
+	<orgtree-nav></orgtree-nav>
 
     <!-- column -->
     <div class="col">

@@ -8,10 +8,12 @@ import com.britecloud.marketingcloud.console.configuration.OperationLogAnn;
 import com.britecloud.marketingcloud.console.util.ResultUtil;
 import com.britecloud.marketingcloud.model.BcArea;
 import com.britecloud.marketingcloud.model.BcOrg;
+import com.britecloud.marketingcloud.model.BcUser;
 import com.britecloud.marketingcloud.service.BcAreaService;
 import com.britecloud.marketingcloud.service.BcOrgService;
 import com.britecloud.marketingcloud.service.CommonService;
 import com.britecloud.marketingcloud.utils.MapUtils;
+import com.britecloud.marketingcloud.utils.SessionUtils;
 import com.britecloud.marketingcloud.utils.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -59,6 +62,24 @@ public class BcOrgAction {
         return ResultUtil.success(res);
     }
 
+
+    /**
+     * 获取登录者所能查看的组织树
+     * @param
+     * @return
+     * @throws Exception
+     */
+    @OperationLogAnn(value = "获取登录者所能查看的组织树")
+    @RequestMapping(value = "/get_org_tree_by_user", method = RequestMethod.GET)
+    @ResponseBody
+    public ResponseResult getOrgTree(HttpServletRequest request) throws Exception {
+        BcUser user= SessionUtils.getCurrentUser(request);
+        if(user == null){
+            return ResultUtil.error("10005","未登录");
+        }
+        return ResultUtil.success(listOrg(user.getOrgNo()));
+
+    }
     /**
      * 获取组织下属部门
      * @param pOrgNo

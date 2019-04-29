@@ -19,7 +19,7 @@ public interface CommonService {
     List<Map<String,Object>> getList(String tableName, String pColName, String pColValue);
 
     /**
-     * 获取公共树
+     * 根据父节点id获取公共树,获取下属所有节点，不包含父节点
      * @param colName 编号对应字段名
      * @param tableName 表名
      * @param pColName 父字段名
@@ -27,6 +27,15 @@ public interface CommonService {
      * @return
      */
     public JSONArray getJSONArray(String tableName, String pColName, String colName, String pColValue) throws Exception;
+
+    /**
+     * 获根据父节点Id,获取父节点及其所有子节点
+     * @param colName 编号对应字段名
+     * @param tableName 表名
+     * @param pColName 父字段名
+     * @param pColValue 父字段名的值
+     * @return
+     */
 
 //    List<BcCodeSort> getCodeList(BcCodeSort codeSort);
 

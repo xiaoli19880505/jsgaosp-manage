@@ -2,7 +2,7 @@
  * 机构树
  * <orgtree-nav></orgtree-nav>
  */
-angular.module('app').directive('orgtreeNav', [ 'GG', 'res', function(GG, res) {
+angular.module('app').directive('orgtreeNav', [ 'GG', 'res','commonServ', function(GG, res,commonServ) {
 	/** ******tree util********* */
 	var resultNode = [];
 	var pNode = null;
@@ -13,7 +13,7 @@ angular.module('app').directive('orgtreeNav', [ 'GG', 'res', function(GG, res) {
 			return resultNode;
 		},
 		searchLabel : function(node, keyword) {
-			if (node.label.toString().indexOf(keyword) >= 0) {
+			if (node.org_name.toString().indexOf(keyword) >= 0) {
 				resultNode.push(node);
 			} else {
 				if (node.children != null) {
@@ -48,55 +48,34 @@ angular.module('app').directive('orgtreeNav', [ 'GG', 'res', function(GG, res) {
 		replace:true,
 		templateUrl : 'tpl/org_tree_nav.html',
 		controller : function($scope, $element, $attrs,$timeout) {
-			$scope.orgId = null;
+			$scope.orgNo = null;
 
-			$scope.name = "";
+			$scope.orgNameKey = "";
 			$scope.search = function() {
-				$scope.loadOrg($scope.name);
+				$scope.loadOrg();
 			};
 
 			$scope.orgList = [];
 			$scope.my_tree = {};
 			$scope.changeOrg = function(branch) {
-				$scope.orgId = branch.orgId;
-				$scope.code = branch.code;
+				$scope.orgNo= branch.org_no;
+				$scope.code= branch.code;
 			};
 			$scope.loadOrg = function() {
-				var orgRes = res(GG.BASE + '/hospital/org');
-				orgRes.query().$promise.then(function(data) {
-					var tmp = [ {
-						"label" : "所有机构",
-						"orgId" : "-1",
-						"pId" : "-1",
-						"code" : "",
-						"address" : "",
-					} ];
-					if($scope.app.org==null){
-						var childa={"label":"医疗机构","children":[],"orgId":"-1","pId":"-1","code":""};
-						var childb={"label":"监管机构","children":[],"orgId":"-1","pId":"-1","code":""};
-						tmp[0]['children']=[];
-						tmp[0]['children'].push(childa);
-						tmp[0]['children'].push(childb);
 
-						angular.forEach(data,function(item){
-							if(item.type=="01"){
-								tmp[0]['children'][0]['children'].push(item);
-							}else{
-								tmp[0]['children'][1]['children'].push(item);
-							}
-						});
-					}else{
-						tmp[0]['children']=data;
-					}
-					$scope.orgList = tmp;
-					var result=treeUtil.treeFilter(tmp, $scope.name);
+
+
+				commonServ.getOrgTreeByUser().then(function(data) {
+					$scope.doing_async = false;
+					$scope.orgList = data.data.data;
+					var tmp= data.data.data;
+					var result=treeUtil.treeFilter(tmp, $scope.orgNameKey);
 					if(result[0]!=null){
 						$scope.orgList=result;
 					}else{
 						$scope.orgList=[];
 					}
 					$timeout(function() {
-						//$scope.my_tree.expand_all();
 						$scope.my_tree.select_firstChild_branch();
 					});
 				});

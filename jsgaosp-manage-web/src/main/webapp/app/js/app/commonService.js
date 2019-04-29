@@ -28,4 +28,18 @@ angular.module('app').service('commonServ', [ '$http','$q', function( $http,$q) 
         return d.promise;
     }
 
+
+    //获得登录者所能看到的组织树
+    this.getOrgTreeByUser = function(){
+        var d = $q.defer();
+        $http.get('/org/get_org_tree_by_user')
+            .success(function(response) {
+                d.resolve(response);
+            })
+            .error(function(){
+                alert(0)
+                d.reject("error");
+            });
+        return d.promise;
+    }
 } ]);

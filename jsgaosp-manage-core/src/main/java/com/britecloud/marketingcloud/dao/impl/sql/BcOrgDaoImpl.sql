@@ -48,5 +48,6 @@ SELECT COUNT(1) from bc_org WHERE org_name=:orgName;
 
 --------------------------------------------
 --getOrgByOrgNo
-SELECT * from bc_org WHERE  org_no = :orgNo;
+SELECT * from bc_org WHERE  org_no = :orgNo
+AND STATUS='1';
 

@@ -87,25 +87,25 @@ app.controller('AreaController',function($scope,$http,$state,$timeout,modalServ,
 	};
 
 
-	$scope.area = [];
-	var tree = $scope.my_tree = {};
+	// $scope.area = [];
+	// var tree = $scope.my_tree = {};
+	//
+	// var tmp=[];
+	// /**
+	//  * 加载地区树形结构
+	//  */
+	// $scope.loadArea = function() {
+	// 	$scope.doing_async = true;
+	// 	AreaService.loadArea().then(function(data) {
+	// 		if (data.code=="10000") {
+	// 			tmp=data.data;
+	// 			$scope.area = tmp;
+	// 			$scope.doing_async = false;
+	// 		}
+	// 	})
+	// };
 
-	var tmp=[];
-	/**
-	 * 加载地区树形结构
-	 */
-	$scope.loadArea = function() {
-		$scope.doing_async = true;
-		AreaService.loadArea().then(function(data) {
-			if (data.code=="10000") {
-				tmp=data.data;
-				$scope.area = tmp;
-				$scope.doing_async = false;
-			}
-		})
-	};
-
-	$scope.loadArea();
+	// $scope.loadArea();
 
 	/**
 	 * 增加一个节点
@@ -145,6 +145,12 @@ app.controller('AreaController',function($scope,$http,$state,$timeout,modalServ,
 
 	};
 
+	$scope.$watch('orgNo', function (newVal, oldVal) {
+		if ($scope.orgNo != null) {
+			console.log($scope.orgNo);
+
+		}
+	})
 	/**
 	 * 删除一个节点
 	 */

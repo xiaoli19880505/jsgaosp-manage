@@ -6,7 +6,7 @@
 		<div class="wrapper b-t m-t-xxs">
 			<div class="input-group" ng-show="app.org==null">
 				<input type="text" class="form-control input-sm" placeholder="搜索"
-					ng-model="name" ng-change="search()"> <span class="input-group-addon input-sm">
+					ng-model="orgNameKey" ng-change="search()"> <span class="input-group-addon input-sm">
 					<a class="fa fa-search"></a>
 				</span>
 			</div>
@@ -15,6 +15,7 @@
 			<div class="cell scrollable hover">
 				<div class="cell-inner">
 					<div style="padding: 0 15px 0 15px">
+						<span ng-if="doing_async">...loading...</span>
 						<abn-tree tree-data="orgList" tree-control="my_tree"
 							on-select="changeOrg(branch)" expand-level="2"
 							icon-leaf="fa fa-hospital-o" icon-expand="fa fa-plus"

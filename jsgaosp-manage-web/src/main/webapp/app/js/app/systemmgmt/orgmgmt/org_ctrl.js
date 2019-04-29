@@ -42,13 +42,9 @@ app.controller('OrgController',function($scope,$http,$state,$timeout,modalServ,O
 	$scope.keyword="";
 
 	$scope.getOrg = function(branch) {
-
 		$scope.operate_type="org";
 		_branch = branch;
-//		console.log(_branch);
 		$scope.org_no = _branch.org_no;
-
-
 		if(_branch.org_no==null){
 			$scope.flag=0;
 		}else{
@@ -68,15 +64,9 @@ app.controller('OrgController',function($scope,$http,$state,$timeout,modalServ,O
 			$scope.orgItem.chargePerson=_branch.charge_person;
 			$scope.orgItem.orgType=_branch.orgType;
 			if(tree.get_parent_branch(branch)!=null){
-
 				$scope.p_org_no = tree.get_parent_branch(branch).org_no;
 				$scope.parentId=$scope.p_org_no;
 			}_branch
-
-
-
-
-
 		}
 	};
 
@@ -226,9 +216,7 @@ app.controller('OrgController',function($scope,$http,$state,$timeout,modalServ,O
 	}
 
 	$scope.updateOrg=function(){
-
 		if($scope.operate_type=="org"){
-
 			if($scope.flag==1){
 				OrgService.updateOrg($scope.orgItem).then(function(data){
 					if(data.code=="10000"){

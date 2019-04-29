@@ -8,6 +8,7 @@ angular.module('app').factory('OrgService', ['res', 'GG',
         var service = {
         	loadOrg: function () {
                 return res.get({
+                    orgNo:"111",
                 	type:'list_org'
                 }).$promise;
             },

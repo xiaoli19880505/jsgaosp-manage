@@ -27,7 +27,9 @@ app.controller('LoginController', ['$scope', '$http', '$state',
                     })
                     $sessionStorage.codeList=codeList;
 
-
+                    commonServ.getOrgTreeByUser().then(function(result){
+                        $sessionStorage.orgTree=result.data.data;
+                    });
 
 
 

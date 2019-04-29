@@ -37,6 +37,21 @@ public class CommonDaoImpl extends BaseJdbcDao implements CommonDao{
         return getNamedParameterJdbcTemplate().queryForList(sql, paramMap);
     }
 
+    @Override
+    public List<Map<String, Object>> getNode(String tableName, String ColName, String ColValue) {
+        String sql ="";
+        if(null==ColValue){
+            sql="select * from "+tableName+" where "+ColName+" is null AND STATUS='1'AND ORG_TYPE='01'" ;
+        }else{
+            sql ="select * from "+tableName+" where "+ColName+"=:ColValue AND STATUS='1' AND ORG_TYPE='01'";
+        }
+
+
+        Map<String, String> paramMap = new HashMap<String, String>();
+        paramMap.put("pColValue",ColValue);
+        return getNamedParameterJdbcTemplate().queryForList(sql, paramMap);
+    }
+
 
     /**
      * 查询当前登录人，已经添加的系统列表
