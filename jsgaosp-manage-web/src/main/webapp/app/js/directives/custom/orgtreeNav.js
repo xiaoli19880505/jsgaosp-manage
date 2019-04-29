@@ -67,8 +67,8 @@ angular.module('app').directive('orgtreeNav', [ 'GG', 'res','commonServ', functi
 
 				commonServ.getOrgTreeByUser().then(function(data) {
 					$scope.doing_async = false;
-					$scope.orgList = data.data.data;
-					var tmp= data.data.data;
+					$scope.orgList = data.data;
+					var tmp= data.data;
 					var result=treeUtil.treeFilter(tmp, $scope.orgNameKey);
 					if(result[0]!=null){
 						$scope.orgList=result;

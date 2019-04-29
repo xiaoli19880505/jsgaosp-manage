@@ -79,7 +79,7 @@ public class BcOrgAction {
         if(user == null){
             return ResultUtil.error("10005","未登录");
         }
-        return ResultUtil.success(listOrg(user.getOrgNo()));
+        return listOrg(user.getOrgNo());
 
     }
     /**
