@@ -1,6 +1,10 @@
 'use strict';
 
-app.controller('OrgController',function($scope,$http,$state,$timeout,modalServ,OrgService){
+app.controller('OrgController',function($scope,$http,$state,$modal,$timeout,modalServ,OrgService){
+
+	$scope.totalItems = 100;
+	$scope.currentPage = 1;
+	$scope.maxSize = 5;
 
 
 	//选中的区划或者要新添区划的对象属性
@@ -25,19 +29,6 @@ app.controller('OrgController',function($scope,$http,$state,$timeout,modalServ,O
 	$scope.parentId=0;
 
 
-	//因无法改写树结构控件，额外定义以下三个变量来控制表单是否显示
-
-    //控制表单是否显示
-    $scope.form_is_show=false;
-
-	//表示提交（增改删）成功后，刷新树结构过程前后的临时状态变量
-	$scope.tmp_flag=false;
-
-	//表示树结构是否手动选中过，提交过（增改删）刷新树结构会触发选中
-	$scope.tree_selected=false;
-
-
-
 	var _branch = "";
 	$scope.keyword="";
 
@@ -50,7 +41,6 @@ app.controller('OrgController',function($scope,$http,$state,$timeout,modalServ,O
 		}else{
 			$scope.flag=1;
 		}
-		is_show_form();
 		if (branch.org_no!= 0) {
 			$scope.output=_branch.org_name;
 			$scope.orgItem.orgName=_branch.org_name;
@@ -59,6 +49,7 @@ app.controller('OrgController',function($scope,$http,$state,$timeout,modalServ,O
 			$scope.orgItem.children=_branch.children;
 			$scope.orgItem.address=_branch.address;
 			$scope.orgItem.memo=_branch.memo;
+			$scope.orgItem.status=_branch.status;
 			$scope.orgItem.officeTel=_branch.office_tel;
 			$scope.orgItem.mobileTel=_branch.mobile_tel;
 			$scope.orgItem.chargePerson=_branch.charge_person;
@@ -70,11 +61,14 @@ app.controller('OrgController',function($scope,$http,$state,$timeout,modalServ,O
 		}
 	};
 
-	$scope.departmentList=[];
-	$scope.loadDepartmentList=function(orgNo){
-		OrgService.loadDepartmentList(orgNo).then(function (data) {
-			if (data.code=="10000"){
-				$scope.departmentList=data.data;
+	$scope.departmentsList=[];
+	$scope.loadDepartmentList=function(){
+		OrgService.loadDepartmentList($scope.currentPage,$scope.org_no).then(function (res) {
+			if (res.code=="10000"){
+				$scope.departmentsList=res.data.list;
+				$scope.totalItems=res.data.totalCount;
+				$scope.currentPage=res.data.page;
+				$scope.chooseArgs=[];
 			}
 		})
 	}
@@ -82,14 +76,9 @@ app.controller('OrgController',function($scope,$http,$state,$timeout,modalServ,O
 
 	$scope.$watch('org_no', function (newVal, oldVal) {
 		if ($scope.org_no != null) {
-			$scope.loadDepartmentList(newVal);
+			$scope.loadDepartmentList();
 		}
 	})
-
-
-
-
-
 
 	$scope.org = [];
 	var tree = $scope.my_tree = {};
@@ -112,10 +101,10 @@ app.controller('OrgController',function($scope,$http,$state,$timeout,modalServ,O
 	$scope.loadOrg();
 
 	/**
-	 * 增加一个节点
+	 * 增加组织
 	 */
 	$scope.add_a_org = function() {
-		$scope.operate_type="org";
+		$scope.operate_type="add_org";
 		var b;
 		$scope.tree_selected=false;
 		b = tree.get_selected_branch();
@@ -124,48 +113,40 @@ app.controller('OrgController',function($scope,$http,$state,$timeout,modalServ,O
 			toastr.error('请先选择一个组织！');
 			return;
 		}
-
-
-
 		$scope.flag=0;
+		$scope.open("","add_org",null);
+	};
 
+	/**
+	 * 修改组织
+	 */
+	$scope.update_a_org = function() {
+		$scope.operate_type="update_org";
+		var b;
+		$scope.tree_selected=false;
+		b = tree.get_selected_branch();
 
-		$scope.orgItem.org_name='未命名';
-		$scope.orgItem.pOrgNo=$scope.parentId;
-
-
-		return tree.add_branch(b, {
-			org_name : '未命名',
-			data : {
-				// something : 42,
-				// "else" : 43
-			}
-		});
-
+		if(b==null){
+			toastr.error('请先选择一个组织！');
+			return;
+		}
+		$scope.flag=0;
+		$scope.open("","update_org",null);
 	};
 
 
-	$scope.selectDepartment=function(item){
-		$scope.orgItem=item;
-		$scope.operate_type="department";
-	}
-
-	$scope.deleteDepartment=function(item){
-		if(item.orgNo==null){
-			toastr.warning('请先选择组织!');
-			return;
-		}
-
-		OrgService.deleteOrg(item).then(function (data) {
-			if(data.code=="10000"){
-				toastr.success('删除成功！');
-			}else{
-				toastr.error('删除失败！');
-			}
-		})
-	}
 	/**
-	 * 删除一个节点
+	 * 修改部门
+	 */
+	$scope.update_department = function(department) {
+		$scope.orgItem=department;
+		$scope.operate_type="update_department";
+		$scope.open("","update_department",null);
+	};
+
+
+	/**
+	 * 删除组织
 	 */
 	$scope.delete_a_org = function() {
 		toastr.remove();
@@ -187,120 +168,49 @@ app.controller('OrgController',function($scope,$http,$state,$timeout,modalServ,O
 							$timeout(function() {
 								tree.expand_all();
 								tree.select_firstChild_branch();
-								set_flag_false();
 							}, 0);
-
-
 							toastr.success('删除成功！');
 						}
 					})
 				});
 			}
 		}
-
 	}
 
-
-	$scope.addDepartment=function(){
-		var b;
-		$scope.tree_selected=false;
-		b = tree.get_selected_branch();
-
-		if(b==null){
-			toastr.error('请先选择一个组织！');
-			return;
-		}
-		$scope.orgItem={};
-		$scope.orgItem.pOrgNo=$scope.org_no;
-		$scope.operate_type="department";
-	}
-
-	$scope.updateOrg=function(){
-		if($scope.operate_type=="org"){
-			if($scope.flag==1){
-				OrgService.updateOrg($scope.orgItem).then(function(data){
-					if(data.code=="10000"){
-						$scope.tmp_flag=true;
-						toastr.success('更新组织成功！');
-						$scope.loadOrg();
-						$timeout(function() {
-							tree.expand_all();
-							tree.select_firstChild_branch();
-							set_flag_false();
-						}, 0);
-
-
+	//弹出新增窗口
+	$scope.open = function (size, type,index) {
+		var modalInstance = $modal.open({
+			templateUrl: 'tpl/systemmgmt/orgmgmt/org_form.html',
+			controller: 'ModalOrgInstanceCtrl',
+			size: size,
+			backdrop: 'static',
+			resolve: {
+				items: function () {
+					var org = {};
+					if(index != null){
+						org = $scope.orgList[index];
 					}else{
-						toastr.error('更新组织失败！');
-
+						org=$scope.orgItem;
 					}
-				})
-			}else{
-				$scope.orgItem.pOrgNo=$scope.parentId;
-				OrgService.addOrg($scope.orgItem).then(function(data){
-					if(data.code=="10000"){
-						$scope.form_is_show=false;
-						$scope.tmp_flag=true;
-						toastr.success('新建组织成功！');
-						$scope.loadOrg();
-						$timeout(function() {
-							tree.expand_all();
-							tree.select_firstChild_branch();
-							set_flag_false();
-						}, 0);
-					}else{
-						toastr.error('新建组织失败！');
-
-					}
-				})
+					$scope.items = [type,org];
+					return $scope.items;
+				}
 			}
-		}else{
+		});
 
+		modalInstance.result.then(function (items) {
 
-		}
+				$timeout(function () {
+					$scope.loadOrg();
+					tree.expand_all();
+					tree.select_firstChild_branch();
+				}, 0);
+				$scope.loadDepartmentList($scope.orgNo);
 
+		}, function () {
 
-	}
-
-	$scope.submitForm = function (isValid) {
-
-		$scope.submitted = false;
-		if(isValid){
-			// alert("run");
-			$scope.updateOrg();
-		}else{
-			$scope.submitted = true;
-		}
-
-
-
-
-
+		});
 	};
-	
 
-	
-	
-	function set_flag_false() {
-		$timeout(function() {
-			$scope.tmp_flag=false;
-
-		}, 1000);
-	}
-
-	function  is_show_form() {
-		$scope.tree_selected=true;
-		if($scope.tmp_flag){
-			$scope.tree_selected=false;
-		}
-
-		if($scope.tree_selected ){
-			$scope.form_is_show=true;
-		}else{
-			$scope.form_is_show=false;
-		}
-
-
-	}
 
 })

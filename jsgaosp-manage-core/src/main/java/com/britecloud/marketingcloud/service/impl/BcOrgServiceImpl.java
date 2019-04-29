@@ -2,6 +2,7 @@ package com.britecloud.marketingcloud.service.impl;
 
 import com.britecloud.marketingcloud.dao.BcAreaDao;
 import com.britecloud.marketingcloud.dao.BcOrgDao;
+import com.britecloud.marketingcloud.domain.PageDataResult;
 import com.britecloud.marketingcloud.model.BcArea;
 import com.britecloud.marketingcloud.model.BcOrg;
 import com.britecloud.marketingcloud.service.BcAreaService;
@@ -24,8 +25,8 @@ public class BcOrgServiceImpl implements BcOrgService {
     }
 
     @Override
-    public List<BcOrg> listDepartmentByOrgId(String pOrgNo) {
-        return bcOrgDao.listDepartmentByOrgId(pOrgNo);
+    public PageDataResult<BcOrg> listDepartmentByOrgId(Map params) {
+        return bcOrgDao.listDepartmentByOrgId(params);
     }
 
     @Override

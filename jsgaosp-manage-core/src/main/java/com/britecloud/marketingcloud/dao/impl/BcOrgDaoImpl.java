@@ -4,8 +4,11 @@ import com.britecloud.marketingcloud.consants.Constants;
 import com.britecloud.marketingcloud.core.dao.jdbc.BaseJdbcDao;
 import com.britecloud.marketingcloud.dao.BcAreaDao;
 import com.britecloud.marketingcloud.dao.BcOrgDao;
+import com.britecloud.marketingcloud.domain.PageDataResult;
 import com.britecloud.marketingcloud.model.BcArea;
+import com.britecloud.marketingcloud.model.BcCodeSort;
 import com.britecloud.marketingcloud.model.BcOrg;
+import com.britecloud.marketingcloud.utils.PageUtils;
 import com.britecloud.marketingcloud.utils.UUIDUtils;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
@@ -29,13 +32,16 @@ public class BcOrgDaoImpl extends BaseJdbcDao implements BcOrgDao {
 	}
 
 	@Override
-	public List<BcOrg> listDepartmentByOrgId(String pOrgNo) {
-
-		String sql = loadSQL("listDepartByOrgId");
-		Map<String, String> paramMap = new HashMap<String, String>();
-		paramMap.put("pOrgNo",pOrgNo);
-		return getNamedParameterJdbcTemplate().query(sql, paramMap, new BeanPropertyRowMapper<BcOrg>(BcOrg.class));
-
+	public PageDataResult<BcOrg> listDepartmentByOrgId(Map params) {
+		PageDataResult<BcOrg> pageData = new PageDataResult<BcOrg>();
+		String sql = loadSQL("listDepartByOrgId", params);
+		Integer totalCount = getNamedParameterJdbcTemplate().queryForInt(getTotalCountString(sql), params);
+		pageData.setTotalCount(totalCount);
+		pageData.setTotalPage(PageUtils.getTotalPage(totalCount));
+		sql = getPaginationString(sql, PageUtils.getStartNum((Integer) params.get("page")), PageUtils.pageSize);
+		List<BcOrg> list = getNamedParameterJdbcTemplate().query(sql, params, new BeanPropertyRowMapper(BcOrg.class));
+		pageData.setList(list);
+		return pageData;
 	}
 
 	@Override

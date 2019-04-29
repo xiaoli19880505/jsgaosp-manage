@@ -116,6 +116,7 @@ angular
 											 function () {
 												 return $ocLazyLoad.load([
 													 '/app/js/app/systemmgmt/orgmgmt/org_ctrl.js',
+													 '/app/js/app/systemmgmt/orgmgmt/org_modal.js',
 													 '/app/js/app/systemmgmt/orgmgmt/org_serv.js'
 												 ]);
 											 }

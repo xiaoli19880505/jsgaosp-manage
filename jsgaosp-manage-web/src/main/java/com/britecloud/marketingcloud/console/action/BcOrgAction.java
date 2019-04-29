@@ -5,7 +5,9 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.britecloud.marketingcloud.console.common.ResponseResult;
 import com.britecloud.marketingcloud.console.configuration.OperationLogAnn;
+import com.britecloud.marketingcloud.console.util.HuStringUtils;
 import com.britecloud.marketingcloud.console.util.ResultUtil;
+import com.britecloud.marketingcloud.domain.PageDataResult;
 import com.britecloud.marketingcloud.model.BcArea;
 import com.britecloud.marketingcloud.model.BcOrg;
 import com.britecloud.marketingcloud.model.BcUser;
@@ -89,8 +91,19 @@ public class BcOrgAction {
     @OperationLogAnn(value = "获取组织下属部门")
     @RequestMapping(value = "/listDepartmentByOrgId", method = RequestMethod.GET)
     @ResponseBody
-    public ResponseResult listDepartmentByOrgId(String pOrgNo) throws Exception {
-        return ResultUtil.success(bcOrgService.listDepartmentByOrgId(pOrgNo));
+    public ResponseResult listDepartmentByOrgId(Integer currentPage,String pOrgNo) throws Exception {
+
+        Map params = new HashMap();
+        params.put("page", currentPage);
+        if(currentPage==null){
+            currentPage=1;
+        }
+        params.put("pOrgNo", HuStringUtils.nvl(pOrgNo));
+        PageDataResult result = bcOrgService.listDepartmentByOrgId(params);
+        result.setPage(currentPage);
+
+        return ResultUtil.success(result);
+
     }
 
     @OperationLogAnn(value = "根据主键获取组织")
@@ -118,7 +131,6 @@ public class BcOrgAction {
                 if(num>0){
                     return ResultUtil.error("10002","组织名称已存在!");
                 }else {
-                    org.setOrgType("01");
                     org.setStatus("1");
                     bcOrgService.saveOrg(org);
                     return ResultUtil.success();
@@ -138,8 +150,6 @@ public class BcOrgAction {
     @ResponseBody
     public ResponseResult updateOrg(BcOrg org){
         if(org != null){
-            org.setOrgType("01");
-            org.setStatus("1");
             bcOrgService.updateOrg(org);
             return ResultUtil.success();
         }

@@ -20,24 +20,33 @@ angular.module('app').factory('OrgService', ['res', 'GG',
             },
             updateOrg: function (orgItem) {
                 orgItem.type="update_org";
-                delete  orgItem.status;
-                delete  orgItem.orgType;
                 return res.get(
                     orgItem
                 ).$promise;
             },
             addOrg: function (orgItem) {
                 orgItem.type="save_org";
+                orgItem.orgType="01";
+                orgItem.status="1";
                 return res.get(orgItem).$promise;
             },
-            loadDepartmentList:function(orgNo){
+            addOrg: function (orgItem) {
+                orgItem.type="save_org";
+                orgItem.orgType="02";
+                orgItem.status="1";
+                return res.get(orgItem).$promise;
+            },
+            loadDepartmentList:function(currentPage,orgNo){
               return res.get ( {
+                  currentPage:currentPage,
                     pOrgNo:orgNo,
                     type:'listDepartmentByOrgId'
                 }).$promise;
             },
             addDepatemnt: function (orgItem) {
                 orgItem.type="save_org";
+                orgItem.orgType="02";
+                orgItem.status="1";
                 return res.get(orgItem).$promise;
             },
             deleteOrg: function (orgItem) {

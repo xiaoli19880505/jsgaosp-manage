@@ -1,5 +1,6 @@
 package com.britecloud.marketingcloud.service;
 
+import com.britecloud.marketingcloud.domain.PageDataResult;
 import com.britecloud.marketingcloud.model.BcArea;
 import com.britecloud.marketingcloud.model.BcOrg;
 
@@ -13,7 +14,7 @@ public interface BcOrgService {
 
     List<BcOrg> listOrg(String pOrgNo);
 
-    List<BcOrg> listDepartmentByOrgId(String pOrgNo);
+    PageDataResult<BcOrg> listDepartmentByOrgId(Map params);
 
     void saveOrg(BcOrg org);
 

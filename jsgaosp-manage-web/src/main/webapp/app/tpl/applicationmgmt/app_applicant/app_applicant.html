@@ -1,220 +1,233 @@
 <!-- hbox layout -->
 
 <style>
-	.ver_space{
-		margin-bottom: 8px;
-	}
-	.button_right{
-		float: right;
-		right: 50px;
-		position: relative;
-	}
+    .ver_space {
+        margin-bottom: 8px;
+    }
 
-	.label_width{
-		width: 20%;
-	}
-	.input_width{
-		width: auto;
-		min-width:200px;
-	}
+    .button_right {
+        float: right;
+        right: 50px;
+        position: relative;
+    }
+
+    .label_width {
+        width: 20%;
+    }
+
+    .input_width {
+        width: auto;
+        min-width: 200px;
+    }
 </style>
 <div class="hbox hbox-auto-xs bg-light"
-	ng-init="app.settings.asideFixed = true;app.settings.asideDock = false; app.settings.container = false; app.hideAside = false; app.hideFooter = true;"
-	id="SystemUserDiv"
-	ng-controller="SystemSysApplicationManagerController">
+     ng-init="app.settings.asideFixed = true;app.settings.asideDock = false; app.settings.container = false; app.hideAside = false; app.hideFooter = true;"
+     id="SystemUserDiv"
+     ng-controller="SystemSysApplicationManagerController">
 
-	<div class="bg-light lter b-b wrapper-md ng-scope">
-		<h1 class="m-n font-thin h3" style="display: inline-block">应用申报</h1>
+    <div class="bg-light lter b-b wrapper-md ng-scope">
+        <h1 class="m-n font-thin h3" style="display: inline-block">应用申报</h1>
 
-		<div class="m-b-xs button_right">
-			<button type="button" ng-click="open('','add',null)"
-					class="btn btn-sm btn-info">新增</button>
-		</div>
-	</div>
+        <div class="m-b-xs button_right">
+            <button type="button" ng-click="open('','add',null)"
+                    class="btn btn-sm btn-info">新增
+            </button>
+        </div>
+    </div>
 
-	<div class="wrapper-md ng-scope">
-		<div class="panel panel-default">
-			<div class="row wrapper">
-
-
-				<div class="col-sm-12 ">
-					<form class="form-inline ng-pristine ng-valid" role="form">
-						<div class="col-sm-12 ver_space">
-						<div class="form-group col-sm-4">
-							<label class="control-label label_width">应用名称:</label> <input type="text"
-																			class="form-control input_width"  ng-model="appName">
-						</div>
-						<div class="form-group  col-sm-4">
-
-							<label class="control-label label_width">所属系统:</label>
+    <div class="wrapper-md ng-scope">
+        <div class="panel panel-default">
+            <div class="row wrapper">
 
 
+                <div class="col-sm-12 ">
+                    <form class="form-inline ng-pristine ng-valid" role="form">
+                        <div class="col-sm-12 ver_space">
+                            <div class="form-group col-sm-4">
+                                <label class="control-label label_width">应用名称:</label> <input type="text"
+                                                                                              class="form-control input_width"
+                                                                                              ng-model="appName">
+                            </div>
+                            <div class="form-group  col-sm-4">
 
-							<select   style="display: inline-block;" class="form-control ng-pristine ng-valid ng-touched input_width"   style="width: 150px;" ng-model="sysNoKey" >
-								<option value=""  >不限</option>
-								<option ng-repeat="x in sysList" value="{{x.area_no}}">{{x.sys_name}}</option>
-							</select>
-
-						</div>
-
-						<div class="form-group  col-sm-4">
-							<label class="control-label label_width">系统分类:</label>
-							<select   style="display: inline-block;" class="form-control ng-pristine ng-valid ng-touched input_width"   style="width: 150px;" ng-model="sysTypeKey" >
-								<option value=""  >不限</option>
-								<option ng-repeat="y in sysTypeList" value="{{y.codeKey}}">{{y.codeText}}</option>
-							</select>
-						</div>
-						</div>
-
-						<div class="col-sm-12 ver_space">
-
-						<div class="form-group  col-sm-4">
-							<label class="control-label label_width">状态:</label>
-							<select   style="display: inline-block;" class="form-control ng-pristine ng-valid ng-touched input_width"   style="width: 150px;" ng-model="sysApplicantStatusKey" >
-								<option value=""  >不限</option>
-								<option ng-repeat="x in sysApplicantStatusList" value="{{x.codeKey}}">{{x.codeText}}</option>
-							</select>
-						</div>
-
-						<div class="form-group query-m-r  col-sm-4">
-							<label class="control-label label_width">时间：</label>
-							<div class="input-group">
-								<input type="text" style="width: 200px" datepickerrang
-									   name="selectTime" id="selectTime" class="form-control"
-									   ng-model="selectTime" readonly />
-							</div>
-						</div>
-
-						<div class="col-sm-4">
-							<button class="btn m-b-xs w-xs btn-info button_right" ng-click="search()">搜索</button>
-						</div>
-
-						</div>
-					</form>
-				</div>
+                                <label class="control-label label_width">所属系统:</label>
 
 
-				<!--<div class="form-group" style="margin-top: 20px">-->
-					<!--<label class="col-sm-2 control-labe">应用名称</label>-->
-					<!--<div class="col-sm-2">-->
-						<!--<input type="text" class="input-sm form-control" id="test1"-->
-							<!--name="appName" ng-model="applications.appName" />-->
-					<!--</div>-->
-					<!--<div class="col-sm-4">-->
-						<!--<div class="form-group query-m-r" style="display: inline-block;">-->
-							<!--<label class="control-label">请选择系统</label>-->
-							<!--<select   style="display: inline-block;width: auto;" class="form-control ng-pristine ng-valid ng-touched" ng-change="loadSysApplications()"  style="width: 150px;" ng-model="sysApplicantStatusKey" >-->
-								<!--<option value=""  >不限</option>-->
-								<!--<option ng-repeat="x in sysApplicantStatusList" value="{{x.codeKey}}">{{x.codeText}}</option>-->
-							<!--</select>-->
-						<!--</div>-->
-					<!--</div>-->
-					<!--<label class="col-sm-2 control-label">系统类型</label>-->
-					<!--<div class="col-sm-2">-->
-						<!--<select style="display: inline-block; width: auto;"-->
-							<!--class="form-control ng-pristine ng-valid ng-touched"-->
-							<!--ng-change="loadSysApplications()" style="width: 150px;"-->
-							<!--ng-model="applications.sys_type">-->
-							<!--<option value="">不限</option>-->
-							<!--<option ng-repeat="x in sysApplicantTypeList"-->
-								<!--value="{{x.codeKey}}">{{x.codeText}}</option>-->
-						<!--</select>-->
-					<!--</div>-->
-					<!--<label class="col-sm-2 control-label">状态</label>-->
-					<!--<div class="col-sm-2">-->
-						<!--<select style="display: inline-block; width: auto;"-->
-							<!--class="form-control ng-pristine ng-valid ng-touched"-->
-							<!--ng-change="loadSysApplications()" style="width: 150px;"-->
-							<!--ng-model="applications.status">-->
-							<!--<option value="">不限</option>-->
-							<!--<option ng-repeat="x in sysApplicantStatusList"-->
-								<!--value="{{x.codeKey}}">{{x.codeText}}</option>-->
-						<!--</select>-->
-					<!--</div>-->
-				<!--</div>-->
-			<!--</div>-->
-			<!--<div class="row wrapper">-->
-				<!--<div class="form-group">-->
-					<!--<label class="col-sm-1 control-label">时间:</label>-->
-					<!--<div class="col-sm-2">-->
+                                <select style="display: inline-block;"
+                                        class="form-control ng-pristine ng-valid ng-touched input_width"
+                                        style="width: 150px;" ng-model="sysNoKey">
+                                    <option value="">不限</option>
+                                    <option ng-repeat="x in sysList" value="{{x.area_no}}">{{x.sys_name}}</option>
+                                </select>
 
-							<!--<div class="input-group">-->
-								<!--<input type="text" style="width: 200px" datepickerrang-->
-									   <!--name="selectTime" id="selectTime" class="form-control"-->
-									   <!--ng-model="selectTime" readonly />-->
-							<!--</div>-->
-					<!--</div>-->
+                            </div>
 
-					<!--<div class="col-sm-1 m-b-xs">-->
-						<!--<button type="button" ng-click="open('','add',null)"-->
-							<!--class="btn btn-sm btn-default">申报</button>-->
-					<!--</div>-->
+                            <div class="form-group  col-sm-4">
+                                <label class="control-label label_width">系统分类:</label>
+                                <select style="display: inline-block;"
+                                        class="form-control ng-pristine ng-valid ng-touched input_width"
+                                        style="width: 150px;" ng-model="sysTypeKey">
+                                    <option value="">不限</option>
+                                    <option ng-repeat="y in sysTypeList" value="{{y.codeKey}}">{{y.codeText}}</option>
+                                </select>
+                            </div>
+                        </div>
 
-					<!--<div class="col-sm-2">-->
-						<!--<button class="btn btn-sm btn-default" type="button"-->
-							<!--ng-click="search()">查询</button>-->
-					<!--</div>-->
+                        <div class="col-sm-12 ver_space">
 
-				<!--</div>-->
-			<!--</div>-->
-				<div class="col-sm-12 ">
-			<div class="table-responsive" show-scroll>
-				<table class="table table-striped b-t b-light">
-					<thead>
-						<tr>
-							<th>序号</th>
-							<th>应用名称</th>
-							<th>系统名称</th>
-							<th>系统类型</th>
-							<th>系统描述</th>
-							<th>应用状态</th>
-							<th>审批意见</th>
-							<th>创建时间</th>
-							<th>操作</th>
-						</tr>
-					</thead>
-					<tr ng-repeat="applications in sysapplications"
-						onmouseover="style.backgroundColor='#F2F5F6'"
-						onmouseout="style.backgroundColor='#FFFFFF'"
-						style="cursor: pointer;">
-						<td>{{$index+1}}</td>
-						<td>{{applications.appName}}</td>
-						<td>{{applications.sysName}}</td>
-						<td>{{applications.sysType}}</td>
-						<td>{{applications.memo}}</td>
-						<td>{{applications.status}}</td>
-						<td>{{applications.approvalOpinion}}</td>
-						<td>{{applications.createDate}}</td>
-						<td><a class="fa fa-pencil fa-fw m-r-xs" title="编辑"
-							ng-click="open('','update',$index)"></a> <a
-							class="fa fa-times fa-fw" title="删除"
-							ng-click="deleteApplication(applications.id,applications.appName)"></a>
-						</td>
-					</tr>
-				</table>
-			</div>
+                            <div class="form-group  col-sm-4">
+                                <label class="control-label label_width">状态:</label>
+                                <select style="display: inline-block;"
+                                        class="form-control ng-pristine ng-valid ng-touched input_width"
+                                        style="width: 150px;" ng-model="sysApplicantStatusKey">
+                                    <option value="">不限</option>
+                                    <option ng-repeat="x in sysApplicantStatusList" value="{{x.codeKey}}">
+                                        {{x.codeText}}
+                                    </option>
+                                </select>
+                            </div>
 
-			<footer class="panel-footer" style="padding-bottom: 0">
-				<div class="row">
-					<div class="col-sm-2 hidden-xs"></div>
-					<div class="col-sm-4 text-center">
-						<small class="text-muted inline m-t-sm m-b-sm">第{{currentPage}}页
-							共{{totalItems}}个 </small>
-					</div>
-					<div class="col-sm-6 text-right text-center-xs">
-						<pagination boundary-links="true" total-items="totalItems"
-							ng-model="currentPage" ng-change="pageChanged()"
-							max-size="maxSize" rotate="false"
-							class="pagination-sm m-t-none m-b" previous-text="&lsaquo;"
-							next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;">
-						</pagination>
-					</div>
-				</div>
-			</footer><div >
-		</div>
-	</div>
-</div>
+                            <div class="form-group query-m-r  col-sm-4">
+                                <label class="control-label label_width">时间：</label>
+                                <div class="input-group">
+                                    <input type="text" style="width: 200px" datepickerrang
+                                           name="selectTime" id="selectTime" class="form-control"
+                                           ng-model="selectTime" readonly/>
+                                </div>
+                            </div>
 
-<!-- /hbox layout -->
+                            <div class="col-sm-4">
+                                <button class="btn m-b-xs w-xs btn-info button_right" ng-click="search()">搜索</button>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+
+
+                <!--<div class="form-group" style="margin-top: 20px">-->
+                <!--<label class="col-sm-2 control-labe">应用名称</label>-->
+                <!--<div class="col-sm-2">-->
+                <!--<input type="text" class="input-sm form-control" id="test1"-->
+                <!--name="appName" ng-model="applications.appName" />-->
+                <!--</div>-->
+                <!--<div class="col-sm-4">-->
+                <!--<div class="form-group query-m-r" style="display: inline-block;">-->
+                <!--<label class="control-label">请选择系统</label>-->
+                <!--<select   style="display: inline-block;width: auto;" class="form-control ng-pristine ng-valid ng-touched" ng-change="loadSysApplications()"  style="width: 150px;" ng-model="sysApplicantStatusKey" >-->
+                <!--<option value=""  >不限</option>-->
+                <!--<option ng-repeat="x in sysApplicantStatusList" value="{{x.codeKey}}">{{x.codeText}}</option>-->
+                <!--</select>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--<label class="col-sm-2 control-label">系统类型</label>-->
+                <!--<div class="col-sm-2">-->
+                <!--<select style="display: inline-block; width: auto;"-->
+                <!--class="form-control ng-pristine ng-valid ng-touched"-->
+                <!--ng-change="loadSysApplications()" style="width: 150px;"-->
+                <!--ng-model="applications.sys_type">-->
+                <!--<option value="">不限</option>-->
+                <!--<option ng-repeat="x in sysApplicantTypeList"-->
+                <!--value="{{x.codeKey}}">{{x.codeText}}</option>-->
+                <!--</select>-->
+                <!--</div>-->
+                <!--<label class="col-sm-2 control-label">状态</label>-->
+                <!--<div class="col-sm-2">-->
+                <!--<select style="display: inline-block; width: auto;"-->
+                <!--class="form-control ng-pristine ng-valid ng-touched"-->
+                <!--ng-change="loadSysApplications()" style="width: 150px;"-->
+                <!--ng-model="applications.status">-->
+                <!--<option value="">不限</option>-->
+                <!--<option ng-repeat="x in sysApplicantStatusList"-->
+                <!--value="{{x.codeKey}}">{{x.codeText}}</option>-->
+                <!--</select>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--<div class="row wrapper">-->
+                <!--<div class="form-group">-->
+                <!--<label class="col-sm-1 control-label">时间:</label>-->
+                <!--<div class="col-sm-2">-->
+
+                <!--<div class="input-group">-->
+                <!--<input type="text" style="width: 200px" datepickerrang-->
+                <!--name="selectTime" id="selectTime" class="form-control"-->
+                <!--ng-model="selectTime" readonly />-->
+                <!--</div>-->
+                <!--</div>-->
+
+                <!--<div class="col-sm-1 m-b-xs">-->
+                <!--<button type="button" ng-click="open('','add',null)"-->
+                <!--class="btn btn-sm btn-default">申报</button>-->
+                <!--</div>-->
+
+                <!--<div class="col-sm-2">-->
+                <!--<button class="btn btn-sm btn-default" type="button"-->
+                <!--ng-click="search()">查询</button>-->
+                <!--</div>-->
+
+                <!--</div>-->
+                <!--</div>-->
+                <div class="col-sm-12 ">
+                    <div class="table-responsive" show-scroll>
+                        <table class="table table-striped b-t b-light">
+                            <thead>
+                            <tr>
+                                <th>序号</th>
+                                <th>应用名称</th>
+                                <th>系统名称</th>
+                                <th>系统类型</th>
+                                <th>系统描述</th>
+                                <th>应用状态</th>
+                                <th>审批意见</th>
+                                <th>创建时间</th>
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+                            <tr ng-repeat="applications in sysapplications"
+                                onmouseover="style.backgroundColor='#F2F5F6'"
+                                onmouseout="style.backgroundColor='#FFFFFF'"
+                                style="cursor: pointer;">
+                                <td>{{$index+1}}</td>
+                                <td>{{applications.appName}}</td>
+                                <td>{{applications.sysName}}</td>
+                                <td>{{applications.sysType}}</td>
+                                <td>{{applications.memo}}</td>
+                                <td>{{applications.status}}</td>
+                                <td>{{applications.approvalOpinion}}</td>
+                                <td>{{applications.createDate}}</td>
+                                <td><a class="fa fa-pencil fa-fw m-r-xs" title="编辑"
+                                       ng-click="open('','update',$index)"></a> <a
+                                        class="fa fa-times fa-fw" title="删除"
+                                        ng-click="deleteApplication(applications.id,applications.appName)"></a>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <footer class="panel-footer" style="padding-bottom: 0">
+                        <div class="row">
+                            <div class="col-sm-2 hidden-xs"></div>
+                            <div class="col-sm-4 text-center">
+                                <small class="text-muted inline m-t-sm m-b-sm">第{{currentPage}}页
+                                    共{{totalItems}}个
+                                </small>
+                            </div>
+                            <div class="col-sm-6 text-right text-center-xs">
+                                <pagination boundary-links="true" total-items="totalItems"
+                                            ng-model="currentPage" ng-change="pageChanged()"
+                                            max-size="maxSize" rotate="false"
+                                            class="pagination-sm m-t-none m-b" previous-text="&lsaquo;"
+                                            next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;">
+                                </pagination>
+                            </div>
+                        </div>
+                    </footer>
+                    <div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- /hbox layout -->
 
 
