@@ -22,10 +22,6 @@ public class ApplicationServiceImpl implements ApplicationService{
 		
 	}
 
-	@Override
-	public void saveApplicationInfo(ApplicationEntity args) {
-		ApplicatonDao.saveApplicationInfo(args);
-	}
 
 	@Override
 	public boolean existsArgsKey(ApplicationEntity args) {

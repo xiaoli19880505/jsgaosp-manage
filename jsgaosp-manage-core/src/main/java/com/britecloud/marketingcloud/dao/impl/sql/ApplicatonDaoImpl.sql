@@ -7,9 +7,9 @@ VALUES(:id,:app_name,:org_id,:sys_type,:status,to_date(:create_date,'yyyy-MM-dd 
 INSERT INTO bc_declare_app_info(id, app_id,guide_addr, online_addr,online_qaq_addr,yw_type, xz_type, memo,
 status,approval_opinion,create_date,create_user_id, approval_date, approval_user_id, bl_type,
 version, working_status, server_type,icon_url) 
-VALUES(:id, :app_id,:guide_addr, :online_addr,:online_qaq_addr,:yw_type, :xz_type, :memo,
+VALUES(:info_id, :app_id,:guide_addr, :online_addr,:online_qaq_addr,:yw_type, :xz_type, :memo,
 :status,:approval_opinion,to_date(:create_date,'yyyy-MM-dd HH24:mi:ss'),:create_user_id, :approval_date, :approval_user_id, :bl_type,
-:version, :working_status,, :server_type,:icon_url);
+:version, :working_status,:server_type,:icon_url);
 --------------------------------------------
 --existsArgsKey
 SELECT COUNT(0) from bc_declare_app WHERE id=:id;
@@ -78,5 +78,8 @@ update bc_declare_app_info set
    --</isNotEmpty>
    --<isNotEmpty prepend="AND" property="create_date">
        to_char(i.create_date, 'yyyy-MM-dd HH24:mi:ss')  >= :createDate
+   --</isNotEmpty>
+   --<isNotEmpty prepend="AND" property="orgNo">
+      org_id  = :orgNo
    --</isNotEmpty>
    --</dynamic>
