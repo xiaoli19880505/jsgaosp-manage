@@ -37,7 +37,8 @@ public interface BcCodeDao {
     void deleteCodeSort(BcCodeSort codeSort);
 
     BcCodeSort getCodeSortById(BcCodeSort codeSort);
+
     BcCodeSort getCodeSortBypOrgNo(BcCodeSort codeSort);
 
-
+    List<BcCodeSort> getCodeSortByKey(Map params);
 }

@@ -144,6 +144,29 @@ app.controller('OrgController',function($scope,$http,$state,$modal,$timeout,moda
 		$scope.open("","update_department",null);
 	};
 
+	/**
+	 * 删除组织
+	 */
+	$scope.delete_department = function(orgNo,orgName) {
+		var modalOptions = {
+			bodyText : '确认删除' + orgName + '?'
+		};
+
+		modalServ.show(true, modalOptions).then(function() {
+			OrgService.deleteOrg({orgNo:orgNo}).then(function(data) {
+				if (data.code=="10000") {
+					$scope.tmp_flag=true;
+					$scope.loadOrg();
+					$timeout(function() {
+						tree.expand_all();
+						tree.select_firstChild_branch();
+					}, 0);
+					toastr.success('删除部门成功！');
+				}
+			})
+		});
+	}
+
 
 	/**
 	 * 删除组织

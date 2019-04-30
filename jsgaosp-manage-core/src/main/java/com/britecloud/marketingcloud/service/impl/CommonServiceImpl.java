@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -58,7 +59,6 @@ public class CommonServiceImpl implements CommonService{
 
 
 
-
     /**
      *
      * @param tableName
@@ -88,10 +88,12 @@ public class CommonServiceImpl implements CommonService{
         return list;
     }
 
-//    @Override
-//    public List<BcCodeSort> getCodeList(BcCodeSort codeSort) {
-//        return bcCodeDao.listCodeSort();
-//    }
+    @Override
+    public List<BcCodeSort> getCodeListByKey(String codeSortKey) {
+        Map<String,String> params=new HashMap<String,String>();
+        params.put("codeSortKey",codeSortKey);
+        return bcCodeDao.getCodeSortByKey(params);
+    }
 
     /**
      * 查询当前登录人，已经添加的系统列表

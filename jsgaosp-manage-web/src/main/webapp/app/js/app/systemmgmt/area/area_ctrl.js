@@ -2,7 +2,11 @@
 
 app.controller('AreaController',function($scope,$http,$state,$timeout,modalServ,AreaService){
 
-
+	$scope.oneAtATime = true;
+	$scope.status = {
+		isFirstOpen: true,
+		isFirstDisabled: false
+	};
 	//选中的区划或者要新添区划的对象属性
 	$scope.areaItem= {
 		"area_name":"",

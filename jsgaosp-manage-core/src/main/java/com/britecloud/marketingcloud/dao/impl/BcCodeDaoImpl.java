@@ -76,6 +76,15 @@ public class BcCodeDaoImpl extends BaseJdbcDao implements BcCodeDao {
 	}
 
 	@Override
+	public List<BcCodeSort> getCodeSortByKey(Map params) {
+		String sql = loadSQL("getCodeSortDetailByKey", params);
+		sql = getPaginationString(sql, PageUtils.getStartNum((Integer) params.get("page")), PageUtils.pageSize);
+		List<BcCodeSort> list = getNamedParameterJdbcTemplate().query(sql, params, new BeanPropertyRowMapper(BcCodeSort.class));
+
+		return list;
+	}
+
+	@Override
 	public void saveCodeSort(BcCodeSort codeSort) {
 		codeSort.setCodeSortId(UUIDUtils.generateUUID());
 		codeSort.setStatus(Constants.STATUS_ENABLE);

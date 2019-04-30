@@ -67,17 +67,17 @@ public class CommonAction {
 
     /**
      * 加载数据字典列表
-     * @param codeSort
+     * @param codeSortKey
      * @return
      * @throws Exception
      */
     @OperationLogAnn(value = "根据CodeSortKey加载数据字典详情列表")
     @RequestMapping(value = "/list_code", method = RequestMethod.GET)
     @ResponseBody
-    public ResponseResult listcode(BcCodeSort codeSort) throws Exception {
-//        List<BcCodeSort> codeList = commonService.getCodeList(codeSort);
-//        return ResultUtil.success(codeList);
-        return null;
+    public ResponseResult listcode(String codeSortKey) throws Exception {
+        List<BcCodeSort> codeList = commonService.getCodeListByKey(codeSortKey);
+        return ResultUtil.success(codeList);
+
     }
 
 

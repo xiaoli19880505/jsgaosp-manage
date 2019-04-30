@@ -15,48 +15,11 @@
     <!-- column -->
     <div class="col">
         <div class="vbox">
-            <div class="wrapper bg-light lt b-b">
-                <span class="text-muted h4">编辑</span>
-            </div>
-            <div class="row-row"  ng-show="form_is_show">
-            	<div class="row wrapper">
-			      <div class="col-sm-5 m-b-xs">
-			      <button type="button"  ng-click="submitForm(areaForm.$valid)" class="btn btn-sm btn-success">保存</button>
-			      </div>
-			      <div class="col-sm-4">
-			      </div>
-
-			    </div>
-
-
-				<form name="areaForm" class="form-validation form-horizontal"  ng-submit="submitForm(areaForm.$valid)" novalidate>
-
-					<div class="form-group">
-						<label class="col-sm-2 control-label">名称<span style="color:red;">*</span></label>
-						<div class="col-sm-10">
-							<input type="text" class="form-control" placeholder="请输入名称" name="area_name" ng-model="areaItem.area_name"
-								   required>
-							<!--<p ng-show="areaForm.area_name.$pristine&& submitted" class="help-block">请输入名称</p>
-							<p ng-show="areaForm.area_name.$error.minlength&& submitted" class="help-block">名称不得少于2个字符</p>
-							<p ng-show="areaForm.area_name.$error.maxlength&& submitted" class="help-block">名称不得大于5个字符</p>-->
-						</div>
-					</div>
-
-					<div class="form-group">
-						<label class="col-sm-2 control-label">编号<span style="color:red;">*</span></label>
-						<div class="col-sm-10">
-							<input type="text" class="form-control" placeholder="请输入数字编号" name="area_no" ng-model="areaItem.area_no"
-								   ng-pattern="/^(\d*)$/" required>
-							<!--<p ng-show="areaForm.area_no.$pristine&& submitted" class="help-block">请输入编号</p>-->
-
-							<p ng-show="areaForm.area_no.$invalid&&!areaForm.area_no.$pristine&&submitted" class="help-block">请输入数字</p>
-							<!--<p ng-show="!areaForm.area_no.$invalid && submitted" class="help-block">请输入正确的编号</p>-->
-						</div>
-					</div>
-
-
-				</form>
-            </div>
+			<uib-accordion close-others="oneAtATime">
+				<uib-accordion-group heading="标题" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
+					内容...
+				</uib-accordion-group>
+			</uib-accordion>
         </div>
     </div>
 </div>
