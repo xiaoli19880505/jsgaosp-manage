@@ -7,9 +7,9 @@ VALUES(:id,:app_name,:org_id,:sys_type,:status,to_date(:create_date,'yyyy-MM-dd 
 INSERT INTO bc_declare_app_info(id, app_id,guide_addr, online_addr,online_qaq_addr,yw_type, xz_type, memo,
 status,approval_opinion,create_date,create_user_id, approval_date, approval_user_id, bl_type,
 version, working_status, server_type,icon_url) 
-VALUES(:id, :app_id,:guide_addr, :online_addr,:online_qaq_addr,:yw_type, :xz_type, :memo,
+VALUES(:info_id, :app_id,:guide_addr, :online_addr,:online_qaq_addr,:yw_type, :xz_type, :memo,
 :status,:approval_opinion,to_date(:create_date,'yyyy-MM-dd HH24:mi:ss'),:create_user_id, :approval_date, :approval_user_id, :bl_type,
-:version, :working_status,, :server_type,:icon_url);
+:version, :working_status,:server_type,:icon_url);
 --------------------------------------------
 --existsArgsKey
 SELECT COUNT(0) from bc_declare_app WHERE id=:id;
@@ -17,17 +17,20 @@ SELECT COUNT(0) from bc_declare_app WHERE id=:id;
 --existsApplicationInfo
 SELECT COUNT(0) from bc_declare_app_info WHERE id=:id;
 --------------------------------------------
---updateApplication
-update bc_declare_app_info set 
+--updateApplicationInfo
+update bc_declare_app_info 
+set
+   guide_addr = :guide_addr,
+   status = :version_status,
    guide_addr = :guide_addr,
    online_addr = :online_addr,
    online_qaq_addr = :online_qaq_addr,
    yw_type = :yw_type,
    xz_type = :xz_type,
    memo = :memo,
-   status = :status,
+   status = :version_status,
    approval_opinion = :approval_opinion,
-   approval_date = to_date(:approval_date,'yyyy-MM-dd HH24:mi:ss'),
+   approval_date = sysdate,
    approval_user_id = :approval_user_id,
    bl_type = :bl_type,
    version = :version,
@@ -35,7 +38,19 @@ update bc_declare_app_info set
    server_type = :server_type,
    icon_url = :icon_url,
    approval_status = :approval_status
-   where id=:id;
+   where 1=1
+    --<dynamic>
+     --<isNotEmpty prepend="AND" property="id">
+       id = :id
+     --</isNotEmpty>
+     --<isNotEmpty prepend="AND" property="app_id">
+       app_id = :app_id
+     --</isNotEmpty>
+   --</dynamic>
+   
+--------------------------------------------
+--updateApplication
+update bc_declare_app set  status = :status  where id=:id;
 --------------------------------------------
 --listApplication
    select a.id,
@@ -65,7 +80,7 @@ update bc_declare_app_info set
        i.icon_url,
        i.approval_status
   from bc_declare_app a, bc_declare_app_info i
- where a.id = i.app_id
+ where a.id = i.app_id and a.status ='1'
  --<dynamic>
    --<isNotEmpty prepend="AND" property="app_name">
        a。app_name  = :app_name
@@ -79,4 +94,16 @@ update bc_declare_app_info set
    --<isNotEmpty prepend="AND" property="create_date">
        to_char(i.create_date, 'yyyy-MM-dd HH24:mi:ss')  >= :createDate
    --</isNotEmpty>
+   --<isNotEmpty prepend="AND" property="orgNo">
+      org_id  = :orgNo
+   --</isNotEmpty>
    --</dynamic>
+      
+--------------------------------------------
+--updateInfoStatus
+update bc_declare_app_info set 
+    status = :version_status,
+   approval_date = sysdate,
+   approval_user_id = :approval_user_id
+   where  app_id = :app_id
+ 

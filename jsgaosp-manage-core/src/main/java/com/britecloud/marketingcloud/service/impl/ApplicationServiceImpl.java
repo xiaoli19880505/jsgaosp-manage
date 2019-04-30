@@ -22,10 +22,6 @@ public class ApplicationServiceImpl implements ApplicationService{
 		
 	}
 
-	@Override
-	public void saveApplicationInfo(ApplicationEntity args) {
-		ApplicatonDao.saveApplicationInfo(args);
-	}
 
 	@Override
 	public boolean existsArgsKey(ApplicationEntity args) {
@@ -42,10 +38,21 @@ public class ApplicationServiceImpl implements ApplicationService{
 	public void updateApplication(ApplicationEntity args) {
 		ApplicatonDao.updateApplication(args);
 	}
+	@Override
+	public void updateApplicationInfo(ApplicationEntity args) {
+		ApplicatonDao.updateApplicationInfo(args);
+	}
 
 	@Override
 	public PageDataResult<ApplicationEntity> listSysApproves(Map params) {
 		return ApplicatonDao.listSysApplications(params);
+	}
+
+
+	@Override
+	public void updateStatus(ApplicationEntity args) {
+		ApplicatonDao.updateStatus(args);
+		
 	}
 	
 	

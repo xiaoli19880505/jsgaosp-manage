@@ -9,7 +9,8 @@ public interface ApplicationService {
 
 	boolean existsArgsKey(ApplicationEntity args);
 	void saveApplication(ApplicationEntity args);
-	void saveApplicationInfo(ApplicationEntity args);
+    void updateApplicationInfo(ApplicationEntity args);
     void updateApplication(ApplicationEntity args);
+    void updateStatus(ApplicationEntity args);
     PageDataResult<ApplicationEntity> listSysApproves(Map params);
 }
