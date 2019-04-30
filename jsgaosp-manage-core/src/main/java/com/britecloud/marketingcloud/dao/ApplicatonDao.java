@@ -13,5 +13,7 @@ public interface ApplicatonDao {
 	int existsApplicationInfo(ApplicationEntity args);
 	void saveApplication(ApplicationEntity args);
 	void updateApplication(ApplicationEntity args);
+	void updateApplicationInfo(ApplicationEntity args);
+	void updateStatus(ApplicationEntity args);
 	public PageDataResult<ApplicationEntity> listSysApplications(Map params);
 }

@@ -18,6 +18,11 @@ angular.module('app').factory('ApplicationService',
 				},
 				updateApplication : function(application) {
 	                return res.update(application).$promise;
+				},
+				deleteApplication : function(id) {
+					return res.delete({
+	                	id:id
+	                }).$promise;
 				}
 			};
 			return service;

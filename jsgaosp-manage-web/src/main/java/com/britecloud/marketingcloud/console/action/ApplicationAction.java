@@ -16,9 +16,11 @@ import com.britecloud.marketingcloud.console.configuration.OperationLogAnn;
 import com.britecloud.marketingcloud.console.util.ResultUtil;
 import com.britecloud.marketingcloud.domain.PageDataResult;
 import com.britecloud.marketingcloud.model.ApplicationEntity;
+import com.britecloud.marketingcloud.model.BcSysArgs;
 import com.britecloud.marketingcloud.model.BcUser;
 import com.britecloud.marketingcloud.service.ApplicationService;
 import com.britecloud.marketingcloud.utils.SessionUtils;
+import com.britecloud.marketingcloud.utils.StringUtils;
 
 @RestController
 @SuppressWarnings({ "rawtypes", "unchecked" })
@@ -53,7 +55,7 @@ public class ApplicationAction {
 		}
 		if (args != null) {
 			args.setApproval_user_id(user.getUserId());
-			ApplicationService.updateApplication(args);
+			ApplicationService.updateApplicationInfo(args);
 			return ResultUtil.success();
 		}
 		return ResultUtil.error("10001", "更新失败！");
@@ -70,4 +72,24 @@ public class ApplicationAction {
 
 		return ResultUtil.success(result);
 	}
+	
+	 @OperationLogAnn(value = "删除系统参数")
+	    @RequestMapping( method = RequestMethod.DELETE)
+	    @ResponseBody
+	    public ResponseResult deleteApplications(HttpServletRequest request,ApplicationEntity args){
+		 BcUser user = SessionUtils.getCurrentUser(request);
+			if (user == null) {
+				return ResultUtil.error("10005", "未登录");
+			}
+	        if(args != null && StringUtils.isNotEmpty(args.getId())){
+	        	//修改应用主表状态
+	        	args.setStatus("0");
+	        	args.setVersion_status("0");
+	        	args.setApp_id(args.getId());
+	        	args.setApproval_user_id(user.getUserId());
+	        	ApplicationService.updateStatus(args);
+	            return ResultUtil.success();
+	        }
+	        return ResultUtil.error("10001","删除失败！");
+	    }
 }

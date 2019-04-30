@@ -112,8 +112,43 @@ app.controller('ApplicationController',['$scope','$http','$state','$modal','$tim
     	}	
 	}
     //////
-    
-    
+   
+    //删除
+    $scope.deleteModal=function(){
+    	if($scope.chooseArgs.length!=0){
+        	modalServ.showModal({}, {
+        		bodyText: '       确定要删除这些记录吗?     '
+    		}).then(function(result) {
+    			var result = true;
+    			angular.forEach($scope.chooseArgs,function(item){
+    				ApplicationService.deleteApplication(item.id).then(function(data) {
+	    				if(data.code != "10000"){
+	    					result = false;
+	    				}
+	    			});
+    			});
+    			if(result){
+					 toastr.success('删除成功！');
+					 $scope.loadApplications();
+				}else{
+					toastr.error('删除失败！');
+				}
+    		});
+    		}else{
+    			bootbox.alert({  
+    				buttons: {  
+    					ok: {  
+    						label: '确定',  
+    						className: 'btn-info btn-dark'  
+    					}  
+    				},  
+    				message: '请先选择操作的数据！',  
+    				callback: function() {  
+    				},  
+    				title: "提示",  
+    			}); 
+    		}			
+    }
     //////
     
 }])
