@@ -15,7 +15,6 @@ import com.britecloud.marketingcloud.core.dao.jdbc.BaseJdbcDao;
 import com.britecloud.marketingcloud.dao.ApplicatonDao;
 import com.britecloud.marketingcloud.domain.PageDataResult;
 import com.britecloud.marketingcloud.model.ApplicationEntity;
-import com.britecloud.marketingcloud.utils.MultiJdbcDao;
 import com.britecloud.marketingcloud.utils.PageUtils;
 import com.britecloud.marketingcloud.utils.UUIDUtils;
 
