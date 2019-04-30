@@ -26,15 +26,15 @@ import com.britecloud.marketingcloud.utils.SessionUtils;
 public class ApplicationAction {
 	@Autowired
 	private ApplicationService ApplicationService;
-	
-	//数据录入
+
+	// 数据录入
 	@RequestMapping(method = RequestMethod.POST)
 	@ResponseBody
-	public ResponseResult inserApplications(HttpServletRequest request,ApplicationEntity application) {
-		 BcUser user= SessionUtils.getCurrentUser(request);
-	        if(user == null){
-	            return ResultUtil.error("10005","未登录");
-	        }
+	public ResponseResult inserApplications(HttpServletRequest request, ApplicationEntity application) {
+		BcUser user = SessionUtils.getCurrentUser(request);
+		if (user == null) {
+			return ResultUtil.error("10005", "未登录");
+		}
 		if (application != null) {
 			application.setCreate_user_id(user.getUserId());
 			ApplicationService.saveApplication(application);
@@ -42,21 +42,26 @@ public class ApplicationAction {
 		}
 		return ResultUtil.error("10001", "保存失败！");
 	}
-	
-	
+
 	@OperationLogAnn(value = "修改应用申报")
-    @RequestMapping(method = RequestMethod.PUT)
-    @ResponseBody
-    public ResponseResult updateApplications(ApplicationEntity args){
-      if(args != null){
-    	  ApplicationService.updateApplication(args);
-            return ResultUtil.success();
-        }
-        return ResultUtil.error("10001","更新失败！");
-    }
+	@RequestMapping(method = RequestMethod.PUT)
+	@ResponseBody
+	public ResponseResult updateApplications(HttpServletRequest request, ApplicationEntity args) {
+		BcUser user = SessionUtils.getCurrentUser(request);
+		if (user == null) {
+			return ResultUtil.error("10005", "未登录");
+		}
+		if (args != null) {
+			args.setApproval_user_id(user.getUserId());
+			ApplicationService.updateApplication(args);
+			return ResultUtil.success();
+		}
+		return ResultUtil.error("10001", "更新失败！");
+	}
+
 	@RequestMapping(value = "/list_applications", method = RequestMethod.GET)
 	@ResponseBody
-	public ResponseResult listApplications(Integer currentPage,String orgNo) throws Exception {
+	public ResponseResult listApplications(Integer currentPage, String orgNo) throws Exception {
 		Map params = new HashMap();
 		params.put("page", currentPage);
 		params.put("orgNo", orgNo);

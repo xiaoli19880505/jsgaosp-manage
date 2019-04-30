@@ -53,10 +53,29 @@ app.controller('ApplicationController',['$scope','$http','$state','$modal','$tim
         });
     }
     
+  //多选
+    $scope.chooseArgs = [];
+    $scope.choose = function(chk,item,index){
+    	item.indexs = index;
+    	if(chk){
+    		$scope.chooseArgs.push(item);
+    	}else if(!chk){
+    		$scope.chooseArgs.splice($scope.chooseArgs.indexOf(item),1);
+    	}
+    }
+    	
+    $scope.chooseAll = function(master){
+    	if(master){
+    		$scope.chooseArgs=angularjs.copy($scope.applicationList);
+    	}else {
+    		$scope.chooseArgs=[];
+    	}
+    }
+    
   //修改
     $scope.update = function(){
     	if($scope.chooseArgs.length==1){
-    		var chooseCreate = angular.copy($scope.chooseArgs[0]);
+    		var chooseCreate = $scope.chooseArgs[0];
     		var modalInstance = $modal.open({
     			  templateUrl: 'tpl/application/application_form.html',
     	            controller: 'ModalApplicationsCtrl',
@@ -71,7 +90,7 @@ app.controller('ApplicationController',['$scope','$http','$state','$modal','$tim
 
             modalInstance.result.then(function (items) {
                 if (items[0]) {//如果modal返回成功的话
-                	 $scope.loadSysArgs();
+                	 $scope.loadApplications();
                 	 $scope.chooseArgs=[];
                 }
             }, function () {

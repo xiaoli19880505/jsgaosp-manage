@@ -38,6 +38,7 @@ app.controller('ModalApplicationsCtrl', ['$scope', '$modalInstance','$http','$se
 			}
 
 		};
+		//添加
 		$scope.addApplication=function(){
 			ApplicationService.addApplication($scope.application,items[2]).then(function(data){
 				if(data.code == "10000"){
@@ -50,6 +51,21 @@ app.controller('ModalApplicationsCtrl', ['$scope', '$modalInstance','$http','$se
 					$modalInstance.close([true]);
 				}
 			})
+		};
+		//更新
+		$scope.updateApplication=function(){
+			ApplicationService.updateApplication($scope.application).then(function(data){
+				if(data.code == "10000"){
+					 toastr.success('更新成功！');
+					 $("#toast-container").css("left", "46%");
+		             $modalInstance.close([true]);
+				}else{
+					toastr.error('更新失败！');
+					$("#toast-container").css("left", "46%");
+					$modalInstance.dismiss('cancel');
+				}
+			})
 		}
+		
 
 	}]);
