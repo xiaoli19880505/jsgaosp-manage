@@ -55,7 +55,11 @@ public class ApplicationAction {
 		}
 		if (args != null) {
 			args.setApproval_user_id(user.getUserId());
-			ApplicationService.updateApplicationInfo(args);
+			if(null != args.getApproval_status() &&!"".equals(args.getApproval_status())) {
+				ApplicationService.updateAudit(args);
+			}else {
+				ApplicationService.updateApplicationInfo(args);
+			}
 			return ResultUtil.success();
 		}
 		return ResultUtil.error("10001", "更新失败！");
@@ -73,7 +77,7 @@ public class ApplicationAction {
 		return ResultUtil.success(result);
 	}
 	
-	 @OperationLogAnn(value = "删除系统参数")
+	 @OperationLogAnn(value = "删除应用")
 	    @RequestMapping( method = RequestMethod.DELETE)
 	    @ResponseBody
 	    public ResponseResult deleteApplications(HttpServletRequest request,ApplicationEntity args){
@@ -84,8 +88,9 @@ public class ApplicationAction {
 	        if(args != null && StringUtils.isNotEmpty(args.getId())){
 	        	//修改应用主表状态
 	        	args.setStatus("0");
-	        	args.setVersion_status("0");
-	        	args.setApp_id(args.getId());
+//	        	args.setVersion_status("0");
+	        	/*args.setApp_id(args.getId());
+	        	args.setInfo_id(info_id);*/
 	        	args.setApproval_user_id(user.getUserId());
 	        	ApplicationService.updateStatus(args);
 	            return ResultUtil.success();

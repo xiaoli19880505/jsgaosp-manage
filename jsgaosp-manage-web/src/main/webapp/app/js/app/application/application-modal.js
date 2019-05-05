@@ -5,12 +5,19 @@
 
 app.controller('ModalApplicationsCtrl', ['$scope', '$modalInstance','$http','$sessionStorage','items','ApplicationService','commonServ',
 	function ($scope, $modalInstance,$http,$sessionStorage, items,ApplicationService,commonServ) {
-
+		//获得应用审核状态
+		$scope.applicationStatusList= $sessionStorage.codeList.approves_status;
+		
+		
 		$scope.application=items[1];
 		$scope.flag=items[0]=="add";
 		if ($scope.flag) {
 			$scope.title = '新增应用';
-		} else {
+			$scope.application.approval_status="" ;
+		} else if(items[0] =="audit"){
+			$scope.title = '审核应用';
+		}
+		else {
 			$scope.title = '编辑应用';
 		}
 
@@ -67,5 +74,21 @@ app.controller('ModalApplicationsCtrl', ['$scope', '$modalInstance','$http','$se
 			})
 		}
 		
+	
 
+	/*	//审核
+		$scope.audit=function(){
+			ApplicationService.audit($scope.application).then(function(data){
+				if(data.code == "10000"){
+					 toastr.success('审核成功！');
+					 $("#toast-container").css("left", "46%");
+		             $modalInstance.close([true]);
+				}else{
+					toastr.error('审核失败！');
+					$("#toast-container").css("left", "46%");
+					$modalInstance.dismiss('cancel');
+				}
+			})
+		}*/
+	    
 	}]);
