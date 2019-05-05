@@ -54,6 +54,13 @@ public class ApplicationServiceImpl implements ApplicationService{
 		ApplicatonDao.updateStatus(args);
 		
 	}
+
+
+	@Override
+	public void updateAudit(ApplicationEntity args) {
+		ApplicatonDao.updateAudit(args);
+		
+	}
 	
 	
 }
