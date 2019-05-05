@@ -7,7 +7,12 @@ app.controller('ModalApplicationsCtrl', ['$scope', '$modalInstance','$http','$se
 	function ($scope, $modalInstance,$http,$sessionStorage, items,ApplicationService,commonServ) {
 		//获得应用审核状态
 		$scope.applicationStatusList= $sessionStorage.codeList.approves_status;
-		
+		$scope.sysTypeList= $sessionStorage.codeList.sys_type;
+		$scope.ywTypeList= $sessionStorage.codeList.yw_type;
+		$scope.accessTypeList= $sessionStorage.codeList.access_type;
+		$scope.xzTypeList= $sessionStorage.codeList.xz_type;
+		$scope.serverTypeList= $sessionStorage.codeList.server_type;
+		$scope.blTypeList= $sessionStorage.codeList.bl_type;
 		
 		$scope.application=items[1];
 		$scope.flag=items[0]=="add";
