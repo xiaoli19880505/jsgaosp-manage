@@ -1,20 +1,15 @@
 --------------------------------------------
 --listCodeSort
 SELECT * FROM BC_CODE_SORT where (CODE_SORT_TEXT like '%'||:keyword||'%' or CODE_SORT_KEY like '%'||:keyword||'%')
- --<dynamic>
-  --<isNotNull property="pCodeSortId" prepend="AND">
-        P_CODE_SORT_ID =:pCodeSortId
-  --</isNotNull>
---</dynamic>
 AND  HAS_CHILD='1'
-AND  STATUS='1'
-AND  (ORG_ID IS NULL
  --<dynamic>
-  --<isNotNull property="orgId" prepend="OR">
+  --<isNotNull property="orgId" prepend="AND">
         ORG_ID =:orgId
   --</isNotNull>
 --</dynamic>
-)
+
+AND  STATUS='1';
+
 
 
 --------------------------------------------
@@ -32,12 +27,22 @@ AND  HAS_CHILD='0'
 AND  STATUS='1'
 --------------------------------------------
 --saveCodeSort
-INSERT INTO BC_CODE_SORT(CODE_SORT_ID,CODE_SORT_KEY,CODE_SORT_TEXT,STATUS,ORG_ID,P_CODE_SORT_ID,HAS_CHILD)
-VALUES(:codeSortId,:codeSortKey,:codeSortText,:status,:orgId,:pCodeSortId,:hasChild);
+INSERT INTO BC_CODE_SORT(CODE_SORT_ID,CODE_SORT_KEY,
+CODE_SORT_TEXT,STATUS,ORG_ID,P_CODE_SORT_ID,
+HAS_CHILD,CREATE_TIME,IS_PUBLIC)
+VALUES(:codeSortId,:codeSortKey,:codeSortText,
+:status,:orgId,:pCodeSortId,:hasChild,
+to_date(:createTime,'yyyy-MM-dd HH24:mi:ss'),:isPublic);
 
 --------------------------------------------
 --updateCodeSort
-update BC_CODE_SORT set CODE_SORT_KEY=:codeSortKey,CODE_SORT_TEXT=:codeSortText where CODE_SORT_ID=:codeSortId;
+update BC_CODE_SORT set
+CODE_SORT_KEY=:codeSortKey,
+CODE_SORT_TEXT=:codeSortText,
+IS_PUBLIC=:isPublic,
+ORG_ID=:orgId,
+UPDATE_TIME=to_date(:updateTime,'yyyy-MM-dd HH24:mi:ss')
+where CODE_SORT_ID=:codeSortId;
 
 --------------------------------------------
 --deleteCodeSort

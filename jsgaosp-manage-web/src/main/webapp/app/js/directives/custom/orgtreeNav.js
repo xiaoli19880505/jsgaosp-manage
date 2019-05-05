@@ -59,6 +59,7 @@ angular.module('app').directive('orgtreeNav', [ 'GG', 'res','commonServ', functi
 			$scope.my_tree = {};
 			$scope.changeOrg = function(branch) {
 				$scope.orgNo= branch.org_no;
+				$scope.orgName= branch.org_name;
 				$scope.code= branch.code;
 			};
 			$scope.loadOrg = function() {

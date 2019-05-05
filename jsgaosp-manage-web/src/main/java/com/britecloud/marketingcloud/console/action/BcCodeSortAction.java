@@ -47,7 +47,7 @@ public class BcCodeSortAction {
     @OperationLogAnn(value = "加载数据字典主表列表")
     @RequestMapping(value = "/list_code_sort", method = RequestMethod.GET)
     @ResponseBody
-    public ResponseResult listCodeSort(HttpServletRequest request,Integer currentPage, String keyword) throws Exception {
+    public ResponseResult listCodeSort(HttpServletRequest request,Integer currentPage, String keyword,String orgNo) throws Exception {
         JSONObject jo = new JSONObject();
         keyword = HuStringUtils.nvl(keyword);
 
@@ -58,7 +58,7 @@ public class BcCodeSortAction {
         Map params = new HashMap();
         params.put("keyword", keyword);
         params.put("page", currentPage);
-        params.put("orgId",user.getOrgNo());
+        params.put("orgId",orgNo);
         PageDataResult result = bcCodeService.listCodeSort(params);
         result.setPage(currentPage);
 

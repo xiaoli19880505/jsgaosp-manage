@@ -12,6 +12,9 @@ import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.stereotype.Repository;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -88,6 +91,9 @@ public class BcCodeDaoImpl extends BaseJdbcDao implements BcCodeDao {
 	public void saveCodeSort(BcCodeSort codeSort) {
 		codeSort.setCodeSortId(UUIDUtils.generateUUID());
 		codeSort.setStatus(Constants.STATUS_ENABLE);
+		Date date = new Date();
+		DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		codeSort.setCreateTime(format.format(date));
 		String sql = loadSQL("saveCodeSort");
 		SqlParameterSource parameters = new BeanPropertySqlParameterSource(codeSort);
 		getNamedParameterJdbcTemplate().update(sql, parameters);
@@ -96,6 +102,9 @@ public class BcCodeDaoImpl extends BaseJdbcDao implements BcCodeDao {
 	@Override
 	public void updateCodeSort(BcCodeSort codeSort) {
 		String sql = loadSQL("updateCodeSort");
+		Date date = new Date();
+		DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		codeSort.setUpdateTime(format.format(date));
 		SqlParameterSource parameters = new BeanPropertySqlParameterSource(codeSort);
 		getNamedParameterJdbcTemplate().update(sql, parameters);
 	}

@@ -6,11 +6,12 @@ angular.module('app').factory('BcCodeSortService', ['res', 'GG',
     function (res, GG) {
         var res = res(GG.BASE + '/code_sort/:type');
         var service = {
-            listCodeSort: function (currentPage,keyword) {
+            listCodeSort: function (currentPage,keyword,orgId) {
                 return res.get({
                 	currentPage:currentPage,
                 	keyword:keyword,
-                	type:'list_code_sort'
+                	type:'list_code_sort',
+                    orgNo:orgId
                 }).$promise;
             },
             getCodeSortById:function(codeSortId){

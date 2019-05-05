@@ -16,6 +16,9 @@ public class BcCodeSort {
     private String isPublic;
     private String pCodeSortId;
     private String hasChild;
+    private String createTime;
+    private String updateTime;
+    private String orgName;
 
 
 }
