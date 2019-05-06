@@ -55,10 +55,10 @@ public class ApplicationAction {
 		}
 		if (args != null) {
 			args.setApproval_user_id(user.getUserId());
-			if(null != args.getApproval_status() &&!"".equals(args.getApproval_status())) {
-				ApplicationService.updateAudit(args);
-			}else {
+			if((null == args.getApproval_opinion() || "".equals(args.getApproval_opinion()) )  && !"01".equals(args.getApproval_status())) {
 				ApplicationService.updateApplicationInfo(args);
+			}else {
+				ApplicationService.updateAudit(args);
 			}
 			return ResultUtil.success();
 		}

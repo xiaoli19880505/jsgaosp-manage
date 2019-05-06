@@ -34,4 +34,6 @@ public class ApplicationEntity {
 	private String server_type ;
 	private String icon_url ;
 	private String approval_status;
+	private String approval_status_name;
+	private String edit;
 }

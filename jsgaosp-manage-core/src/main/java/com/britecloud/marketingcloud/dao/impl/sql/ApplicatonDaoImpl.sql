@@ -68,7 +68,8 @@ update bc_declare_app set  status = :status  where id=:id;
        i.working_status,
        i.server_type,
        i.icon_url,
-       GET_CODE_SORT_TEXT('app_status', i.approval_status) as approval_status
+       i.approval_status,
+       GET_CODE_SORT_TEXT('app_status', i.approval_status) as approval_status_name
   from bc_declare_app a, bc_declare_app_info i
  where a.id = i.app_id and a.status ='1'
  --<dynamic>
@@ -137,7 +138,8 @@ set
        i.working_status,
        i.server_type,
        i.icon_url,
-       GET_CODE_SORT_TEXT('app_status', i.approval_status) as approval_status
+       i.approval_status,
+       GET_CODE_SORT_TEXT('app_status', i.approval_status) as approval_status_name
   from bc_declare_app a, bc_declare_app_info i
  where a.id = i.app_id and a.status ='1'
  and a.org_id =:org_id and a.app_name =:app_name
