@@ -16,10 +16,14 @@ angular.module('app').factory('ApplicationService',
 					application.org_id= org_id;
 	                return res.save(application).$promise;
 				},
-				/*audit : function(application) {
-					application.type = 'audit_applications';
-					 return res.get(application).$promise;
-				},*/
+				listHisVersion : function(currentPage,appli) {
+					return res.get({
+						appName : appli.app_name,
+						orgId : appli.org_id,
+						currentPage : currentPage,
+						type : 'list_version'
+					}).$promise;
+				},
 				updateApplication : function(application) {
 	                return res.update(application).$promise;
 				},

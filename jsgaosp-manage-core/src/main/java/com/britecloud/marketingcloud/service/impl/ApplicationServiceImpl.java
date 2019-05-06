@@ -61,6 +61,13 @@ public class ApplicationServiceImpl implements ApplicationService{
 		ApplicatonDao.updateAudit(args);
 		
 	}
+
+
+	@Override
+	public PageDataResult<ApplicationEntity> listHisVersion(Map params) {
+		// TODO Auto-generated method stub
+		return ApplicatonDao.listHisVersion(params);
+	}
 	
 	
 }
