@@ -189,6 +189,6 @@ app.controller('ApplicationController',['$scope','$http','$state','$modal','$tim
     			}); 
     		}			
     }
-    
+    $scope.loadApplications();
 
 }])

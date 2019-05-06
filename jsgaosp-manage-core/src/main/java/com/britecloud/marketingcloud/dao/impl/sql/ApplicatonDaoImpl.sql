@@ -42,8 +42,8 @@ update bc_declare_app set  status = :status  where id=:id;
 --listApplication
    select a.id,
        a.app_name,
-       a.org_id,
-       a.sys_type,
+       GET_ORG_NAME(a.org_id) as org_id,
+       GET_CODE_SORT_TEXT('sys_type', a.sys_type) as sys_type,
        a.status,
        a.create_date,
        a.create_user_id,
@@ -67,7 +67,7 @@ update bc_declare_app set  status = :status  where id=:id;
        i.working_status,
        i.server_type,
        i.icon_url,
-       i.approval_status
+       GET_CODE_SORT_TEXT('app_status', i.approval_status) as approval_status
   from bc_declare_app a, bc_declare_app_info i
  where a.id = i.app_id and a.status ='1'
  --<dynamic>
