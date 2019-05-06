@@ -31,4 +31,6 @@ public interface BcOrgDao {
      * @return
      */
     int existsOrgName(BcOrg org);
+
+    List<BcOrg> getOrgAreaNameList();
 }

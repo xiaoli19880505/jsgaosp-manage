@@ -10,7 +10,10 @@ SELECT * FROM bc_org where P_ORG_NO=:pOrgNo
 AND ORG_TYPE='02'
 AND STATUS='1';
 
-
+--------------------------------------------
+--getOrgAreaNameList
+SELECT * FROM bc_org where  ORG_TYPE='01'
+AND STATUS='1';
 
 --------------------------------------------
 --saveOrg
