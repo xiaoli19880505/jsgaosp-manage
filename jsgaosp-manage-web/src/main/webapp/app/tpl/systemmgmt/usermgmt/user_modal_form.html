@@ -5,12 +5,11 @@
 	font-weight:bold;
 	font-style:oblique;
 }
- .area_modal{
-     padding: 20px;
-     background: white;
-     border-radius: 10px;
-     border:2px solid #0a1015;
- }
+
+.orgTreeDiv{
+    border: 1px solid #666;
+    width: 100%;
+    }
     .app.css{
 
     }
@@ -103,39 +102,26 @@
 
 
                 <div class="form-group"  >
-                    <label class="col-sm-2 control-label">区划</label>
+                    <label class="col-sm-2 control-label">组织</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" placeholder="请选择区划" name="area" ng-model="area_name_show"
-                         ng-click="showAreaList()">
-                        <p ng-show="userForm.qq.$pristine&& submitted" class="help-block">请选择区划</p>
+                        <input type="text" class="form-control" placeholder="请选择组织" name="orgNameShow" ng-model="orgNameShow"
+                         ng-click="toSelectOrg()">
+                        <p ng-show="userForm.orgNameShow.$dirty&& submitted" class="help-block">请选择组织</p>
 
                     </div>
                 </div>
 
-                <div class="row-row" ng-if="is_focus" class="area_modal" style="height: 160px;width:470px;margin-top:-15px;margin-left: 100px;display:block;position: absolute; background: white;padding: 20px;border: 1px solid #ccc;border-radius: 8px;">
-                    <div class="cell scrollable hover" style="height: 100px;overflow-y: auto;background: white;">
-                        <div class="cell-inner">
-                            <div class="padder">
-                                <div class="b-a bg-light dk r r-2x">
-                                    <span ng-if="doing_async">...loading...</span>
-                                    <abn-tree
-                                            tree-data         = "area"
-                                            tree-control      = "my_tree"
-                                            on-select         = "getArea(branch)"
-                                            expand-level      = "2"
-                                            initial-selection = "新城大厦机房"
-                                            icon-leaf			= "fa fa-hospital-o"
-                                            icon-expand       = "fa fa-plus"
-                                            icon-collapse     = "fa fa-minus"
-                                    >
-                                    </abn-tree>
-                                </div>
-                            </div>
-                        </div>
+                <div class="form-group"  >
+                    <label class="col-sm-2 control-label"></label>
+                    <div class="col-sm-10">
+                        <orgtree-nav  class="orgTreeDiv" ng-show="toSelectOrgFlag"></orgtree-nav>
+
                     </div>
-                    <button type="button" ng-click="ensureArea()" class="btn btn-sm btn-info" style="margin-top: 5px;float: right;">确定</button>
                 </div>
-                
+
+
+
+
             </form>
 		</div>
 		<div class="modal-footer">

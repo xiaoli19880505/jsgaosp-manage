@@ -6,6 +6,7 @@
  */
 package com.britecloud.marketingcloud.console.action;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -45,14 +46,22 @@ public class SysUserMgmtAct {
 
 	@RequestMapping(value = "list", method = RequestMethod.GET)
 	@ResponseBody
-	public String geSystemList(Integer currentPage, String keyword,String companyId) {
+	public String geSystemList(Integer currentPage, String keyword,String orgNo,String companyId){
 		JSONObject jo = new JSONObject();
 		List<JSONObject> jsonList = new ArrayList<JSONObject>();
 		JSONArray jsonAry = null;
 		if (keyword.equals(""))
 			keyword = null;
 		Map params = new HashMap();
-		params.put("keyword", keyword);
+		params.put("orgNo", orgNo);
+//		if(keyword!=null){
+//			try {
+//				params.put("keyword", java.net.URLDecoder.decode(keyword, "GBK"));
+//			} catch (UnsupportedEncodingException e) {
+//				e.printStackTrace();
+//			}
+//		}
+		params.put("keyword",keyword);
 		params.put("page", currentPage);
 		params.put("companyId", companyId);
 		Map result = sysUserMgmtService.listSysUser(params);
@@ -70,6 +79,8 @@ public class SysUserMgmtAct {
 			temp.put("userQq", user.getUserQq());
 			temp.put("userOfficePhone", user.getUserOfficePhone());
 			temp.put("userType", user.getUserType());
+			temp.put("orgNo", user.getOrgNo());
+			temp.put("orgName", user.getOrgName());
 			jsonList.add(temp);
 		}
 		jsonAry = new JSONArray().fromObject(jsonList);
@@ -179,7 +190,7 @@ public class SysUserMgmtAct {
 	}
 	/**
 	 * 根据id获取用户信息
-	 * @param companyId
+	 * @param
 	 * @return
 	 */
     @RequestMapping(value="getInfo" , method=RequestMethod.GET)

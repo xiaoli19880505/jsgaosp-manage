@@ -1,14 +1,14 @@
 --------------------------------------------
 --listCodeSort
-SELECT * FROM BC_CODE_SORT where (CODE_SORT_TEXT like '%'||:keyword||'%' or CODE_SORT_KEY like '%'||:keyword||'%')
-AND  HAS_CHILD='1'
+SELECT t.*,c.ORG_NAME FROM BC_CODE_SORT t LEFT JOIN Bc_Org c ON t.org_id =c.org_no where (t.CODE_SORT_TEXT like '%'||:keyword||'%' or t.CODE_SORT_KEY like '%'||:keyword||'%')
+AND  t.HAS_CHILD='1'
  --<dynamic>
   --<isNotNull property="orgId" prepend="AND">
-        ORG_ID =:orgId
+        t.ORG_ID =:orgId
   --</isNotNull>
 --</dynamic>
 
-AND  STATUS='1';
+AND  t.STATUS='1';
 
 
 

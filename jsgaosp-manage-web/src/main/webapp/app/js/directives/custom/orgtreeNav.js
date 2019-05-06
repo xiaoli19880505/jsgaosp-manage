@@ -77,7 +77,7 @@ angular.module('app').directive('orgtreeNav', [ 'GG', 'res','commonServ', functi
 						$scope.orgList=[];
 					}
 					$timeout(function() {
-						$scope.my_tree.select_firstChild_branch();
+						 $scope.my_tree.select_firstChild_branch();
 					});
 				});
 			};

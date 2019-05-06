@@ -35,5 +35,5 @@ public class BcUser {
 	private String name;
 	private String areaNo;
 	private String orgNo;
-	
+	private String orgName;
 }

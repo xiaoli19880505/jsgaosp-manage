@@ -18,6 +18,7 @@ app.controller('ModalSystemUserInstanceCtrl', ['$scope', '$modalInstance','$http
         $scope.user.userType = "USER";
     } else {
         $scope.title = '编辑用户';
+		$scope.orgNameShow=$scope.user.orgName;
     }
 	
 
@@ -31,6 +32,23 @@ app.controller('ModalSystemUserInstanceCtrl', ['$scope', '$modalInstance','$http
 				$modalInstance.dismiss('cancel');
 			}
 		})
+	}
+
+	$scope.toSelectOrgFlag=false;
+	$scope.$watch('orgNo', function (newVal, oldVal) {
+		if ($scope.orgNo != null ) {
+			if($scope.toSelectOrgFlag && $scope.toSelectOrgFlag){
+				$scope.user.orgName = $scope.orgName;
+				$scope.user.orgNo = $scope.orgNo;
+				$scope.orgNameShow=$scope.orgName;
+			}
+			$scope.toSelectOrgFlag=false;
+		}
+
+	})
+
+	$scope.toSelectOrg=function(){
+		$scope.toSelectOrgFlag=true;
 	}
 	
 	$scope.updateUser=function(){

@@ -16,7 +16,8 @@ INSERT
             CREATE_DATE,
             CREATE_BY,
             UPDATE_DATE,
-            UPDATE_BY
+            UPDATE_BY,
+            ORG_NO
         )
     VALUES
         (
@@ -34,6 +35,7 @@ INSERT
             ,:createBy
             ,:updateDate
             ,:updateBy
+            ,:orgNo
         );
 --------------------------------------------
 --updateUser
@@ -49,6 +51,7 @@ UPDATE
         ,UPDATE_DATE =:updateDate
         ,UPDATE_BY =:updateBy
         ,AVATAR =:avatar
+        ,ORG_NO =:orgNo
     WHERE
         USER_ID = :userId;
 --------------------------------------------
@@ -70,19 +73,26 @@ SELECT
 --------------------------------------------
 --listUser
 SELECT 
-		*
+		a.*,b.ORG_NAME
     FROM
-       	BC_USER
+       	BC_USER a LEFT JOIN BC_ORG b ON
+       	a.ORG_NO=b.ORG_NO
     WHERE 
     	1=1
-    	and RETIRED = '1'
-    	and USER_TYPE <> 'MAINTAIN'
+    	and a.RETIRED = '1'
+    	and a.USER_TYPE <> 'MAINTAIN'
 	--<dynamic>
 	  --<isNotNull property="keyword" prepend="AND">
-	        NAME=:keyword
+	        a.USER_NAME like '%'||:keyword||'%'
 	  --</isNotNull>
 	--</dynamic>
-	ORDER BY CREATE_DATE DESC
+
+		--<dynamic>
+	  --<isNotNull property="orgNo" prepend="AND">
+	        a.ORG_NO=:orgNo
+	  --</isNotNull>
+	--</dynamic>
+	ORDER BY a.CREATE_DATE DESC
 --------------------------------------------
 --resetPwd
 UPDATE

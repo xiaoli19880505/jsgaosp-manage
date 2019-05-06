@@ -91,7 +91,7 @@ angular
 			            	 deps : [
 			            	         'js/app/systemmgmt/systemuser/user-ctrl.js',
 			            	         'js/app/systemmgmt/systemuser/user-serv.js',
-								 	 'js/app/systemmgmt/commgmt/company_serv.js',
+								 	 'js/app/systemmgmt/orgmgmt/company_serv.js',
 			            	         'js/app/systemmgmt/systemuser/user-modal.js' ]
 			             },
 			             {

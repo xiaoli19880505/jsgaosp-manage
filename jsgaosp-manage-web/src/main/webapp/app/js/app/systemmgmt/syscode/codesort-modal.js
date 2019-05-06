@@ -3,22 +3,22 @@
 /* Controllers */
 // hospital_people_modal controller
 
-app.controller('ModalCodeSortInstanceCtrl', ['$scope', '$modalInstance', '$http', 'items', 'BcCodeSortService',
-    function ($scope, $modalInstance, $http, items, BcCodeSortService) {
+app.controller('ModalCodeSortInstanceCtrl', ['$scope', '$modalInstance', '$http', 'items', 'BcCodeSortService','$timeout',
+    function ($scope, $modalInstance, $http, items, BcCodeSortService,$timeout) {
 
-        $scope.toSelectOrg=false;
+        $scope.toSelectOrgFlag=false;
         $scope.$watch('orgNo', function (newVal, oldVal) {
             if ($scope.orgNo != null && $scope.codesort.isPublic == 0) {
-                if($scope.toSelectOrg){
+                if($scope.toSelectOrgFlag){
                     $scope.codesort.orgName = $scope.orgName;
                     $scope.codesort.orgNo = $scope.orgNo;
                 }
-                $scope.toSelectOrg=false;
+                $scope.toSelectOrgFlag=false;
             }
         })
 
         $scope.toSelectOrg=function(){
-            $scope.toSelectOrg=true;
+            $scope.toSelectOrgFlag=true;
         }
 
         $scope.codesort = items[1];
@@ -27,6 +27,9 @@ app.controller('ModalCodeSortInstanceCtrl', ['$scope', '$modalInstance', '$http'
             $scope.title = '新增数据字典';
         } else {
             $scope.title = '编辑数据字典';
+            $timeout(function() {
+                $scope.codesort = items[1];
+            },1000);
         }
 
 

@@ -6,11 +6,12 @@ angular.module('app').factory('BcUserService', ['res', 'GG',
     function (res, GG) {
         var res = res(GG.BASE + '/system/bcuser/:type');
         var service = {
-            listUser: function (currentPage,keyword,companyId) {
+            listUser: function (currentPage,keyword,companyId,orgNo) {
                 return res.get({
                 	currentPage:currentPage,
                 	keyword:keyword,
                 	companyId : companyId,
+                    orgNo:orgNo,
                 	type:'list'
                 }).$promise;
             },
