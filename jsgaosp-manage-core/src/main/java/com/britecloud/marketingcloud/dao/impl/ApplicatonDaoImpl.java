@@ -131,4 +131,18 @@ public class ApplicatonDaoImpl extends BaseJdbcDao implements ApplicatonDao {
 		pageData.setList(list);
 		return pageData;
 	}
+	@Override
+	public PageDataResult<ApplicationEntity> listHisVersion(Map params) {
+		PageDataResult<ApplicationEntity> pageData = new PageDataResult<ApplicationEntity>();
+		String sql = loadSQL("listHisVersion", params);
+		Integer totalCount = getNamedParameterJdbcTemplate().queryForInt(getTotalCountString(sql), params);
+		pageData.setTotalCount(totalCount);
+		pageData.setTotalPage(PageUtils.getTotalPage(totalCount));
+		
+		sql = getPaginationString(sql, PageUtils.getStartNum((Integer) params.get("page")), PageUtils.pageSize);
+		List<ApplicationEntity> list = getNamedParameterJdbcTemplate().query(sql, params,
+				new BeanPropertyRowMapper(ApplicationEntity.class));
+		pageData.setList(list);
+		return pageData;
+	}
 }

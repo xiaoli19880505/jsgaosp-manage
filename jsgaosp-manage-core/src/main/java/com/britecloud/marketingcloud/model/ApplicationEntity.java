@@ -7,6 +7,7 @@ public class ApplicationEntity {
 	private String id;
 	private String app_name;
 	private String org_id;
+	private String org_name;
 	private String sys_type;
 	private String status;//应用状态
 	private String create_date;

@@ -112,6 +112,53 @@ app.controller('ApplicationController',['$scope','$http','$state','$modal','$tim
     	}	
 	}
     //////
+    //版本管理
+    $scope.rollbackVersion=function(){
+    	if($scope.chooseArgs.length==1){
+    		var chooseCreate = $scope.chooseArgs[0];
+    		/*$scope.appli={};
+    		$scope.appli.app_id = chooseCreate.app_id;
+    		$scope.appli.app_name = chooseCreate.app_name;
+    		$scope.appli.org_id = chooseCreate.org_id;
+    		ApplicationService.listHisVersion($scope.currentPage,$scope.appli).then(function(res){
+    			console.log(res);
+        		$scope.verapps=res.data.list;
+        		$scope.totalItems=res.data.totalCount;
+        		$scope.currentPage=res.data.page;
+        		$scope.chooseArgs=[];
+        	})*/
+        	
+        	var modalInstance = $modal.open({
+            templateUrl: 'tpl/application/application_list_form.html',
+            controller: 'ModalVersionCtrl',
+            backdrop: 'static',
+            resolve: {
+                items: function () {
+					var applications = {};
+					applications=$scope.verapps;
+					$scope.items =['rollback',chooseCreate];
+                    return $scope.items;
+                }
+            }
+       
+        });
+
+    	}else{
+    		bootbox.alert({  
+    			buttons: {  
+    				ok: {  
+    					label: '确定',  
+    					className: 'btn-info btn-dark'  
+    				}  
+    			},  
+    			message: '请先选择一个操作的数据！',  
+    			callback: function() {  
+    			},  
+    			title: "提示",  
+    		}); 
+    	}	
+	
+    }
    
     //删除
     $scope.deleteModal=function(){
@@ -189,6 +236,6 @@ app.controller('ApplicationController',['$scope','$http','$state','$modal','$tim
     			}); 
     		}			
     }
-    
+    $scope.loadApplications();
 
 }])

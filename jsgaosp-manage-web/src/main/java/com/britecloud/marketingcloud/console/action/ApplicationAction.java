@@ -77,6 +77,19 @@ public class ApplicationAction {
 		return ResultUtil.success(result);
 	}
 	
+	@RequestMapping(value = "/list_version", method = RequestMethod.GET)
+	@ResponseBody
+	public ResponseResult listVersion(Integer currentPage, String appName,String orgId) throws Exception {
+		Map params = new HashMap();
+		params.put("page", currentPage);
+		params.put("app_name", appName);
+		params.put("org_id",orgId);
+		PageDataResult result = ApplicationService.listHisVersion(params);
+		result.setPage(currentPage);
+
+		return ResultUtil.success(result);
+	}
+	
 	 @OperationLogAnn(value = "删除应用")
 	    @RequestMapping( method = RequestMethod.DELETE)
 	    @ResponseBody

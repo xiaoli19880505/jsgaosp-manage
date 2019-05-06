@@ -42,8 +42,9 @@ update bc_declare_app set  status = :status  where id=:id;
 --listApplication
    select a.id,
        a.app_name,
+       GET_ORG_NAME(a.org_id) as org_name,
        a.org_id,
-       a.sys_type,
+       GET_CODE_SORT_TEXT('sys_type', a.sys_type) as sys_type,
        a.status,
        a.create_date,
        a.create_user_id,
@@ -67,7 +68,7 @@ update bc_declare_app set  status = :status  where id=:id;
        i.working_status,
        i.server_type,
        i.icon_url,
-       i.approval_status
+       GET_CODE_SORT_TEXT('app_status', i.approval_status) as approval_status
   from bc_declare_app a, bc_declare_app_info i
  where a.id = i.app_id and a.status ='1'
  --<dynamic>
@@ -105,3 +106,38 @@ set
    approval_date = sysdate,
    approval_user_id =:approval_user_id
    where id = :id
+   
+--------------------------------------------   
+--listHisVersion
+   select a.id,
+       a.app_name,
+       GET_ORG_NAME(a.org_id) as org_name,
+       a.org_id,
+       GET_CODE_SORT_TEXT('sys_type', a.sys_type) as sys_type,
+       a.status,
+       a.create_date,
+       a.create_user_id,
+       a.access_type,
+       i.id as info_id,
+       i.app_id as app_id,
+       i.guide_addr,
+       i.online_addr,
+       i.online_qaq_addr,
+       i.yw_type,
+       i.xz_type,
+       i.memo,
+       i.status as version_status,
+       i.approval_opinion,
+       i.create_date as ver_create_date,
+       i.create_user_id as ver_create_user_id,
+       i.approval_date,
+       i.approval_user_id,
+       i.bl_type,
+       i.version,
+       i.working_status,
+       i.server_type,
+       i.icon_url,
+       GET_CODE_SORT_TEXT('app_status', i.approval_status) as approval_status
+  from bc_declare_app a, bc_declare_app_info i
+ where a.id = i.app_id and a.status ='1'
+ and a.org_id =:org_id and a.app_name =:app_name

@@ -14,4 +14,5 @@ public interface ApplicationService {
     void updateStatus(ApplicationEntity args);
     void updateAudit(ApplicationEntity args) ;
     PageDataResult<ApplicationEntity> listSysApproves(Map params);
+    PageDataResult<ApplicationEntity> listHisVersion(Map params);
 }

@@ -17,4 +17,5 @@ public interface ApplicatonDao {
 	void updateStatus(ApplicationEntity args);
 	void updateAudit(ApplicationEntity args) ;
     PageDataResult<ApplicationEntity> listSysApplications(Map params);
+    PageDataResult<ApplicationEntity> listHisVersion(Map params);
 }
