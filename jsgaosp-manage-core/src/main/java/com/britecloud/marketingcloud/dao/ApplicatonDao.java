@@ -18,4 +18,6 @@ public interface ApplicatonDao {
 	void updateAudit(ApplicationEntity args) ;
     PageDataResult<ApplicationEntity> listSysApplications(Map params);
     PageDataResult<ApplicationEntity> listHisVersion(Map params);
+
+    PageDataResult<ApplicationEntity> getApplicationsByAreaNo(Map params);
 }

@@ -74,7 +74,7 @@ update bc_declare_app set  status = :status  where id=:id;
  where a.id = i.app_id and a.status ='1'
  --<dynamic>
    --<isNotEmpty prepend="AND" property="app_name">
-       a。app_name  = :app_name
+       a.app_name  = :app_name
    --</isNotEmpty>
    --<isNotEmpty prepend="AND" property="sys_type">
        a.sys_type  = :sys_type
@@ -143,3 +143,21 @@ set
   from bc_declare_app a, bc_declare_app_info i
  where a.id = i.app_id and a.status ='1'
  and a.org_id =:org_id and a.app_name =:app_name
+
+ --------------------------------------------
+--getApplicationsByAreaNo
+   select a.id as app_id,
+          a.sys_type,
+          a.app_name,
+          c.area_name,
+          d.qr_code_img_url,
+          d.qr_code_url,
+          i.memo,
+          i.guide_addr,
+          i.online_addr,
+          i.online_qaq_addr,
+          i.icon_url
+  from bc_declare_app a, bc_declare_app_info i, bc_org b, bc_area c, bc_qrcode d
+  where a.id = i.app_id and a.org_id = b.org_no and b.area_no = c.area_no
+      and a.status = '1' and i.working_status = '01' and b.area_no = :areaNo
+      and a.sys_type = :sys_type

@@ -8,6 +8,7 @@ public class ApplicationEntity {
 	private String app_name;
 	private String org_id;
 	private String org_name;
+	private String area_name;
 	private String sys_type;
 	private String status;//应用状态
 	private String create_date;
@@ -36,4 +37,6 @@ public class ApplicationEntity {
 	private String approval_status;
 	private String approval_status_name;
 	private String edit;
+	private String qr_code_img_url;
+	private String qr_code_url;
 }

@@ -1,7 +1,11 @@
 package com.britecloud.marketingcloud.service.impl;
 
+import java.util.HashMap;
 import java.util.Map;
 
+import com.britecloud.marketingcloud.consants.Constants;
+import com.britecloud.marketingcloud.model.Pageable;
+import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -68,6 +72,26 @@ public class ApplicationServiceImpl implements ApplicationService{
 		// TODO Auto-generated method stub
 		return ApplicatonDao.listHisVersion(params);
 	}
-	
-	
+
+	@Override
+	public String getApplicationList(Integer channel, String sysType,Pageable page) {
+		JSONObject result = new JSONObject();
+		try{
+			Map params = new HashMap();
+			params.put("page", page.getPage());
+			params.put("pageSize", page.getSize());
+			params.put("areaNo", "324");
+			params.put("sys_type", sysType);
+			PageDataResult<ApplicationEntity> apps = ApplicatonDao.getApplicationsByAreaNo(params);
+			result= JSONObject.fromObject(apps);
+			result.put("code", Constants.RESPONSE_SUCCESS_CODE);
+			result.put("message","成功");
+		}catch(Exception e){
+			result.put("code", Constants.RESPONSE_BAD_CODE);
+			result.put("message","异常");
+		}
+		return result.toString();
+	}
+
+
 }
