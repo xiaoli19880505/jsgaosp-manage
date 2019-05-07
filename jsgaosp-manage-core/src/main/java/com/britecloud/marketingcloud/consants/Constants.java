@@ -264,4 +264,7 @@ public class Constants {
 	public static final String STATUS_ENABLE = "1";//启用
 	public static final String STATUS_DISABLE = "0";//禁用
 
+	/*接口状态HTTP*/
+	public static final String RESPONSE_SUCCESS_CODE = "200";//正常
+	public static final String RESPONSE_BAD_CODE = "500";//异常
 }
