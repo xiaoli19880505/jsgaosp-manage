@@ -16,10 +16,17 @@ angular.module('app').factory('ApplicationService',
 					application.org_id= org_id;
 	                return res.save(application).$promise;
 				},
+				rollbackVersion : function(application) {
+					return res.get({
+						infoId : application.info_id,
+						type : 'rollback_version'
+					}).$promise;
+				},
 				listHisVersion : function(currentPage,appli) {
 					return res.get({
 						appName : appli.app_name,
 						orgId : appli.org_id,
+						sysType : appli.sys_type,
 						currentPage : currentPage,
 						type : 'list_version'
 					}).$promise;

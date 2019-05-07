@@ -68,6 +68,33 @@ public class ApplicationServiceImpl implements ApplicationService{
 		// TODO Auto-generated method stub
 		return ApplicatonDao.listHisVersion(params);
 	}
+
+
+	@Override
+	public void rollbackVersion(ApplicationEntity args) {
+		ApplicatonDao.rollbackVersion(args);
+	}
+
+
+	@Override
+	public ApplicationEntity listInfoAppById(String Id) {
+		// TODO Auto-generated method stub
+		return ApplicatonDao.listInfoAppById(Id);
+	}
+
+
+	@Override
+	public ApplicationEntity queryInfoList(String appId, String orgId) {
+		// TODO Auto-generated method stub
+		return ApplicatonDao.queryInfoList(appId, orgId);
+	}
+
+
+	@Override
+	public void updateInfoWorkStatus(ApplicationEntity args) {
+		ApplicatonDao.updateInfoWorkStatus(args);
+	}
+	
 	
 	
 }

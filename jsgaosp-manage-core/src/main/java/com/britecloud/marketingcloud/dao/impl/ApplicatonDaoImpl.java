@@ -41,7 +41,35 @@ public class ApplicatonDaoImpl extends BaseJdbcDao implements ApplicatonDao {
 		args.setVersion("1.0");
 		args.setInfo_id(UUIDUtils.generateUUID());
 		SqlParameterSource parameters2 = new BeanPropertySqlParameterSource(args);
-		getNamedParameterJdbcTemplate().update(sql2, parameters);
+		getNamedParameterJdbcTemplate().update(sql2, parameters2);
+	}
+	
+	public void saveAppInfo(ApplicationEntity args) {
+		String sql = loadSQL("insertApplicationInfo");
+		args.setVersion_status("1");
+		args.setApproval_status("00");
+		args.setWorking_status("00");
+		args.setApproval_user_id("");
+		args.setApproval_date("");
+		String version = args.getVersion();
+		args.setInfo_id(UUIDUtils.generateUUID());
+		SqlParameterSource parameters = new BeanPropertySqlParameterSource(args);
+		getNamedParameterJdbcTemplate().update(sql, parameters);
+	}
+	
+	public void updateAppInfo(ApplicationEntity args) {
+		String sql = loadSQL("updateAppWorkingStatus");
+	
+		Map<String, String> paramMap = new HashMap<String, String>();
+		paramMap.put("app_id",args.getApp_id());
+		getNamedParameterJdbcTemplate().update(sql, paramMap);
+	}
+	
+	public void rollbackVersion(ApplicationEntity args) {
+//		//下架老的应用数据
+//		updateAppInfo(args);
+		//info 表插入新的版本数据
+		saveAppInfo(args);
 	}
 
 
@@ -111,9 +139,21 @@ public class ApplicatonDaoImpl extends BaseJdbcDao implements ApplicatonDao {
 		Map<String, String> paramMap = new HashMap<String, String>();
 		paramMap.put("id",args.getInfo_id());
 		paramMap.put("approval_status",args.getApproval_status());
+		paramMap.put("working_status",args.getWorking_status());
 		paramMap.put("approval_user_id",args.getApproval_user_id());
 		paramMap.put("approval_opinion",args.getApproval_opinion());
 		String sql = loadSQL("updateAudit");
+		getNamedParameterJdbcTemplate().update(sql, paramMap);
+	}
+	
+	@Override
+	public void updateInfoWorkStatus(ApplicationEntity args) {
+		Map<String, String> paramMap = new HashMap<String, String>();
+		paramMap.put("id",args.getInfo_id());
+		paramMap.put("app_id",args.getApp_id());
+		paramMap.put("approval_status",args.getApproval_status());
+		paramMap.put("approval_user_id",args.getApproval_user_id());
+		String sql = loadSQL("updateInfoWorkStatus");
 		getNamedParameterJdbcTemplate().update(sql, paramMap);
 	}
 
@@ -144,5 +184,34 @@ public class ApplicatonDaoImpl extends BaseJdbcDao implements ApplicatonDao {
 				new BeanPropertyRowMapper(ApplicationEntity.class));
 		pageData.setList(list);
 		return pageData;
+	}
+	
+	public ApplicationEntity listInfoAppById(String Id ) {
+		Map params = new HashMap();;
+		params.put("info_id",Id);
+		String sql = loadSQL("selectInfoAppById",params);
+		List<ApplicationEntity> list = getNamedParameterJdbcTemplate().query(sql, params,
+				new BeanPropertyRowMapper(ApplicationEntity.class));
+		if(list.size()>0){
+			return list.get(0);
+		}
+		else{
+			return null;
+		}
+	}
+	
+	public ApplicationEntity queryInfoList(String appId,String orgId ) {
+		Map params = new HashMap();
+		params.put("org_id",orgId);
+		params.put("app_id",appId);
+		String sql = loadSQL("queryInfoList",params);
+		List<ApplicationEntity> list = getNamedParameterJdbcTemplate().query(sql, params,
+				new BeanPropertyRowMapper(ApplicationEntity.class));
+		if(list.size()>0){
+			return list.get(0);
+		}
+		else{
+			return null;
+		}
 	}
 }

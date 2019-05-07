@@ -9,6 +9,7 @@ public class ApplicationEntity {
 	private String org_id;
 	private String org_name;
 	private String sys_type;
+	private String sys_type_name;
 	private String status;//应用状态
 	private String create_date;
 	private String create_user_id;
@@ -31,6 +32,7 @@ public class ApplicationEntity {
 	private String bl_type ;
 	private String version ;
 	private String working_status ;
+	private String working_status_name;
 	private String server_type ;
 	private String icon_url ;
 	private String approval_status;
