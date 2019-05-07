@@ -8,7 +8,7 @@ INSERT INTO bc_declare_app_info(id, app_id,guide_addr, online_addr,online_qaq_ad
 status,approval_opinion,create_date,create_user_id, approval_date, approval_user_id, bl_type,
 version, working_status, server_type,icon_url,approval_status) 
 VALUES(:info_id, :app_id,:guide_addr, :online_addr,:online_qaq_addr,:yw_type, :xz_type, :memo,
-:status,:approval_opinion,to_date(:create_date,'yyyy-MM-dd HH24:mi:ss'),:create_user_id, :approval_date, :approval_user_id, :bl_type,
+:status,:approval_opinion,sysdate,:create_user_id, :approval_date, :approval_user_id, :bl_type,
 :version, :working_status,:server_type,:icon_url,:approval_status);
 --------------------------------------------
 --existsArgsKey
@@ -44,7 +44,8 @@ update bc_declare_app set  status = :status  where id=:id;
        a.app_name,
        GET_ORG_NAME(a.org_id) as org_name,
        a.org_id,
-       GET_CODE_SORT_TEXT('sys_type', a.sys_type) as sys_type,
+       a.sys_type,
+       GET_CODE_SORT_TEXT('sys_type', a.sys_type) as sys_type_name,
        a.status,
        a.create_date,
        a.create_user_id,
@@ -66,6 +67,7 @@ update bc_declare_app set  status = :status  where id=:id;
        i.bl_type,
        i.version,
        i.working_status,
+       GET_CODE_SORT_TEXT('working_status', i.working_status) as working_status_name,
        i.server_type,
        i.icon_url,
        i.approval_status,
@@ -105,6 +107,7 @@ set
    approval_opinion = :approval_opinion,
    approval_status = :approval_status,
    approval_date = sysdate,
+   working_status = :working_status,
    approval_user_id =:approval_user_id
    where id = :id
    
@@ -114,7 +117,8 @@ set
        a.app_name,
        GET_ORG_NAME(a.org_id) as org_name,
        a.org_id,
-       GET_CODE_SORT_TEXT('sys_type', a.sys_type) as sys_type,
+       a.sys_type,
+       GET_CODE_SORT_TEXT('sys_type', a.sys_type) as sys_type_name,
        a.status,
        a.create_date,
        a.create_user_id,
@@ -136,11 +140,36 @@ set
        i.bl_type,
        i.version,
        i.working_status,
+       GET_CODE_SORT_TEXT('working_status', i.working_status) as working_status_name,
        i.server_type,
        i.icon_url,
        i.approval_status,
        GET_CODE_SORT_TEXT('app_status', i.approval_status) as approval_status_name
   from bc_declare_app a, bc_declare_app_info i
+ where a.id = i.app_id and a.status ='1' and i.approval_status = '01'
+ and a.org_id =:org_id and a.app_name =:app_name and a.sys_type = :sys_type
+
+--------------------------------------------------------------
+--updateAppWorkingStatus
+update bc_declare_app_info set
+   working_status = '00'
+   where  app_id = :app_id and approval_status ='01'
+-----------------------------------------------------------
+--selectInfoAppById
+   select * from  bc_declare_app_info i ,bc_declare_app a  where  a.id = i.app_id  and i.id =:info_id
+
+-----------------------------------------------------------
+--queryInfoList
+   select * from  bc_declare_app_info i,bc_declare_app a where i.app_id =:app_id and a.org_id =:org_id order by version desc
+
+-----------------------------------------------------------
+--updateInfoWorkStatus
+   update bc_declare_app_info set
+    working_status = '00',
+   approval_date = sysdate,
+   approval_user_id = :approval_user_id
+   where  app_id = :app_id and approval_status ='01' and  id <> :id
+
  where a.id = i.app_id and a.status ='1'
  and a.org_id =:org_id and a.app_name =:app_name
 

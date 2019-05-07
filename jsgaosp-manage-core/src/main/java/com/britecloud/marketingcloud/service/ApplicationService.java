@@ -16,6 +16,10 @@ public interface ApplicationService {
     void updateAudit(ApplicationEntity args) ;
     PageDataResult<ApplicationEntity> listSysApproves(Map params);
     PageDataResult<ApplicationEntity> listHisVersion(Map params);
+    void rollbackVersion(ApplicationEntity args);
+    ApplicationEntity listInfoAppById(String Id );
+    ApplicationEntity queryInfoList(String appId,String orgId );
+    void updateInfoWorkStatus(ApplicationEntity args);
 
     String getApplicationList(Integer channel, String sysType,Pageable page);
 }

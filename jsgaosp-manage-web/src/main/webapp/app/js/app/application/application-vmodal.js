@@ -16,6 +16,7 @@ app.controller('ModalVersionCtrl', ['$scope', '$modalInstance','$http','$session
 		$scope.appli.app_id = $scope.application.app_id;
 		$scope.appli.app_name = $scope.application.app_name;
 		$scope.appli.org_id = $scope.application.org_id;
+		$scope.appli.sys_type = $scope.application.sys_type;
 		$scope.currentPage='1';
 		ApplicationService.listHisVersion($scope.currentPage,$scope.appli).then(function(res){
 			console.log(res);
@@ -25,39 +26,9 @@ app.controller('ModalVersionCtrl', ['$scope', '$modalInstance','$http','$session
     		$scope.chooseArgs=[];
     	})	
 		
-		/*//表单提交
+//		//表单提交
 		$scope.submitForm = function (isValid) {
-			console.log("isValid:"+isValid);
-			$scope.submitted = false;
-			if(isValid){
-				if ($scope.flag) {
-					$scope.addApplication();
-				} else {
-					$scope.submitted = false;
-					$scope.updateApplication();
-				}
-			}else{
-				$scope.submitted = true;
-			}
-
-		};
-		//添加
-		$scope.addApplication=function(){
-			ApplicationService.addApplication($scope.application,items[2]).then(function(data){
-				if(data.code == "10000"){
-					toastr.success('添加成功！');
-					$("#toast-container").css("left", "46%");
-					$modalInstance.close([true]);
-				}else{
-					toastr.success('添加失败！');
-					$("#toast-container").css("left", "46%");
-					$modalInstance.close([true]);
-				}
-			})
-		};
-		//更新
-		$scope.updateApplication=function(){
-			ApplicationService.updateApplication($scope.application).then(function(data){
+			ApplicationService.rollbackVersion($scope.application).then(function(data){
 				if(data.code == "10000"){
 					 toastr.success('更新成功！');
 					 $("#toast-container").css("left", "46%");
@@ -68,7 +39,11 @@ app.controller('ModalVersionCtrl', ['$scope', '$modalInstance','$http','$session
 					$modalInstance.dismiss('cancel');
 				}
 			})
-		}*/
+
+		};
+		
+		//更新
+			
 		
 	    
 	}]);

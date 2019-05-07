@@ -73,6 +73,35 @@ public class ApplicationServiceImpl implements ApplicationService{
 		return ApplicatonDao.listHisVersion(params);
 	}
 
+
+	@Override
+	public void rollbackVersion(ApplicationEntity args) {
+		ApplicatonDao.rollbackVersion(args);
+	}
+
+
+	@Override
+	public ApplicationEntity listInfoAppById(String Id) {
+		// TODO Auto-generated method stub
+		return ApplicatonDao.listInfoAppById(Id);
+	}
+
+
+	@Override
+	public ApplicationEntity queryInfoList(String appId, String orgId) {
+		// TODO Auto-generated method stub
+		return ApplicatonDao.queryInfoList(appId, orgId);
+	}
+
+
+	@Override
+	public void updateInfoWorkStatus(ApplicationEntity args) {
+		ApplicatonDao.updateInfoWorkStatus(args);
+	}
+
+
+	
+
 	@Override
 	public String getApplicationList(Integer channel, String sysType,Pageable page) {
 		JSONObject result = new JSONObject();
