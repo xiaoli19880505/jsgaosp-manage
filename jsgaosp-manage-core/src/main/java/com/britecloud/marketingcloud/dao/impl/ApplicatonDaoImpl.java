@@ -151,6 +151,8 @@ public class ApplicatonDaoImpl extends BaseJdbcDao implements ApplicatonDao {
 		Map<String, String> paramMap = new HashMap<String, String>();
 		paramMap.put("id",args.getInfo_id());
 		paramMap.put("app_id",args.getApp_id());
+		paramMap.put("org_id",args.getOrg_id());
+		paramMap.put("app_name",args.getApp_name());
 		paramMap.put("approval_status",args.getApproval_status());
 		paramMap.put("approval_user_id",args.getApproval_user_id());
 		String sql = loadSQL("updateInfoWorkStatus");

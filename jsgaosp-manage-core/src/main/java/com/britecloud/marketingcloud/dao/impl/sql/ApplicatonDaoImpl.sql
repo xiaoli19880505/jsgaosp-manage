@@ -170,9 +170,6 @@ update bc_declare_app_info set
    approval_user_id = :approval_user_id
    where  app_id = :app_id and approval_status ='01' and  id <> :id
 
- where a.id = i.app_id and a.status ='1'
- and a.org_id =:org_id and a.app_name =:app_name
-
  --------------------------------------------
 --getApplicationsByAreaNo
    select a.id as app_id,
