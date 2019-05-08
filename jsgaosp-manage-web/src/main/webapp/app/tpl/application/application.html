@@ -68,9 +68,9 @@
 						<td>{{application.version}}</td>
 						<td>
 						
-						<a class="fa fa-pencil fa-fw ng-scope" title="启用" ng-if ='application.working_status==00'
+						<a class="fa fa-toggle-right" style="font-size:20px;color:black;" title="启用" ng-if ='application.working_status==00'
 							ng-click="updateWorkStatus('{{application.info_id}}','{{application.org_id}}','{{application.app_id}}','{{application.sys_type}}','01')"></a>
-							<a class="fa fa-refresh fa-fw m-r-xs" title="禁用"   ng-if ='application.working_status==01'
+							<a class="fa fa-toggle-right" style="font-size:20px;color:red;" title="禁用"   ng-if ='application.working_status==01'
 							ng-click="updateWorkStatus('{{application.info_id}}','{{application.org_id}}','{{application.app_id}}','{{application.sys_type}}','00')"></a>
 							</td>
 					</tr>
