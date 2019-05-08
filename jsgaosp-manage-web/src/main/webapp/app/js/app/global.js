@@ -13,6 +13,61 @@ angular.module('app').constant('GG', {
 
 	user:'USER',//普通用户
 	sysadmin:'ADMIN',//系统管理员
+
+	allPerms:[{name:"应用管理", id:"1", pid:"-1",
+		children:[{name:"应用版本管理", id:"11", pid:"1",
+			children:[
+				{name:"新增", id:"111", pid:"11", children:null},
+				{name:"编辑", id:"112", pid:"11", children:null},
+				{name:"删除", id:"113", pid:"11", children:null},
+				{name:"审核", id:"114", pid:"11", children:null},
+				{name:"版本管理", id:"115", pid:"11", children:null}
+			]
+		}]
+	},{name:"系统管理", id:"2", pid:"-1",
+		children:[{name:"组织管理", id:"21", pid:"2",
+			children:[
+				{name:"新增组织", id:"211", pid:"21", children:null},
+				{name:"编辑组织", id:"212", pid:"21", children:null},
+				{name:"删除组织", id:"213", pid:"21", children:null},
+				{name:"新增部门", id:"214", pid:"21", children:null},
+				{name:"编辑部门", id:"215", pid:"21", children:null},
+				{name:"删除部门", id:"216", pid:"21", children:null}
+				]
+		},{name:"账号管理", id:"31", pid:"2",
+			children:[
+				{name:"新增账号", id:"311", pid:"31", children:null},
+				{name:"编辑账号", id:"312", pid:"31", children:null},
+				{name:"重置密码", id:"313", pid:"31", children:null},
+				{name:"删除账号", id:"314", pid:"31", children:null}
+			]
+		},{name:"角色管理", id:"41", pid:"2",
+			children:[
+				{name:"新增角色", id:"411", pid:"41", children:null},
+				{name:"编辑角色", id:"412", pid:"41", children:null},
+				{name:"删除角色", id:"413", pid:"41", children:null},
+				{name:"添加角色人员", id:"414", pid:"41", children:null},
+				{name:"删除角色人员", id:"415", pid:"41", children:null},
+				{name:"角色权限设置", id:"416", pid:"41", children:null}
+			]
+		},{name:"数据字典", id:"51", pid:"2",
+			children:[
+				{name:"新增字典", id:"511", pid:"51", children:null},
+				{name:"编辑字典", id:"512", pid:"51", children:null},
+				{name:"删除字典", id:"513", pid:"51", children:null},
+				{name:"新增字典键", id:"514", pid:"51", children:null},
+				{name:"编辑字典键", id:"515", pid:"51", children:null},
+				{name:"删除字典键", id:"516", pid:"51", children:null}
+			]
+		},{name:"系统参数", id:"61", pid:"2",
+			children:[
+				{name:"新增系统参数", id:"611", pid:"61", children:null},
+				{name:"编辑系统参数", id:"612", pid:"61", children:null},
+				{name:"删除系统参数", id:"613", pid:"61", children:null}
+			]}]
+
+	}],
+
 	allPerm :'0-0,1-0,1-1,1-2,2-0,2-1,2-2,2-3,2-4,3-0,3-1,3-2,3-3,3-4,3-5,3-6,3-7,3-8,4-0,4-1,4-2,4-3,4-4,5-0,5-1,6-0,6-1,6-2,6-3,6-4,7-0,7-1,7-2,7-3,8-0,8-1,8-2',
 	/**
 	 * 普通用户角色

@@ -11,6 +11,14 @@ INSERT
             :userId,
             :roleId
         );
+ --------------------------------------------
+--countUserByRoleId
+SELECT COUNT(*)
+  FROM BC_USER_ROLE a JOIN bc_user b
+  ON  a.user_id=b.user_id
+  AND a.role_id=:roleId
+  AND b.status='1';
+
 --------------------------------------------
 --removeUserRole
 DELETE
@@ -37,8 +45,8 @@ FROM
 LEFT JOIN
 		BC_USER_ROLE
 ON  BC_USER.USER_ID=BC_USER_ROLE.USER_ID AND ROLE_ID IS NOT NULL
-WHERE ROLE_ID = :roleId AND BC_USER.COMPANY_ID = :companyId
- AND (BC_USER.USER_TYPE = 'ADMIN' OR BC_USER.USER_TYPE = 'USER' )
+WHERE ROLE_ID = :roleId
+AND (BC_USER.USER_TYPE = 'ADMIN' OR BC_USER.USER_TYPE = 'USER' )
 --------------------------------------------
 --listUnDistributedUser
 SELECT
@@ -49,7 +57,7 @@ FROM
 LEFT JOIN
 		BC_USER_ROLE
 ON  BC_USER.USER_ID=BC_USER_ROLE.USER_ID AND ROLE_ID IS NOT NULL AND ROLE_ID = :roleId
-WHERE ROLE_ID IS NULL AND COMPANY_ID = :companyId 
+WHERE ROLE_ID IS NULL
 AND (BC_USER.USER_TYPE = 'ADMIN' OR BC_USER.USER_TYPE = 'USER' )
 	--<dynamic>
 	  --<isNotNull property="query" prepend="AND">

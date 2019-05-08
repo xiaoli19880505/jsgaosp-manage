@@ -31,4 +31,6 @@ public interface SysRoleUserJdbcDao {
     List<BcRole> listRoleByUserId(String userId);
 
 	void addAdminRole(String companyId,String userId);
+
+	int countUserByRoleId(String roleId);
 }
