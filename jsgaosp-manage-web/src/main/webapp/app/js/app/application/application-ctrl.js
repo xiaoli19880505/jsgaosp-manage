@@ -327,13 +327,30 @@ app.controller('ApplicationController',['$scope','$http','$state','$modal','$tim
     
     
     //--禁用/启用
-    $scope.updateWorkStatus=function(info_id,org_id,app_id,sys_type,working_status){
-    	ApplicationService.disableApplication(info_id,org_id,app_id,sys_type,working_status).then(function(res){
-    		if(data.code != "10000"){
-				result = false;
-			}
-        })
-        $scope.loadApplications();
+    $scope.updateWorkStatus=function(info_id,org_id,app_id,sys_type,working_status,approval_status){
+    	if(approval_status =='01'){
+    		ApplicationService.disableApplication(info_id,org_id,app_id,sys_type,working_status).then(function(res){
+        		if(data.code != "10000"){
+    				result = false;
+    			}
+            })
+            $scope.loadApplications();
+    	}else{
+    		bootbox.alert({  
+				buttons: {  
+					ok: {  
+						label: '确定',  
+						className: 'btn-info btn-dark'  
+					}  
+				},  
+				message: '请选择审核通过的数据！',  
+				callback: function() {  
+				},  
+				title: "提示",  
+			});
+    	}
+    	
+    	
     			
     }
 
