@@ -91,6 +91,7 @@ update bc_declare_app set  status = :status  where id=:id;
       org_id  = :orgNo
    --</isNotEmpty>
    --</dynamic>
+  order by  i.create_date desc
       
 --------------------------------------------
 --updateInfoStatus
@@ -147,7 +148,7 @@ set
        GET_CODE_SORT_TEXT('app_status', i.approval_status) as approval_status_name
   from bc_declare_app a, bc_declare_app_info i
  where a.id = i.app_id and a.status ='1' and i.approval_status = '01'
- and a.org_id =:org_id and a.app_name =:app_name and a.sys_type = :sys_type
+ and a.org_id =:org_id and a.app_name =:app_name and a.sys_type = :sys_type order by i.create_date desc
 
 --------------------------------------------------------------
 --updateAppWorkingStatus
