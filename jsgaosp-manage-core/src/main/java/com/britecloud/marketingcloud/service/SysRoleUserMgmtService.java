@@ -37,4 +37,5 @@ public interface SysRoleUserMgmtService {
     
 	void addAdminRole(String companyId,String userId);
 
+    int CountUserByRoleId(String roleId);
 }

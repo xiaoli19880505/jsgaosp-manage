@@ -64,4 +64,10 @@ public class SysRoleUserMgmtServiceImpl implements SysRoleUserMgmtService {
 		sysRoleUserJdbcDao.addAdminRole(companyId,userId);
 	}
 
+    @Override
+    public int CountUserByRoleId(String roleId) {
+
+	    return sysRoleUserJdbcDao.countUserByRoleId(roleId);
+    }
+
 }

@@ -3,15 +3,20 @@
  */
 angular.module('app')
     .factory('BcRoleService', ['res', 'GG', function (res, GG) {
-        var res = res(GG.BASE + '/system/role');
+        var res = res(GG.BASE + '/system/role/:type');
         var service = {
             get: function (id) {
                 return res.get({
                     id: id
                 }).$promise;
             },
-            query: function () {
-                return res.query().$promise;
+            getLitst: function (orgNo,keyword,currentPage) {
+                return res.get({
+                    orgNo:orgNo,
+                    keyword:keyword,
+                    currentPage:currentPage,
+                    type:"getRoleList"
+                }).$promise;
             },
             delete: function (roleId) {
                 return res.delete({
@@ -30,16 +35,20 @@ angular.module('app')
 
 angular.module('app')
     .factory('SystemRoleUserService', ['res', 'GG', function (res, GG) {
-        var res = res(GG.BASE + '/system/role_user');
+        var res = res(GG.BASE + '/system/role_user/:type');
         var service = {
-            get: function (roleType,roleId, query, sign, page, size) {
+            get: function (roleId, query,  page, size) {
                 return res.get({
-                	roleType:roleType,
                     roleId: roleId,
                     query: query,
-                    sign: sign,
                     page: page - 1,
                     size: size
+                }).$promise;
+            },
+            countUserByRoleId:function (roleId) {
+                return res.get({
+                    roleId: roleId,
+                    type:"countUserByRoleId"
                 }).$promise;
             },
             delete: function (roleId, userId) {

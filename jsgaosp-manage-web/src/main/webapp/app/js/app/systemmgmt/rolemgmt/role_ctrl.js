@@ -16,7 +16,7 @@ app.controller('SystemRoleController', function ($scope, GG, $timeout, $http, $s
     $scope.roleType = null;
     $scope.tab = [true, false, false];
 
-    
+
     $scope.GGuser = GG.user;
     $scope.GGsysadmin = GG.sysadmin;
     $scope.GGmaintain = GG.maintain;
@@ -25,7 +25,7 @@ app.controller('SystemRoleController', function ($scope, GG, $timeout, $http, $s
      */
     $scope.loadUserList = function () {
         $scope.role_user = [];
-        SystemRoleUserService.get($scope.roleType,$scope.roleId, null, "1", $scope.currentPage, 10)
+        SystemRoleUserService.get( $scope.roleId, "1", $scope.currentPage, 10)
             .then(function (data) {
                 $scope.totalItems = data.totalItems;
                 $scope.role_user = data.content;
@@ -56,7 +56,7 @@ app.controller('SystemRoleController', function ($scope, GG, $timeout, $http, $s
     };
 
 
-
+    //角色人员
     $scope.open = function (size, type) {
         var isUser = type == 'user';
         var validate = false;
@@ -79,7 +79,7 @@ app.controller('SystemRoleController', function ($scope, GG, $timeout, $http, $s
                 backdrop: 'static',
                 resolve: {
                     items: function () {
-                        return [type, id,$scope.roleType];
+                        return [type, id, $scope.roleType];
                     }
                 }
             });
@@ -100,6 +100,62 @@ app.controller('SystemRoleController', function ($scope, GG, $timeout, $http, $s
             }
         }
     };
+
+    //角色信息
+    $scope.openRoleInfo = function (size, type, ccc) {
+        var chooseCreate;
+        if (type == "add") {
+
+        } else if (type == "update") {
+            if ($scope.chooseRoles.length != 1) {
+                bootbox.alert({
+                    buttons: {
+                        ok: {
+                            label: '确定',
+                            className: 'btn-info btn-dark'
+                        }
+                    },
+                    message: '请先选择一个操作的数据！',
+                    callback: function () {
+                    },
+                    title: "提示",
+                });
+                return;
+            }
+            chooseCreate = angular.copy($scope.chooseRoles[0]);
+        }
+        var modalInstance = $modal.open({
+            templateUrl: 'tpl/systemmgmt/rolemgmt/role_info_form.html',
+            controller: 'ModalRoleInfoInstanceCtrl',
+            size: size,
+            backdrop: 'static',
+            resolve: {
+                items: function () {
+                    return [type, chooseCreate,$scope.orgNo];
+                }
+            }
+        });
+        modalInstance.result.then(function (items) {
+            if (items[0]) {//如果modal返回成功的话
+                    $scope.loadRoleList();
+            }
+        }, function () {
+            //取消
+        });
+
+    };
+
+    $scope.searchWithName = function () {
+        $scope.loadRoleList();
+    }
+
+
+    $scope.$watch('orgNo', function (newVal, oldVal) {
+        if ($scope.orgNo != null) {
+            $scope.loadRoleList();
+        }
+    })
+
 
     /***
      * 角色功能
@@ -144,13 +200,13 @@ app.controller('SystemRoleController', function ($scope, GG, $timeout, $http, $s
     $scope.role = {};
     $scope.saveRole = function () {
         if ($scope.roleId == null) {
-        	BcRoleService.save($scope.role)
+            BcRoleService.save($scope.role)
                 .then(function () {
                     toastr.success('添加角色成功!');
                     $scope.loadRoleList();
                 });
         } else {
-        	BcRoleService.update($scope.role)
+            BcRoleService.update($scope.role)
                 .then(function () {
                     toastr.success('更新角色成功!');
                     $scope.loadRoleList();
@@ -167,10 +223,10 @@ app.controller('SystemRoleController', function ($scope, GG, $timeout, $http, $s
         $scope.roleType = item.roleType;
         $scope.loadUserList();
         var selectedRolesFun = null;
-        if(item.roleType == GG.user){
-        	selectedRolesFun = GG.user_role_fun;
-        }else{
-        	selectedRolesFun = GG.sysadmin_role_fun;
+        if (item.roleType == GG.user) {
+            selectedRolesFun = GG.user_role_fun;
+        } else {
+            selectedRolesFun = GG.sysadmin_role_fun;
         }
         $scope.roleFunction = SystemRoleFunService.setSelected(selectedRolesFun, item.perm);
         $scope.role = angular.copy(item);
@@ -181,52 +237,71 @@ app.controller('SystemRoleController', function ($scope, GG, $timeout, $http, $s
 
     $scope.loadRoleList = function () {
         $scope.roles = {};
-        BcRoleService.query()
+        BcRoleService.getLitst($scope.orgNo, $scope.keyword, $scope.currentPage)
             .then(function (data) {
-                $scope.roles = data;
-                if (data.length > 0) {//默认选中第一个
-                    $scope.selectRole(data[0]);
-                }
+                $scope.roles = data.list;
+                $scope.totalItems=data.totalCount;
+                $scope.chooseRoles = [];
             })
     };
     $scope.loadRoleList();
 
-    $scope.deleteRole = function (item) {
-    	$timeout(function(){    	//延时0.1秒，等待selectrole加载数据
-	    	if($scope.role_user.length != 0){//如果角色下关联了用户，则不能删除
-	    		toastr.error('该角色下有'+$scope.role_user.length+'个用户，不能删除！');
-	    		return;
-	    	}
-	        modalServ.showModal({}, {
-	            bodyText: '确定要删除这个角色吗?'
-	        }).then(function (data) {
-	        	BcRoleService.delete(item.roleId)
-	                .then(function (data) {
-	                    toastr.success('删除角色成功!');
-	                    $scope.loadRoleList();
-	                });
-	        });
-	        },100);
+    $scope.chooseRoles = [];
+    $scope.choose = function (chk, item, index) {
+        item.indexs = index;
+        if (chk) {
+            $scope.chooseRoles.push(item);
+        } else if (!chk) {
+            $scope.chooseRoles.splice($scope.chooseRoles.indexOf(item), 1);
+        }
+    }
+
+
+
+    $scope.deleteRole = function (roleId) {
+        SystemRoleUserService.countUserByRoleId(roleId).then(function (data) {
+            if(data.code="10000"){
+                if (data.data != 0) {//如果角色下关联了用户，则不能删除
+                    toastr.error('该角色下有' + data.data + '个用户，不能删除！');
+                    return;
+                }
+                modalServ.showModal({}, {
+                    bodyText: '确定要删除这个角色吗?'
+                }).then(function (data) {
+                    BcRoleService.delete(item.roleId)
+                        .then(function (data) {
+                            toastr.success('删除角色成功!');
+                            $scope.loadRoleList();
+                        });
+                });
+            }
+        })
+
+
     };
     /**
      * 设置高度
      */
-    $scope.setHeight = function(){
-    	var totalHeight = $('#rightPanl').height();
-    	$('#Rolefunctions').height(totalHeight*0.7);
+    $scope.setHeight = function () {
+        var totalHeight = $('#rightPanl').height();
+        $('#Rolefunctions').height(totalHeight * 0.7);
     }
     $scope.setHeight();
     /**
-     * 阻止a链接的跳转行为 
+     * 阻止a链接的跳转行为
      */
-	$scope.change=function(){
-		 $('#myTab a:first').tab('show');//初始化显示哪个tab 
-	        $('#myTab a').click(function (e) { 
-	          e.preventDefault();//阻止a链接的跳转行为 
-	          $(this).tab('show');//显示当前选中的链接及关联的content 
-	          $scope.refreshProcess();
-	        }) 
-	};
-	$scope.change();
+    $scope.change = function () {
+        $('#myTab a:first').tab('show');//初始化显示哪个tab
+        $('#myTab a').click(function (e) {
+            e.preventDefault();//阻止a链接的跳转行为
+            $(this).tab('show');//显示当前选中的链接及关联的content
+            $scope.refreshProcess();
+        })
+    };
+    $scope.change();
+
+    $scope.$watch('importIds', function (newVal, oldVal) {
+        console.log($scope.importIds)
+    })
 });
 

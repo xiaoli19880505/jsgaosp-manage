@@ -1,0 +1,45 @@
+<style>
+.help-block{
+	color:#F05050;
+	margin-bottom: 0px;
+	font-weight:bold;
+	font-style:oblique;
+}
+.orgTreeDiv{
+    border: 1px solid #666;
+}
+</style>
+<div class="modal-body wrapper-lg">
+    <div class="row">
+        <div class="col-sm-12">
+            <h3 class="m-t-none m-b font-thin">{{title}}</h3>
+
+            <div class="modal-body">
+                <form name="roleForm" class="form-validation form-horizontal" ng-submit="submitForm(roleForm.$valid)"    novalidate>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">角色名称<span style="color:red;">*</span></label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" placeholder="请输入字典名称" name="roleName" ng-model="role.name" required="required">
+                            <span style="color:red" ng-show="codeSortForm.roleName.$dirty && codeSortForm.roleName.$invalid">
+                                <span ng-show="codeSortForm.roleName.$error.required">请输入角色名称</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">描述<span style="color:red;">*</span></label>
+                        <div class="col-sm-10">
+                            <input type ="text" class="form-control" placeholder="请输入描述" name="roleDescription" ng-model="role.description" required="required">
+                            <span style="color:red" ng-show="roleForm.roleDescription.$dirty && roleForm.roleDescription.$invalid">
+                                <span ng-show="roleForm.roleDescription.$error.required">请输入描述</span>
+                            </span>
+                        </div>
+                    </div>
+              <div class="checkbox m-t-lg pull-right">
+                        <button type="reset" class="btn btn-default" ng-click="cancel()">取消</button>
+                        <button type="submit" class="btn btn-primary" >确定</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+	</div>
+</div>

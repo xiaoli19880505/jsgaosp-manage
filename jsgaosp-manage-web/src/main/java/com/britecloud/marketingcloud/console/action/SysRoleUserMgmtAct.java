@@ -11,6 +11,10 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.britecloud.marketingcloud.console.common.ResponseResult;
+import com.britecloud.marketingcloud.console.configuration.OperationLogAnn;
+import com.britecloud.marketingcloud.console.util.ResultUtil;
+import org.apache.struts.util.ResponseUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -44,15 +48,23 @@ public class SysRoleUserMgmtAct {
         return userId;
     }
 
+    @OperationLogAnn("查询对应角色下的用户数量")
+    @RequestMapping(value = "countUserByRoleId",method = RequestMethod.GET)
+    @ResponseBody
+    public ResponseResult countUserByRoleId(String roleId) throws Exception {
+
+       int count= sysRoleUserMgmtService.CountUserByRoleId(roleId);
+
+        return ResultUtil.success(count);
+    }
+
     @RequestMapping(method = RequestMethod.GET)
     @ResponseBody
     public Page<BcUser> get(HttpServletRequest request,String roleType,String roleId, String query, String sign, Pageable pageable) throws Exception {
     	BcUser user = SessionUtils.getCurrentUser(request);
     	Map paramMap = new HashMap();
     	paramMap.put("roleId",roleId);
-    	paramMap.put("roleType",roleType);
     	paramMap.put("query", "".equals(query) ? null : query);
-    	paramMap.put("companyId", user.getCompanyId());
         return sysRoleUserMgmtService.get(paramMap, sign, pageable);
     }
 

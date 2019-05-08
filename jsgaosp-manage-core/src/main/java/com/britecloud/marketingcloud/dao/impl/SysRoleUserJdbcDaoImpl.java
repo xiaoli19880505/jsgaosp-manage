@@ -41,7 +41,7 @@ public class SysRoleUserJdbcDaoImpl extends BaseJdbcDao implements SysRoleUserJd
 //            params.put("query", query);
             sql = loadSQL("listUnDistributedUser", params);
         }
-        if(params.get("roleType").equals("MAINTAIN")){
+        if("MAINTAIN".equals(params.get("roleType"))){
         	sql += " AND BC_USER.USER_TYPE = 'MAINTAIN' ";
         }else{
         	sql +=" AND (BC_USER.USER_TYPE = 'USER' OR BC_USER.USER_TYPE = 'ADMIN')";
@@ -61,6 +61,14 @@ public class SysRoleUserJdbcDaoImpl extends BaseJdbcDao implements SysRoleUserJd
         params.put("roleId", roleId);
         String sql = loadSQL("listUnDistributedUser", params);
         return getNamedParameterJdbcTemplate().query(sql, params, new BeanPropertyRowMapper(BcUser.class));
+    }
+
+    @Override
+    public int countUserByRoleId(String roleId) {
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("roleId", roleId);
+        String sql = loadSQL("countUserByRoleId", params);
+        return getNamedParameterJdbcTemplate().queryForInt(sql, params);
     }
 
     @Override

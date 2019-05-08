@@ -8,9 +8,11 @@
  */
 package com.britecloud.marketingcloud.service.impl;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import com.britecloud.marketingcloud.domain.PageDataResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -39,6 +41,7 @@ public class SysRoleMgmtServiceImpl implements SysRoleMgmtService {
 
     @Override
     public void save(BcRole role) {
+        Date date=new Date();
         role.setRoleId(IDUtils.getId());
         sysRoleJdbcDao.save(role);
     }
@@ -50,7 +53,7 @@ public class SysRoleMgmtServiceImpl implements SysRoleMgmtService {
     }
 
     @Override
-    public List<BcRole> query(Map paramMap) {
+    public PageDataResult<BcRole> query(Map paramMap) {
         return sysRoleJdbcDao.query(paramMap);
     }
 
