@@ -115,29 +115,45 @@ app.controller('ApplicationController',['$scope','$http','$state','$modal','$tim
     //版本管理
     $scope.rollbackVersion=function(){
     	if($scope.chooseArgs.length==1){
-    		var chooseCreate = $scope.chooseArgs[0];
-        	var modalInstance = $modal.open({
-            templateUrl: 'tpl/application/application_list_form.html',
-            controller: 'ModalVersionCtrl',
-            backdrop: 'static',
-            resolve: {
-                items: function () {
-					var applications = {};
-					applications=$scope.verapps;
-					$scope.items =['rollback',chooseCreate];
-                    return $scope.items;
+    		if($scope.chooseArgs[0].approval_status =='01'){
+    			var chooseCreate = $scope.chooseArgs[0];
+            	var modalInstance = $modal.open({
+                templateUrl: 'tpl/application/application_list_form.html',
+                controller: 'ModalVersionCtrl',
+                backdrop: 'static',
+                resolve: {
+                    items: function () {
+    					var applications = {};
+    					applications=$scope.verapps;
+    					$scope.items =['rollback',chooseCreate];
+                        return $scope.items;
+                    }
                 }
-            }
-       
-        });
-        	modalInstance.result.then(function (items) {
-                if (items[0]) {//如果modal返回成功的话
-                	 $scope.loadApplications();
-                	 $scope.chooseArgs=[];
-                }
-            }, function () {
-                //取消
+           
             });
+            	modalInstance.result.then(function (items) {
+                    if (items[0]) {//如果modal返回成功的话
+                    	 $scope.loadApplications();
+                    	 $scope.chooseArgs=[];
+                    }
+                }, function () {
+                    //取消
+                });
+    		}else{
+    			bootbox.alert({  
+        			buttons: {  
+        				ok: {  
+        					label: '确定',  
+        					className: 'btn-info btn-dark'  
+        				}  
+        			},  
+        			message: '请选择一个审核通过的应用！',  
+        			callback: function() {  
+        			},  
+        			title: "提示",  
+        		});
+    		}
+    		
 
     	}else{
     		bootbox.alert({  
@@ -158,29 +174,45 @@ app.controller('ApplicationController',['$scope','$http','$state','$modal','$tim
     //版本更新
     $scope.updateVersion=function(){
 	if($scope.chooseArgs.length==1){
-		var chooseCreate = $scope.chooseArgs[0];
-    	var modalInstance = $modal.open({
-        templateUrl: 'tpl/application/application_update_form.html',
-        controller: 'ModalUpdateVersionCtrl',
-        backdrop: 'static',
-        resolve: {
-            items: function () {
-				var applications = {};
-				applications=$scope.verapps;
-				$scope.items =['rollback',chooseCreate];
-                return $scope.items;
-            }
-        }
-   
-    });
-    	modalInstance.result.then(function (items) {
-            if (items[0]) {//如果modal返回成功的话
-            	 $scope.loadApplications();
-            	 $scope.chooseArgs=[];
-            }
-        }, function () {
-            //取消
-        });
+		if($scope.chooseArgs[0].approval_status =='01'){
+			var chooseCreate = $scope.chooseArgs[0];
+	    	var modalInstance = $modal.open({
+	        templateUrl: 'tpl/application/application_update_form.html',
+	        controller: 'ModalUpdateVersionCtrl',
+	        backdrop: 'static',
+	        resolve: {
+	            items: function () {
+					var applications = {};
+					applications=$scope.verapps;
+					$scope.items =['rollback',chooseCreate];
+	                return $scope.items;
+	            }
+	        }
+	   
+	    });
+	    	modalInstance.result.then(function (items) {
+	            if (items[0]) {//如果modal返回成功的话
+	            	 $scope.loadApplications();
+	            	 $scope.chooseArgs=[];
+	            }
+	        }, function () {
+	            //取消
+	        });
+    	}else{
+    		bootbox.alert({  
+    			buttons: {  
+    				ok: {  
+    					label: '确定',  
+    					className: 'btn-info btn-dark'  
+    				}  
+    			},  
+    			message: '请选择一个审核通过的应用！',  
+    			callback: function() {  
+    			},  
+    			title: "提示",  
+    		}); 
+    	}
+		
 
 	}else{
 		bootbox.alert({  
@@ -239,27 +271,43 @@ app.controller('ApplicationController',['$scope','$http','$state','$modal','$tim
     //审核
     $scope.audit=function(){
     	if($scope.chooseArgs.length!=0){
-    		var chooseCreate = $scope.chooseArgs[0];
-    		var modalInstance = $modal.open({
-    			  templateUrl: 'tpl/application/application_audit_form.html',
-    	            controller: 'ModalApplicationsCtrl',
-                size: '',
-                backdrop: 'static',
-                resolve: {
-                    items: function () {
-                           return ['audit',chooseCreate];
+    		if($scope.chooseArgs[0].approval_status =='00'){
+    			var chooseCreate = $scope.chooseArgs[0];
+        		var modalInstance = $modal.open({
+        			  templateUrl: 'tpl/application/application_audit_form.html',
+        	            controller: 'ModalApplicationsCtrl',
+                    size: '',
+                    backdrop: 'static',
+                    resolve: {
+                        items: function () {
+                               return ['audit',chooseCreate];
+                        }
                     }
-                }
-            });
+                });
 
-            modalInstance.result.then(function (items) {
-                if (items[0]) {//如果modal返回成功的话
-                	 $scope.loadApplications();
-                	 $scope.chooseArgs=[];
-                }
-            }, function () {
-                //取消
-            });
+                modalInstance.result.then(function (items) {
+                    if (items[0]) {//如果modal返回成功的话
+                    	 $scope.loadApplications();
+                    	 $scope.chooseArgs=[];
+                    }
+                }, function () {
+                    //取消
+                });
+    		}else{
+    			bootbox.alert({  
+    				buttons: {  
+    					ok: {  
+    						label: '确定',  
+    						className: 'btn-info btn-dark'  
+    					}  
+    				},  
+    				message: '请选择待审核的数据！',  
+    				callback: function() {  
+    				},  
+    				title: "提示",  
+    			}); 
+    		}
+    		
     	}else{
     			bootbox.alert({  
     				buttons: {  
