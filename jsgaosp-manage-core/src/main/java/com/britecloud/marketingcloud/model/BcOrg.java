@@ -15,5 +15,6 @@ public class BcOrg {
     private String officeTel;
     private String mobileTel;
     private String address;
-
+    private String areaName;
+    private String areaNo;
 }

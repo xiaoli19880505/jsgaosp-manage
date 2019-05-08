@@ -10,7 +10,7 @@
 	<div class="row">
 		<div class="col-sm-12">
 			<h3 class="m-t-none m-b font-thin">版本管理</h3>
-
+<form name="applicationForm" class="form-validation" ng-submit="submitForm(applicationForm.$valid)" novalidate>
 				<div class="wrapper-md ng-scope">
 		<div class="panel panel-default">
 			<div class="table-responsive" show-scroll>
@@ -25,7 +25,7 @@
 							<th>应用名称</th>
 							<th>组织名称</th> 
 							<th>系统类型</th>
-							<th>办事指南</th>
+							<th>版本</th>
 							<th>操作</th>
 						</tr>
 					</thead>
@@ -38,7 +38,7 @@
 						<td>{{application.app_name}}</td>
 						 <td>{{application.org_name}}</td> 
 						<td>{{application.sys_type}}</td>
-						<td>{{application.guide_addr}}</td>
+						<td>{{application.version}}</td>
 						<td><a class="fa fa-refresh fa-fw m-r-xs" title="禁用"
 							ng-click="update('{{application.id}}')"></a></td>
 					</tr>
@@ -73,6 +73,7 @@
 			</footer>
 
 		</div>
+		</form>
 
 	</div>
 				<!-- <div class="table-responsive" show-scroll>

@@ -97,6 +97,12 @@ public class BcOrgDaoImpl extends BaseJdbcDao implements BcOrgDao {
 		return getNamedParameterJdbcTemplate().queryForInt(sql,parameters);
 	}
 
+	@Override
+	public List<BcOrg> getOrgAreaNameList() {
+		String sql = loadSQL("getOrgAreaNameList");
+		Map<String, String> paramMap = new HashMap<String, String>();
+		return getNamedParameterJdbcTemplate().query(sql, paramMap, new BeanPropertyRowMapper<BcOrg>(BcOrg.class));
+	}
 
 
 }

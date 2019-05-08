@@ -116,18 +116,6 @@ app.controller('ApplicationController',['$scope','$http','$state','$modal','$tim
     $scope.rollbackVersion=function(){
     	if($scope.chooseArgs.length==1){
     		var chooseCreate = $scope.chooseArgs[0];
-    		/*$scope.appli={};
-    		$scope.appli.app_id = chooseCreate.app_id;
-    		$scope.appli.app_name = chooseCreate.app_name;
-    		$scope.appli.org_id = chooseCreate.org_id;
-    		ApplicationService.listHisVersion($scope.currentPage,$scope.appli).then(function(res){
-    			console.log(res);
-        		$scope.verapps=res.data.list;
-        		$scope.totalItems=res.data.totalCount;
-        		$scope.currentPage=res.data.page;
-        		$scope.chooseArgs=[];
-        	})*/
-        	
         	var modalInstance = $modal.open({
             templateUrl: 'tpl/application/application_list_form.html',
             controller: 'ModalVersionCtrl',
@@ -142,6 +130,14 @@ app.controller('ApplicationController',['$scope','$http','$state','$modal','$tim
             }
        
         });
+        	modalInstance.result.then(function (items) {
+                if (items[0]) {//如果modal返回成功的话
+                	 $scope.loadApplications();
+                	 $scope.chooseArgs=[];
+                }
+            }, function () {
+                //取消
+            });
 
     	}else{
     		bootbox.alert({  
@@ -159,6 +155,49 @@ app.controller('ApplicationController',['$scope','$http','$state','$modal','$tim
     	}	
 	
     }
+    //版本更新
+    $scope.updateVersion=function(){
+	if($scope.chooseArgs.length==1){
+		var chooseCreate = $scope.chooseArgs[0];
+    	var modalInstance = $modal.open({
+        templateUrl: 'tpl/application/application_update_form.html',
+        controller: 'ModalUpdateVersionCtrl',
+        backdrop: 'static',
+        resolve: {
+            items: function () {
+				var applications = {};
+				applications=$scope.verapps;
+				$scope.items =['rollback',chooseCreate];
+                return $scope.items;
+            }
+        }
+   
+    });
+    	modalInstance.result.then(function (items) {
+            if (items[0]) {//如果modal返回成功的话
+            	 $scope.loadApplications();
+            	 $scope.chooseArgs=[];
+            }
+        }, function () {
+            //取消
+        });
+
+	}else{
+		bootbox.alert({  
+			buttons: {  
+				ok: {  
+					label: '确定',  
+					className: 'btn-info btn-dark'  
+				}  
+			},  
+			message: '请先选择一个操作的数据！',  
+			callback: function() {  
+			},  
+			title: "提示",  
+		}); 
+	}	
+
+}
    
     //删除
     $scope.deleteModal=function(){
@@ -237,5 +276,17 @@ app.controller('ApplicationController',['$scope','$http','$state','$modal','$tim
     		}			
     }
     $scope.loadApplications();
+    
+    
+    //--禁用/启用
+    $scope.updateWorkStatus=function(info_id,org_id,app_id,sys_type,working_status){
+    	ApplicationService.disableApplication(info_id,org_id,app_id,sys_type,working_status).then(function(res){
+    		if(data.code != "10000"){
+				result = false;
+			}
+        })
+        $scope.loadApplications();
+    			
+    }
 
 }])

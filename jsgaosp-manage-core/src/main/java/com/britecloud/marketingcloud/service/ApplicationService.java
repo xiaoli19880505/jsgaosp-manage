@@ -4,6 +4,7 @@ import java.util.Map;
 
 import com.britecloud.marketingcloud.domain.PageDataResult;
 import com.britecloud.marketingcloud.model.ApplicationEntity;
+import com.britecloud.marketingcloud.model.Pageable;
 
 public interface ApplicationService {
 
@@ -15,4 +16,11 @@ public interface ApplicationService {
     void updateAudit(ApplicationEntity args) ;
     PageDataResult<ApplicationEntity> listSysApproves(Map params);
     PageDataResult<ApplicationEntity> listHisVersion(Map params);
+    void rollbackVersion(ApplicationEntity args);
+    ApplicationEntity listInfoAppById(String Id );
+    ApplicationEntity queryInfoList(String appId,String orgId );
+    void updateInfoWorkStatus(ApplicationEntity args,String method);
+
+    void insertAppInfo(ApplicationEntity args);
+    String getApplicationList(Integer channel, String sysType,Pageable page);
 }

@@ -28,4 +28,6 @@ public interface BcAreaService {
      * @return
      */
     int existsAreaNo(BcArea area);
+
+    String getAreaList();
 }

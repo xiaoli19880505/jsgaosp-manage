@@ -18,4 +18,12 @@ public interface ApplicatonDao {
 	void updateAudit(ApplicationEntity args) ;
     PageDataResult<ApplicationEntity> listSysApplications(Map params);
     PageDataResult<ApplicationEntity> listHisVersion(Map params);
+    void rollbackVersion(ApplicationEntity args);
+    ApplicationEntity listInfoAppById(String Id );
+    ApplicationEntity queryInfoList(String appId,String orgId );
+    void updateInfoWorkStatus(ApplicationEntity args,String method);
+    
+
+    void insertAppInfo(ApplicationEntity args);
+    PageDataResult<ApplicationEntity> getApplicationsByAreaNo(Map params);
 }

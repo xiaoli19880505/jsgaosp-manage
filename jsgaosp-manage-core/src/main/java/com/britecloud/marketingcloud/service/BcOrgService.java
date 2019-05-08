@@ -27,4 +27,6 @@ public interface BcOrgService {
     Map<String,Object> getOrgByOrgNo(String orgNo);
 
     int existsOrgName(BcOrg org);
+
+    String getOrgAreaNameList();
 }
