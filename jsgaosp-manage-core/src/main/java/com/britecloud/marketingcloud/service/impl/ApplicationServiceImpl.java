@@ -123,4 +123,11 @@ public class ApplicationServiceImpl implements ApplicationService{
 	}
 
 
+	@Override
+	public void insertAppInfo(ApplicationEntity args) {
+		// TODO Auto-generated method stub
+		ApplicatonDao.insertAppInfo(args);
+	}
+
+
 }

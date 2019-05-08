@@ -21,5 +21,6 @@ public interface ApplicationService {
     ApplicationEntity queryInfoList(String appId,String orgId );
     void updateInfoWorkStatus(ApplicationEntity args,String method);
 
+    void insertAppInfo(ApplicationEntity args);
     String getApplicationList(Integer channel, String sysType,Pageable page);
 }

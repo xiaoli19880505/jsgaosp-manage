@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.alibaba.fastjson.JSONObject;
 import com.britecloud.marketingcloud.console.common.ResponseResult;
 import com.britecloud.marketingcloud.console.configuration.OperationLogAnn;
 import com.britecloud.marketingcloud.console.util.ResultUtil;
@@ -143,6 +145,30 @@ public class ApplicationAction {
 			BigDecimal version = num1.add(num2);
 			args.setVersion(version.toString());
 			ApplicationService.rollbackVersion(args);
+			return ResultUtil.success();
+		}
+		return ResultUtil.error("10001", "失败！");
+	}
+	
+	@OperationLogAnn(value = "版本更新")
+	@RequestMapping(value = "/update_version", method = RequestMethod.GET)
+	@ResponseBody
+	public ResponseResult UpdateVersion(HttpServletRequest request, String application) {
+		JSONObject json = JSONObject.parseObject(application);
+		ApplicationEntity args = (ApplicationEntity)JSONObject.toJavaObject(json, ApplicationEntity.class);
+		BcUser user = SessionUtils.getCurrentUser(request);
+		if (user == null) {
+			return ResultUtil.error("10005", "未登录");
+		}
+		if (StringUtils.isNotEmpty(args.getInfo_id())) {
+			// 获取当前应用的最高版本
+			ApplicationEntity entity = new ApplicationEntity();
+			entity = ApplicationService.queryInfoList(args.getApp_id(), args.getOrg_id());
+			BigDecimal num1 = new BigDecimal(entity.getVersion());
+			BigDecimal num2 = new BigDecimal("1");
+			BigDecimal version = num1.add(num2);
+			args.setVersion(version.toString());
+			ApplicationService.insertAppInfo(args);
 			return ResultUtil.success();
 		}
 		return ResultUtil.error("10001", "失败！");

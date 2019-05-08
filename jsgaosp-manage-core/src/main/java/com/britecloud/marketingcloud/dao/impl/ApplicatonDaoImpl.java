@@ -56,6 +56,16 @@ public class ApplicatonDaoImpl extends BaseJdbcDao implements ApplicatonDao {
 		SqlParameterSource parameters = new BeanPropertySqlParameterSource(args);
 		getNamedParameterJdbcTemplate().update(sql, parameters);
 	}
+	
+	
+	public void insertAppInfo(ApplicationEntity args) {
+		String sql = loadSQL("insertApplicationInfo");
+		args.setInfo_id(UUIDUtils.generateUUID());
+		args.setApproval_status("00");
+		args.setWorking_status("00");
+		SqlParameterSource parameters = new BeanPropertySqlParameterSource(args);
+		getNamedParameterJdbcTemplate().update(sql, parameters);
+	}
 
 	public void updateAppInfo(ApplicationEntity args) {
 		String sql = loadSQL("updateAppWorkingStatus");

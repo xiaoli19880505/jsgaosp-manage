@@ -44,6 +44,13 @@ angular.module('app').factory('ApplicationService',
 						type : 'disable_version'
 					}).$promise;
 				},
+				updateVersionApplication : function(application) {
+					application.method = 'updateVersion';
+					return res.get({
+						application : application,
+						type : 'update_version'
+					}).$promise;
+				},
 				deleteApplication : function(id) {
 					return res.delete({
 	                	id:id

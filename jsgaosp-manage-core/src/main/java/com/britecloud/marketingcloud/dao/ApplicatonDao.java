@@ -22,6 +22,8 @@ public interface ApplicatonDao {
     ApplicationEntity listInfoAppById(String Id );
     ApplicationEntity queryInfoList(String appId,String orgId );
     void updateInfoWorkStatus(ApplicationEntity args,String method);
+    
 
+    void insertAppInfo(ApplicationEntity args);
     PageDataResult<ApplicationEntity> getApplicationsByAreaNo(Map params);
 }

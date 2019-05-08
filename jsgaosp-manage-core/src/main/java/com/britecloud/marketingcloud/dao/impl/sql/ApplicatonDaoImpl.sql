@@ -8,7 +8,7 @@ INSERT INTO bc_declare_app_info(id, app_id,guide_addr, online_addr,online_qaq_ad
 status,approval_opinion,create_date,create_user_id, approval_date, approval_user_id, bl_type,
 version, working_status, server_type,icon_url,approval_status) 
 VALUES(:info_id, :app_id,:guide_addr, :online_addr,:online_qaq_addr,:yw_type, :xz_type, :memo,
-:status,:approval_opinion,sysdate,:create_user_id, :approval_date, :approval_user_id, :bl_type,
+:status,:approval_opinion,sysdate,:create_user_id, '', '', :bl_type,
 :version, :working_status,:server_type,:icon_url,:approval_status);
 --------------------------------------------
 --existsArgsKey
