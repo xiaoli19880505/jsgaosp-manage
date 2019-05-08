@@ -196,6 +196,7 @@ angular
 								 'js/app/application/application-ctrl.js',
 								 'js/app/application/application-serv.js',
 								 'js/app/application/application-vmodal.js',
+								 'js/app/application/application-up-modal.js',
 								 'js/app/application/application-modal.js'
 								 
 								 ]
