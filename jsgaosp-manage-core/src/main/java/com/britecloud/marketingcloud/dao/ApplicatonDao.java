@@ -21,7 +21,7 @@ public interface ApplicatonDao {
     void rollbackVersion(ApplicationEntity args);
     ApplicationEntity listInfoAppById(String Id );
     ApplicationEntity queryInfoList(String appId,String orgId );
-    void updateInfoWorkStatus(ApplicationEntity args);
+    void updateInfoWorkStatus(ApplicationEntity args,String method);
 
     PageDataResult<ApplicationEntity> getApplicationsByAreaNo(Map params);
 }

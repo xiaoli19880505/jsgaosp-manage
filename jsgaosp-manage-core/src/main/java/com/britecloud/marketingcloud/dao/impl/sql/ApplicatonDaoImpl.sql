@@ -165,11 +165,19 @@ update bc_declare_app_info set
 -----------------------------------------------------------
 --updateInfoWorkStatus
    update bc_declare_app_info set
-    working_status = '00',
+    working_status = :working_status,
    approval_date = sysdate,
    approval_user_id = :approval_user_id
-   where  app_id = :app_id and approval_status ='01' and  id <> :id
+   where  app_id = :app_id and approval_status =:approval_status and  id <> :id
 
+-----------------------------------------------------------
+--updateInfoWorkStatusdisable
+   update bc_declare_app_info set
+    working_status = :working_status,
+   approval_date = sysdate,
+   approval_user_id = :approval_user_id
+   where    id = :id
+   
  --------------------------------------------
 --getApplicationsByAreaNo
    select a.id as app_id,

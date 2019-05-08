@@ -147,15 +147,21 @@ public class ApplicatonDaoImpl extends BaseJdbcDao implements ApplicatonDao {
 	}
 
 	@Override
-	public void updateInfoWorkStatus(ApplicationEntity args) {
+	public void updateInfoWorkStatus(ApplicationEntity args,String method) {
 		Map<String, String> paramMap = new HashMap<String, String>();
 		paramMap.put("id",args.getInfo_id());
 		paramMap.put("app_id",args.getApp_id());
 		paramMap.put("org_id",args.getOrg_id());
 		paramMap.put("app_name",args.getApp_name());
 		paramMap.put("approval_status",args.getApproval_status());
+		paramMap.put("working_status",args.getWorking_status());
 		paramMap.put("approval_user_id",args.getApproval_user_id());
-		String sql = loadSQL("updateInfoWorkStatus");
+		String sql ="";
+		if("Audit".equals(method)) {
+			 sql = loadSQL("updateInfoWorkStatus");
+		}else if("disable".equals(method)){
+			 sql = loadSQL("updateInfoWorkStatusdisable");
+		}
 		getNamedParameterJdbcTemplate().update(sql, paramMap);
 	}
 

@@ -34,6 +34,16 @@ angular.module('app').factory('ApplicationService',
 				updateApplication : function(application) {
 	                return res.update(application).$promise;
 				},
+				disableApplication : function(info_id,org_id,app_id,sys_type,workstatus) {
+					return res.get({
+						info_id:info_id,
+				    	org_id:org_id,
+				    	app_id:app_id,
+				    	sys_type:sys_type,
+						workstatus:workstatus,
+						type : 'disable_version'
+					}).$promise;
+				},
 				deleteApplication : function(id) {
 					return res.delete({
 	                	id:id

@@ -56,19 +56,19 @@ public class ApplicationAction {
 		}
 		if (args != null) {
 			args.setApproval_user_id(user.getUserId());
-			if ((null == args.getApproval_opinion() || "".equals(args.getApproval_opinion()))//编辑应用
+			if ((null == args.getApproval_opinion() || "".equals(args.getApproval_opinion()))// 编辑应用
 					&& !"01".equals(args.getApproval_status())) {
 				ApplicationService.updateApplicationInfo(args);
-			} else {//审核
-				//更新当前；应用状态
+			} else {// 审核
+				// 更新当前；应用状态
 				String infoId = args.getInfo_id();
-				if("01".equals(args.getApproval_status())) {
-					//下线之前的应用
-					ApplicationService.updateInfoWorkStatus(args);
+				if ("01".equals(args.getApproval_status())) {
+					// 下线之前的应用
+					ApplicationService.updateInfoWorkStatus(args,"Audit");
 					args.setWorking_status("01");
 				}
 				ApplicationService.updateAudit(args);
-				
+
 			}
 			return ResultUtil.success();
 		}
@@ -89,7 +89,8 @@ public class ApplicationAction {
 
 	@RequestMapping(value = "/list_version", method = RequestMethod.GET)
 	@ResponseBody
-	public ResponseResult listVersion(Integer currentPage, String appName, String orgId,String sysType) throws Exception {
+	public ResponseResult listVersion(Integer currentPage, String appName, String orgId, String sysType)
+			throws Exception {
 		Map params = new HashMap();
 		params.put("page", currentPage);
 		params.put("app_name", appName);
@@ -143,6 +144,29 @@ public class ApplicationAction {
 			args.setVersion(version.toString());
 			ApplicationService.rollbackVersion(args);
 			return ResultUtil.success();
+		}
+		return ResultUtil.error("10001", "失败！");
+	}
+
+	@OperationLogAnn(value = "禁用启用应用")
+	@RequestMapping(value = "/disable_version", method = RequestMethod.GET)
+	@ResponseBody
+	public ResponseResult disableVersion(HttpServletRequest request, String info_id, String org_id, String app_id,
+			String sys_type, String workstatus) {
+		// workstatus 00 下架 01 上架
+		BcUser user = SessionUtils.getCurrentUser(request);
+		if (user == null) {
+			return ResultUtil.error("10005", "未登录");
+		}
+		if (StringUtils.isNotEmpty(info_id)) {
+		ApplicationEntity entity = new ApplicationEntity();
+		entity.setInfo_id(info_id);
+		entity.setOrg_id(org_id);
+		entity.setApp_id(app_id);
+		entity.setSys_type(sys_type);
+		entity.setWorking_status(workstatus);
+		ApplicationService.updateInfoWorkStatus(entity,"disable");
+		return ResultUtil.success();
 		}
 		return ResultUtil.error("10001", "失败！");
 	}

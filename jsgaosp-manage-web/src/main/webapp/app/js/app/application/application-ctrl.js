@@ -236,32 +236,14 @@ app.controller('ApplicationController',['$scope','$http','$state','$modal','$tim
     
     
     //--禁用/启用
-    $scope.updateWorkStatus=function(){
-    	if($scope.chooseArgs.length!=0){
-    		var chooseCreate = $scope.chooseArgs[0];
-
-            modalInstance.result.then(function (items) {
-                if (items[0]) {//如果modal返回成功的话
-                	 $scope.loadApplications();
-                	 $scope.chooseArgs=[];
-                }
-            }, function () {
-                //取消
-            });
-    	}else{
-    			bootbox.alert({  
-    				buttons: {  
-    					ok: {  
-    						label: '确定',  
-    						className: 'btn-info btn-dark'  
-    					}  
-    				},  
-    				message: '请先选择操作的数据！',  
-    				callback: function() {  
-    				},  
-    				title: "提示",  
-    			}); 
-    		}			
+    $scope.updateWorkStatus=function(info_id,org_id,app_id,sys_type,working_status){
+    	ApplicationService.disableApplication(info_id,org_id,app_id,sys_type,working_status).then(function(res){
+    		if(data.code != "10000"){
+				result = false;
+			}
+        })
+        $scope.loadApplications();
+    			
     }
 
 }])
