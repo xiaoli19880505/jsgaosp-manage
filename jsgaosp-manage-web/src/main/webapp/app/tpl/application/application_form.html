@@ -13,7 +13,7 @@
 
 			<form name="applicationForm" class="form-validation" ng-submit="submitForm(applicationForm.$valid)" novalidate>
 				<div class="form-group">
-					<label>应用名称</label> <input type="text" class="form-control"
+					<label>应用名称</label> <input type="text" class="form-zn-control"
 						placeholder="请输入应用名称" name="app_name"
 						ng-model="application.app_name" required>
 					<p ng-show="applicationForm.app_name.$pristine&& submitted"
@@ -21,34 +21,34 @@
 				</div>
 				<div class="form-group">
 					<label>系统类型<span style="color: red;">*</span></label> <select
-						ng-model="application.sys_type" class ="form-control"
+						ng-model="application.sys_type" class ="form-zn-control"
 						ng-options="x.codeSortKey as x.codeSortText for x in sysTypeList">
 						<option value="" style="display: none;">请选择系统类型</option>
 					</select>
 				</div>
 				<div class="form-group">
 					<label>接入类型<span style="color: red;">*</span></label> <select
-						ng-model="application.access_type" class ="form-control"
+						ng-model="application.access_type" class ="form-zn-control"
 						ng-options="x.codeSortKey as x.codeSortText for x in accessTypeList">
 						<option value="" style="display: none;">请选择接入类型</option>
 					</select>
 				</div>
 				<div class="form-group">
-					<label>办事指南地址</label> <input type="text" class="form-control"
+					<label>办事指南地址</label> <input type="text" class="form-zn-control"
 						placeholder="请输入办事指南地址" name="guide_addr"
 						ng-model="application.guide_addr" required>
 					<p ng-show="applicationForm.guide_addr.$pristine&& submitted"
 						class="help-block">办事指南地址</p>
 				</div>
 				<div class="form-group" ng-hide="application.sys_type==02" >
-					<label>在线办理地址</label> <input type="text" class="form-control"
+					<label>在线办理地址</label> <input type="text" class="form-zn-control"
 						placeholder="请输入在线办理地址" name="online_addr"
 						ng-model="application.online_addr" >
 					<p ng-show="applicationForm.online_addr.$pristine&& submitted"
 						class="help-block">在线办理地址</p>
 				</div>
 				<div class="form-group" ng-hide="application.sys_type==02">
-					<label>在线咨询地址</label> <input type="text" class="form-control"
+					<label>在线咨询地址</label> <input type="text" class="form-zn-control"
 						placeholder="请输入在线咨询地址" name="online_qaq_addr"
 						ng-model="application.online_qaq_addr" >
 					<p ng-show="applicationForm.online_qaq_addr.$pristine&& submitted"
@@ -56,20 +56,20 @@
 				</div>
 				<div class="form-group">
 					<label>业务类型<span style="color: red;">*</span></label> <select
-						ng-model="application.yw_type" class ="form-control"
+						ng-model="application.yw_type" class ="form-zn-control"
 						ng-options="x.codeSortKey as x.codeSortText for x in ywTypeList">
 						<option value="" style="display: none;">请选择业务类型</option>
 					</select>
 				</div>
 				<div class="form-group">
 					<label>行政类型<span style="color: red;">*</span></label> <select
-						ng-model="application.xz_type" class ="form-control"
+						ng-model="application.xz_type" class ="form-zn-control"
 						ng-options="x.codeSortKey as x.codeSortText for x in xzTypeList">
 						<option value="" style="display: none;">请选择行政类型</option>
 					</select>
 				</div>
 				<div class="form-group">
-					<label>功能描述</label> <input type="text" class="form-control"
+					<label>功能描述</label> <input type="text" class="form-zn-control"
 						placeholder="请输入功能描述" name="memo" ng-model="application.memo"
 						required>
 					<p ng-show="applicationForm.memo.$pristine&& submitted"
@@ -77,20 +77,20 @@
 				</div>
 				<div class="form-group">
 					<label>办理类型<span style="color: red;">*</span></label> <select
-						ng-model="application.bl_type" class ="form-control"
+						ng-model="application.bl_type" class ="form-zn-control"
 						ng-options="x.codeSortKey as x.codeSortText for x in blTypeList">
 						<option value="" style="display: none;">请选择办理类型</option>
 					</select>
 				</div>
 				<div class="form-group">
 					<label>服务类型<span style="color: red;">*</span></label> <select
-						ng-model="application.server_type" class ="form-control"
+						ng-model="application.server_type" class ="form-zn-control"
 						ng-options="x.codeSortKey as x.codeSortText for x in serverTypeList">
 						<option value="" style="display: none;">请选择服务类型</option>
 					</select>
 				</div>
 				<div class="form-group" ng-show="application.sys_type==02">
-					<label>图标</label> <input type="text" class="form-control"
+					<label>图标</label> <input type="text" class="form-zn-control"
 						placeholder="请上传图标" name="icon_url"
 						ng-model="application.icon_url" >
 					<p ng-show="applicationForm.icon_url.$pristine&& submitted"
