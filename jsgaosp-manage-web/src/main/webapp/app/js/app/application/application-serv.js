@@ -5,9 +5,10 @@ angular.module('app').factory('ApplicationService',
 		[ 'res', 'GG', function(res, GG) {
 			var res = res(GG.BASE + '/application/:type');
 			var service = {
-				listApplications : function(currentPage, orgNo) {
+				listApplications : function(currentPage, orgNo,keyword) {
 					return res.get({
 						orgNo : orgNo,
+						keyword : keyword,
 						currentPage : currentPage,
 						type : 'list_applications'
 					}).$promise;

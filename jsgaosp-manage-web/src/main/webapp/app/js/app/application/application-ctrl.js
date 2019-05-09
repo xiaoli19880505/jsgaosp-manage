@@ -15,7 +15,7 @@ app.controller('ApplicationController',['$scope','$http','$state','$modal','$tim
 	
 	
 	$scope.loadApplications=function(){
-		ApplicationService.listApplications($scope.currentPage,$scope.orgNo).then(function(res){
+		ApplicationService.listApplications($scope.currentPage,$scope.orgNo,$scope.keyword).then(function(res){
             console.log(res)
             $scope.applicationList=res.data.list;
             $scope.totalItems=res.data.totalCount;
@@ -24,6 +24,15 @@ app.controller('ApplicationController',['$scope','$http','$state','$modal','$tim
         })
     }
 	
+	
+	 //搜索
+    $scope.searchApp=function(){
+        $scope.loadApplications();
+    }
+
+    $scope.pageChanged = function () {
+        $scope.loadApplications();
+    };
 	
 	//弹出新增窗口
     $scope.open = function (size, type,index) {
@@ -349,9 +358,9 @@ app.controller('ApplicationController',['$scope','$http','$state','$modal','$tim
 				title: "提示",  
 			});
     	}
-    	
-    	
-    			
     }
+    
+    
+   
 
 }])

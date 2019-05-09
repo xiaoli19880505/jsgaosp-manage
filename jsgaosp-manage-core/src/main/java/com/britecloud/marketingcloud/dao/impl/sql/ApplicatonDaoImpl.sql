@@ -73,7 +73,7 @@ update bc_declare_app set  status = :status  where id=:id;
        i.approval_status,
        GET_CODE_SORT_TEXT('app_status', i.approval_status) as approval_status_name
   from bc_declare_app a, bc_declare_app_info i
- where a.id = i.app_id and a.status ='1'
+ where a.id = i.app_id and a.status ='1' and a.app_name like '%'||:keyword||'%'
  --<dynamic>
    --<isNotEmpty prepend="AND" property="app_name">
        a.app_name  = :app_name

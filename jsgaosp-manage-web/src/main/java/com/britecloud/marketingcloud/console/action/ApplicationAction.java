@@ -79,10 +79,11 @@ public class ApplicationAction {
 
 	@RequestMapping(value = "/list_applications", method = RequestMethod.GET)
 	@ResponseBody
-	public ResponseResult listApplications(Integer currentPage, String orgNo) throws Exception {
+	public ResponseResult listApplications(Integer currentPage, String orgNo,String keyword) throws Exception {
 		Map params = new HashMap();
 		params.put("page", currentPage);
 		params.put("orgNo", orgNo);
+		params.put("keyword", keyword);
 		PageDataResult result = ApplicationService.listSysApproves(params);
 		result.setPage(currentPage);
 
