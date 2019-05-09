@@ -104,5 +104,26 @@ public class BcOrgDaoImpl extends BaseJdbcDao implements BcOrgDao {
 		return getNamedParameterJdbcTemplate().query(sql, paramMap, new BeanPropertyRowMapper<BcOrg>(BcOrg.class));
 	}
 
+	@Override
+	public BcOrg queryOrgById(String orgNo) {
+		String sql = loadSQL("queryOrgById");
+		Map paramMap = new HashMap();
+		paramMap.put("orgNo", orgNo);
+		List<BcOrg> list = getNamedParameterJdbcTemplate().query(sql, paramMap,
+				new BeanPropertyRowMapper(BcOrg.class));
+		if (list == null || list.isEmpty()) {
+			return null;
+		}
+		return list.iterator().next();
+	}
 
+	@Override
+	public List<BcOrg> queryOrgListByPid(String orgNo) {
+		String sql = loadSQL("queryOrgListByPid");
+		Map paramMap = new HashMap();
+		paramMap.put("orgNo", orgNo);
+		List<BcOrg> list = getNamedParameterJdbcTemplate().query(sql, paramMap,
+				new BeanPropertyRowMapper(BcOrg.class));
+		return list;
+	}
 }

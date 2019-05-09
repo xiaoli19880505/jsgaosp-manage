@@ -6,6 +6,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import com.britecloud.marketingcloud.model.Pageable;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
@@ -234,12 +236,12 @@ public class ApplicatonDaoImpl extends BaseJdbcDao implements ApplicatonDao {
 	}
 
 	@Override
-	public PageDataResult<ApplicationEntity> getApplicationsByAreaNo(Map params) {
+	public PageDataResult<ApplicationEntity> getCustomizeList(Map params) {
 		PageDataResult<ApplicationEntity> pageData = new PageDataResult<ApplicationEntity>();
-		String sql = loadSQL("getApplicationsByAreaNo", params);
+		String sql = loadSQL("getCustomizeList", params);
 		Integer totalCount = getNamedParameterJdbcTemplate().queryForInt(getTotalCountString(sql), params);
 		pageData.setTotalCount(totalCount);
-		pageData.setTotalPage(PageUtils.getTotalPage(totalCount));
+		pageData.setTotalPage(PageUtils.getTotalPage(totalCount, (Integer) params.get("pageSize")));
 		sql = getPaginationString(sql, PageUtils.getStartNum((Integer) params.get("page"), (Integer) params.get("pageSize")), (Integer) params.get("pageSize"));
 		List<ApplicationEntity> list = getNamedParameterJdbcTemplate().query(sql, params,
 				new BeanPropertyRowMapper(ApplicationEntity.class));
@@ -247,5 +249,78 @@ public class ApplicatonDaoImpl extends BaseJdbcDao implements ApplicatonDao {
 		return pageData;
 	}
 
+	@Override
+	public PageDataResult<ApplicationEntity> getApplicationsByAreaNo(Map params) {
+		PageDataResult<ApplicationEntity> pageData = new PageDataResult<ApplicationEntity>();
+		String sql = loadSQL("getApplicationsByAreaNo", params);
+		Integer totalCount = getNamedParameterJdbcTemplate().queryForInt(getTotalCountString(sql), params);
+		pageData.setTotalCount(totalCount);
+		pageData.setTotalPage(PageUtils.getTotalPage(totalCount, (Integer) params.get("pageSize")));
+		sql = getPaginationString(sql, PageUtils.getStartNum((Integer) params.get("page"), (Integer) params.get("pageSize")), (Integer) params.get("pageSize"));
+		List<ApplicationEntity> list = getNamedParameterJdbcTemplate().query(sql, params,
+				new BeanPropertyRowMapper(ApplicationEntity.class));
+		pageData.setList(list);
+		return pageData;
+	}
 
+	@Override
+	public void addCustomize(Map params) {
+		params.put("id",UUIDUtils.generateUUID());
+		String sql = loadSQL("addCustomize");
+		getNamedParameterJdbcTemplate().update(sql, params);
+	}
+
+	@Override
+	public void updateCustomize(Map params) {
+		String sql = loadSQL("updateCustomize");
+		getNamedParameterJdbcTemplate().update(sql, params);
+	}
+
+	@Override
+	public Integer existsCustomizeApp(Map params) {
+		String sql = loadSQL("existsCustomizeApp");
+		return getNamedParameterJdbcTemplate().queryForInt(sql, params);
+	}
+
+	@Override
+	public PageDataResult<ApplicationEntity> queryApplications(Pageable page, String sysType, String keyWord, String ywType, String xzType, String blType, String serverType, String areaNo) {
+		PageDataResult<ApplicationEntity> pageData = new PageDataResult<ApplicationEntity>();
+		Map params = new HashMap();
+		params.put("sysType", sysType);
+		String sql = "";
+		if(areaNo != null && !areaNo.isEmpty()){
+			params.put("areaNo", areaNo);
+			sql = loadSQL("queryApplicationsWithAreaNo", params);
+		}else{
+			sql = loadSQL("queryApplications", params);
+		}
+		if(keyWord != null && !keyWord.isEmpty()){
+			sql += "AND (a.app_name LIKE '%" + keyWord + "%' OR i.memo LIKE '%" + keyWord + "%')";
+		}
+		if(ywType != null && !ywType.isEmpty()){
+			params.put("ywType", ywType);
+			sql += "AND i.yw_type = :ywType";
+		}
+		if(xzType != null && !xzType.isEmpty()){
+			params.put("xzType", xzType);
+			sql += "AND i.xz_type = :xzType";
+		}
+		if(blType != null && !blType.isEmpty()){
+			params.put("blType", blType);
+			sql += "AND i.bl_type = :blType";
+		}
+		if(serverType != null && !serverType.isEmpty()){
+			params.put("serverType", serverType);
+			sql += "AND i.server_type  = :serverType";
+		}
+
+		Integer totalCount = getNamedParameterJdbcTemplate().queryForInt(getTotalCountString(sql), params);
+		pageData.setTotalCount(totalCount);
+		pageData.setTotalPage(PageUtils.getTotalPage(totalCount, page.getSize()));
+		sql = getPaginationString(sql, PageUtils.getStartNum(page.getPage(), page.getSize()), page.getSize());
+		List<ApplicationEntity> list = getNamedParameterJdbcTemplate().query(sql, params,
+				new BeanPropertyRowMapper(ApplicationEntity.class));
+		pageData.setList(list);
+		return pageData;
+	}
 }

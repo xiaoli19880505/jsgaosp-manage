@@ -73,7 +73,7 @@ update bc_declare_app set  status = :status  where id=:id;
        i.approval_status,
        GET_CODE_SORT_TEXT('app_status', i.approval_status) as approval_status_name
   from bc_declare_app a, bc_declare_app_info i
- where a.id = i.app_id and a.status ='1' and a.app_name like '%'||:keyword||'%'
+ where a.id = i.app_id and a.status ='1'
  --<dynamic>
    --<isNotEmpty prepend="AND" property="app_name">
        a.app_name  = :app_name
@@ -91,7 +91,6 @@ update bc_declare_app set  status = :status  where id=:id;
       org_id  = :orgNo
    --</isNotEmpty>
    --</dynamic>
-  order by  i.create_date desc
       
 --------------------------------------------
 --updateInfoStatus
@@ -148,7 +147,7 @@ set
        GET_CODE_SORT_TEXT('app_status', i.approval_status) as approval_status_name
   from bc_declare_app a, bc_declare_app_info i
  where a.id = i.app_id and a.status ='1' and i.approval_status = '01'
- and a.org_id =:org_id and a.app_name =:app_name and a.sys_type = :sys_type order by i.create_date desc
+ and a.org_id =:org_id and a.app_name =:app_name and a.sys_type = :sys_type
 
 --------------------------------------------------------------
 --updateAppWorkingStatus
@@ -178,8 +177,8 @@ update bc_declare_app_info set
    approval_date = sysdate,
    approval_user_id = :approval_user_id
    where    id = :id
-   
- --------------------------------------------
+
+--------------------------------------------
 --getApplicationsByAreaNo
    select a.id as app_id,
           a.sys_type,
@@ -193,6 +192,74 @@ update bc_declare_app_info set
           i.online_qaq_addr,
           i.icon_url
   from bc_declare_app a, bc_declare_app_info i, bc_org b, bc_area c, bc_qrcode d
-  where a.id = i.app_id and a.org_id = b.org_no and b.area_no = c.area_no
+  where a.id = i.app_id and a.org_id = b.org_no and b.area_no = c.area_no and a.id = d.app_id(+)
       and a.status = '1' and i.working_status = '01' and b.area_no = :areaNo
       and a.sys_type = :sys_type
+--------------------------------------------
+--getCustomizeList
+   select a.id as app_id,
+          a.sys_type,
+          a.app_name,
+          c.area_name,
+          d.qr_code_img_url,
+          d.qr_code_url,
+          i.memo,
+          i.guide_addr,
+          i.online_addr,
+          i.online_qaq_addr,
+          i.icon_url
+  from bc_declare_app a, bc_declare_app_info i, bc_org b, bc_area c, bc_qrcode d, bc_app_customize e
+  where a.id = i.app_id and a.org_id = b.org_no and b.area_no = c.area_no and a.id = e.app_id
+      and a.status = '1' and i.working_status = '01' and e.IDCARD_NO = :idcardNo
+      and a.sys_type = :sys_type and e.status = '1'
+
+--------------------------------------------
+--addCustomize
+INSERT INTO bc_app_customize(id,IDCARD_NO,APP_ID,TOP_DATE,STATUS,CREATE_DATE,SORT)
+VALUES(:id,:idcardNo,:appId,sysdate,'1',sysdate,1);
+
+--------------------------------------------
+--existsCustomizeApp
+SELECT COUNT(0) from bc_app_customize WHERE IDCARD_NO=:idcardNo and APP_ID=:appId and status = '1' ;
+
+-----------------------------------------------------------
+--updateCustomize
+update bc_app_customize set
+  TOP_DATE = sysdate,
+  update_date = sysdate
+   where  IDCARD_NO=:idcardNo and APP_ID=:appId and status = '1';
+
+--------------------------------------------
+--queryApplicationsWithAreaNo
+   select a.id as app_id,
+          a.sys_type,
+          a.app_name,
+          c.area_name,
+          d.qr_code_img_url,
+          d.qr_code_url,
+          i.memo,
+          i.guide_addr,
+          i.online_addr,
+          i.online_qaq_addr,
+          i.icon_url
+ from bc_declare_app a join bc_declare_app_info i on a.id = i.app_id join bc_org b on a.org_id = b.org_no
+ join (select * from bc_area start with area_no=:areaNo connect by prior area_no=p_area_no) c on b.area_no = c.area_no
+ left join bc_qrcode d on a.id = d.app_id
+ where a.status = '1' and i.status = '1' and i.working_status = '01' and a.sys_type = :sysType
+
+ --------------------------------------------
+--queryApplications
+   select a.id as app_id,
+          a.sys_type,
+          a.app_name,
+          c.area_name,
+          d.qr_code_img_url,
+          d.qr_code_url,
+          i.memo,
+          i.guide_addr,
+          i.online_addr,
+          i.online_qaq_addr,
+          i.icon_url
+ from bc_declare_app a join bc_declare_app_info i on a.id = i.app_id join bc_org b on a.org_id = b.org_no
+ join bc_area c on b.area_no = c.area_no left join bc_qrcode d on a.id = d.app_id
+ where a.status = '1' and i.status = '1' and i.working_status = '01' and a.sys_type = :sysType

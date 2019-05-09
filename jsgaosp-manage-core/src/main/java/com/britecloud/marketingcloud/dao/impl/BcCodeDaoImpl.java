@@ -116,5 +116,13 @@ public class BcCodeDaoImpl extends BaseJdbcDao implements BcCodeDao {
 		getNamedParameterJdbcTemplate().update(sql, parameters);
 	}
 
-
+	@Override
+	public List<BcCodeSort> getCodeList(String sortCode) {
+		String sql = loadSQL("getCodeSortDetailByKey");
+		Map paramMap = new HashMap();
+		paramMap.put("codeSortKey", sortCode);
+		List<BcCodeSort> list = getNamedParameterJdbcTemplate().query(sql, paramMap,
+				new BeanPropertyRowMapper(BcCodeSort.class));
+		return list;
+	}
 }

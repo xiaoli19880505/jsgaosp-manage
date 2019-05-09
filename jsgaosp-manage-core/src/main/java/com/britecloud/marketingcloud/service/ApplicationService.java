@@ -23,4 +23,10 @@ public interface ApplicationService {
 
     void insertAppInfo(ApplicationEntity args);
     String getApplicationList(Integer channel, String sysType,Pageable page);
+
+    String getCustomizeList(Integer channel, String sysType, String idcardNo, Pageable page);
+
+    String addCustomize(Integer channel, String idcardNo, String appId);
+
+    String queryApplications(Integer channel, Pageable page, String sysType, String keyWord, String ywType, String xzType, String blType, String serverType, String areaNo);
 }

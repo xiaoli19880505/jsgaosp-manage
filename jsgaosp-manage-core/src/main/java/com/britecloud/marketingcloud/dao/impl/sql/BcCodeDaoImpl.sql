@@ -55,7 +55,7 @@ SELECT * from BC_CODE where CODE_SORT_ID=:codeSortId AND STATUS='1';
 
 --------------------------------------------
 --getCodeSortByPId
-SELECT * from BC_CODE_SORT where P_CODE_SORT_ID =:codeSortId AND STATUS='1' AND HAS_CHILD='0'
+SELECT * from BC_CODE_SORT where P_CODE_SORT_ID =:codeSortId AND STATUS='1';
 
 --------------------------------------------
 --getCodeSortDetailByKey

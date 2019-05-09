@@ -73,3 +73,13 @@ and status='1';
 SELECT * from bc_org WHERE  org_no = :orgNo
 AND STATUS='1';
 
+--------------------------------------------
+--queryOrgById
+SELECT a.*, b.qr_code_img_url, b.qr_code_url from bc_org a left  join bc_qrcode on a.org_no = b.org_id WHERE  a.org_no = :orgNo
+AND a.STATUS='1' and b.STATUS='1';
+
+--------------------------------------------
+--queryOrgListByPid
+SELECT a.*, b.qr_code_img_url, b.qr_code_url from bc_org a left  join bc_qrcode on a.org_no = b.org_id WHERE  a.p_org_no = :orgNo
+AND a.STATUS='1' and b.STATUS='1';
+

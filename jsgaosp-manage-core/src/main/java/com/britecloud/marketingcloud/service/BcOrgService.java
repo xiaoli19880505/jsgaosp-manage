@@ -1,7 +1,6 @@
 package com.britecloud.marketingcloud.service;
 
 import com.britecloud.marketingcloud.domain.PageDataResult;
-import com.britecloud.marketingcloud.model.BcArea;
 import com.britecloud.marketingcloud.model.BcOrg;
 
 import java.util.List;
@@ -28,5 +27,5 @@ public interface BcOrgService {
 
     int existsOrgName(BcOrg org);
 
-    String getOrgAreaNameList();
+    String getOrgAreaNameList(Integer channel, String orgNo);
 }

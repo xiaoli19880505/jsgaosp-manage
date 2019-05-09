@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.britecloud.marketingcloud.domain.PageDataResult;
 import com.britecloud.marketingcloud.model.ApplicationEntity;
+import com.britecloud.marketingcloud.model.Pageable;
 
 
 public interface ApplicatonDao {
@@ -26,4 +27,14 @@ public interface ApplicatonDao {
 
     void insertAppInfo(ApplicationEntity args);
     PageDataResult<ApplicationEntity> getApplicationsByAreaNo(Map params);
+
+    PageDataResult<ApplicationEntity> getCustomizeList(Map params);
+
+    void addCustomize(Map params);
+
+    Integer existsCustomizeApp(Map params);
+
+    void updateCustomize(Map params);
+
+    PageDataResult<ApplicationEntity> queryApplications(Pageable page, String sysType, String keyWord, String ywType, String xzType, String blType, String serverType, String areaNo);
 }

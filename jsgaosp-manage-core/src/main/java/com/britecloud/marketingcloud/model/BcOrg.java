@@ -17,4 +17,6 @@ public class BcOrg {
     private String address;
     private String areaName;
     private String areaNo;
+    private String qrCodeImgUrl;
+    private String qrCodeUrl;
 }
