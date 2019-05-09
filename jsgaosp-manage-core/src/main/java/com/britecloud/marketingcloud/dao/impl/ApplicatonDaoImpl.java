@@ -115,6 +115,8 @@ public class ApplicatonDaoImpl extends BaseJdbcDao implements ApplicatonDao {
 		paramMap.put("bl_type",args.getBl_type());
 		paramMap.put("server_type",args.getServer_type());
 		paramMap.put("icon_url",args.getIcon_url());
+		paramMap.put("legal_basis",args.getLegal_basis());
+		paramMap.put("conditions",args.getConditions());
 		/////////////////////////////////////////////////
 		paramMap.put("approval_user_id",args.getApproval_user_id());
 		paramMap.put("approval_status",args.getApproval_status());

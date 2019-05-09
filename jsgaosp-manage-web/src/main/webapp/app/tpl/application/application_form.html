@@ -93,6 +93,20 @@ img {
 						<option value="" style="display: none;">请选择服务类型</option>
 					</select>
 				</div>
+				<div class="form-group">
+					<label>法规依据</label> <input type="text" class="form-zn-control"
+						placeholder="请输入法规依据" name="memo" ng-model="application.legal_basis"
+						required>
+					<p ng-show="applicationForm.legal_basis.$pristine&& submitted"
+						class="help-block">请输入法规依据</p>
+				</div>
+				<div class="form-group">
+					<label>办理条件</label> <input type="text" class="form-zn-control"
+						placeholder="请输入办理条件 "  name="memo" ng-model="application.conditions"
+						required>
+					<p ng-show="applicationForm.conditions.$pristine&& submitted"
+						class="help-block">请输入办理条件</p>
+				</div>
 			<!-- 	<div class="form-group" ng-show="application.sys_type==02">
 					<label>图标</label> <input type="text" class="form-zn-control"
 						placeholder="请上传图标" name="icon_url"

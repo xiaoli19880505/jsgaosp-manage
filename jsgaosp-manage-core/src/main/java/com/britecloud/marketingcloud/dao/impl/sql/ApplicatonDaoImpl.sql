@@ -6,10 +6,10 @@ VALUES(:id,:app_name,:org_id,:sys_type,:status,to_date(:create_date,'yyyy-MM-dd 
 --insertApplicationInfo
 INSERT INTO bc_declare_app_info(id, app_id,guide_addr, online_addr,online_qaq_addr,yw_type, xz_type, memo,
 status,approval_opinion,create_date,create_user_id, approval_date, approval_user_id, bl_type,
-version, working_status, server_type,icon_url,approval_status) 
+version, working_status, server_type,icon_url,approval_status,legal_basis,conditions) 
 VALUES(:info_id, :app_id,:guide_addr, :online_addr,:online_qaq_addr,:yw_type, :xz_type, :memo,
 :status,:approval_opinion,sysdate,:create_user_id, '', '', :bl_type,
-:version, :working_status,:server_type,:icon_url,:approval_status);
+:version, :working_status,:server_type,:icon_url,:approval_status,:legal_basis,:conditions);
 --------------------------------------------
 --existsArgsKey
 SELECT COUNT(0) from bc_declare_app WHERE id=:id;
@@ -32,7 +32,9 @@ set
    server_type = :server_type,
    icon_url = :icon_url,
    approval_opinion = :approval_opinion,
-   approval_status = :approval_status
+   approval_status = :approval_status,
+   conditions = :conditions,
+   legal_basis = :legal_basis
    where  id = :id
    
 --------------------------------------------
@@ -71,6 +73,8 @@ update bc_declare_app set  status = :status  where id=:id;
        i.server_type,
        i.icon_url,
        i.approval_status,
+       i.conditions,
+       i.legal_basis,
        GET_CODE_SORT_TEXT('app_status', i.approval_status) as approval_status_name
   from bc_declare_app a, bc_declare_app_info i
  where a.id = i.app_id and a.status ='1'
@@ -144,6 +148,8 @@ set
        i.server_type,
        i.icon_url,
        i.approval_status,
+       i.conditions,
+       i.legal_basis,
        GET_CODE_SORT_TEXT('app_status', i.approval_status) as approval_status_name
   from bc_declare_app a, bc_declare_app_info i
  where a.id = i.app_id and a.status ='1' and i.approval_status = '01'

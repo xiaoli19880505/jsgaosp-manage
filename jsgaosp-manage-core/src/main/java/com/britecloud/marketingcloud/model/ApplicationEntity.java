@@ -41,6 +41,7 @@ public class ApplicationEntity {
 	private String edit;
 	private String qr_code_img_url;
 	private String qr_code_url;
-	
+	private String legal_basis;
+	private String conditions;
 	private String method;
 }
