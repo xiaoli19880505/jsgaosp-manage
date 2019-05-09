@@ -115,8 +115,8 @@ public class ApplicationServiceImpl implements ApplicationService{
 
 
 	@Override
-	public void updateInfoWorkStatus(ApplicationEntity args) {
-		ApplicatonDao.updateInfoWorkStatus(args);
+	public void updateInfoWorkStatus(ApplicationEntity args,String method) {
+		ApplicatonDao.updateInfoWorkStatus(args,method);
 	}
 
 
@@ -197,4 +197,5 @@ public class ApplicationServiceImpl implements ApplicationService{
 		}
 		return result.toString();
 	}
+
 }

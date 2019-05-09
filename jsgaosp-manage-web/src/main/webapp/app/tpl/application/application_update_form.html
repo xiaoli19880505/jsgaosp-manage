@@ -35,14 +35,14 @@
 					<p ng-show="applicationForm.guide_addr.$pristine&& submitted"
 						class="help-block">办事指南地址</p>
 				</div>
-				<div class="form-group">
+				<div class="form-group" ng-hide="application.sys_type==02">
 					<label>在线办理地址:</label> <input type="text" class="form-zn-control"
 						placeholder="请输入应用名称" name="online_addr"
 						ng-model="application.online_addr" required>
 					<p ng-show="applicationForm.online_addr.$pristine&& submitted"
 						class="help-block">在线办理地址</p>
 				</div>
-				<div class="form-group">
+				<div class="form-group" ng-hide="application.sys_type==02">
 					<label>在线咨询地址:</label> <input type="text" class="form-zn-control"
 						placeholder="请输入应用名称" name="online_qaq_addr"
 						ng-model="application.online_qaq_addr" required>
@@ -84,7 +84,7 @@
 						<option value="" style="display: none;">---请选择---</option>
 					</select>
 				</div>
-				<div class="form-group">
+				<div class="form-group" ng-show="application.sys_type==02">
 					<label>图标:</label> <input type="text" class="form-zn-control"
 						placeholder="请输入图标" name="icon_url"
 						ng-model="application.icon_url" required>
