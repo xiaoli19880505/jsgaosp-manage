@@ -93,6 +93,14 @@ img {
 						<option value="" style="display: none;">请选择服务类型</option>
 					</select>
 				</div>
+				<div class="form-group" ng-show="application.sys_type==02">
+                    <label>图片</label>
+                    <div ngf-select ngf-accept="'image/*'" ng-model="img">
+                        <a ng-show="!img&&!application.icon_url" class="fa fa-plus-square-o fa-5x" style="color: #f4f4f4"></a>
+                        <img ng-if="img" ngf-thumbnail="img">
+                        <img ng-if="!img&&application.icon_url" ng-src="{{application.icon_url}}">
+                    </div>
+                </div>
 				<div class="form-group">
 					<label>法规依据</label> <input type="text" class="form-zn-control"
 						placeholder="请输入法规依据" name="memo" ng-model="application.legal_basis"
@@ -101,26 +109,10 @@ img {
 						class="help-block">请输入法规依据</p>
 				</div>
 				<div class="form-group">
-					<label>办理条件</label> <input type="text" class="form-zn-control"
-						placeholder="请输入办理条件 "  name="memo" ng-model="application.conditions"
-						required>
-					<p ng-show="applicationForm.conditions.$pristine&& submitted"
-						class="help-block">请输入办理条件</p>
-				</div>
-			<!-- 	<div class="form-group" ng-show="application.sys_type==02">
-					<label>图标</label> <input type="text" class="form-zn-control"
-						placeholder="请上传图标" name="icon_url"
-						ng-model="application.icon_url" >
-					<p ng-show="applicationForm.icon_url.$pristine&& submitted"
-						class="help-block">请上传图标</p>
-				</div> -->
-				<div class="form-group" ng-show="application.sys_type==02">
-                    <label>图片</label>
-                    <div ngf-select ngf-accept="'image/*'" ng-model="img">
-                        <a ng-show="!img&&!application.icon_url" class="fa fa-plus-square-o fa-5x" style="color: #f4f4f4"></a>
-                        <img ng-if="img" ngf-thumbnail="img">
-                        <img ng-if="!img&&application.icon_url" ng-src="{{application.icon_url}}">
-                    </div>
+                    <label>内容</label>
+                    <textarea ckeditor="editorOptions" ng-model="application.conditions"></textarea>
+                    <p ng-show="application.conditions.$pristine&& submitted"
+						class="help-block">请输入法规依据</p>
                 </div>
 			</form>
 			
