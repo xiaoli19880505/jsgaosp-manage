@@ -58,6 +58,7 @@
 									ng-disabled="chooseRoles.length == '0'"
 									ng-click="deleteModal();">删除
 							</button>
+							<st-targettree ng-disabled="chooseRoles.length == '0'"></st-targettree>
 							<button ng-show="orgNo && orgFlag" class="btn btn-dark btn-sm" type="button"
 									ng-click="deleteOrgNo()"><span >{{orgName}}</span><span>×</span>
 							</button>

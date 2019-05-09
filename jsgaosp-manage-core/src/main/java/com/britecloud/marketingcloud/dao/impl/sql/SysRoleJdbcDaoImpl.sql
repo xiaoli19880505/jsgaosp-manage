@@ -8,10 +8,9 @@ INSERT
             NAME,
             DESCRIPTION,
             ROLE_TYPE,
-            PERM,
             CREATE_DATE,
             CREATE_USER_ID,
-
+            STATUS
         )
     VALUES
         (
@@ -20,9 +19,9 @@ INSERT
             :name,
             :description,
             :roleType,
-            :perm,
             to_date(:createDate,'yyyy-MM-dd HH24:mi:ss'),
-            :createUserId
+            :createUserId,
+            :status
         );
 --------------------------------------------
 --updateRole

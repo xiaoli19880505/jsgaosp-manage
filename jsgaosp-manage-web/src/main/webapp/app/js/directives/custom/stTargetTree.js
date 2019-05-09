@@ -44,7 +44,8 @@ angular
                                             data: data,
                                             animate: true,
                                             checkbox: true,
-                                            cascadeCheck: false,
+                                            state:close,
+                                            cascadeCheck: true,
                                             id: 'id',
                                             formatter: function (node) {
                                                 console.log(node)
@@ -94,7 +95,7 @@ angular
                     restrict: 'EA',
                     scope: false,
                     replace: true,
-                    template: '<button class="btn btn-sm btn-primary" style="margin-bottom: -1px!important;">' +
+                    template: '<button class="btn btn-sm btn-primary" >' +
                         '权限' +
                         '</button>',
                     link: function (scope, el, attr) {

@@ -4,6 +4,12 @@ SELECT * FROM bc_org where P_ORG_NO=:pOrgNo
 AND ORG_TYPE='01'
 AND STATUS='1';
 
+
+--------------------------------------------
+--listOrgWithNoType
+SELECT * FROM bc_org where P_ORG_NO=:pOrgNo
+AND STATUS='1';
+
 --------------------------------------------
 --listDepartByOrgId
 SELECT * FROM bc_org where P_ORG_NO=:pOrgNo
@@ -48,11 +54,19 @@ where org_no=:orgNo
 
 --------------------------------------------
 --getOrgById
-SELECT * from bc_org WHERE  org_no = :orgNo;
+SELECT * from bc_org WHERE  org_no = :orgNo
+and status='1';
 
 --------------------------------------------
 --existsOrgName
-SELECT COUNT(1) from bc_org WHERE org_name=:orgName;
+SELECT COUNT(1) from bc_org WHERE org_name=:orgName
+and status='1';
+
+--------------------------------------------
+--existsChildrenOrgName
+SELECT COUNT(1) from bc_org WHERE org_name=:orgName
+and P_ORG_NO=:pOrgNo
+and status='1';
 
 --------------------------------------------
 --getOrgByOrgNo

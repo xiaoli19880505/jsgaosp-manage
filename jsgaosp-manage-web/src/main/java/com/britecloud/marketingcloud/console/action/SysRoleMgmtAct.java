@@ -64,6 +64,7 @@ public class SysRoleMgmtAct {
             return ResultUtil.error("10005","未登录");
         }
     	role.setRoleType("USER");
+
     	role.setCreateUserId(user.getUserId());
         sysRoleMgmtService.save(role);
         return ResultUtil.success();

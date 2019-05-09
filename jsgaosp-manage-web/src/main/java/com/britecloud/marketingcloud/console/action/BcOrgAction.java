@@ -83,15 +83,15 @@ public class BcOrgAction {
 
     }
     /**
-     * 获取组织下属部门
+     * 获取组织下属
      * @param pOrgNo
      * @return
      * @throws Exception
      */
-    @OperationLogAnn(value = "获取组织下属部门")
-    @RequestMapping(value = "/listDepartmentByOrgId", method = RequestMethod.GET)
+    @OperationLogAnn(value = "获取组织下属")
+    @RequestMapping(value = "/listByOrgId", method = RequestMethod.GET)
     @ResponseBody
-    public ResponseResult listDepartmentByOrgId(Integer currentPage,String pOrgNo) throws Exception {
+    public ResponseResult listByOrgId(Integer currentPage,String pOrgNo) throws Exception {
 
         Map params = new HashMap();
         params.put("page", currentPage);
@@ -101,7 +101,6 @@ public class BcOrgAction {
         params.put("pOrgNo", HuStringUtils.nvl(pOrgNo));
         PageDataResult result = bcOrgService.listDepartmentByOrgId(params);
         result.setPage(currentPage);
-
         return ResultUtil.success(result);
 
     }

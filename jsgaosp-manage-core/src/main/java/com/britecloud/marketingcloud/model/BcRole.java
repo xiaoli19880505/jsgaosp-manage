@@ -23,4 +23,5 @@ public class BcRole {
 	private String createUserId;
 	private String updateDate;
 	private String updateUserId;
+	private String status;
 }

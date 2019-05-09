@@ -25,7 +25,7 @@ public class BcOrgDaoImpl extends BaseJdbcDao implements BcOrgDao {
 
 	@Override
 	public List<BcOrg> listOrg(String pAreaNo) {
-		String sql = loadSQL("listOrg");
+		String sql = loadSQL("listOrgWithNoType");
 		Map<String, String> paramMap = new HashMap<String, String>();
 		paramMap.put("pOrgNo",pAreaNo);
 		return getNamedParameterJdbcTemplate().query(sql, paramMap, new BeanPropertyRowMapper<BcOrg>(BcOrg.class));
@@ -34,7 +34,7 @@ public class BcOrgDaoImpl extends BaseJdbcDao implements BcOrgDao {
 	@Override
 	public PageDataResult<BcOrg> listDepartmentByOrgId(Map params) {
 		PageDataResult<BcOrg> pageData = new PageDataResult<BcOrg>();
-		String sql = loadSQL("listDepartByOrgId", params);
+		String sql = loadSQL("listOrgWithNoType", params);
 		Integer totalCount = getNamedParameterJdbcTemplate().queryForInt(getTotalCountString(sql), params);
 		pageData.setTotalCount(totalCount);
 		pageData.setTotalPage(PageUtils.getTotalPage(totalCount));
@@ -92,7 +92,7 @@ public class BcOrgDaoImpl extends BaseJdbcDao implements BcOrgDao {
 
 	@Override
 	public int existsOrgName(BcOrg org) {
-		String sql = loadSQL("existsOrgName");
+		String sql = loadSQL("existsChildrenOrgName");
 		SqlParameterSource parameters = new BeanPropertySqlParameterSource(org);
 		return getNamedParameterJdbcTemplate().queryForInt(sql,parameters);
 	}

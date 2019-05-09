@@ -9,6 +9,7 @@ app.controller('ModalRoleInfoInstanceCtrl', function ($scope, $modalInstance, it
     $scope.role=items[1];
     $scope.flag=items[0]=="add";
     if ($scope.flag) {
+        $scope.role=new Object();
         $scope.title = '新增角色';
         $scope.role.orgId=items[2];
     } else {

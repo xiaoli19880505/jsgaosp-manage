@@ -50,14 +50,16 @@ app.controller('ModalOrgInstanceCtrl', ['$scope', '$modalInstance', '$http', '$s
                         $scope.tmp_flag = true;
                         toastr.success('新建组织成功！');
                         $modalInstance.close([true]);
-                    } else {
-                        toastr.error('新建组织失败！');
+                    } else if (data.code=="1002") {
+                        toastr.error(data.msg);
                         $modalInstance.close([true]);
 
+                    }else{
+                        toastr.error('新建组织失败！');
+                        $modalInstance.close([true]);
                     }
                 })
             } else if ($scope.operateType =="update_department") {
-                $scope.orgItem.pOrgNo = $scope.parentId;
                 OrgService.updateOrg($scope.orgItem).then(function (data) {
                     if (data.code == "10000") {
                         $scope.form_is_show = false;
