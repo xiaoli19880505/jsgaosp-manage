@@ -8,6 +8,7 @@ import com.britecloud.marketingcloud.model.Pageable;
 
 public interface ApplicationService {
 
+	
 	boolean existsArgsKey(ApplicationEntity args);
 	void saveApplication(ApplicationEntity args);
     void updateApplicationInfo(ApplicationEntity args);

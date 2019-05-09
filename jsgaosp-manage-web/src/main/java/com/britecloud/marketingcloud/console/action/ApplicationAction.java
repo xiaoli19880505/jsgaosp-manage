@@ -1,9 +1,16 @@
 package com.britecloud.marketingcloud.console.action;
 
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 
 import org.junit.Test;
@@ -24,6 +31,9 @@ import com.britecloud.marketingcloud.model.BcUser;
 import com.britecloud.marketingcloud.service.ApplicationService;
 import com.britecloud.marketingcloud.utils.SessionUtils;
 import com.britecloud.marketingcloud.utils.StringUtils;
+
+import sun.misc.BASE64Decoder;
+import sun.misc.BASE64Encoder;
 
 @RestController
 @SuppressWarnings({ "rawtypes", "unchecked" })
@@ -200,11 +210,38 @@ public class ApplicationAction {
 
 	@Test
 	public void test() {
-		BigDecimal num1 = new BigDecimal("2.0");
+		BASE64Encoder encoder = new sun.misc.BASE64Encoder(); 
+		File f = new File("D:\\photo\\111.jpg");
+		BufferedImage bi; 
+		try {
+			bi = ImageIO.read(f); 
+			ByteArrayOutputStream baos = new ByteArrayOutputStream();
+			ImageIO.write(bi, "jpg", baos); 
+			byte[] bytes = baos.toByteArray(); 
+			encoder.encodeBuffer(bytes).trim(); 
+			System.out.println(encoder.encodeBuffer(bytes).trim());
+			} catch (IOException e) { 
+				e.printStackTrace(); 
+				}
+		/*BigDecimal num1 = new BigDecimal("2.0");
 		BigDecimal num2 = new BigDecimal("1");
 		BigDecimal newprice = num1.add(num2);
-		System.out.println(newprice);
+		System.out.println(newprice);*/
 
+	}
+	public static String getImageBinary(){ 
+		File f = new File("D:\\photo\\111.jpg");
+	BufferedImage bi; 
+	try {
+		bi = ImageIO.read(f); 
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		ImageIO.write(bi, "jpg", baos); 
+		byte[] bytes = baos.toByteArray(); 
+		
+		} catch (IOException e) { 
+			e.printStackTrace(); 
+			}
+	return null; 
 	}
 
 }

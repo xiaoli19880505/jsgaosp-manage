@@ -84,13 +84,21 @@
 						<option value="" style="display: none;">---请选择---</option>
 					</select>
 				</div>
-				<div class="form-group" ng-show="application.sys_type==02">
+				<!-- <div class="form-group" ng-show="application.sys_type==02">
 					<label>图标:</label> <input type="text" class="form-zn-control"
 						placeholder="请输入图标" name="icon_url"
 						ng-model="application.icon_url" required>
 					<p ng-show="applicationForm.icon_url.$pristine&& submitted"
 						class="help-block">请输入图标</p>
-				</div>
+				</div> -->
+				<div class="form-group" ng-show="application.sys_type==02">
+                    <label>图片</label>
+                    <div ngf-select ngf-accept="'image/*'" ng-model="application.icon_url">
+                        <a ng-show="!img&&!application.icon_url" class="fa fa-plus-square-o fa-5x" style="color: #f4f4f4"></a>
+                        <img ng-if="img" ngf-thumbnail="img">
+                        <img ng-if="!img&&article.picUrl" ng-src="{{article.picUrl}}">
+                    </div>
+                </div>
 			</form>
 			
 		</div>
