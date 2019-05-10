@@ -145,7 +145,7 @@ public class GlobalAct {
 	        if(fileName!=null&&fileName!=""){   
 	            String returnUrl = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() +"/upload/imgs/";//存储路径
 //	            String path = request.getSession().getServletContext().getRealPath("upload/imgs"); //文件存储位置
-	            String path = "E:\\file"; //文件存储位置
+	            String path = "/home/file"; //文件存储位置
 	            String fileF = fileName.substring(fileName.lastIndexOf("."), fileName.length());//文件后缀
 	            fileName=new Date().getTime()+"_"+new Random().nextInt(1000)+fileF;//新的文件名
 	 

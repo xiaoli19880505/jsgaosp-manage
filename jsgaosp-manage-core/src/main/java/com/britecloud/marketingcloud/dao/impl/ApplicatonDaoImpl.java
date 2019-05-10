@@ -297,23 +297,23 @@ public class ApplicatonDaoImpl extends BaseJdbcDao implements ApplicatonDao {
 			sql = loadSQL("queryApplications", params);
 		}
 		if(keyWord != null && !keyWord.isEmpty()){
-			sql += "AND (a.app_name LIKE '%" + keyWord + "%' OR i.memo LIKE '%" + keyWord + "%')";
+			sql += " AND (a.app_name LIKE '%" + keyWord + "%' OR i.memo LIKE '%" + keyWord + "%')";
 		}
 		if(ywType != null && !ywType.isEmpty()){
 			params.put("ywType", ywType);
-			sql += "AND i.yw_type = :ywType";
+			sql += " AND i.yw_type = :ywType ";
 		}
 		if(xzType != null && !xzType.isEmpty()){
 			params.put("xzType", xzType);
-			sql += "AND i.xz_type = :xzType";
+			sql += " AND i.xz_type = :xzType ";
 		}
 		if(blType != null && !blType.isEmpty()){
 			params.put("blType", blType);
-			sql += "AND i.bl_type = :blType";
+			sql += " AND i.bl_type = :blType ";
 		}
 		if(serverType != null && !serverType.isEmpty()){
 			params.put("serverType", serverType);
-			sql += "AND i.server_type  = :serverType";
+			sql += " AND i.server_type  = :serverType ";
 		}
 
 		Integer totalCount = getNamedParameterJdbcTemplate().queryForInt(getTotalCountString(sql), params);
