@@ -44,6 +44,7 @@ public class ApplicatonDaoImpl extends BaseJdbcDao implements ApplicatonDao {
 		args.setInfo_id(UUIDUtils.generateUUID());
 		SqlParameterSource parameters2 = new BeanPropertySqlParameterSource(args);
 		getNamedParameterJdbcTemplate().update(sql2, parameters2);
+		insertBcQrcode(args);
 	}
 
 	public void saveAppInfo(ApplicationEntity args) {
@@ -67,6 +68,19 @@ public class ApplicatonDaoImpl extends BaseJdbcDao implements ApplicatonDao {
 		args.setWorking_status("00");
 		SqlParameterSource parameters = new BeanPropertySqlParameterSource(args);
 		getNamedParameterJdbcTemplate().update(sql, parameters);
+	}
+	public void insertBcQrcode(ApplicationEntity args) {
+		String sql = loadSQL("insertBcQrcode");
+		Map<String, String> paramMap = new HashMap<String, String>();
+		paramMap.put("id",UUIDUtils.generateUUID());
+		paramMap.put("org_id",args.getOrg_id());
+		paramMap.put("app_id",args.getApp_id());
+		paramMap.put("qr_code_url",args.getQr_code_url());
+		paramMap.put("qr_code_img_url",args.getQr_code_img_url());
+		paramMap.put("qr_code_type","1");
+		paramMap.put("create_user_id",args.getCreate_user_id());
+		paramMap.put("status","1");
+		getNamedParameterJdbcTemplate().update(sql, paramMap);
 	}
 
 	public void updateAppInfo(ApplicationEntity args) {
@@ -101,6 +115,18 @@ public class ApplicatonDaoImpl extends BaseJdbcDao implements ApplicatonDao {
 		return getNamedParameterJdbcTemplate().queryForInt(sql, parameters);
 	}
 
+	private void updateBcQrcode(ApplicationEntity args) {
+		String sql = loadSQL("updateBcQrcode");
+		Map<String, String> paramMap = new HashMap<String, String>();
+		paramMap.put("id",args.getCode_Id());
+		paramMap.put("qr_code_url",args.getQr_code_url());
+		paramMap.put("qr_code_img_url",args.getQr_code_img_url());
+		paramMap.put("update_user_id",args.getApproval_user_id());
+		paramMap.put("id",args.getCode_Id());
+		
+		getNamedParameterJdbcTemplate().update(sql, paramMap);
+	}
+	
 	@Override
 	public void updateApplicationInfo(ApplicationEntity args) {
 		String sql = loadSQL("updateApplicationInfo");
@@ -122,7 +148,10 @@ public class ApplicatonDaoImpl extends BaseJdbcDao implements ApplicatonDao {
 		paramMap.put("approval_status",args.getApproval_status());
 		paramMap.put("approval_opinion",args.getApproval_opinion());
 		getNamedParameterJdbcTemplate().update(sql, paramMap);
+		updateBcQrcode(args);
 	}
+	
+	
 	
 	@Override
 	public void updateStatus(ApplicationEntity args) {
