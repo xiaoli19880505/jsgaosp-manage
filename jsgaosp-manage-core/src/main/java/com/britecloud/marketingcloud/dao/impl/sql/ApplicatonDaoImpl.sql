@@ -114,7 +114,7 @@ where id=:id;
      a.org_id  = :orgNo
    --</isNotEmpty>
    --</dynamic>
-      
+      order by i.create_date desc
 --------------------------------------------
 --updateInfoStatus
 update bc_declare_app_info set 
@@ -169,8 +169,6 @@ set
        i.approval_status,
        i.conditions,
        i.legal_basis,
-       b.qr_code_url,
-       b.qr_code_img_url,
        GET_CODE_SORT_TEXT('app_status', i.approval_status) as approval_status_name
   from bc_declare_app a, bc_declare_app_info i
  where a.id = i.app_id and a.status ='1' and i.approval_status = '01'

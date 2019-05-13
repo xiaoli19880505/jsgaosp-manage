@@ -202,6 +202,7 @@ public class ApplicationAction {
 		entity.setApp_id(app_id);
 		entity.setSys_type(sys_type);
 		entity.setWorking_status(workstatus);
+		entity.setApproval_user_id(user.getUserId());
 		ApplicationService.updateInfoWorkStatus(entity,"disable");
 		return ResultUtil.success();
 		}
