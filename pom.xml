@@ -9,6 +9,7 @@
 	<modules>
 		<module>jsgaosp-manage-api</module>
 		<module>jsgaosp-manage-web</module>
+		<module>jsgaosp-manage-core</module>
 		<module>jsgaosp-manage-executor</module>
 		<module>jsgaosp-manage-alarm</module>
 	</modules>

@@ -23,9 +23,28 @@ public class ApplicationServiceImpl implements ApplicationService{
 	@Override
 	public void saveApplication(ApplicationEntity args) {
 		ApplicatonDao.saveApplication(args);
-		
+
 	}
 
+	@Override
+	public String getCustomizeList(Integer channel, String sysType, String idcardNo, Pageable page) {
+		JSONObject result = new JSONObject();
+		try{
+			Map params = new HashMap();
+			params.put("page", page.getPage());
+			params.put("pageSize", page.getSize());
+			params.put("idcardNo", idcardNo);
+			params.put("sys_type", sysType);
+			PageDataResult<ApplicationEntity> apps = ApplicatonDao.getCustomizeList(params);
+			result= JSONObject.fromObject(apps);
+			result.put("code", Constants.RESPONSE_SUCCESS_CODE);
+			result.put("message","成功");
+		}catch(Exception e){
+			result.put("code", Constants.RESPONSE_BAD_CODE);
+			result.put("message","异常");
+		}
+		return result.toString();
+	}
 
 	@Override
 	public boolean existsArgsKey(ApplicationEntity args) {
@@ -122,5 +141,60 @@ public class ApplicationServiceImpl implements ApplicationService{
 		return result.toString();
 	}
 
+
+	@Override
+	public void insertAppInfo(ApplicationEntity args) {
+		// TODO Auto-generated method stub
+		ApplicatonDao.insertAppInfo(args);
+	}
+
+
+	@Override
+	public String addCustomize(Integer channel, String idcardNo, String appId) {
+		JSONObject result = new JSONObject();
+		try{
+			Map params = new HashMap();
+			params.put("idcardNo",idcardNo);
+			params.put("appId", appId);
+			Integer hasApp = ApplicatonDao.existsCustomizeApp(params);
+			if(hasApp !=null && hasApp > 0){
+				ApplicatonDao.updateCustomize(params);
+			}else{
+				ApplicatonDao.addCustomize(params);
+			}
+
+			result.put("code", Constants.RESPONSE_SUCCESS_CODE);
+			result.put("message","成功");
+		}catch(Exception e){
+			result.put("code", Constants.RESPONSE_BAD_CODE);
+			result.put("message","异常");
+		}
+		return result.toString();
+	}
+
+	@Override
+	public String queryApplications(Integer channel, Pageable page, String sysType, String keyWord, String ywType, String xzType, String blType, String serverType, String areaNo) {
+		JSONObject result = new JSONObject();
+		try{
+			Map params = new HashMap();
+			params.put("page", page.getPage());
+			params.put("pageSize", page.getSize());
+			params.put("sysType", sysType);
+			params.put("keyWord", keyWord);
+			params.put("ywType", ywType);
+			params.put("xzType", xzType);
+			params.put("blType", blType);
+			params.put("serverType", serverType);
+			params.put("areaNo", areaNo);
+			PageDataResult<ApplicationEntity> apps = ApplicatonDao.queryApplications(page, sysType, keyWord, ywType, xzType, blType, serverType, areaNo);
+			result= JSONObject.fromObject(apps);
+			result.put("code", Constants.RESPONSE_SUCCESS_CODE);
+			result.put("message","成功");
+		}catch(Exception e){
+			result.put("code", Constants.RESPONSE_BAD_CODE);
+			result.put("message","异常");
+		}
+		return result.toString();
+	}
 
 }

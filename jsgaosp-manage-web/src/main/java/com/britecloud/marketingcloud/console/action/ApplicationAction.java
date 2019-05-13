@@ -1,9 +1,16 @@
 package com.britecloud.marketingcloud.console.action;
 
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 
 import org.junit.Test;
@@ -12,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.alibaba.fastjson.JSONObject;
 import com.britecloud.marketingcloud.console.common.ResponseResult;
 import com.britecloud.marketingcloud.console.configuration.OperationLogAnn;
 import com.britecloud.marketingcloud.console.util.ResultUtil;
@@ -22,6 +31,9 @@ import com.britecloud.marketingcloud.model.BcUser;
 import com.britecloud.marketingcloud.service.ApplicationService;
 import com.britecloud.marketingcloud.utils.SessionUtils;
 import com.britecloud.marketingcloud.utils.StringUtils;
+
+import sun.misc.BASE64Decoder;
+import sun.misc.BASE64Encoder;
 
 @RestController
 @SuppressWarnings({ "rawtypes", "unchecked" })
@@ -77,10 +89,11 @@ public class ApplicationAction {
 
 	@RequestMapping(value = "/list_applications", method = RequestMethod.GET)
 	@ResponseBody
-	public ResponseResult listApplications(Integer currentPage, String orgNo) throws Exception {
+	public ResponseResult listApplications(Integer currentPage, String orgNo,String keyword) throws Exception {
 		Map params = new HashMap();
 		params.put("page", currentPage);
 		params.put("orgNo", orgNo);
+		params.put("keyword", keyword);
 		PageDataResult result = ApplicationService.listSysApproves(params);
 		result.setPage(currentPage);
 
@@ -147,6 +160,30 @@ public class ApplicationAction {
 		}
 		return ResultUtil.error("10001", "失败！");
 	}
+	
+	@OperationLogAnn(value = "版本更新")
+	@RequestMapping(value = "/update_version", method = RequestMethod.GET)
+	@ResponseBody
+	public ResponseResult UpdateVersion(HttpServletRequest request, String application) {
+		JSONObject json = JSONObject.parseObject(application);
+		ApplicationEntity args = (ApplicationEntity)JSONObject.toJavaObject(json, ApplicationEntity.class);
+		BcUser user = SessionUtils.getCurrentUser(request);
+		if (user == null) {
+			return ResultUtil.error("10005", "未登录");
+		}
+		if (StringUtils.isNotEmpty(args.getInfo_id())) {
+			// 获取当前应用的最高版本
+			ApplicationEntity entity = new ApplicationEntity();
+			entity = ApplicationService.queryInfoList(args.getApp_id(), args.getOrg_id());
+			BigDecimal num1 = new BigDecimal(entity.getVersion());
+			BigDecimal num2 = new BigDecimal("1");
+			BigDecimal version = num1.add(num2);
+			args.setVersion(version.toString());
+			ApplicationService.insertAppInfo(args);
+			return ResultUtil.success();
+		}
+		return ResultUtil.error("10001", "失败！");
+	}
 
 	@OperationLogAnn(value = "禁用启用应用")
 	@RequestMapping(value = "/disable_version", method = RequestMethod.GET)
@@ -165,6 +202,7 @@ public class ApplicationAction {
 		entity.setApp_id(app_id);
 		entity.setSys_type(sys_type);
 		entity.setWorking_status(workstatus);
+		entity.setApproval_user_id(user.getUserId());
 		ApplicationService.updateInfoWorkStatus(entity,"disable");
 		return ResultUtil.success();
 		}
@@ -173,11 +211,38 @@ public class ApplicationAction {
 
 	@Test
 	public void test() {
-		BigDecimal num1 = new BigDecimal("2.0");
+		BASE64Encoder encoder = new sun.misc.BASE64Encoder(); 
+		File f = new File("D:\\photo\\111.jpg");
+		BufferedImage bi; 
+		try {
+			bi = ImageIO.read(f); 
+			ByteArrayOutputStream baos = new ByteArrayOutputStream();
+			ImageIO.write(bi, "jpg", baos); 
+			byte[] bytes = baos.toByteArray(); 
+			encoder.encodeBuffer(bytes).trim(); 
+			System.out.println(encoder.encodeBuffer(bytes).trim());
+			} catch (IOException e) { 
+				e.printStackTrace(); 
+				}
+		/*BigDecimal num1 = new BigDecimal("2.0");
 		BigDecimal num2 = new BigDecimal("1");
 		BigDecimal newprice = num1.add(num2);
-		System.out.println(newprice);
+		System.out.println(newprice);*/
 
+	}
+	public static String getImageBinary(){ 
+		File f = new File("D:\\photo\\111.jpg");
+	BufferedImage bi; 
+	try {
+		bi = ImageIO.read(f); 
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		ImageIO.write(bi, "jpg", baos); 
+		byte[] bytes = baos.toByteArray(); 
+		
+		} catch (IOException e) { 
+			e.printStackTrace(); 
+			}
+	return null; 
 	}
 
 }

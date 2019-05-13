@@ -16,22 +16,23 @@
 	<div class="wrapper-md ng-scope">
 		<div class="panel panel-default">
 			<div class="row wrapper">
-				<div class="col-sm-5 m-b-xs">
+				<div class="col-sm-9 m-b-xs">
 					<button type="button" ng-click="open('','add',null)"
 						class="btn btn-dark btn-sm">新增</button>
 					<button class="btn btn-dark btn-sm" type="button" ng-click="update();">编辑</button>
 					<button class="btn btn-dark btn-sm" type="button" ng-click="deleteModal();">删除</button>
 					<button type="button" ng-click="audit()" class="btn btn-dark btn-sm">审核</button>
+					<button type="button" ng-click="updateVersion()" class="btn btn-dark btn-sm">版本更新</button>
 					<button type="button" ng-click="rollbackVersion()" class="btn btn-dark btn-sm">版本管理</button>
 				</div>
-				<div class="col-sm-4"></div>
+				<div class="col-sm-3"></div>
 				<div class="col-sm-3">
 					<div class="input-group">
 						<input type="text" class="input-sm form-control"
-							placeholder="请输入姓名" ng-model="keyword"> <span
+							placeholder="请输入应用名称" ng-model="keyword"> <span
 							class="input-group-btn">
 							<button class="btn btn-sm btn-default" type="button"
-								ng-click="search()">搜索</button>
+								ng-click="searchApp()">搜索</button>
 						</span>
 					</div>
 				</div>
@@ -68,10 +69,14 @@
 						<td>{{application.version}}</td>
 						<td>
 						
-						<a class="fa fa-pencil fa-fw ng-scope" title="启用" ng-if ='application.working_status==00'
-							ng-click="updateWorkStatus('{{application.info_id}}','{{application.org_id}}','{{application.app_id}}','{{application.sys_type}}','01')"></a>
-							<a class="fa fa-refresh fa-fw m-r-xs" title="禁用"   ng-if ='application.working_status==01'
-							ng-click="updateWorkStatus('{{application.info_id}}','{{application.org_id}}','{{application.app_id}}','{{application.sys_type}}','00')"></a>
+							<button  ng-if ='application.working_status==00' class="btn btn-dark btn-sm" type="button" ng-click="updateWorkStatus('{{application.info_id}}','{{application.org_id}}','{{application.app_id}}','{{application.sys_type}}','01','{{application.approval_status}}')">启用</button>
+							<button  ng-if ='application.working_status==01' class="btn btn-dark btn-sm" type="button" ng-click="updateWorkStatus('{{application.info_id}}','{{application.org_id}}','{{application.app_id}}','{{application.sys_type}}','00','{{application.approval_status}}')">禁用</button>
+							
+						   <!-- <a class="fa fa-check-square" style="font-size:20px;color:black;" title="启用" ng-if ='application.working_status==00'
+							ng-click="updateWorkStatus('{{application.info_id}}','{{application.org_id}}','{{application.app_id}}','{{application.sys_type}}','01','{{application.approval_status}}')"></a>
+							<a class="	fa fa-times-circle" style="font-size:20px;color:black;" title="禁用"   ng-if ='application.working_status==01'
+							ng-click="updateWorkStatus('{{application.info_id}}','{{application.org_id}}','{{application.app_id}}','{{application.sys_type}}','00','{{application.approval_status}}')"></a>
+							 -->
 							</td>
 					</tr>
 				</table>
