@@ -39,9 +39,15 @@ public class ApplicationEntity {
 	private String approval_status;
 	private String approval_status_name;
 	private String edit;
-	private String qr_code_img_url;
-	private String qr_code_url;
 	private String legal_basis;
 	private String conditions;
 	private String method;
+	///----二维码字段---------------------------//
+	private String code_Id;
+	private String qr_code_img_url;
+	private String qr_code_url;
+	private String qr_code_type;
+	private String code_status;
+	
+	
 }

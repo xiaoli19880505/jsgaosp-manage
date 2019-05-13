@@ -17,6 +17,15 @@ import com.britecloud.marketingcloud.service.ApplicationService;
 @Service
 public class ApplicationServiceImpl implements ApplicationService{
 
+	@Autowired
+	private ApplicatonDao ApplicatonDao;
+
+	@Override
+	public void saveApplication(ApplicationEntity args) {
+		ApplicatonDao.saveApplication(args);
+
+	}
+
 	@Override
 	public String getCustomizeList(Integer channel, String sysType, String idcardNo, Pageable page) {
 		JSONObject result = new JSONObject();
@@ -36,16 +45,6 @@ public class ApplicationServiceImpl implements ApplicationService{
 		}
 		return result.toString();
 	}
-
-	@Autowired
-	private ApplicatonDao ApplicatonDao;
-
-	@Override
-	public void saveApplication(ApplicationEntity args) {
-		ApplicatonDao.saveApplication(args);
-		
-	}
-
 
 	@Override
 	public boolean existsArgsKey(ApplicationEntity args) {

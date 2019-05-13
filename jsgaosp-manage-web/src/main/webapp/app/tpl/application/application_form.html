@@ -17,102 +17,117 @@ img {
 
 			<form name="applicationForm" class="form-validation" ng-submit="submitForm(applicationForm.$valid)" novalidate>
 				<div class="form-group">
-					<label>应用名称</label> <input type="text" class="form-zn-control"
+					<label class="col-sm-3">应用名称<span style="color: red;">*</span></label> <input type="text" class="form-zn-control"
 						placeholder="请输入应用名称" name="app_name"
-						ng-model="application.app_name" required>
+						ng-model="application.app_name" required  class="col-sm-3">
 					<p ng-show="applicationForm.app_name.$pristine&& submitted"
 						class="help-block">请输入应用名称</p>
 				</div>
 				<div class="form-group">
-					<label>系统类型<span style="color: red;">*</span></label> <select
+					<label class="col-sm-3">系统类型<span style="color: red;">*</span></label> <select
 						ng-model="application.sys_type" class ="form-zn-control"
 						ng-options="x.codeSortKey as x.codeSortText for x in sysTypeList">
 						<option value="" style="display: none;">请选择系统类型</option>
 					</select>
 				</div>
 				<div class="form-group">
-					<label>接入类型<span style="color: red;">*</span></label> <select
+					<label class="col-sm-3">接入类型<span style="color: red;">*</span></label> <select
 						ng-model="application.access_type" class ="form-zn-control"
 						ng-options="x.codeSortKey as x.codeSortText for x in accessTypeList">
 						<option value="" style="display: none;">请选择接入类型</option>
 					</select>
 				</div>
 				<div class="form-group">
-					<label>办事指南地址</label> <input type="text" class="form-zn-control"
+					<label class="col-sm-3">办事指南地址</label> <input type="text" class="form-zn-control"
 						placeholder="请输入办事指南地址" name="guide_addr"
 						ng-model="application.guide_addr" required>
 					<p ng-show="applicationForm.guide_addr.$pristine&& submitted"
 						class="help-block">办事指南地址</p>
 				</div>
 				<div class="form-group" ng-hide="application.sys_type==02" >
-					<label>在线办理地址</label> <input type="text" class="form-zn-control"
+					<label class="col-sm-3">在线办理地址</label> <input type="text" class="form-zn-control"
 						placeholder="请输入在线办理地址" name="online_addr"
 						ng-model="application.online_addr" >
 					<p ng-show="applicationForm.online_addr.$pristine&& submitted"
 						class="help-block">在线办理地址</p>
 				</div>
 				<div class="form-group" ng-hide="application.sys_type==02">
-					<label>在线咨询地址</label> <input type="text" class="form-zn-control"
+					<label class="col-sm-3">在线咨询地址</label> <input type="text" class="form-zn-control"
 						placeholder="请输入在线咨询地址" name="online_qaq_addr"
 						ng-model="application.online_qaq_addr" >
 					<p ng-show="applicationForm.online_qaq_addr.$pristine&& submitted"
 						class="help-block">在线咨询地址称</p>
 				</div>
 				<div class="form-group">
-					<label>业务类型<span style="color: red;">*</span></label> <select
+					<label class="col-sm-3">业务类型<span style="color: red;">*</span></label> <select
 						ng-model="application.yw_type" class ="form-zn-control"
 						ng-options="x.codeSortKey as x.codeSortText for x in ywTypeList">
 						<option value="" style="display: none;">请选择业务类型</option>
 					</select>
 				</div>
 				<div class="form-group">
-					<label>行政类型<span style="color: red;">*</span></label> <select
+					<label class="col-sm-3">行政类型<span style="color: red;">*</span></label> <select
 						ng-model="application.xz_type" class ="form-zn-control"
 						ng-options="x.codeSortKey as x.codeSortText for x in xzTypeList">
 						<option value="" style="display: none;">请选择行政类型</option>
 					</select>
 				</div>
 				<div class="form-group">
-					<label>功能描述</label> <input type="text" class="form-zn-control"
+					<label class="col-sm-3">功能描述<span style="color: red;">*</span></label> <input type="text" class="form-zn-control"
 						placeholder="请输入功能描述" name="memo" ng-model="application.memo"
 						required>
 					<p ng-show="applicationForm.memo.$pristine&& submitted"
 						class="help-block">请输入功能描述</p>
 				</div>
 				<div class="form-group">
-					<label>办理类型<span style="color: red;">*</span></label> <select
+					<label class="col-sm-3">办理类型<span style="color: red;">*</span></label> <select
 						ng-model="application.bl_type" class ="form-zn-control"
 						ng-options="x.codeSortKey as x.codeSortText for x in blTypeList">
 						<option value="" style="display: none;">请选择办理类型</option>
 					</select>
 				</div>
 				<div class="form-group">
-					<label>服务类型<span style="color: red;">*</span></label> <select
+					<label class="col-sm-3">服务类型<span style="color: red;">*</span></label> <select
 						ng-model="application.server_type" class ="form-zn-control"
 						ng-options="x.codeSortKey as x.codeSortText for x in serverTypeList">
 						<option value="" style="display: none;">请选择服务类型</option>
 					</select>
 				</div>
-				<div class="form-group" ng-show="application.sys_type==02">
-                    <label>图片</label>
+				<div class="form-group"><!--  ng-show="application.sys_type==02" -->
+                    <label class="col-sm-3">图标</label>
                     <div ngf-select ngf-accept="'image/*'" ng-model="img">
                         <a ng-show="!img&&!application.icon_url" class="fa fa-plus-square-o fa-5x" style="color: #f4f4f4"></a>
                         <img ng-if="img" ngf-thumbnail="img">
                         <img ng-if="!img&&application.icon_url" ng-src="{{application.icon_url}}">
                     </div>
                 </div>
+				<div class="form-group" ng-show="application.sys_type==02">
+					<label class="col-sm-3">二维码地址</label> <input type="text" class="form-zn-control"
+						placeholder="请输入二维码地址" name="memo" ng-model="application.qr_code_url"
+						required>
+					<p ng-show="applicationForm.qr_code_url.$pristine&& submitted"
+						class="help-block">请输入二维码地址</p>
+				</div>
+				<div class="form-group" ng-show="application.sys_type==02">
+                    <label class="col-sm-3">二维码图片</label>
+                    <div ngf-select ngf-accept="'image/*'" ng-model="imge">
+                        <a ng-show="!imge&&!application.qr_code_img_url" class="fa fa-plus-square-o fa-5x" style="color: #f4f4f4"></a>
+                        <img ng-if="imge" ngf-thumbnail="imge">
+                        <img ng-if="!imge&&application.qr_code_img_url" ng-src="{{application.qr_code_img_url}}">
+                    </div>
+                </div>
 				<div class="form-group">
-					<label>法规依据</label> <input type="text" class="form-zn-control"
+					<label class="col-sm-3">法规依据</label> <input type="text" class="form-zn-control"
 						placeholder="请输入法规依据" name="memo" ng-model="application.legal_basis"
 						required>
 					<p ng-show="applicationForm.legal_basis.$pristine&& submitted"
 						class="help-block">请输入法规依据</p>
 				</div>
 				<div class="form-group">
-                    <label>内容</label>
+				    <label>办理条件</label>
                     <textarea ckeditor="editorOptions" ng-model="application.conditions"></textarea>
                     <p ng-show="application.conditions.$pristine&& submitted"
-						class="help-block">请输入法规依据</p>
+						class="help-block">请输入办理条件</p>
                 </div>
 			</form>
 			

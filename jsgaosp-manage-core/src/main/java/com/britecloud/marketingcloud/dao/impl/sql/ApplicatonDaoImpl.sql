@@ -11,6 +11,13 @@ VALUES(:info_id, :app_id,:guide_addr, :online_addr,:online_qaq_addr,:yw_type, :x
 :status,:approval_opinion,sysdate,:create_user_id, '', '', :bl_type,
 :version, :working_status,:server_type,:icon_url,:approval_status,:legal_basis,:conditions);
 --------------------------------------------
+--insertBcQrcode
+insert into bc_qrcode(id,org_id,app_id,qr_code_url,qr_code_img_url,qr_code_type,
+create_user_id,create_date,update_user_id,update_date,status)
+values(:id,:org_id,:app_id,:qr_code_url,:qr_code_img_url,:qr_code_type,
+:create_user_id,sysdate,'','',:status)
+
+--------------------------------------------
 --existsArgsKey
 SELECT COUNT(0) from bc_declare_app WHERE id=:id;
 --------------------------------------------
@@ -40,6 +47,15 @@ set
 --------------------------------------------
 --updateApplication
 update bc_declare_app set  status = :status  where id=:id;
+
+--------------------------------------------
+--updateBcQrcode
+update bc_qrcode set  
+qr_code_url = :qr_code_url ,
+qr_code_img_url = :qr_code_img_url ,
+update_user_id=:update_user_id,
+update_date=sysdate
+where id=:id;
 --------------------------------------------
 --listApplication
    select a.id,
@@ -75,9 +91,12 @@ update bc_declare_app set  status = :status  where id=:id;
        i.approval_status,
        i.conditions,
        i.legal_basis,
+       b.qr_code_url,
+       b.qr_code_img_url,
+       b.id as code_Id,
        GET_CODE_SORT_TEXT('app_status', i.approval_status) as approval_status_name
-  from bc_declare_app a, bc_declare_app_info i
- where a.id = i.app_id and a.status ='1'
+  from bc_declare_app a, bc_declare_app_info i,bc_qrcode b
+ where a.id = i.app_id and a.status ='1' and b.app_id(+) = a.id
  --<dynamic>
    --<isNotEmpty prepend="AND" property="app_name">
        a.app_name  = :app_name
@@ -92,7 +111,7 @@ update bc_declare_app set  status = :status  where id=:id;
        to_char(i.create_date, 'yyyy-MM-dd HH24:mi:ss')  >= :createDate
    --</isNotEmpty>
    --<isNotEmpty prepend="AND" property="orgNo">
-      org_id  = :orgNo
+     a.org_id  = :orgNo
    --</isNotEmpty>
    --</dynamic>
       
@@ -150,6 +169,8 @@ set
        i.approval_status,
        i.conditions,
        i.legal_basis,
+       b.qr_code_url,
+       b.qr_code_img_url,
        GET_CODE_SORT_TEXT('app_status', i.approval_status) as approval_status_name
   from bc_declare_app a, bc_declare_app_info i
  where a.id = i.app_id and a.status ='1' and i.approval_status = '01'
