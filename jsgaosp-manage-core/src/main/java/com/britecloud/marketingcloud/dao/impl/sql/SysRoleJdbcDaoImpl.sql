@@ -32,9 +32,10 @@ UPDATE
         DESCRIPTION = :description,
         PERM = :perm,
         UPDATE_DATE=to_date(:updateDate,'yyyy-MM-dd HH24:mi:ss'),
-        UPDATE_USER_ID=:updateUserId,
+        UPDATE_USER_ID=:updateUserId
     WHERE
         ROLE_ID = :roleId;
+
 --------------------------------------------
 --deleteRole
 DELETE

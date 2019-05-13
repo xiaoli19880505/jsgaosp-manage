@@ -2,8 +2,12 @@
 
 /* Controllers */
 // hospital_role controller
-app.controller('SystemRoleController', function ($scope, GG, $timeout, $http, $state, $modal, $stateParams, BcRoleService, modalServ, SystemRoleUserService, SystemRoleFunService) {
+app.controller('SystemRoleController',
+    ['$scope', 'GG', '$timeout', '$http', '$state', '$modal', '$stateParams', 'BcRoleService', 'modalServ', 'SystemRoleUserService', 'SystemRoleFunService','$sessionStorage',
+        function ($scope, GG, $timeout, $http, $state, $modal, $stateParams, BcRoleService, modalServ, SystemRoleUserService, SystemRoleFunService,$sessionStorage) {
 
+    $scope.UserKeyword = "";
+    $scope.isShowIndex = true;
     $scope.totalItems = 0;
     $scope.currentPage = 1;
     $scope.maxSize = 5;
@@ -17,6 +21,12 @@ app.controller('SystemRoleController', function ($scope, GG, $timeout, $http, $s
     $scope.tab = [true, false, false];
 
 
+    $scope.$watch('orgNo', function (newVal, oldVal) {
+        if ($scope.orgNo != null) {
+            $scope.loadRoleList();
+        }
+    })
+
     $scope.GGuser = GG.user;
     $scope.GGsysadmin = GG.sysadmin;
     $scope.GGmaintain = GG.maintain;
@@ -25,10 +35,10 @@ app.controller('SystemRoleController', function ($scope, GG, $timeout, $http, $s
      */
     $scope.loadUserList = function () {
         $scope.role_user = [];
-        SystemRoleUserService.get( $scope.roleId, "1", $scope.currentPage, 10)
+        SystemRoleUserService.get($scope.roleId, $scope.UserKeyword, $scope.currentPage)
             .then(function (data) {
-                $scope.totalItems = data.totalItems;
-                $scope.role_user = data.content;
+                $scope.totalItems = data.totalCount;
+                $scope.role_user = data.list;
                 $scope.userId = null;
                 $scope.role_org = null;
             })
@@ -58,47 +68,27 @@ app.controller('SystemRoleController', function ($scope, GG, $timeout, $http, $s
 
     //角色人员
     $scope.open = function (size, type) {
-        var isUser = type == 'user';
-        var validate = false;
-        if (isUser) {
-            validate = $scope.roleId != null;
-        } else {
-            validate = $scope.userId != null;
-        }
-        if (validate) {
-            var id = "";
-            if (isUser) {
-                id = $scope.roleId;
-            } else {
-                id = $scope.userId;
-            }
-            var modalInstance = $modal.open({
-                templateUrl: 'tpl/systemmgmt/rolemgmt/role_modal_form.html',
-                controller: 'ModalSystemUserViewInstanceCtrl',
-                size: size,
-                backdrop: 'static',
-                resolve: {
-                    items: function () {
-                        return [type, id, $scope.roleType];
-                    }
+        var modalInstance = $modal.open({
+            templateUrl: 'tpl/systemmgmt/rolemgmt/role_modal_form.html',
+            controller: 'ModalSystemUserViewInstanceCtrl',
+            size: size,
+            backdrop: 'static',
+            resolve: {
+                items: function () {
+                    return [$scope.roleId];
                 }
-            });
-            modalInstance.result.then(function (items) {
-                if (items[0]) {//如果modal返回成功的话
-                    if (isUser) {
-                        $scope.loadUserList();
-                    }
-                }
-            }, function () {
-                //取消
-            });
-        } else {
-            if (isUser) {
-                toastr.error("未选择任何角色！");
-            } else {
-                toastr.error("未选择任何用户！");
             }
-        }
+        });
+        modalInstance.result.then(function (items) {
+            if (items[0]) {//如果modal返回成功的话
+
+                    $scope.loadUserList();
+
+            }
+        }, function () {
+            //取消
+        });
+
     };
 
     //角色信息
@@ -131,13 +121,13 @@ app.controller('SystemRoleController', function ($scope, GG, $timeout, $http, $s
             backdrop: 'static',
             resolve: {
                 items: function () {
-                    return [type, chooseCreate,$scope.orgNo];
+                    return [type, chooseCreate, $scope.orgNo];
                 }
             }
         });
         modalInstance.result.then(function (items) {
             if (items[0]) {//如果modal返回成功的话
-                    $scope.loadRoleList();
+                $scope.loadRoleList();
             }
         }, function () {
             //取消
@@ -148,13 +138,6 @@ app.controller('SystemRoleController', function ($scope, GG, $timeout, $http, $s
     $scope.searchWithName = function () {
         $scope.loadRoleList();
     }
-
-
-    $scope.$watch('orgNo', function (newVal, oldVal) {
-        if ($scope.orgNo != null) {
-            $scope.loadRoleList();
-        }
-    })
 
 
     /***
@@ -240,7 +223,7 @@ app.controller('SystemRoleController', function ($scope, GG, $timeout, $http, $s
         BcRoleService.getLitst($scope.orgNo, $scope.keyword, $scope.currentPage)
             .then(function (data) {
                 $scope.roles = data.list;
-                $scope.totalItems=data.totalCount;
+                $scope.totalItems = data.totalCount;
                 $scope.chooseRoles = [];
             })
     };
@@ -254,13 +237,16 @@ app.controller('SystemRoleController', function ($scope, GG, $timeout, $http, $s
         } else if (!chk) {
             $scope.chooseRoles.splice($scope.chooseRoles.indexOf(item), 1);
         }
+        if( $scope.chooseRoles.length==1){
+            $sessionStorage.chooseRole=angular.copy($scope.chooseRoles[0]);
+        }
+
     }
 
 
-
-    $scope.deleteRole = function (roleId) {
-        SystemRoleUserService.countUserByRoleId(roleId).then(function (data) {
-            if(data.code="10000"){
+    $scope.deleteRole = function () {
+        SystemRoleUserService.countUserByRoleId($scope.chooseRoles[0].roleId).then(function (data) {
+            if (data.code = "10000") {
                 if (data.data != 0) {//如果角色下关联了用户，则不能删除
                     toastr.error('该角色下有' + data.data + '个用户，不能删除！');
                     return;
@@ -276,9 +262,18 @@ app.controller('SystemRoleController', function ($scope, GG, $timeout, $http, $s
                 });
             }
         })
-
-
     };
+
+
+    $scope.editUser = function (roleId) {
+        $scope.roleId = roleId;
+        $scope.isShowIndex = false;
+        $scope.loadUserList();
+    }
+
+    $scope.returnIndex = function () {
+        $scope.isShowIndex = true;
+    }
     /**
      * 设置高度
      */
@@ -300,8 +295,10 @@ app.controller('SystemRoleController', function ($scope, GG, $timeout, $http, $s
     };
     $scope.change();
 
-    $scope.$watch('importIds', function (newVal, oldVal) {
-        console.log($scope.importIds)
-    })
-});
+    // $scope.$watch('importIds', function (newVal, oldVal) {
+    //
+    // })
+
+
+}]);
 

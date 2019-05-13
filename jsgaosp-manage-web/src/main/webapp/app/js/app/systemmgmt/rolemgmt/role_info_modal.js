@@ -18,6 +18,7 @@ app.controller('ModalRoleInfoInstanceCtrl', function ($scope, $modalInstance, it
 
 
     $scope.addRole=function(){
+        $scope.role.status='1';
         BcRoleService.save($scope.role).then(function(data){
             if(data.code=="10000"){
                 toastr.success('添加角色成功！');

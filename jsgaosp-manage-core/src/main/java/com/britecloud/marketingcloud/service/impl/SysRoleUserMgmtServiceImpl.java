@@ -11,6 +11,7 @@ package com.britecloud.marketingcloud.service.impl;
 import java.util.List;
 import java.util.Map;
 
+import com.britecloud.marketingcloud.domain.PageDataResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -36,15 +37,22 @@ public class SysRoleUserMgmtServiceImpl implements SysRoleUserMgmtService {
     @Autowired
     public SysRoleUserJdbcDao sysRoleUserJdbcDao;
 
-    @Override
-    public Page<BcUser> get(Map paramMap, String sign, Pageable pageable) {
-        return sysRoleUserJdbcDao.get(paramMap, sign, pageable);
-    }
+
 
     @Override
     public void remove(String roleId, String userId) {
         sysRoleUserJdbcDao.remove(roleId, userId);
        // sysUserOrgJdbcDao.remove(userId);//删除用户的关联机构
+    }
+
+    @Override
+    public PageDataResult<BcUser> getUserListByRoleId(Map params) {
+        return sysRoleUserJdbcDao.listUserByRoleId(params);
+    }
+
+    @Override
+    public PageDataResult<BcUser> getrUserListNotInThisRole(Map params) {
+        return sysRoleUserJdbcDao.getrUserListNotInThisRole(params);
     }
 
     @Override

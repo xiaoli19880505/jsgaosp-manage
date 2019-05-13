@@ -35,4 +35,6 @@ public interface SysRoleMgmtService {
     
     public void initRole(String companyId);
 
+    BcRole getRoleByRoleId(String roleId);
+
 }

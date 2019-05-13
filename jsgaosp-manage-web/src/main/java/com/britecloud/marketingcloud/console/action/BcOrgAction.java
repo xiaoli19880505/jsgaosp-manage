@@ -101,6 +101,9 @@ public class BcOrgAction {
         params.put("pOrgNo", HuStringUtils.nvl(pOrgNo));
         PageDataResult result = bcOrgService.listDepartmentByOrgId(params);
         result.setPage(currentPage);
+        ResponseResult   resp=     ResultUtil.success(result);
+//        JSONObject obj=new JSONObject();
+        String jsonStr=JSONObject.toJSONString(resp);
         return ResultUtil.success(result);
 
     }

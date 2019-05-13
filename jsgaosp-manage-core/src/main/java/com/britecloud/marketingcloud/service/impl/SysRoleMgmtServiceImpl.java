@@ -79,4 +79,9 @@ public class SysRoleMgmtServiceImpl implements SysRoleMgmtService {
 	public void initRole(String companyId){
 		sysRoleJdbcDao.initRole(companyId);
 	}
+
+    @Override
+    public BcRole getRoleByRoleId(String roleId) {
+        return sysRoleJdbcDao.get(roleId);
+    }
 }

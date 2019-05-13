@@ -1,258 +1,225 @@
 <style>
-.table th, .table td {
-	text-align: center;
-	height: 38px;
-	font-size: 12px;
-}
+    .table th, .table td {
+        text-align: center;
+        height: 38px;
+        font-size: 12px;
+    }
 
-.hover {
-	background: #D1EEEE;
-}
+    .hover {
+        background: #D1EEEE;
+    }
 
-.able {
-	color: #96CD00;
-}
+    .able {
+        color: #96CD00;
+    }
 
-.disable {
-	color: red;
-}
+    .disable {
+        color: red;
+    }
 </style>
 <div class="wrapper page" ng-controller="SystemRoleController">
-	<div class="topbar">
-		<div class="breadcrumbs">
-			<a class="level level-zone level-zone-2 gd1">系统</a> <a class="level">角色管理</a>
-		</div>
-	</div>
-	<br>
-	<!--<div class="page-intro vxnets">-->
-		<!--<p class="lead">-->
-			<!--<em>角色管理</em> 角色管理。-->
-		<!--</p>-->
-	<!--</div>-->
-	<div class="pane" style="height: 100%;">
-		<div class="hbox hbox-auto-xs hbox-auto-sm">
-			<div class="col w-md " style="height: 100%;">
-				<div class="panel"
-					style="border-right: 1px solid lightgrey; padding-right: 5px;">
-					<orgtree-nav></orgtree-nav>
-				</div>
-			</div>
-			<div class="col">
-				<div class="vbox" id="rightPanl">
-					<!--<div class="page-intro vxnets">-->
-						<!--<p class="lead">-->
-							<!--<em></em>-->
-						<!--</p>-->
-					<!--</div>-->
+    <div class="topbar">
+        <div class="breadcrumbs">
+            <a class="level level-zone level-zone-2 gd1">系统</a> <a class="level">角色管理</a>
+        </div>
+    </div>
+    <br>
+    <!--<div class="page-intro vxnets">-->
+    <!--<p class="lead">-->
+    <!--<em>角色管理</em> 角色管理。-->
+    <!--</p>-->
+    <!--</div>-->
+    <div class="pane" style="height: 100%;margin-top: 20px;">
+        <div ng-show="isShowIndex" class="hbox hbox-auto-xs hbox-auto-sm">
 
-					<div class="wrapper b-t m-t-xxs wrapper-xs">
+                <!--<div class="col w-md lter b-r"-->
+                     <!--style="border-right: 1px solid lightgrey; padding-right: 5px;">-->
+                   <!---->
+                <!--</div>-->
 
-						<div class="col-sm-8 m-b-xs">
-							<button class="btn btn-dark btn-sm" type="button"
-									ng-click="openRoleInfo('','add',null)">新增
-							</button>
-							<button class="btn btn-dark btn-sm" type="button"
-									ng-disabled="chooseRoles.length == '0'" ng-click="openRoleInfo('','update',null);">编辑
-							</button>
-							<button class="btn btn-dark btn-sm" type="button"
-									ng-disabled="chooseRoles.length == '0'"
-									ng-click="deleteModal();">删除
-							</button>
-							<st-targettree ng-disabled="chooseRoles.length == '0'"></st-targettree>
-							<button ng-show="orgNo && orgFlag" class="btn btn-dark btn-sm" type="button"
-									ng-click="deleteOrgNo()"><span >{{orgName}}</span><span>×</span>
-							</button>
+            <orgtree-nav></orgtree-nav>
 
-						</div>
-						<div class="input-group">
-							<a ng-show="orgNo && OrgTreeDivIsOpened"
-							   onmouseover="style.backgroundColor='#CCFF99'" onmouseout="style.backgroundColor='#AAFFEE'" style="cursor: pointer; color: white; background-color:#AAFFEE;padding: 5px 10px;line-height: 1.5;float:left;margin-left: 20px;" ng-click="deleteOrgNo()"><span >{{orgName}}</span><span>×</span></a>
-							<input type="text" style="width: 200px;float: right;" class="input-sm form-control" placeholder="请输入关键词" ng-model="keyword">
-							<span class="input-group-btn">
+            <div class="col">
+                <div class="vbox" id="rightPanl">
+                    <!--<div class="page-intro vxnets">-->
+                    <!--<p class="lead">-->
+                    <!--<em></em>-->
+                    <!--</p>-->
+                    <!--</div>-->
+
+                    <div class="wrapper b-t m-t-xxs wrapper-xs">
+
+                        <div class="col-sm-8 m-b-xs">
+                            <button class="btn btn-dark btn-sm" type="button"
+                                    ng-click="openRoleInfo('','add',null)">新增
+                            </button>
+                            <button class="btn btn-dark btn-sm" type="button"
+                                    ng-disabled="chooseRoles.length == '0'" ng-click="openRoleInfo('','update',null);">
+                                编辑
+                            </button>
+                            <button class="btn btn-dark btn-sm" type="button"
+                                    ng-disabled="chooseRoles.length == '0'"
+                                    ng-click="deleteRole();">删除
+                            </button>
+                            <st-targettree ng-disabled="chooseRoles.length == '0'"></st-targettree>
+                            <button ng-show="orgNo && orgFlag" class="btn btn-dark btn-sm" type="button"
+                                    ng-click="deleteOrgNo()"><span>{{orgName}}</span><span>×</span>
+                            </button>
+
+                        </div>
+                        <div class="input-group">
+                            <a ng-show="orgNo && OrgTreeDivIsOpened"
+                               onmouseover="style.backgroundColor='#CCFF99'"
+                               onmouseout="style.backgroundColor='#AAFFEE'"
+                               style="cursor: pointer; color: white; background-color:#AAFFEE;padding: 5px 10px;line-height: 1.5;float:left;margin-left: 20px;"
+                               ng-click="deleteOrgNo()"><span>{{orgName}}</span><span>×</span></a>
+                            <input type="text" style="width: 200px;float: right;" class="input-sm form-control"
+                                   placeholder="请输入关键词" ng-model="keyword">
+                            <span class="input-group-btn">
 							<button class="btn btn-sm btn-default" type="button" ng-click="searchWithName()">搜索</button>
 						</span>
-						</div>
-					</div>
+                        </div>
+                    </div>
 
-					<div class="pane" style="padding-right: 0 !important;">
-						<div class="hbox hbox-auto-xs hbox-auto-sm">
-							<div id="myTabContent" class="tab-content">
+                    <div class="pane" style="padding-right: 0 !important;">
+                        <div class="hbox hbox-auto-xs hbox-auto-sm">
+                            <div id="myTabContent" class="tab-content">
 
 
-								<div class="table-responsive" show-scroll>
-									<table class="table table-striped b-t b-light">
-										<thead>
-										<tr>
-											<th style="width: 30px;"><label class="i-checks m-b-bone">
-												<input type="checkbox" ng-model="master"
-													   ng-click="chooseAll(master)"> <i></i>
-											</label></th>
-											<th>序号</th>
-											<th>角色名称</th>
-											<th>说明</th>
-											<th>操作</th>
-										</tr>
-										</thead>
-										<tr ng-repeat="role in roles"
-											onmouseover="style.backgroundColor='#F2F5F6'"
-											onmouseout="style.backgroundColor='#FFFFFF'"
-											style="cursor: pointer;" ng-click="loadCodeDetails(sort)">
-											<td><label class="i-checks m-b-bone"><input
-													ng-model="chk" ng-click="choose(chk,role,$index)"
-													type="checkbox" ng-checked="master" name="test[]"><i></i>
-											</label></td>
-											<td>{{$index+1}}</td>
-											<td>{{role.name}}</td>
-											<td>{{role.description}}</td>
-											<td>
-												<a class="fa fa-times fa-fw" title="删除" ng-click="deleteRole(role.roleId)"></a>
-											</td>
-										</tr>
-									</table>
-								</div>
-								<footer class="panel-footer" style="padding-bottom: 0">
-									<div class="row">
-										<div class="col-sm-2 hidden-xs">
-										</div>
-										<div class="col-sm-4 text-center">
-											<small class="text-muted inline m-t-sm m-b-sm">第{{currentPage}}页
-												共{{totalItems}}个
-											</small>
-										</div>
-										<div class="col-sm-6 text-right text-center-xs">
-											<pagination
-													boundary-links="true"
-													total-items="totalItems"
-													ng-model="currentPage"
-													ng-change="pageChanged()"
-													max-size="maxSize"
-													rotate="false"
-													class="pagination-sm m-t-none m-b"
-													previous-text="&lsaquo;"
-													next-text="&rsaquo;"
-													first-text="&laquo;"
-													last-text="&raquo;">
-											</pagination>
-										</div>
-									</div>
-								</footer>
+                                <div class="table-responsive" show-scroll>
+                                    <table class="table table-striped b-t b-light">
+                                        <thead>
+                                        <tr>
+                                            <th style="width: 30px;"><label class="i-checks m-b-bone">
+                                                <input type="checkbox" ng-model="master"
+                                                       ng-click="chooseAll(master)"> <i></i>
+                                            </label></th>
+                                            <th>序号</th>
+                                            <th>角色名称</th>
+                                            <th>说明</th>
+                                            <th>操作</th>
+                                        </tr>
+                                        </thead>
+                                        <tr ng-repeat="role in roles"
+                                            onmouseover="style.backgroundColor='#F2F5F6'"
+                                            onmouseout="style.backgroundColor='#FFFFFF'"
+                                            style="cursor: pointer;" ng-click="loadCodeDetails(sort)">
+                                            <td><label class="i-checks m-b-bone"><input
+                                                    ng-model="chk" ng-click="choose(chk,role,$index)"
+                                                    type="checkbox" ng-checked="master" name="test[]"><i></i>
+                                            </label></td>
+                                            <td>{{$index+1}}</td>
+                                            <td>{{role.name}}</td>
+                                            <td>{{role.description}}</td>
+                                            <td>
+                                                <a class="fa fa-pencil-square fa-fw" title="编辑人员"
+                                                   ng-click="editUser(role.roleId)"></a>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <footer class="panel-footer" style="padding-bottom: 0">
+                                    <div class="row">
+                                        <div class="col-sm-2 hidden-xs">
+                                        </div>
+                                        <div class="col-sm-4 text-center">
+                                            <small class="text-muted inline m-t-sm m-b-sm">第{{currentPage}}页
+                                                共{{totalItems}}个
+                                            </small>
+                                        </div>
+                                        <div class="col-sm-6 text-right text-center-xs">
+                                            <pagination
+                                                    boundary-links="true"
+                                                    total-items="totalItems"
+                                                    ng-model="currentPage"
+                                                    ng-change="pageChanged()"
+                                                    max-size="maxSize"
+                                                    rotate="false"
+                                                    class="pagination-sm m-t-none m-b"
+                                                    previous-text="&lsaquo;"
+                                                    next-text="&rsaquo;"
+                                                    first-text="&laquo;"
+                                                    last-text="&raquo;">
+                                            </pagination>
+                                        </div>
+                                    </div>
+                                </footer>
 
-								<!-- 第一个标签页 -->
-								<!--<div class="tab-pane fade in active" id="roleinfo">-->
-									<!--<div class="vbox">-->
-										<!--<form name="form">-->
-											<!--<div class="form-group">-->
-												<!--<label>名称</label> <input type="text" class="form-control"-->
-													<!--placeholder="请输入2~10位字符" ng-model="role.name"-->
-													<!--ng-minlength="2" ng-maxlength="10" required>-->
-											<!--</div>-->
-											<!--<div class="form-group">-->
-												<!--<label>描述</label>-->
-												<!--<textarea class="form-control" rows="6"-->
-													<!--placeholder="请输入描述信息，至少2位" ng-model="role.description"-->
-													<!--ng-minlength="2" required></textarea>-->
-											<!--</div>-->
-											<!--<div class="checkbox">-->
-												<!--<button class="btn btn-dark" ng-disabled="form.$invalid"-->
-													<!--ng-click="saveRole()">提交</button>-->
-											<!--</div>-->
-										<!--</form>-->
-									<!--</div>-->
-								<!--</div>-->
-								<!--&lt;!&ndash; 第2个标签页 &ndash;&gt;-->
-								<!--<div class="tab-pane fade" id="rolepersonnel">-->
-									<!--<div class="vbox">-->
-										<!--<div class="row wrapper-xs">-->
-											<!--<div class="col-sm-5 m-b-xs">-->
-												<!--<span>-->
-													<!--<button class="btn btn-dark" ng-disabled="roleId==null"-->
-														<!--ng-click="open('','user')">添加人员</button>-->
-												<!--</span>-->
-											<!--</div>-->
-										<!--</div>-->
-										<!--<div class="table-responsive ">-->
-											<!--<table class="table b-t table-bordered   b-light">-->
-												<!--<thead>-->
-													<!--<tr>-->
-														<!--<th>序号</th>-->
-														<!--<th>邮箱</th>-->
-														<!--<th>姓名</th>-->
-														<!--<th>操作</th>-->
-													<!--</tr>-->
-												<!--</thead>-->
-												<!--<tbody>-->
-													<!--<tr ng-repeat="item in role_user"-->
-														<!--onmouseover="style.backgroundColor='#F2F5F6'"-->
-														<!--onmouseout="style.backgroundColor='#FFFFFF'"-->
-														<!--style="cursor: pointer">-->
-														<!--<td>{{$index+1}}</td>-->
-														<!--<td>{{item.userEmail}}</td>-->
-														<!--<td>{{item.userName}}</td>-->
-														<!--<td><a class="fa fa-times fa-fw"-->
-															<!--ng-click="deleteUser($index)"></a></td>-->
-													<!--</tr>-->
-												<!--</tbody>-->
-											<!--</table>-->
-										<!--</div>-->
-										<!--<footer class="panel-footer" style="padding-bottom: 0">-->
-											<!--<div class="row">-->
-												<!--<div class="col-sm-3 text-center">-->
-													<!--<small class="text-muted inline m-t-sm m-b-sm">-->
-														<!--第{{currentPage}}页 共{{totalItems}}个 </small>-->
-												<!--</div>-->
-												<!--<div class="col-sm-9 text-right text-center-xs">-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-													<!--<pagination boundary-links="true" total-items="totalItems"-->
-														<!--ng-model="currentPage"-->
-														<!--ng-change="pageChanged(currentPage)" max-size="maxSize"-->
-														<!--rotate="false" class="pagination-sm m-t-none m-b"-->
-														<!--previous-text="&lsaquo;" next-text="&rsaquo;"-->
-														<!--first-text="&laquo;" last-text="&raquo;"> </pagination>-->
+            </div>
+        </div>
+        <div ng-show="!isShowIndex" class="hbox hbox-auto-xs hbox-auto-sm">
+            <div class="vbox">
+                <div class="row wrapper-xs">
+                    <div class="col-sm-9 m-b-xs">
+                        <span>
+                        <button class="btn btn-dark" ng-disabled="roleId==null"
+                                ng-click="open('','user')">添加人员
+                        </button>
+                        </span>
 
-												<!--</div>-->
-											<!--</div>-->
-										<!--</footer>-->
 
-									<!--</div>-->
-								<!--</div>-->
-								<!--&lt;!&ndash; 第3个标签页 &ndash;&gt;-->
-								<!--<div class="tab-pane fade" id="Rolefunctions"-->
-									<!--style="overflow-y: auto; overflow-x: hidden;">-->
-									<!--<div class="row" style="padding-left: 20px;">-->
-										<!--<div ng-repeat="items in roleFunction">-->
-											<!--<div class="row wrapper-sm">-->
-												<!--<div class="col-sm-12">-->
-													<!--<label class="checkbox-inline i-checks font-bold">-->
-														<!--<input type="checkbox" ng-click="selectAll(items)"-->
-														<!--ng-model="items.selected"><i></i>{{items.text}}-->
-													<!--</label>-->
-												<!--</div>-->
-											<!--</div>-->
-											<!--<div class="row">-->
-												<!--<div class="col-lg-1"></div>-->
-												<!--<div class="col-lg-2" ng-repeat="item in items.funcs">-->
-													<!--<label class="checkbox-inline i-checks"> <input-->
-														<!--type="checkbox" ng-click="select(item,items)"-->
-														<!--ng-model="item.selected"><i></i>{{item.text}}-->
-													<!--</label>-->
-												<!--</div>-->
-											<!--</div>-->
-											<!--<hr>-->
-										<!--</div>-->
-									<!--</div>-->
-									<!--<div class="wrapper-sm checkbox">-->
-										<!--<button class="btn btn-dark" ng-click="saveRoleFun()">-->
-											<!--提交</button>-->
-									<!--</div>-->
-								<!--</div>-->
-							</div>
-						</div>
-					</div>
-				</div>
+                    </div>
+                    <div class="col-sm-3 m-b-xs">
+                            <span>
+                        <button style="float: right;" class="btn btn-dark"
+                                ng-click="returnIndex()">返回
+                        </button>
+                        </span>
+                    </div>
 
-			</div>
-		</div>
-	</div>
-	<!-- /.modal -->
+                </div>
+                <div class="table-responsive ">
+                    <table class="table b-t table-bordered   b-light">
+                        <thead>
+                        <tr>
+                            <th>序号</th>
+                            <th>邮箱</th>
+                            <th>姓名</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="item in role_user"
+                            onmouseover="style.backgroundColor='#F2F5F6'"
+                            onmouseout="style.backgroundColor='#FFFFFF'"
+                            style="cursor: pointer">
+                            <td>{{$index+1}}</td>
+                            <td>{{item.userEmail}}</td>
+                            <td>{{item.userName}}</td>
+                            <td><a class="fa fa-times fa-fw"
+                                   ng-click="deleteUser($index)"></a></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <footer class="panel-footer" style="padding-bottom: 0">
+                    <div class="row">
+                        <div class="col-sm-3 text-center">
+                            <small class="text-muted inline m-t-sm m-b-sm">
+                                第{{currentPage}}页 共{{totalItems}}个
+                            </small>
+                        </div>
+                        <div class="col-sm-9 text-right text-center-xs">
+
+                            <pagination boundary-links="true" total-items="totalItems"
+                                        ng-model="currentPage"
+                                        ng-change="pageChanged(currentPage)" max-size="maxSize"
+                                        rotate="false" class="pagination-sm m-t-none m-b"
+                                        previous-text="&lsaquo;" next-text="&rsaquo;"
+                                        first-text="&laquo;" last-text="&raquo;"></pagination>
+
+                        </div>
+                    </div>
+                </footer>
+
+            </div>
+        </div>
+    </div>
+    <!-- /.modal -->
 </div>
 

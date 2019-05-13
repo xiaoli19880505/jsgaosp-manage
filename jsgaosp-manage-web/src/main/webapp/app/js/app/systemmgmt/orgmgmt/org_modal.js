@@ -18,10 +18,11 @@ app.controller('ModalOrgInstanceCtrl', ['$scope', '$modalInstance', '$http', '$s
             $scope.title = '编辑组织';
         } else if ($scope.operateType == "add_department") {
             $scope.orgItem={};
-            $scope.orgItem.pOrgNo=$scope.parentId;
+            $scope.orgItem.pOrgNo=$scope.orgItem.porgNo;
             $scope.title = '新增部门';
         } else if ($scope.operateType == "update_department") {
             $scope.title = '编辑部门';
+            $scope.orgItem.pOrgNo=$scope.orgItem.porgNo;
         }
 
         $scope.updateOrg = function () {

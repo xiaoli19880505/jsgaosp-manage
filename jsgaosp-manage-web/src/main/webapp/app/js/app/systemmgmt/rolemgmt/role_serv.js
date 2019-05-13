@@ -18,6 +18,13 @@ angular.module('app')
                     type:"getRoleList"
                 }).$promise;
             },
+            saveRoleOp: function (data,role) {
+                return res.save({
+                    data:data,
+                    role:role,
+                    type:"setRoleOp"
+                }).$promise;
+            },
             delete: function (roleId) {
                 return res.delete({
                     roleId: roleId
@@ -37,12 +44,19 @@ angular.module('app')
     .factory('SystemRoleUserService', ['res', 'GG', function (res, GG) {
         var res = res(GG.BASE + '/system/role_user/:type');
         var service = {
-            get: function (roleId, query,  page, size) {
+            get: function (roleId, keyword, page) {
                 return res.get({
                     roleId: roleId,
-                    query: query,
-                    page: page - 1,
-                    size: size
+                    keyword:keyword,
+                    page: page
+                }).$promise;
+            },
+            getrUserListNotInThisRole: function (roleId, keyword,  page) {
+                return res.get({
+                    roleId: roleId,
+                    keyword:keyword,
+                    page: page,
+                    type:"getrUserListNotInThisRole"
                 }).$promise;
             },
             countUserByRoleId:function (roleId) {

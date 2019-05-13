@@ -12,10 +12,15 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.britecloud.marketingcloud.console.common.ResponseResult;
+import com.britecloud.marketingcloud.console.configuration.OperationLogAnn;
 import com.britecloud.marketingcloud.console.util.ResultUtil;
 import com.britecloud.marketingcloud.domain.PageDataResult;
+import com.britecloud.marketingcloud.model.BcRoleOp;
+import com.britecloud.marketingcloud.service.BcRoleOpService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -43,6 +48,9 @@ public class SysRoleMgmtAct {
     @Autowired
     public SysRoleMgmtService sysRoleMgmtService;
 
+    @Autowired
+    public BcRoleOpService bcRoleOpService;
+
     @RequestMapping(value = "getRoleList",method = RequestMethod.GET)
     @ResponseBody
     public PageDataResult<BcRole> get(HttpServletRequest request, String orgNo, String keyword, int currentPage ) throws Exception {
@@ -55,10 +63,44 @@ public class SysRoleMgmtAct {
         return sysRoleMgmtService.query(paramMap);
     }
 
+    @RequestMapping(value = "getRoleOpList",method = RequestMethod.GET)
+    @ResponseBody
+    public List<BcRoleOp> getRoleOpList(String roleId ) throws Exception {
+        return bcRoleOpService.getRoleOpList(roleId);
+    }
+
+
+
+    public void  setRoleOp(String data ,String  role )  {
+        Map map=new HashMap();
+        JSONObject obj= JSON.parseObject(role);
+        map.put("role",role);
+        map.put("data",data);
+         bcRoleOpService.setRoleOp(map);
+    }
 
     @RequestMapping(method = RequestMethod.POST)
     @ResponseBody
-    public ResponseResult  save(HttpServletRequest request,BcRole role) {
+    public ResponseResult  save(HttpServletRequest request,BcRole bcRole) {
+        ResponseResult res=null;
+        String type=request.getParameter("type");
+        String data=request.getParameter("data");
+        String roleStr=request.getParameter("role");
+        if("setRoleOp".equals(type)){
+            setRoleOp(data,roleStr);
+        }else{
+//            net.sf.json.JSONObject obj=  net.sf.json.JSONObject.fromObject(roleStr);
+//            BcRole role= (BcRole)net.sf.json.JSONObject.toBean(obj,BcRole.class);
+            res= saveRole(request,bcRole);
+        }
+        return  res;
+    }
+
+
+
+
+    public ResponseResult  saveRole(HttpServletRequest request,BcRole role) {
+
     	BcUser user = SessionUtils.getCurrentUser(request);
         if(user == null){
             return ResultUtil.error("10005","未登录");
@@ -90,13 +132,30 @@ public class SysRoleMgmtAct {
     }
 
 
-
-    @RequestMapping(value = "getAuthority",method = RequestMethod.GET)
+    @OperationLogAnn("根据角色编号获得对应的按钮权限")
+    @RequestMapping(value = "getPermByRoleId",method = RequestMethod.GET)
     @ResponseBody
-    public String getAuthority(HttpServletRequest request) throws Exception {
-        String list=" [{'stTarId':99152,'pid':-1,'name':'医疗质量','code':'ylzl','desc':null,'avg':null,'unit':null,'status':null,'type':'01','index':1,'children':[{'stTarId':99154,'pid':99152,'name':'药占比','code':'yzb','desc':'医院的药占比','avg':2.1,'unit':'%','status':'02','type':'02','index':2,'children':null,'label':'药占比','iconCls':'tree-icon tree-file '},{'stTarId':99153,'pid':99152,'name':'抗生素使用率','code':'ksssyl','desc':'医院的抗生素使用率','avg':2.3,'unit':'%','status':'02','type':'02','index':3,'children':null,'label':'抗生素使用率','iconCls':'tree-icon tree-file '}],'label':'医疗质量','iconCls':'tree-icon tree-folder tree-folder-open'},{'stTarId':98977,'pid':-1,'name':'绩效','code':'jx','desc':null,'avg':null,'unit':null,'status':'','type':'01','index':2,'children':[{'stTarId':98978,'pid':98977,'name':'岗位工作量','code':'gwgzl','desc':null,'avg':null,'unit':null,'status':'','type':'01','index':1,'children':[{'stTarId':100353,'pid':98978,'name':'医保控费','code':'ybkf','desc':'医院的医保控费用','avg':20.6,'unit':'万元','status':'01','type':'02','index':2,'children':null,'label':'医保控费','iconCls':'tree-icon tree-file '},{'stTarId':99020,'pid':98978,'name':'巡房次数','code':'xfcs','desc':'每天一个护士的巡房次数','avg':3.0,'unit':'次','status':'02','type':'02','index':2,'children':null,'label':'巡房次数','iconCls':'tree-icon tree-file '}],'label':'岗位工作量','iconCls':'tree-icon tree-folder tree-folder-open'}],'label':'绩效','iconCls':'tree-icon tree-folder tree-folder-open'},{'stTarId':100351,'pid':-1,'name':'目标','code':'mb','desc':null,'avg':null,'unit':null,'status':null,'type':'01','index':3,'children':[{'stTarId':100352,'pid':100351,'name':'手术室使用率','code':'ssssyl','desc':'医院的手术室使用率','avg':80.0,'unit':'%','status':'02','type':'02','index':1,'children':null,'label':'手术室使用率','iconCls':'tree-icon tree-file '},{'stTarId':98979,'pid':100351,'name':'注射例数','code':'zsls','desc':'打针','avg':2000.0,'unit':'例','status':'02','type':'02','index':2,'children':null,'label':'注射例数','iconCls':'tree-icon tree-file '}],'label':'目标','iconCls':'tree-icon tree-folder tree-folder-open'},{'stTarId':101863,'pid':-1,'name':'住院分析','code':'zyfx','desc':null,'avg':null,'unit':null,'status':null,'type':'01','index':4,'children':[{'stTarId':101864,'pid':101863,'name':'住院收入','code':'zysr','desc':'住院收入','avg':40.0,'unit':'万元','status':'02','type':'02','index':1,'children':null,'label':'住院收入','iconCls':'tree-icon tree-file '},{'stTarId':101865,'pid':101863,'name':'住院人次','code':'zyrc','desc':'住院人次','avg':200.0,'unit':'人','status':'02','type':'02','index':2,'children':null,'label':'住院人次','iconCls':'tree-icon tree-file '}],'label':'住院分析','iconCls':'tree-icon tree-folder tree-folder-open'}]";
-        JSONArray arr=JSONArray.parseArray(list);
-        return arr.toString();
+    public JSONArray getAuthority(HttpServletRequest request,String roleIds) throws Exception {
+        BcUser user = SessionUtils.getCurrentUser(request);
+//        if(user == null){
+//            return ResultUtil.error("10005","未登录");
+//        }
+
+//            BcRole bcRole=sysRoleMgmtService.getRoleByUserId(roleId);
+
+
+            String [] roleList=roleIds.split(",");
+        JSONArray arr=new JSONArray();
+        for(int i=0;i<roleList.length;i++){
+            List<BcRoleOp> list=bcRoleOpService.getRoleOpList(roleList[i]);
+            for(int j=0;j<list.size();j++){
+                arr.add(list.get(j).getOpCode());
+            }
+        }
+
+
+        return arr;
+
     }
 
 }

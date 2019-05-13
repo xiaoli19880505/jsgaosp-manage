@@ -23,4 +23,5 @@ public interface SysRoleJdbcDao {
 	BcRole get(String roleId);
 	BcRole getRoleByUserId(String userId);
 	void initRole(String companyId);
+
 }

@@ -27,9 +27,9 @@
                     <div class="cell-inner">
                         <div class="padder">
                             <div class="m-b">
-                                <button type="button" ng-click="add_a_org()" class="btn btn-sm btn-info">新增</button>
-                                <button type="button" ng-click="update_a_org()" class="btn btn-sm btn-info">编辑</button>
-                                <button type="button" ng-click="delete_a_org()" class="btn btn-sm btn-danger">删除
+                                <button buttonpermission-Check permissioncode="org_create"  ng-click="add_a_org()" class="btn btn-sm btn-info">新增</button>
+                                <button buttonpermission-Check permissioncode="org_update" type="button" ng-click="update_a_org()" class="btn btn-sm btn-info">编辑</button>
+                                <button buttonpermission-Check permissioncode="org_delete" type="button" ng-click="delete_a_org()" class="btn btn-sm btn-danger">删除
                                 </button>
                                 <!--<button type="button" ng-click="synchronous_a_org()" class="btn btn-sm btn-success">同步</button>-->
                             </div>

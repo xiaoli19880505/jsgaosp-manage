@@ -15,55 +15,55 @@ angular.module('app').constant('GG', {
 	sysadmin:'ADMIN',//系统管理员
 
 	allPerms:[{name:"应用管理", id:"5", pid:"-1",
-		children:[{name:"应用版本管理", id:"5-1", pid:"1",
+		children:[{name:"应用版本管理", id:"5-0", pid:"1",
 			children:[
-				{name:"新增", id:"111", pid:"5-1", children:null},
-				{name:"编辑", id:"112", pid:"5-1", children:null},
-				{name:"删除", id:"113", pid:"5-1", children:null},
-				{name:"审核", id:"114", pid:"5-1", children:null},
-				{name:"版本管理", id:"115", pid:"5-1", children:null}
+				{name:"新增",code:'create', id:"5-1:111", pid:"5-0", children:null},
+				{name:"编辑", code:'update',id:"5-1:112", pid:"5-0", children:null},
+				{name:"删除", code:'delete',id:"5-1:113", pid:"5-0", children:null},
+				{name:"审核", code:"approve",id:"5-1:114", pid:"5-0", children:null},
+				{name:"版本管理",code:"version_contol", id:"5-1:115", pid:"5-0", children:null}
 			]
 		}]
 	},{name:"系统管理", id:"8", pid:"-1",
 		children:[{name:"组织管理", id:"8-1", pid:"2",
 			children:[
-				{name:"新增组织", id:"211", pid:"8-1", children:null},
-				{name:"编辑组织", id:"212", pid:"8-1", children:null},
-				{name:"删除组织", id:"213", pid:"8-1", children:null},
-				{name:"新增部门", id:"214", pid:"8-1", children:null},
-				{name:"编辑部门", id:"215", pid:"8-1", children:null},
-				{name:"删除部门", id:"216", pid:"8-1", children:null}
+				{name:"新增组织",code:"org_create",id:"8-1:211", pid:"8-1", children:null},
+				{name:"编辑组织",code:"org_update",id:"8-1:212", pid:"8-1", children:null},
+				{name:"删除组织",code:"org_delete",id:"8-1:213", pid:"8-1", children:null},
+				{name:"新增部门",code:"department_create",id:"8-1:214", pid:"8-1", children:null},
+				{name:"编辑部门",code:"department_update",iid:"8-1:215", pid:"8-1", children:null},
+				{name:"删除部门",code:"department_delete",iid:"8-1:216", pid:"8-1", children:null}
 				]
 		},{name:"账号管理", id:"8-2", pid:"2",
 			children:[
-				{name:"新增账号", id:"311", pid:"8-2", children:null},
-				{name:"编辑账号", id:"312", pid:"8-2", children:null},
-				{name:"重置密码", id:"313", pid:"8-2", children:null},
-				{name:"删除账号", id:"314", pid:"8-2", children:null}
+				{name:"新增账号", code:"user_create",id:"8-2:311", pid:"8-2", children:null},
+				{name:"编辑账号", code:"user_update",id:"8-2:312", pid:"8-2", children:null},
+				{name:"重置密码", code:"user_rest_password",id:"8-2:313", pid:"8-2", children:null},
+				{name:"删除账号", code:"user_delete",id:"8-2:314", pid:"8-2", children:null}
 			]
 		},{name:"角色管理", id:"8-3", pid:"2",
 			children:[
-				{name:"新增角色", id:"411", pid:"8-3", children:null},
-				{name:"编辑角色", id:"412", pid:"8-3", children:null},
-				{name:"删除角色", id:"413", pid:"8-3", children:null},
-				{name:"添加角色人员", id:"414", pid:"8-3", children:null},
-				{name:"删除角色人员", id:"415", pid:"8-3", children:null},
-				{name:"角色权限设置", id:"416", pid:"8-3", children:null}
+				{name:"新增角色",code:"role_create",id:"8-3:411", pid:"8-3", children:null},
+				{name:"编辑角色",code:"role_update", id:"8-3:412", pid:"8-3", children:null},
+				{name:"删除角色",code:"role_delete", id:"8-3:413", pid:"8-3", children:null},
+				{name:"添加角色人员",code:"user_role_create", id:"8-3:414", pid:"8-3", children:null},
+				{name:"删除角色人员", code:"user_role_delete",id:"8-3:415", pid:"8-3", children:null},
+				{name:"角色权限设置", code:"role_set_permision",id:"8-3:416", pid:"8-3", children:null}
 			]
 		},{name:"数据字典", id:"8-6", pid:"2",
 			children:[
-				{name:"新增字典", id:"511", pid:"8-6", children:null},
-				{name:"编辑字典", id:"512", pid:"8-6", children:null},
-				{name:"删除字典", id:"513", pid:"8-6", children:null},
-				{name:"新增字典键", id:"514", pid:"8-6", children:null},
-				{name:"编辑字典键", id:"515", pid:"8-6", children:null},
-				{name:"删除字典键", id:"516", pid:"8-6", children:null}
+				{name:"新增字典", code:"code_create",id:"8-6:511", pid:"8-6", children:null},
+				{name:"编辑字典", code:"code_update",id:"8-6:512", pid:"8-6", children:null},
+				{name:"删除字典", code:"code_delete",id:"8-6:513", pid:"8-6", children:null},
+				{name:"新增字典键", code:"code_key_create",id:"8-6:514", pid:"8-6", children:null},
+				{name:"编辑字典键",code:"code_key_update", id:"8-6:515", pid:"8-6", children:null},
+				{name:"删除字典键", icode:"code_key_delete",d:"8-6:516", pid:"8-6", children:null}
 			]
 		},{name:"系统参数", id:"8-4", pid:"2",
 			children:[
-				{name:"新增系统参数", id:"611", pid:"8-4", children:null},
-				{name:"编辑系统参数", id:"612", pid:"8-4", children:null},
-				{name:"删除系统参数", id:"613", pid:"8-4", children:null}
+				{name:"新增系统参数", code:"sys_args_create",id:"8-4:611", pid:"8-4", children:null},
+				{name:"编辑系统参数", code:"sys_args_update",id:"8-4:612", pid:"8-4", children:null},
+				{name:"删除系统参数", code:"sys_args_delete",id:"8-4:613", pid:"8-4", children:null}
 			]}]
 
 	}],
