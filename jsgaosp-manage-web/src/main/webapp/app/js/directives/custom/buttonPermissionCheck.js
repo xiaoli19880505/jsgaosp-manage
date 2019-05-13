@@ -5,7 +5,7 @@
 angular
     .module('app')
     .directive(
-        'buttonpermissionCheck',
+        'button',
         [
             'GG',
             'res',
@@ -13,22 +13,31 @@ angular
             function (GG, res, $modal, $timeout, $sessionStorage) {
 
                 function check(a) {
-                    if (a.permissioncode && GG.roleOp.indexOf(a.permissioncode) == -1) {
-                        return false;
-                    } else {
+                    if(a.permissioncode ){
+                        if (GG.roleOp.indexOf(a.permissioncode) == -1) {
+                            return false;
+                        } else {
+                            return true;
+                        }
+                    }else{
                         return true;
                     }
+
                 }
 
                 return {
-                    restrict: 'A',
+                    restrict: 'E',
                     scope: {
                         permissioncode: '='
                     },
                     replace: true,
+                    // template:function (e, a) {
+                    //    return check(a);
+                    // },
+
                     compile: function (e, a) {
                         if (!check(a)) {
-                            e.css("display", "none");
+                            e.remove();
                         }
                     }
                 }
