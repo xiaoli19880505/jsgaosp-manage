@@ -6,12 +6,15 @@
  * 日期：2015-12-14
  * Copyright 颢云科技 2015 版权所有
  */
-package com.britecloud.marketingcloud.model;
+package com.britecloud.marketingcloud.model.pay;
 
 import lombok.Data;
 
+/**
+ * 支付结束
+ */
 @Data
-public class PayAppConf {
+public class AccessConfPO {
 
     private String id;
     private String appId;
@@ -21,7 +24,10 @@ public class PayAppConf {
     private String serverPublicKey;
     private String serverPrivateKey;
     private String description;
-    private String valid;
+    private String status;
+    private String applicantId;
+    private String payType;
     private String createTime;
+    private String updateTime;
 
 }

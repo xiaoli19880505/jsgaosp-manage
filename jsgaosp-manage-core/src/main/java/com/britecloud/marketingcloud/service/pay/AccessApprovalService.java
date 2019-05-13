@@ -6,9 +6,10 @@
  * 日期：2015-12-14
  * Copyright 颢云科技 2015 版权所有
  */
-package com.britecloud.marketingcloud.service;
+package com.britecloud.marketingcloud.service.pay;
 
-import com.britecloud.marketingcloud.model.PayAppConf;
+import com.britecloud.marketingcloud.model.pay.AccessApprovalPO;
+import com.britecloud.marketingcloud.model.pay.AccessClientInfoPO;
 
 import java.util.Map;
 
@@ -21,14 +22,14 @@ import java.util.Map;
  * Copyright 颢云科技 2015
  * 版权所有
  */
-public interface PayAppConfService {
-    void createPayAppConf(PayAppConf payAppConf);
+public interface AccessApprovalService {
+    void create(AccessApprovalPO accessInfo);
 
-    void updatePayAppConf(PayAppConf user);
+    void update(AccessApprovalPO accessInfo);
 
-    void deletePayAppConf(String id);
+    void delete(String id);
 
-    PayAppConf getPayAppConf(String id);
+    AccessApprovalPO get(String id);
 
-    Map listPayConf(Map params);
+    Map list(Map params);
 }

@@ -1,0 +1,41 @@
+<style>
+    .help-block {
+        color: #F05050;
+        margin-bottom: 0px;
+        font-weight: bold;
+        font-style: oblique;
+    }
+</style>
+<div class="modal-dialog" style="height: 100%;margin: -1px;padding: -1px;">
+    <div class="modal-content">
+        <div class="modal-header"
+             style="background: #000000; color: #ffffff;">
+            <button type="button" class="close" data-dismiss="modal"
+                    aria-label="Close"></button>
+            <h4 class="modal-title">查看公钥</h4>
+        </div>
+
+        <div class="modal-body">
+            <form name="payConfForm" class="form-validation form-horizontal" ng-submit="submitForm(payConfForm.$valid)"
+                  novalidate>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">appId</label>
+                    <div class="col-sm-10">
+                        <textarea class="form-control" readonly ng-model="accessConf.appId" ng-minlength="2" required></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">公钥</label>
+                    <div class="col-sm-10">
+                        <textarea class="form-control" readonly ng-model="accessConf.serverPublicKey" rows="6"
+                                  required></textarea>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="reset" class="btn btn-dark" ng-click="cancel()">取消</button>
+            </button>
+        </div>
+    </div>
+</div>

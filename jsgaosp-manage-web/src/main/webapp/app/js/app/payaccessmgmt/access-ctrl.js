@@ -3,8 +3,8 @@
 /* Controllers */
 // hospital_people controller
 app.controller('PayConfManagerController',
-    ['$scope', '$http', '$state', '$modal', '$stateParams', '$timeout', 'modalServ', 'PayAppConfService', 'GG',
-        function ($scope, $http, $state, $modal, $stateParams, $timeout, modalServ, PayAppConfService, GG) {
+    ['$scope', '$http', '$state', '$modal', '$stateParams', '$timeout', 'modalServ', 'PayAccessConfService', 'GG',
+        function ($scope, $http, $state, $modal, $stateParams, $timeout, modalServ, PayAccessConfService, GG) {
 
             $scope.totalItems = 100;
             $scope.currentPage = 1;
@@ -19,27 +19,23 @@ app.controller('PayConfManagerController',
             };
 
             $scope.loadPayConfs = function () {
-                PayAppConfService.listPayConf($scope.currentPage).then(function (data) {
-                    $scope.lisPayConf = data.listPayConf;
+                PayAccessConfService.listAccessConf($scope.currentPage,$scope.businessName).then(function (data) {
+                    $scope.lisPayConf = data.list;
                     $scope.totalItems = data.totalCount;
                     $scope.currentPage = data.page;
                     $scope.choosePayConfs = [];
                 })
             }
-            $scope.search = function () {
-                $scope.loadPayConfs();
-            }
 //新增
             $scope.open = function (size, type) {
                 var modalInstance = $modal.open({
-                    templateUrl: 'tpl/systemmgmt/payconfmgmt/pay_conf_modal.html',
+                    templateUrl: 'tpl/payaccessmgmt/access_conf_modal.html',
                     controller: 'ModalPayConfInstanceCtrl',
                     size: size,
                     backdrop: 'static',
                     resolve: {
                         items: function () {
-                            var user = {};
-                            $scope.items = [type, user, $scope.companyId];
+                            $scope.items = [type];
                             return $scope.items;
                         }
                     }
@@ -56,8 +52,25 @@ app.controller('PayConfManagerController',
 
 
             $scope.loadPayConfs();
+            //系统类型
+            $scope.accessStatusList=[];
+            $scope.getAccessStatus=function () {
+                $http.get('/common/list_code?codeSortKey=pay_access_status').success(function(data){
+                    if (data.code=="10000") {
+                        $scope.accessStatusList=data.data;
 
+                    }
+                })
+            }
+            $scope.getAccessStatus();
 
+            $scope.$watch('$scope.lisPayConf.status', function (newValue, oldValue) {
+                $scope.loadPayConfs();
+
+            });
+            $scope.searchByName = function () {
+                $scope.loadPayConfs();
+            }
             $scope.choosePayConfs = [];
             $scope.choose = function (chk, item, index) {
                 item.indexs = index;
@@ -84,7 +97,7 @@ app.controller('PayConfManagerController',
                     }).then(function (result) {
                         var result = true;
                         angular.forEach($scope.choosePayConfs, function (item) {
-                            PayAppConfService.deletePayConf(item.id).then(function (data) {
+                            PayAccessConfService.delete(item.id).then(function (data) {
                                 if (!data.result) {
                                     result = false;
                                 }
@@ -112,18 +125,20 @@ app.controller('PayConfManagerController',
                     });
                 }
             }
-//更新
-            $scope.update = function () {
+//审批
+            $scope.approval = function () {
                 if ($scope.choosePayConfs.length == 1) {
-                    var chooseCreate = angular.copy($scope.choosePayConfs[0]);
+                    var approvalPO = angular.copy($scope.choosePayConfs[0]);
                     var modalInstance = $modal.open({
-                        templateUrl: 'tpl/systemmgmt/payconfmgmt/pay_conf_modal.html',
+                        templateUrl: 'tpl/payaccessmgmt/access_approval.html',
                         controller: 'ModalPayConfInstanceCtrl',
                         size: '',
                         backdrop: 'static',
                         resolve: {
                             items: function () {
-                                return ['update', chooseCreate, $scope.companyId];
+                                approvalPO.applyId = approvalPO.id;
+                                approvalPO.applyInfoId = approvalPO.accessId;
+                                return ['approval', approvalPO];
                             }
                         }
                     });
@@ -151,5 +166,46 @@ app.controller('PayConfManagerController',
                     });
                 }
             }
-        }]);
+            //查看公钥
+            $scope.getPublicKey = function (size, type) {
+                if ($scope.choosePayConfs.length == 1) {
+                    var chooseCreate = angular.copy($scope.choosePayConfs[0]);
+
+                    var modalInstance = $modal.open({
+                        templateUrl: 'tpl/payaccessmgmt/access_public_key.html',
+                        controller: 'ModalPayConfInstanceCtrl',
+                        size: size,
+                        backdrop: 'static',
+                        resolve: {
+                            items: function () {
+                                return ['getPublicKey', chooseCreate];
+                            }
+                        }
+                    });
+
+                    modalInstance.result.then(function (items) {
+                        if (items[0]) {
+                            $scope.loadPayConfs();
+                        }
+                    }, function () {
+
+                    });
+                } else {
+                    bootbox.alert({
+                        buttons: {
+                            ok: {
+                                label: '确定',
+                                className: 'btn-info btn-dark'
+                            }
+                        },
+                        message: '请先选择一个操作的数据！',
+                        callback: function () {
+                        },
+                        title: "提示",
+                    });
+                }
+
+            };
+        }])
+;
 

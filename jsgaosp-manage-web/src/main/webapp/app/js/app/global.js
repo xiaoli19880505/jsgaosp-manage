@@ -316,7 +316,7 @@ angular.module('app').constant('GG', {
                 id: '8-7',
                 text: '支付接入',
                 iconCls: 'fa fa-caret-right',
-                sref: 'app.system.payapp'
+                sref: 'app.system.payaccess'
             }]
     }],
     colors: [{

@@ -162,13 +162,13 @@ angular
                     },
                     /**支付应用接入管理 */
                     {
-                        state: 'app.system.payapp',
+                        state: 'app.system.payaccess',
                         url: '/pay_conf',
-                        templateUrl: 'tpl/systemmgmt/payconfmgmt/pay_conf.html',
+                        templateUrl: 'tpl/payaccessmgmt/access_conf.html',
                         deps: [
-                            'js/app/systemmgmt/payconfmgmt/payconf-ctrl.js',
-                            'js/app/systemmgmt/payconfmgmt/payconf-serv.js',
-                            'js/app/systemmgmt/payconfmgmt/payconf-modal.js'
+                            'js/app/payaccessmgmt/access-ctrl.js',
+                            'js/app/payaccessmgmt/access-serv.js',
+                            'js/app/payaccessmgmt/access-modal.js'
 
                         ]
                     },

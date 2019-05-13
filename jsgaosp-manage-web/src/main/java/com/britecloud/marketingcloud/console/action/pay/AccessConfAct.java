@@ -4,12 +4,17 @@
  * @日期      2015-12-7
  * 版权所有     北京颢云信息科技股份有限公司
  */
-package com.britecloud.marketingcloud.console.action;
+package com.britecloud.marketingcloud.console.action.pay;
 
 import com.britecloud.marketingcloud.console.util.DateUtils;
-import com.britecloud.marketingcloud.model.PayAppConf;
-import com.britecloud.marketingcloud.service.PayAppConfService;
+import com.britecloud.marketingcloud.model.pay.AccessApprovalPO;
+import com.britecloud.marketingcloud.model.pay.AccessClientInfoPO;
+import com.britecloud.marketingcloud.model.pay.AccessConfPO;
+import com.britecloud.marketingcloud.model.pay.AccessConfVO;
+import com.britecloud.marketingcloud.service.pay.AccessClientInfoService;
+import com.britecloud.marketingcloud.service.pay.AccessConfService;
 import com.britecloud.marketingcloud.utils.IDUtils;
+import com.britecloud.marketingcloud.utils.UUIDUtils;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.apache.commons.lang.StringUtils;
@@ -26,58 +31,55 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 此类描述的是：支付应用接入管理
+ * 支付应用接入管理
  *
  * @author: ge
  * @version: 2015年8月4日 下午2:13:55
  */
 @Controller
 @RequestMapping("/pay/app")
-public class PayAppConfAct {
+public class AccessConfAct {
     @Autowired
-    private PayAppConfService payAppConfService;
-
+    private AccessConfService accessConfService;
+    @Autowired
+    private AccessClientInfoService accessClientInfoService;
     @RequestMapping(value = "list", method = RequestMethod.GET)
     @ResponseBody
-    public String listPayConf(Integer currentPage) {
+    public String list(Integer currentPage, String businessName) {
         JSONObject jo = new JSONObject();
         List<JSONObject> jsonList = new ArrayList<JSONObject>();
         JSONArray jsonAry = null;
         Map params = new HashMap();
         params.put("page", currentPage);
-        Map result = payAppConfService.listPayConf(params);
-        List<PayAppConf> list = (List<PayAppConf>) result.get("data");
+        params.put("businessName",businessName);
+
+        Map result = accessConfService.list(params);
+        List<AccessConfVO> list = (List<AccessConfVO>) result.get("data");
         jo.put("totalCount", result.get("totalCount"));
         jo.put("totalPage", result.get("totalPage"));
         jo.put("page", currentPage);
-        for (PayAppConf user : list) {
-            JSONObject temp = new JSONObject();
-            temp.put("id", user.getId());
-            temp.put("appId", user.getAppId());
-            temp.put("businessName", user.getBusinessName());
-            temp.put("clientPublicKey", user.getClientPublicKey());
-            temp.put("clientPrivateKey", user.getClientPrivateKey());
-            temp.put("serverPublicKey", user.getServerPublicKey());
-            temp.put("serverPrivateKey", user.getServerPrivateKey());
-            temp.put("description", user.getDescription());
-            temp.put("createTime", user.getCreateTime());
-            jsonList.add(temp);
+        for (AccessConfVO user : list) {
+            jsonList.add(JSONObject.fromObject(user));
         }
         jsonAry = new JSONArray().fromObject(jsonList);
-        jo.put("listPayConf", jsonAry);
+        jo.put("list", jsonAry);
         return jo.toString();
     }
 
-    @RequestMapping(method = RequestMethod.POST)
+    /**
+     * 审批
+     * @param request
+     * @param approvalPO
+     * @return
+     */
+    @RequestMapping(value = "approval", method = RequestMethod.GET)
     @ResponseBody
-    public Map createPayAppConf(HttpServletRequest request, PayAppConf payAppConf) {
+    public Map approval(HttpServletRequest request, AccessApprovalPO approvalPO) {
         Map result = new HashMap();
         try {
-            String userId = IDUtils.getId();
-            payAppConf.setId(userId);
-            payAppConf.setCreateTime(DateUtils.getDateTime());
-            payAppConf.setValid("Y");
-            payAppConfService.createPayAppConf(payAppConf);
+            approvalPO.setId(IDUtils.getId());
+            approvalPO.setApprovalTime(DateUtils.getDateTime());
+            accessConfService.approval(approvalPO);
             result.put("result", true);
         } catch (Exception e) {
             e.printStackTrace();
@@ -85,13 +87,31 @@ public class PayAppConfAct {
         }
         return result;
     }
-
-    @RequestMapping(method = RequestMethod.PUT)
+    @RequestMapping(method = RequestMethod.POST)
     @ResponseBody
-    public Map updatePayAppConf(HttpServletRequest request, PayAppConf payAppConf) {
+    public Map create(HttpServletRequest request, AccessConfPO payAccessPO, AccessClientInfoPO accessClientInfoPO) {
         Map result = new HashMap();
         try {
-            payAppConfService.updatePayAppConf(payAppConf);
+            String id = IDUtils.getId();
+            payAccessPO.setId(id);
+            payAccessPO.setAppId(UUIDUtils.generateUUID());
+            accessConfService.create(payAccessPO);
+            accessClientInfoPO.setId(IDUtils.getId());
+            accessClientInfoPO.setAccessId(id);
+            accessClientInfoService.create(accessClientInfoPO);
+            result.put("result", true);
+        } catch (Exception e) {
+            e.printStackTrace();
+            result.put("result", false);
+        }
+        return result;
+    }
+    @RequestMapping(method = RequestMethod.PUT)
+    @ResponseBody
+    public Map update(HttpServletRequest request, AccessConfPO payAppConf) {
+        Map result = new HashMap();
+        try {
+            accessConfService.update(payAppConf);
             result.put("result", true);
         } catch (Exception e) {
             e.printStackTrace();
@@ -103,10 +123,10 @@ public class PayAppConfAct {
 
     @RequestMapping(method = RequestMethod.DELETE)
     @ResponseBody
-    public Map deletePayAppConf(String id) {
+    public Map delete(String id) {
         Map result = new HashMap();
         try {
-            payAppConfService.deletePayAppConf(id);
+            accessConfService.delete(id);
             result.put("result", true);
         } catch (Exception e) {
             e.printStackTrace();
@@ -116,16 +136,16 @@ public class PayAppConfAct {
     }
 
     /**
-     * 根据id获取用户信息
+     * 根据id获取信息
      *
      * @param id
      * @return
      */
     @RequestMapping(value = "getInfo", method = RequestMethod.GET)
     @ResponseBody
-    public String getUserInfo(String id) {
+    public String getInfo(String id) {
         if (StringUtils.isNotBlank(id)) {
-            PayAppConf payAppConf = payAppConfService.getPayAppConf(id);
+            AccessConfPO payAppConf = accessConfService.get(id);
             return payAppConf.toString();
         }
         return "";

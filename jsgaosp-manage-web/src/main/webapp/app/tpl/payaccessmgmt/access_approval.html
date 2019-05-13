@@ -1,0 +1,50 @@
+<style>
+    .help-block {
+        color: #F05050;
+        margin-bottom: 0px;
+        font-weight: bold;
+        font-style: oblique;
+    }
+</style>
+<div class="modal-dialog" style="height: 100%;margin: -1px;padding: -1px;">
+    <div class="modal-content">
+        <div class="modal-header"
+             style="background: #000000; color: #ffffff;">
+            <button type="button" class="close" data-dismiss="modal"
+                    aria-label="Close"></button>
+            <h4 class="modal-title">{{title}}</h4>
+        </div>
+
+        <div class="modal-body">
+            <form name="approvalForm" class="form-validation form-horizontal" ng-submit="submitForm(approvalForm.$valid)"
+                  novalidate>
+                <div class="form-group" >
+                    <label class="col-sm-2 control-label">审批结果</label>
+                    <div class="col-sm-10">
+                        <input name="applyId"  hidden ng-model="accessConf.applyId">
+                        <input name="applyInfoId" hidden ng-model="accessConf.applyInfoId">
+                        <select class="form-control" name="approvalStatus"  ng-model="accessConf.approvalStatus" >
+                            <option value="0" selected="selected" >通过</option>
+                            <option value="1">不通过</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label"  >审批意见<span style="color:red;">*</span></label>
+                    <div class="col-sm-10" >
+                        <textarea class="form-control"  name="approvalOpinion"
+                                  placeholder="审批意见" ng-model="accessConf.approvalOpinion"
+                                  ng-minlength="2" required></textarea>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="reset" class="btn btn-dark" ng-click="cancel()">取消</button>
+            <button type="submit" class="btn btn-dark" ng-click="submitForm(approvalForm.$valid)">保存
+            </button>
+        </div>
+    </div>
+</div>
