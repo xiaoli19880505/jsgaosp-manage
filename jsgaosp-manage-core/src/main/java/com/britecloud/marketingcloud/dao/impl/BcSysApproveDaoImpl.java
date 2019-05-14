@@ -18,6 +18,7 @@ import com.britecloud.marketingcloud.core.dao.jdbc.BaseJdbcDao;
 import com.britecloud.marketingcloud.dao.BcSysApplicatonDao;
 import com.britecloud.marketingcloud.dao.BcSysApproveDao;
 import com.britecloud.marketingcloud.domain.PageDataResult;
+import com.britecloud.marketingcloud.model.ApplicationEntity;
 import com.britecloud.marketingcloud.model.BcSysApplicationEntity;
 import com.britecloud.marketingcloud.utils.PageUtils;
 import com.britecloud.marketingcloud.utils.UUIDUtils;
@@ -25,56 +26,34 @@ import com.britecloud.marketingcloud.utils.UUIDUtils;
 @Repository
 public class BcSysApproveDaoImpl extends BaseJdbcDao implements BcSysApproveDao {
 
+	
+	
 	@Override
-	public PageDataResult<BcSysApplicationEntity> listApproves(Map params) {
-		PageDataResult<BcSysApplicationEntity> pageData = new PageDataResult<BcSysApplicationEntity>();
-
+	public PageDataResult<ApplicationEntity> listSysApproves(Map params) {
+		PageDataResult<ApplicationEntity> pageData = new PageDataResult<ApplicationEntity>();
 		String sql = loadSQL("listSysApproves", params);
 		Integer totalCount = getNamedParameterJdbcTemplate().queryForInt(getTotalCountString(sql), params);
 		pageData.setTotalCount(totalCount);
 		pageData.setTotalPage(PageUtils.getTotalPage(totalCount));
 
 		sql = getPaginationString(sql, PageUtils.getStartNum((Integer) params.get("page")), PageUtils.pageSize);
-		List<BcSysApplicationEntity> list = getNamedParameterJdbcTemplate().query(sql, params,
-				new BeanPropertyRowMapper(BcSysApplicationEntity.class));
+		List<ApplicationEntity> list = getNamedParameterJdbcTemplate().query(sql, params,
+				new BeanPropertyRowMapper(ApplicationEntity.class));
 		pageData.setList(list);
 		return pageData;
 	}
 
-	@Override
-	public void saveSysArgs(BcSysApplicationEntity args) {
-		args.setId(UUIDUtils.generateUUID());
-		args.setStatus("02");
-		Date date = new Date(); 
-		DateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss"); 
-		args.setCreateDate(format.format(date));
-		String sql = loadSQL("saveSysApplication");
-		SqlParameterSource parameters = new BeanPropertySqlParameterSource(args);
-		getNamedParameterJdbcTemplate().update(sql, parameters);
-	}
+	
 
-	@Override
-	public int existsArgsKey(BcSysApplicationEntity args) {
-		SqlParameterSource parameters = new BeanPropertySqlParameterSource(args);
-		String sql = loadSQL("existsArgsKey");
-		return getNamedParameterJdbcTemplate().queryForInt(sql, parameters);
-	}
-
-	@Override
-	public void updateApprove(BcSysApplicationEntity args) {
-		Date date = new Date(); 
-		DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
-		args.setApprovalDate(format.format(date));
-		String sql = loadSQL("updateApprove");
-		SqlParameterSource parameters = new BeanPropertySqlParameterSource(args);
-		getNamedParameterJdbcTemplate().update(sql, parameters);
-	}
-
-	@Override
-	public void deleteSysApplication(BcSysApplicationEntity args) {
-		String sql = loadSQL("deleteSysApplication");
-		SqlParameterSource parameters = new BeanPropertySqlParameterSource(args);
-		getNamedParameterJdbcTemplate().update(sql, parameters);
+	public void updateAudit(ApplicationEntity args) {
+		Map<String, String> paramMap = new HashMap<String, String>();
+		paramMap.put("id",args.getInfo_id());
+		paramMap.put("approval_status",args.getApproval_status());
+		paramMap.put("working_status",args.getWorking_status());
+		paramMap.put("approval_user_id",args.getApproval_user_id());
+		paramMap.put("approval_opinion",args.getApproval_opinion());
+		String sql = loadSQL("updateAudit");
+		getNamedParameterJdbcTemplate().update(sql, paramMap);
 	}
 
 
