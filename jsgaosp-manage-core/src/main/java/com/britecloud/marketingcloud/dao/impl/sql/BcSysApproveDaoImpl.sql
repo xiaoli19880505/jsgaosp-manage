@@ -60,7 +60,7 @@
 
 
 --------------------------------------------
---updateApprove
+--updateAudit
 update bc_declare_app_info 
 set
    approval_opinion = :approval_opinion,

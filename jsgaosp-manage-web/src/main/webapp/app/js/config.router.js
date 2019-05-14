@@ -190,11 +190,11 @@ angular
                     {
                         state: 'app.system.app_approve',
                         url: '/app_approve',
-                        templateUrl: 'tpl/applicationmgmt/app_approve/app_approve.html',
+                        templateUrl: 'tpl/approve/app_approve.html',
                         deps: [
-                            'js/app/systemmgmt/application/app_approve/approve-ctrl.js',
-                            'js/app/systemmgmt/application/app_approve/approve-serv.js',
-                            'js/app/systemmgmt/application/app_approve/approve-modal.js'
+                            'js/app/approve/approve-ctrl.js',
+                            'js/app/approve/approve-serv.js',
+                            'js/app/approve/approve-modal.js'
 
                         ]
                     },
