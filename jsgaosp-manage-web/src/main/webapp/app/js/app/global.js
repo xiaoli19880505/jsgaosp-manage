@@ -164,7 +164,7 @@ angular.module('app').constant('GG', {
         sref: '#',
         funcs: [{
             id: '5-0',
-            text: '应用版本管理',
+            text: '应用管理',
             iconCls: 'fa fa-caret-right',
             sref: 'app.system.application'
         },
