@@ -6,6 +6,7 @@ import lombok.Data;
 public class BcOrg {
 
     private String orgNo;
+    private String orgCode;
     private String orgName;
     private String pOrgNo;
     private String status;

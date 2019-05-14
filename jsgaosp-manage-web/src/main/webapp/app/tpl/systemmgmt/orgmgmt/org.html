@@ -14,45 +14,55 @@
 <div class="hbox hbox-auto-xs bg-light"
      ng-init="app.settings.asideFixed = true;app.settings.asideDock = false; app.settings.container = false; app.hideAside = false; app.hideFooter = true;"
      ng-controller="OrgController">
+
+
+    <orgtree-nav></orgtree-nav>
     <!-- column -->
-    <div class="col w-xl lt b-r">
-        <div class="vbox">
-            <div class="wrapper">
-                <span class="h4">组织管理</span>
-            </div>
-            <div class="wrapper b-t m-t-xxs">
-            </div>
-            <div class="row-row">
-                <div class="cell scrollable hover">
-                    <div class="cell-inner">
-                        <div class="padder">
-                            <div class="m-b">
-                                <button  permissioncode="org_create"  ng-click="add_a_org()" class="btn btn-sm btn-info">新增</button>
-                                <button  permissioncode="org_update" type="button" ng-click="update_a_org()" class="btn btn-sm btn-info">编辑</button>
-                                <button  permissioncode="org_delete" type="button" ng-click="delete_a_org()" class="btn btn-sm btn-danger">删除
-                                </button>
-                                <!--<button type="button" ng-click="synchronous_a_org()" class="btn btn-sm btn-success">同步</button>-->
-                            </div>
-                            <div class="b-a bg-light dk r r-2x">
-                                <span ng-if="doing_async">...loading...</span>
-                                <abn-tree
-                                        tree-data="org"
-                                        tree-control="my_tree"
-                                        on-select="getOrg(branch)"
-                                        expand-level="2"
-                                        initial-selection="新城大厦机房"
-                                        icon-leaf="fa fa-hospital-o"
-                                        icon-expand="fa fa-plus"
-                                        icon-collapse="fa fa-minus"
-                                >
-                                </abn-tree>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <!--<div class="col w-xl lt b-r">-->
+        <!--<div class="vbox">-->
+            <!--<div class="wrapper">-->
+                <!--<span class="h4">组织管理</span>-->
+            <!--</div>-->
+            <!--<div class="wrapper b-t m-t-xxs">-->
+            <!--</div>-->
+            <!--<div class="row-row" style="width: 200px">-->
+                <!--<div class="cell scrollable hover">-->
+                    <!--<div class="cell-inner">-->
+                        <!--<div class="padder">-->
+                            <!--<div class="m-b">-->
+                                <!--<div class="input-group" ng-show="app.org==null">-->
+                                    <!--<input type="text" class="form-control input-sm" placeholder="搜索"-->
+                                           <!--ng-model="orgNameKey" ng-change="search()"> <span class="input-group-addon input-sm">-->
+					<!--<a class="fa fa-search"></a>-->
+				<!--</span>-->
+                                <!--</div>-->
+                                <!--&lt;!&ndash;<button  permissioncode="org_create"  ng-click="add_a_org()" class="btn btn-sm btn-info">新增</button>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<button  permissioncode="org_update" type="button" ng-click="update_a_org()" class="btn btn-sm btn-info">编辑</button>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<button  permissioncode="org_delete" type="button" ng-click="delete_a_org()" class="btn btn-sm btn-danger">删除&ndash;&gt;-->
+                               <!--&lt;!&ndash;&ndash;&gt;-->
+                                <!--&lt;!&ndash;</button>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<button type="button" ng-click="synchronous_a_org()" class="btn btn-sm btn-success">同步</button>&ndash;&gt;-->
+                            <!--</div>-->
+                            <!--<div class="b-a bg-light dk r r-2x">-->
+                                <!--<span ng-if="doing_async">...loading...</span>-->
+                                <!--<abn-tree-->
+                                        <!--tree-data="org"-->
+                                        <!--tree-control="my_tree"-->
+                                        <!--on-select="getOrg(branch)"-->
+                                        <!--expand-level="2"-->
+                                        <!--initial-selection="新城大厦机房"-->
+                                        <!--icon-leaf="fa fa-hospital-o"-->
+                                        <!--icon-expand="fa fa-plus"-->
+                                        <!--icon-collapse="fa fa-minus"-->
+                                <!--&gt;-->
+                                <!--</abn-tree>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
 
 
     <!--<div class="col w lt b-r">-->
@@ -122,7 +132,7 @@
                                             <td><a class="fa fa-pencil fa-fw m-r-xs" title="编辑"
                                                    ng-click="update_department(department)"></a> <a
                                                     class="fa fa-times fa-fw" title="删除"
-                                                    ng-click="delete_department(department.orgNo,department.orgName)"></a>
+                                                    ng-click="delete_department(department)"></a>
                                             </td>
                                         </tr>
                                         </tbody>

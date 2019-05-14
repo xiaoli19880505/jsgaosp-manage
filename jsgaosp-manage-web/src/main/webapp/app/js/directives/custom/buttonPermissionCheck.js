@@ -1,6 +1,5 @@
 /**
- * 标准指标树
- * <st-targettree></st-targettree>
+ *按钮权限控制
  */
 angular
     .module('app')
@@ -31,10 +30,6 @@ angular
                         permissioncode: '='
                     },
                     replace: true,
-                    // template:function (e, a) {
-                    //    return check(a);
-                    // },
-
                     compile: function (e, a) {
                         if (!check(a)) {
                             e.remove();

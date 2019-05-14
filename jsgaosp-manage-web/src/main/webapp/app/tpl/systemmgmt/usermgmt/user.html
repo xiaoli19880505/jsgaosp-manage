@@ -101,11 +101,10 @@
                                 </label></th>
                                 <th style="width: 80px;">#</th>
                                 <th style="width: 150px;">姓名</th>
-                                <th>类型</th>
                                 <th>账号(邮箱)</th>
                                 <th>办公电话</th>
                                 <th>手机号码</th>
-                                <th>QQ号码</th>
+                                <th>权限操作</th>
 
                             </tr>
                             </thead>
@@ -120,14 +119,11 @@
                                 </label></td>
                                 <td>{{$index+1}}</td>
                                 <td>{{user.userName}}</td>
-                                <td><span ng-if="user.userType == GGsysadmin"><i
-                                        class="fa fa-user"></i>&nbsp;&nbsp;公司管理员</span> <span
-                                        ng-if="user.userType == GGuser"><i
-                                        class="fa icon-user"></i>&nbsp;&nbsp;普通用户</span></td>
                                 <td>{{user.userEmail}}</td>
                                 <td>{{user.userOfficePhone}}</td>
                                 <td>{{user.userMobile}}</td>
-                                <td>{{user.userQq}}</td>
+                                <td><a class="fa fa-pencil fa-fw m-r-xs" title="编辑角色"
+                                       ng-click="update_role(user.userId)"></a></td>
 
                             </tr>
                             </tbody>

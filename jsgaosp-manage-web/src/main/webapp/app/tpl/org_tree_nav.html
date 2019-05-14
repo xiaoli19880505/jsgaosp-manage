@@ -1,28 +1,38 @@
+
 <div class="col w-md lter b-r">
-	<div class="vbox">
-		<div class="wrapper">
-			<div class="h4">所有组织</div>
-		</div>
-		<div class="wrapper b-t m-t-xxs">
-			<div class="input-group" ng-show="app.org==null">
-				<input type="text" class="form-control input-sm" placeholder="搜索"
-					ng-model="orgNameKey" ng-change="search()"> <span class="input-group-addon input-sm">
+    <div class="vbox">
+        <div class="wrapper">
+            <div class="h4">所有组织</div>
+        </div>
+        <div class="wrapper b-t m-t-xxs">
+            <div class="input-group" ng-show="app.org==null">
+                <input type="text" class="form-control input-sm" placeholder="搜索"
+                       ng-model="orgNameKey" ng-change="search()"> <span class="input-group-addon input-sm">
 					<a class="fa fa-search"></a>
 				</span>
-			</div>
-		</div>
-		<div class="row-row">
-			<div class="cell scrollable hover">
-				<div class="cell-inner">
-					<div style="padding: 0 15px 0 15px">
-						<span ng-if="doing_async">...loading...</span>
-						<abn-tree tree-data="orgList" tree-control="my_tree"
-							on-select="changeOrg(branch)" expand-level="2"
-							icon-leaf="fa fa-hospital-o" icon-expand="fa fa-plus"
-							icon-collapse="fa fa-minus"> </abn-tree>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+            </div>
+        </div>
+        <div class="row-row">
+            <div class="cell scrollable">
+                <div class="cell-inner">
+                    <div style="padding: 0 15px 0 15px">
+                        <span ng-if="doing_async">...loading...</span>
+                        <abn-tree tree-data="orgList" tree-control="my_tree"
+                                  on-select="changeOrg(branch)" expand-level="2"
+                                  icon-leaf="fa fa-hospital-o" icon-expand="fa fa-plus"
+                                  icon-collapse="fa fa-minus"> </abn-tree>
+                    </div>
+                    <div></div>
+
+
+                    <div class="control_icon" ng-click="control_tree()"  ng-class="tree_status?'treeHide':'treeShow'"
+                    style="float: right;vertical-align: center;margin-top: 50%;height: 40px;width: 5px;background: #ddd;position: relative;">
+                    <i class="fa" ng-class="tree_status?'collapse':'expand'"
+                    style="top: 50%;position: absolute;margin-top: -7px;">
+                    </i></div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+

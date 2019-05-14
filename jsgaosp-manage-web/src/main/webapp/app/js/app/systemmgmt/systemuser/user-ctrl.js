@@ -7,7 +7,7 @@ app.controller('SystemUserManagerController',
         function ($scope, $http, $state, $modal, $stateParams, $timeout, modalServ, BcUserService, CompanyService, GG) {
 
 
-            $scope.custom = false;
+            $scope.custom = true;
             $scope.orgFlag=false;
             $scope.orgTreeToggle = function () {
                 $scope.custom = !$scope.custom;

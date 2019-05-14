@@ -5,6 +5,10 @@
 angular.module('app').directive('orgtreeNav', [ 'GG', 'res','commonServ', function(GG, res,commonServ) {
 	/** ******tree util********* */
 	var resultNode = [];
+
+
+
+
 	var pNode = null;
 	var treeUtil = {
 		findNode : function(treeData, keyword) {
@@ -48,8 +52,17 @@ angular.module('app').directive('orgtreeNav', [ 'GG', 'res','commonServ', functi
 		replace:true,
 		templateUrl : 'tpl/org_tree_nav.html',
 		controller : function($scope, $element, $attrs,$timeout) {
-			$scope.orgNo = null;
+			//控制树展开或者收起
+			$scope.tree_status=true;
+			$scope.control_tree=function(){
+				console.log(111)
+				if($scope.tree_status){
+					$scope.tree_status=!$scope.tree_status;
 
+				}
+			}
+			$scope.orgNo = null;
+			$scope.doing_async=true;
 			$scope.orgNameKey = "";
 			$scope.search = function() {
 				$scope.loadOrg();
@@ -76,9 +89,9 @@ angular.module('app').directive('orgtreeNav', [ 'GG', 'res','commonServ', functi
 					}else{
 						$scope.orgList=[];
 					}
-					$timeout(function() {
-						 $scope.my_tree.select_firstChild_branch();
-					});
+					// $timeout(function() {
+					// 	 $scope.my_tree.select_firstChild_branch();
+					// });
 				});
 			};
 			$scope.loadOrg();

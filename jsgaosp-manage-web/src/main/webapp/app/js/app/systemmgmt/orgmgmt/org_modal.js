@@ -9,21 +9,33 @@ app.controller('ModalOrgInstanceCtrl', ['$scope', '$modalInstance', '$http', '$s
         $scope.orgItem = items[1];
         $scope.operateType = items[0];
         $scope.parentId=$scope.orgItem.orgNo;
+        $scope.isUpdate=false;
+        $scope.orgType=$scope.orgItem.orgType;
+        $scope.title = '新增';
 
-        if ($scope.operateType == "add_org") {
-            $scope.orgItem={};
-            $scope.orgItem.pOrgNo=$scope.parentId;
-            $scope.title = '新增组织';
-        } else if ($scope.operateType == "update_org") {
-            $scope.title = '编辑组织';
-        } else if ($scope.operateType == "add_department") {
-            $scope.orgItem={};
+
+        if ($scope.operateType == "update_org") {
+            $scope.title = '编辑公安组织';
+            $scope.isUpdate=true;
+        }else if ($scope.operateType == "update_department") {
+            $scope.title = '编辑支队';
             $scope.orgItem.pOrgNo=$scope.orgItem.porgNo;
-            $scope.title = '新增部门';
-        } else if ($scope.operateType == "update_department") {
-            $scope.title = '编辑部门';
+            $scope.isUpdate=true;
+        }else{
+            $scope.orgItem={};
             $scope.orgItem.pOrgNo=$scope.orgItem.porgNo;
         }
+
+        $scope.$watch('orgItem.orgType', function (newVal, oldVal) {
+            if ($scope.orgItem.orgType=='01' && $scope.operateType != "update_org") {
+                $scope.title = '新增公安组织';
+                $scope.operateType="add_org";
+            }else if($scope.orgItem.orgType=='02' && $scope.operateType == "update_department"){
+                $scope.title = '新增支队';
+                $scope.operateType="add_department";
+            }
+        })
+
 
         $scope.updateOrg = function () {
             if ($scope.operateType == "update_org") {
