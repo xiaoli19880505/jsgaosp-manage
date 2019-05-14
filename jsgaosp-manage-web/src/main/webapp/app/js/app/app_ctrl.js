@@ -2,7 +2,7 @@
  * Created by DK on 2015/8/10.
  */
 angular.module('app')
-    .controller('appCtrl',function ($scope, $translate,res, $localStorage, $window, GG, $state, $http, $modal,$sessionStorage) {
+    .controller('appCtrl',function ($scope, $translate, $localStorage, $window, GG, $state, $http, $modal,$sessionStorage) {
         //http 认证权限
         $scope.pFilter = function (data,usertype) {
             data = data.toString();
@@ -53,27 +53,6 @@ angular.module('app')
                 $scope.app.user = data.user;
                 $scope.app.company = data.company;
                 $scope.app.role = data.role;
-
-
-
-                var roleIds = [];
-                angular.forEach(data.roles,function(item1){
-                    roleIds.push(item1.roleId);
-                })
-
-                var tarRes = res(GG.BASE
-                    + "/system/role/getPermByRoleId");
-                tarRes.get
-                //获取按钮权限
-                tarRes.query({
-                    roleIds:roleIds
-                }).$promise.then(
-                    function (data1) {
-
-                      GG.roleOp=data1;
-                      console.log( GG.roleOp)
-                    }
-                )
             })
             .error(function () {
                 $scope.app.groups = null;

@@ -33,8 +33,4 @@ public interface BcOrgDao {
     int existsOrgName(BcOrg org);
 
     List<BcOrg> getOrgAreaNameList();
-
-    BcOrg queryOrgById(String orgNo);
-
-    List<BcOrg> queryOrgListByPid(String orgNo);
 }

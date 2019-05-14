@@ -40,7 +40,7 @@ angular.module('app').factory('OrgService', ['res', 'GG',
               return res.get ( {
                   currentPage:currentPage,
                     pOrgNo:orgNo,
-                    type:'listByOrgId'
+                    type:'listDepartmentByOrgId'
                 }).$promise;
             },
             addDepatemnt: function (orgItem) {

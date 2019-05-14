@@ -4,12 +4,6 @@ SELECT * FROM bc_org where P_ORG_NO=:pOrgNo
 AND ORG_TYPE='01'
 AND STATUS='1';
 
-
---------------------------------------------
---listOrgWithNoType
-SELECT * FROM bc_org where P_ORG_NO=:pOrgNo
-AND STATUS='1';
-
 --------------------------------------------
 --listDepartByOrgId
 SELECT * FROM bc_org where P_ORG_NO=:pOrgNo
@@ -54,32 +48,14 @@ where org_no=:orgNo
 
 --------------------------------------------
 --getOrgById
-SELECT * from bc_org WHERE  org_no = :orgNo
-and status='1';
+SELECT * from bc_org WHERE  org_no = :orgNo;
 
 --------------------------------------------
 --existsOrgName
-SELECT COUNT(1) from bc_org WHERE org_name=:orgName
-and status='1';
-
---------------------------------------------
---existsChildrenOrgName
-SELECT COUNT(1) from bc_org WHERE org_name=:orgName
-and P_ORG_NO=:pOrgNo
-and status='1';
+SELECT COUNT(1) from bc_org WHERE org_name=:orgName;
 
 --------------------------------------------
 --getOrgByOrgNo
 SELECT * from bc_org WHERE  org_no = :orgNo
 AND STATUS='1';
-
---------------------------------------------
---queryOrgById
-SELECT a.*, b.qr_code_img_url, b.qr_code_url from bc_org a left  join bc_qrcode on a.org_no = b.org_id WHERE  a.org_no = :orgNo
-AND a.STATUS='1' and b.STATUS='1';
-
---------------------------------------------
---queryOrgListByPid
-SELECT a.*, b.qr_code_img_url, b.qr_code_url from bc_org a left  join bc_qrcode on a.org_no = b.org_id WHERE  a.p_org_no = :orgNo
-AND a.STATUS='1' and b.STATUS='1';
 

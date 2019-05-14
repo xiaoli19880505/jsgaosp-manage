@@ -67,7 +67,6 @@ public class BcAreaServiceImpl implements BcAreaService {
                 JSONObject city = JSONObject.fromObject(area);
                 List<BcArea> districtList = bcAreaDao.listArea(area.getAreaNo());
                 city.put("districts",JSONArray.fromObject(districtList)) ;
-                citys.add(city);
             }
             result.put("areaList",citys);
             result.put("code", Constants.RESPONSE_SUCCESS_CODE);

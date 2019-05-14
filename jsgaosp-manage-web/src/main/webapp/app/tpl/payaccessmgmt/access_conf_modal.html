@@ -1,0 +1,111 @@
+<style>
+    .help-block {
+        color: #F05050;
+        margin-bottom: 0px;
+        font-weight: bold;
+        font-style: oblique;
+    }
+</style>
+<div class="modal-dialog" style="height: 100%;margin: -1px;padding: -1px;">
+    <div class="modal-content">
+        <div class="modal-header"
+             style="background: #000000; color: #ffffff;">
+            <button type="button" class="close" data-dismiss="modal"
+                    aria-label="Close"></button>
+            <h4 class="modal-title">{{title}}</h4>
+        </div>
+
+        <div class="modal-body">
+            <form name="payConfForm" class="form-validation form-horizontal" ng-submit="submitForm(payConfForm.$valid)"
+                  novalidate>
+                <div class="form-group" >
+                    <label class="col-sm-2 control-label">业务名称<span style="color:red;">*</span></label>
+                    <div class="col-sm-10">
+                        <input type="text" placeholder="请输入业务系统名称" class="form-control" name="businessName"
+                               ng-model="accessConf.businessName" required >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">单位名称<span style="color:red;">*</span></label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" placeholder="请输入单位名称" name="accessName"
+                               ng-model="accessConf.accessName" required >
+                        <p ng-show="payConfForm.appId.$pristine&& submitted" class="help-block">请输单位名称</p>
+                        <p ng-show="payConfForm.appId.$invalid && !payConfForm.appId.$pristine&& submitted" class="help-block">
+                            请输入单位名称</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">单位编码<span style="color:red;">*</span></label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" placeholder="请输入单位编码" name="orgCode"
+                               ng-model="accessConf.orgCode" required >
+                        <p ng-show="payConfForm.appId.$pristine&& submitted" class="help-block">请输单位编码</p>
+                        <p ng-show="payConfForm.appId.$invalid && !payConfForm.appId.$pristine&& submitted" class="help-block">
+                            请输入单位编码</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">行政区划<span style="color:red;">*</span></label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" placeholder="请输入行政区划" name="area"
+                               ng-model="accessConf.area" required >
+                        <p ng-show="payConfForm.appId.$pristine&& submitted" class="help-block">请输行政区划</p>
+                        <p ng-show="payConfForm.appId.$invalid && !payConfForm.appId.$pristine&& submitted" class="help-block">
+                            请输入行政区划</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">联系人姓名<span style="color:red;">*</span></label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" placeholder="请输入联系人姓名" name="contactsName"
+                               ng-model="accessConf.contactsName" required >
+                        <p ng-show="payConfForm.appId.$pristine&& submitted" class="help-block">请输联系人姓名</p>
+                        <p ng-show="payConfForm.appId.$invalid && !payConfForm.appId.$pristine&& submitted" class="help-block">
+                            请输入联系人姓名</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">联系人电话<span style="color:red;">*</span></label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" placeholder="请输入联系人电话" name="contactsPhone"
+                               ng-model="accessConf.contactsPhone" required >
+                        <p ng-show="payConfForm.appId.$pristine&& submitted" class="help-block">请输联系人电话</p>
+                        <p ng-show="payConfForm.appId.$invalid && !payConfForm.appId.$pristine&& submitted" class="help-block">
+                            请输入联系人电话</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">支付类型<span style="color:red;">*</span></label>
+                    <div class="col-sm-10">
+                        <input name="payType" type="radio" value="0" checked ng-model="accessConf.payType"/>普通费类
+                        <input name="payType" type="radio" value="1" ng-model="accessConf.payType" />非税
+                        <p ng-show="payConfForm.serverPublicKey.$pristine&& submitted" class="help-block">请输入平台公钥</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">业务描述</label>
+                    <div class="col-sm-10">
+                        <textarea class="form-control" rows="3" name="description"
+                                  placeholder="请输入业务描述" ng-model="accessConf.description"
+                                  ng-minlength="2" required></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label"  >业务公钥<span style="color:red;">*</span></label>
+                    <div class="col-sm-10" >
+                        <textarea class="form-control"  name="clientPublicKey"
+                                  placeholder="请输入业务公钥" ng-model="accessConf.clientPublicKey"
+                                  ng-minlength="2" required></textarea>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="reset" class="btn btn-dark" ng-click="cancel()">取消</button>
+            <button type="submit" class="btn btn-dark" ng-click="submitForm(payConfForm.$valid)">保存
+            </button>
+        </div>
+    </div>
+</div>

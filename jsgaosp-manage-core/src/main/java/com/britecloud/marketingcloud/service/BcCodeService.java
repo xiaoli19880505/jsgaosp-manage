@@ -27,6 +27,4 @@ public interface BcCodeService {
     void deleteCodeSort(BcCodeSort codeSort);
 
     BcCodeSort getCodeSortById(BcCodeSort codeSort);
-
-    String getCodeList(Integer channel, String sortCode);
 }

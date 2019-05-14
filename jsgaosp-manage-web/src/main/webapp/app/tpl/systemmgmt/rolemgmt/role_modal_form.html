@@ -9,7 +9,7 @@
 <div class="modal-body ng-scope" style="padding: 0">
     <table class="table table-striped b-t b-light">
         <thead>
-        <tr >
+        <tr ng-show="isUser">
             <th style="width:20px;">
                 <label class="i-checks m-b-none">
                     <input type="checkbox" ng-click="checkAll()" ng-model="selectedAll"><i></i>
@@ -27,7 +27,7 @@
 		    style="cursor: pointer">
             <td>
                 <label class="i-checks m-b-none">
-                    <input type="checkbox" ng-click="check(item.userId)" ng-model="item.selected"><i></i>
+                    <input type="checkbox" ng-click="check(item)" ng-model="item.selected"><i></i>
                 </label>
             </td>
             <td>{{$index+1}}</td>

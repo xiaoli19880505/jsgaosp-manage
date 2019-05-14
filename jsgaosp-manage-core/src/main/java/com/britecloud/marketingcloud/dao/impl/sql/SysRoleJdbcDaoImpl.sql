@@ -4,24 +4,20 @@ INSERT
     INTO
         BC_ROLE(
             ROLE_ID,
-            ORG_ID,
+            COMPANY_ID,
             NAME,
             DESCRIPTION,
             ROLE_TYPE,
-            CREATE_DATE,
-            CREATE_USER_ID,
-            STATUS
+            PERM
         )
     VALUES
         (
             :roleId,
-            :orgId,
+            :companyId,
             :name,
             :description,
             :roleType,
-            to_date(:createDate,'yyyy-MM-dd HH24:mi:ss'),
-            :createUserId,
-            :status
+            :perm
         );
 --------------------------------------------
 --updateRole
@@ -30,12 +26,9 @@ UPDATE
     SET
         NAME = :name,
         DESCRIPTION = :description,
-        PERM = :perm,
-        UPDATE_DATE=to_date(:updateDate,'yyyy-MM-dd HH24:mi:ss'),
-        UPDATE_USER_ID=:updateUserId
+        PERM = :perm
     WHERE
         ROLE_ID = :roleId;
-
 --------------------------------------------
 --deleteRole
 DELETE
@@ -50,15 +43,7 @@ SELECT
 	FROM
     	BC_ROLE
 	WHERE
-		ROLE_TYPE !='MAINTAIN'
---<dynamic>
-  --<isNotNull property="orgNo" prepend="AND">
-        ORG_ID =:orgNo
-  --</isNotNull>
---</dynamic>
-		AND NAME LIKE '%'||:keyword||'%'
-		AND STATUS=1;
-
+		ROLE_TYPE !='MAINTAIN';
 --------------------------------------------
 --getRole
 SELECT

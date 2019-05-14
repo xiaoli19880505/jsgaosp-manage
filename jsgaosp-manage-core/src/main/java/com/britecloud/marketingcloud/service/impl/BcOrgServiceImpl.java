@@ -1,9 +1,12 @@
 package com.britecloud.marketingcloud.service.impl;
 
 import com.britecloud.marketingcloud.consants.Constants;
+import com.britecloud.marketingcloud.dao.BcAreaDao;
 import com.britecloud.marketingcloud.dao.BcOrgDao;
 import com.britecloud.marketingcloud.domain.PageDataResult;
+import com.britecloud.marketingcloud.model.BcArea;
 import com.britecloud.marketingcloud.model.BcOrg;
+import com.britecloud.marketingcloud.service.BcAreaService;
 import com.britecloud.marketingcloud.service.BcOrgService;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
@@ -60,17 +63,13 @@ public class BcOrgServiceImpl implements BcOrgService {
     }
 
     @Override
-    public String getOrgAreaNameList(Integer channel, String orgNo) {
+    public String getOrgAreaNameList() {
         JSONObject result = new JSONObject();
         try{
-            if(orgNo == null || orgNo.isEmpty()){
-                orgNo="111";
-            }
-            BcOrg org = bcOrgDao.queryOrgById(orgNo);
-            result = JSONObject.fromObject(org);
-            List<BcOrg> orgs = bcOrgDao.queryOrgListByPid(orgNo);
-            result.put("list", JSONArray.fromObject(orgs));
-
+            List<BcOrg> list = bcOrgDao.getOrgAreaNameList();
+            JSONArray orgList = new JSONArray();
+            getChildOrg("111", list, orgList);
+            result.put("orgList",orgList);
             result.put("code", Constants.RESPONSE_SUCCESS_CODE);
             result.put("message","成功");
         }catch(Exception e){

@@ -11,7 +11,6 @@ package com.britecloud.marketingcloud.service;
 import java.util.List;
 import java.util.Map;
 
-import com.britecloud.marketingcloud.domain.PageDataResult;
 import com.britecloud.marketingcloud.model.BcRole;
 import com.britecloud.marketingcloud.model.BcUser;
 import com.britecloud.marketingcloud.model.Page;
@@ -32,16 +31,10 @@ public interface SysRoleUserMgmtService {
 
     void remove(String roleId, String userId);
 
-    PageDataResult<BcUser> getUserListByRoleId(Map params);
-
-
-    PageDataResult<BcUser> getrUserListNotInThisRole(Map params);
+    Page<BcUser> get(Map paramMap, String sign, Pageable pageable);
 
     List<BcRole> listRoleByUserId(String userId);
     
 	void addAdminRole(String companyId,String userId);
-
-    int CountUserByRoleId(String roleId);
-
 
 }

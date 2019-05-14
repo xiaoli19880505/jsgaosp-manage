@@ -3,27 +3,15 @@
  */
 angular.module('app')
     .factory('BcRoleService', ['res', 'GG', function (res, GG) {
-        var res = res(GG.BASE + '/system/role/:type');
+        var res = res(GG.BASE + '/system/role');
         var service = {
             get: function (id) {
                 return res.get({
                     id: id
                 }).$promise;
             },
-            getLitst: function (orgNo,keyword,currentPage) {
-                return res.get({
-                    orgNo:orgNo,
-                    keyword:keyword,
-                    currentPage:currentPage,
-                    type:"getRoleList"
-                }).$promise;
-            },
-            saveRoleOp: function (data,role) {
-                return res.save({
-                    data:data,
-                    role:role,
-                    type:"setRoleOp"
-                }).$promise;
+            query: function () {
+                return res.query().$promise;
             },
             delete: function (roleId) {
                 return res.delete({
@@ -42,27 +30,16 @@ angular.module('app')
 
 angular.module('app')
     .factory('SystemRoleUserService', ['res', 'GG', function (res, GG) {
-        var res = res(GG.BASE + '/system/role_user/:type');
+        var res = res(GG.BASE + '/system/role_user');
         var service = {
-            get: function (roleId, keyword, page) {
+            get: function (roleType,roleId, query, sign, page, size) {
                 return res.get({
+                	roleType:roleType,
                     roleId: roleId,
-                    keyword:keyword,
-                    page: page
-                }).$promise;
-            },
-            getrUserListNotInThisRole: function (roleId, keyword,  page) {
-                return res.get({
-                    roleId: roleId,
-                    keyword:keyword,
-                    page: page,
-                    type:"getrUserListNotInThisRole"
-                }).$promise;
-            },
-            countUserByRoleId:function (roleId) {
-                return res.get({
-                    roleId: roleId,
-                    type:"countUserByRoleId"
+                    query: query,
+                    sign: sign,
+                    page: page - 1,
+                    size: size
                 }).$promise;
             },
             delete: function (roleId, userId) {

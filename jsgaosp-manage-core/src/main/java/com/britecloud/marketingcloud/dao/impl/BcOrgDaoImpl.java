@@ -25,7 +25,7 @@ public class BcOrgDaoImpl extends BaseJdbcDao implements BcOrgDao {
 
 	@Override
 	public List<BcOrg> listOrg(String pAreaNo) {
-		String sql = loadSQL("listOrgWithNoType");
+		String sql = loadSQL("listOrg");
 		Map<String, String> paramMap = new HashMap<String, String>();
 		paramMap.put("pOrgNo",pAreaNo);
 		return getNamedParameterJdbcTemplate().query(sql, paramMap, new BeanPropertyRowMapper<BcOrg>(BcOrg.class));
@@ -34,7 +34,7 @@ public class BcOrgDaoImpl extends BaseJdbcDao implements BcOrgDao {
 	@Override
 	public PageDataResult<BcOrg> listDepartmentByOrgId(Map params) {
 		PageDataResult<BcOrg> pageData = new PageDataResult<BcOrg>();
-		String sql = loadSQL("listOrgWithNoType", params);
+		String sql = loadSQL("listDepartByOrgId", params);
 		Integer totalCount = getNamedParameterJdbcTemplate().queryForInt(getTotalCountString(sql), params);
 		pageData.setTotalCount(totalCount);
 		pageData.setTotalPage(PageUtils.getTotalPage(totalCount));
@@ -92,7 +92,7 @@ public class BcOrgDaoImpl extends BaseJdbcDao implements BcOrgDao {
 
 	@Override
 	public int existsOrgName(BcOrg org) {
-		String sql = loadSQL("existsChildrenOrgName");
+		String sql = loadSQL("existsOrgName");
 		SqlParameterSource parameters = new BeanPropertySqlParameterSource(org);
 		return getNamedParameterJdbcTemplate().queryForInt(sql,parameters);
 	}
@@ -104,26 +104,5 @@ public class BcOrgDaoImpl extends BaseJdbcDao implements BcOrgDao {
 		return getNamedParameterJdbcTemplate().query(sql, paramMap, new BeanPropertyRowMapper<BcOrg>(BcOrg.class));
 	}
 
-	@Override
-	public BcOrg queryOrgById(String orgNo) {
-		String sql = loadSQL("queryOrgById");
-		Map paramMap = new HashMap();
-		paramMap.put("orgNo", orgNo);
-		List<BcOrg> list = getNamedParameterJdbcTemplate().query(sql, paramMap,
-				new BeanPropertyRowMapper(BcOrg.class));
-		if (list == null || list.isEmpty()) {
-			return null;
-		}
-		return list.iterator().next();
-	}
 
-	@Override
-	public List<BcOrg> queryOrgListByPid(String orgNo) {
-		String sql = loadSQL("queryOrgListByPid");
-		Map paramMap = new HashMap();
-		paramMap.put("orgNo", orgNo);
-		List<BcOrg> list = getNamedParameterJdbcTemplate().query(sql, paramMap,
-				new BeanPropertyRowMapper(BcOrg.class));
-		return list;
-	}
 }

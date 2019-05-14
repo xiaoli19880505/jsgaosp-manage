@@ -19,8 +19,6 @@ angular.module('app', [
     'toaster',
     'myaccordion',
     // 'treeGrid',
-    // 'treeGrid',
-    // 'ivh.treeview',
     'ngFileUpload',
     'ui.colorpicker',
     'ngCkeditor'

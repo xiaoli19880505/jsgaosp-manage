@@ -69,10 +69,14 @@
 						<td>{{application.version}}</td>
 						<td>
 						
-						<a class="fa fa-check-square" style="font-size:20px;color:black;" title="启用" ng-if ='application.working_status==00'
+							<button  ng-if ='application.working_status==00' class="btn btn-dark btn-sm" type="button" ng-click="updateWorkStatus('{{application.info_id}}','{{application.org_id}}','{{application.app_id}}','{{application.sys_type}}','01','{{application.approval_status}}')">启用</button>
+							<button  ng-if ='application.working_status==01' class="btn btn-dark btn-sm" type="button" ng-click="updateWorkStatus('{{application.info_id}}','{{application.org_id}}','{{application.app_id}}','{{application.sys_type}}','00','{{application.approval_status}}')">禁用</button>
+							
+						   <!-- <a class="fa fa-check-square" style="font-size:20px;color:black;" title="启用" ng-if ='application.working_status==00'
 							ng-click="updateWorkStatus('{{application.info_id}}','{{application.org_id}}','{{application.app_id}}','{{application.sys_type}}','01','{{application.approval_status}}')"></a>
 							<a class="	fa fa-times-circle" style="font-size:20px;color:black;" title="禁用"   ng-if ='application.working_status==01'
 							ng-click="updateWorkStatus('{{application.info_id}}','{{application.org_id}}','{{application.app_id}}','{{application.sys_type}}','00','{{application.approval_status}}')"></a>
+							 -->
 							</td>
 					</tr>
 				</table>

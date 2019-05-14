@@ -11,14 +11,6 @@ INSERT
             :userId,
             :roleId
         );
- --------------------------------------------
---countUserByRoleId
-SELECT COUNT(*)
-  FROM BC_USER_ROLE a JOIN bc_user b
-  ON  a.user_id=b.user_id
-  AND a.role_id=:roleId
-  AND b.status='1';
-
 --------------------------------------------
 --removeUserRole
 DELETE
@@ -45,9 +37,25 @@ FROM
 LEFT JOIN
 		BC_USER_ROLE
 ON  BC_USER.USER_ID=BC_USER_ROLE.USER_ID AND ROLE_ID IS NOT NULL
-WHERE ROLE_ID = :roleId
+WHERE ROLE_ID = :roleId AND BC_USER.COMPANY_ID = :companyId
+ AND (BC_USER.USER_TYPE = 'ADMIN' OR BC_USER.USER_TYPE = 'USER' )
+--------------------------------------------
+--listUnDistributedUser
+SELECT
+		BC_USER.*,
+		ROLE_ID
+FROM
+    BC_USER
+LEFT JOIN
+		BC_USER_ROLE
+ON  BC_USER.USER_ID=BC_USER_ROLE.USER_ID AND ROLE_ID IS NOT NULL AND ROLE_ID = :roleId
+WHERE ROLE_ID IS NULL AND COMPANY_ID = :companyId 
 AND (BC_USER.USER_TYPE = 'ADMIN' OR BC_USER.USER_TYPE = 'USER' )
-
+	--<dynamic>
+	  --<isNotNull property="query" prepend="AND">
+	        USER_NAME LIKE CONCAT(CONCAT('%', :query),'%')
+	  --</isNotNull>
+	--</dynamic>
 --------------------------------------------
 --listRoleByUserId
 SELECT
@@ -60,38 +68,3 @@ WHERE
 --------------------------------------------
 --addAdminRole
 INSERT INTO BC_USER_ROLE (USER_ID,ROLE_ID) VALUES(:userId,(SELECT ROLE_ID FROM BC_ROLE WHERE COMPANY_ID=:companyId AND ROLE_TYPE = 'ADMIN'));
-
---------------------------------------------
---listUserByRoleId
-SELECT b.*
-  FROM BC_USER_ROLE a JOIN bc_user b
-  ON  a.user_id=b.user_id
-  AND a.role_id=:roleId
-  AND b.status='1'
-     --<dynamic>
-  --<isNotNull property="orgNo" prepend="AND">
-       a.ROLE_NO=:orgNo;
-  --</isNotNull>
---</dynamic>
-  AND b.user_name like '%'||:keyword||'%';
-
-
- --------------------------------------------
---getrUserListNotInThisRole
-SELECT
-  a.*,
-  b.ROLE_ID
-FROM
-  BC_USER a
-    LEFT JOIN
-  BC_USER_ROLE b
-  ON  a.USER_ID=b.USER_ID AND b.ROLE_ID = :roleId
-WHERE
-1=1
- --<dynamic>
-  --<isNotNull property="orgNo" prepend="AND">
-       a.ROLE_NO=:orgNo;
-  --</isNotNull>
---</dynamic>
-
-and b.ROLE_ID IS NULL and a.status='1';

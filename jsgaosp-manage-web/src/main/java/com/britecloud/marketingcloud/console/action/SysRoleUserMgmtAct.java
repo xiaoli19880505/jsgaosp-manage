@@ -11,11 +11,6 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import com.britecloud.marketingcloud.console.common.ResponseResult;
-import com.britecloud.marketingcloud.console.configuration.OperationLogAnn;
-import com.britecloud.marketingcloud.console.util.ResultUtil;
-import com.britecloud.marketingcloud.domain.PageDataResult;
-import org.apache.struts.util.ResponseUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -49,39 +44,16 @@ public class SysRoleUserMgmtAct {
         return userId;
     }
 
-    @OperationLogAnn("查询对应角色下的用户数量")
-    @RequestMapping(value = "countUserByRoleId",method = RequestMethod.GET)
-    @ResponseBody
-    public ResponseResult countUserByRoleId(String roleId) throws Exception {
-
-       int count= sysRoleUserMgmtService.CountUserByRoleId(roleId);
-
-        return ResultUtil.success(count);
-    }
-
-
-    @OperationLogAnn("获得对应角色的人员page")
     @RequestMapping(method = RequestMethod.GET)
     @ResponseBody
-    public PageDataResult<BcUser> get( String roleId, String keyword, int  page,String orgNo) throws Exception {
+    public Page<BcUser> get(HttpServletRequest request,String roleType,String roleId, String query, String sign, Pageable pageable) throws Exception {
+    	BcUser user = SessionUtils.getCurrentUser(request);
     	Map paramMap = new HashMap();
     	paramMap.put("roleId",roleId);
-        paramMap.put("keyword",keyword);
-        paramMap.put("page",page);
-        paramMap.put("orgNo",orgNo);
-        return sysRoleUserMgmtService.getUserListByRoleId(paramMap);
-    }
-
-    @OperationLogAnn("获得非该角色的人员page")
-    @RequestMapping(value = "getrUserListNotInThisRole",method = RequestMethod.GET)
-    @ResponseBody
-    public PageDataResult<BcUser> getrUserListNotInThisRole( String roleId, String keyword, int  page,String orgNo) throws Exception {
-        Map paramMap = new HashMap();
-        paramMap.put("roleId",roleId);
-        paramMap.put("keyword",keyword);
-        paramMap.put("page",page);
-        paramMap.put("orgNo",orgNo);
-        return sysRoleUserMgmtService.getrUserListNotInThisRole(paramMap);
+    	paramMap.put("roleType",roleType);
+    	paramMap.put("query", "".equals(query) ? null : query);
+    	paramMap.put("companyId", user.getCompanyId());
+        return sysRoleUserMgmtService.get(paramMap, sign, pageable);
     }
 
 }

@@ -41,6 +41,4 @@ public interface BcCodeDao {
     BcCodeSort getCodeSortBypOrgNo(BcCodeSort codeSort);
 
     List<BcCodeSort> getCodeSortByKey(Map params);
-
-    List<BcCodeSort> getCodeList(String sortCode);
 }

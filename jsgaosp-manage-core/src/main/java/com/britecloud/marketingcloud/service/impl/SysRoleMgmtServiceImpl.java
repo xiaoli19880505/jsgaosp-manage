@@ -8,14 +8,9 @@
  */
 package com.britecloud.marketingcloud.service.impl;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-import com.britecloud.marketingcloud.domain.PageDataResult;
-import com.britecloud.marketingcloud.utils.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -44,7 +39,6 @@ public class SysRoleMgmtServiceImpl implements SysRoleMgmtService {
 
     @Override
     public void save(BcRole role) {
-        role.setCreateDate(DateUtils.curDateTimeStr());
         role.setRoleId(IDUtils.getId());
         sysRoleJdbcDao.save(role);
     }
@@ -56,13 +50,12 @@ public class SysRoleMgmtServiceImpl implements SysRoleMgmtService {
     }
 
     @Override
-    public PageDataResult<BcRole> query(Map paramMap) {
+    public List<BcRole> query(Map paramMap) {
         return sysRoleJdbcDao.query(paramMap);
     }
 
     @Override
     public void update(BcRole role) {
-        role.setUpdateDate(DateUtils.curDateTimeStr());
         sysRoleJdbcDao.update(role);
     }
 
@@ -79,9 +72,4 @@ public class SysRoleMgmtServiceImpl implements SysRoleMgmtService {
 	public void initRole(String companyId){
 		sysRoleJdbcDao.initRole(companyId);
 	}
-
-    @Override
-    public BcRole getRoleByRoleId(String roleId) {
-        return sysRoleJdbcDao.get(roleId);
-    }
 }

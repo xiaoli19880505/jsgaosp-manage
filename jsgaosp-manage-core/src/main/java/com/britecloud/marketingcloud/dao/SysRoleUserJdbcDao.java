@@ -11,14 +11,14 @@ package com.britecloud.marketingcloud.dao;
 import java.util.List;
 import java.util.Map;
 
-import com.britecloud.marketingcloud.domain.PageDataResult;
-import com.britecloud.marketingcloud.model.*;
+import com.britecloud.marketingcloud.model.BcRole;
+import com.britecloud.marketingcloud.model.BcUser;
+import com.britecloud.marketingcloud.model.Page;
+import com.britecloud.marketingcloud.model.Pageable;
 
 public interface SysRoleUserJdbcDao {
 
-
-    PageDataResult<BcUser> listUserByRoleId(Map params);
-    PageDataResult<BcUser> getrUserListNotInThisRole(Map params);
+    Page<BcUser> get(Map paramMap, String sign, Pageable pageable);
 
     List<BcUser> get(String roleId);
 
@@ -31,6 +31,4 @@ public interface SysRoleUserJdbcDao {
     List<BcRole> listRoleByUserId(String userId);
 
 	void addAdminRole(String companyId,String userId);
-
-	int countUserByRoleId(String roleId);
 }

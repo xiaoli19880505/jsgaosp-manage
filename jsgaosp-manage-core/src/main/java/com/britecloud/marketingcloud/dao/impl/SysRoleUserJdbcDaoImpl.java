@@ -12,9 +12,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.britecloud.marketingcloud.domain.PageDataResult;
-import com.britecloud.marketingcloud.model.*;
-import com.britecloud.marketingcloud.utils.PageUtils;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
@@ -22,36 +19,40 @@ import org.springframework.stereotype.Repository;
 
 import com.britecloud.marketingcloud.core.dao.jdbc.BaseJdbcDao;
 import com.britecloud.marketingcloud.dao.SysRoleUserJdbcDao;
+import com.britecloud.marketingcloud.model.BcRole;
+import com.britecloud.marketingcloud.model.BcRoleUser;
+import com.britecloud.marketingcloud.model.BcUser;
+import com.britecloud.marketingcloud.model.Page;
+import com.britecloud.marketingcloud.model.Pageable;
 
 @Repository
 public class SysRoleUserJdbcDaoImpl extends BaseJdbcDao implements SysRoleUserJdbcDao {
 
-
     @Override
-    public PageDataResult<BcUser> listUserByRoleId(Map params) {
-
-        PageDataResult<BcUser> pageData = new PageDataResult<BcUser>();
-        String sql = loadSQL("listUserByRoleId", params);
-        Integer totalCount = getNamedParameterJdbcTemplate().queryForInt(getTotalCountString(sql), params);
-        pageData.setTotalCount(totalCount);
-        pageData.setTotalPage(PageUtils.getTotalPage(totalCount));
-        sql = getPaginationString(sql, PageUtils.getStartNum((Integer) params.get("page")), PageUtils.pageSize);
+    public Page<BcUser> get(Map params, String sign, Pageable pageable) {
+        Page<BcUser> page = new Page<BcUser>();
+//        Map<String, Object> params = new HashMap<String, Object>();
+//        params.put("roleId", roleId);
+        String sql = "";
+        if ("1".equals(sign)) {
+            sql = loadSQL("listDistributedUser", params);
+        } else {
+//            query = "".equals(query) ? null : query;
+//            params.put("query", query);
+            sql = loadSQL("listUnDistributedUser", params);
+        }
+        if(params.get("roleType").equals("MAINTAIN")){
+        	sql += " AND BC_USER.USER_TYPE = 'MAINTAIN' ";
+        }else{
+        	sql +=" AND (BC_USER.USER_TYPE = 'USER' OR BC_USER.USER_TYPE = 'ADMIN')";
+        }
+        sql += " ORDER BY CREATE_DATE DESC";
+        Integer totalItems = getNamedParameterJdbcTemplate().queryForInt(getTotalCountString(sql), params);
+        page.setTotalItems(totalItems);
+        sql = getPaginationString(sql, pageable.getPage() * pageable.getSize(), pageable.getSize());
         List<BcUser> list = getNamedParameterJdbcTemplate().query(sql, params, new BeanPropertyRowMapper(BcUser.class));
-        pageData.setList(list);
-        return pageData;
-    }
-
-    @Override
-    public PageDataResult<BcUser> getrUserListNotInThisRole(Map params) {
-        PageDataResult<BcUser> pageData = new PageDataResult<BcUser>();
-        String sql = loadSQL("getrUserListNotInThisRole", params);
-        Integer totalCount = getNamedParameterJdbcTemplate().queryForInt(getTotalCountString(sql), params);
-        pageData.setTotalCount(totalCount);
-        pageData.setTotalPage(PageUtils.getTotalPage(totalCount));
-        sql = getPaginationString(sql, PageUtils.getStartNum((Integer) params.get("page")), PageUtils.pageSize);
-        List<BcUser> list = getNamedParameterJdbcTemplate().query(sql, params, new BeanPropertyRowMapper(BcUser.class));
-        pageData.setList(list);
-        return pageData;
+        page.setContent(list);
+        return page;
     }
 
     @Override
@@ -60,14 +61,6 @@ public class SysRoleUserJdbcDaoImpl extends BaseJdbcDao implements SysRoleUserJd
         params.put("roleId", roleId);
         String sql = loadSQL("listUnDistributedUser", params);
         return getNamedParameterJdbcTemplate().query(sql, params, new BeanPropertyRowMapper(BcUser.class));
-    }
-
-    @Override
-    public int countUserByRoleId(String roleId) {
-        Map<String, String> params = new HashMap<String, String>();
-        params.put("roleId", roleId);
-        String sql = loadSQL("countUserByRoleId", params);
-        return getNamedParameterJdbcTemplate().queryForInt(sql, params);
     }
 
     @Override

@@ -1,0 +1,134 @@
+<style>
+.table th, .table td {
+	text-align: center;
+	height: 38px;
+	font-size: 12px;
+}
+
+.hover {
+	background: #D1EEEE;
+}
+
+.able {
+	color: #96CD00;
+}
+
+.disable {
+	color: red;
+}
+
+#PayConfManagerController {
+	font-size: 12px;
+}
+</style>
+<div class="wrapper page" ng-controller="PayConfManagerController"
+	id="PayConfManagerController">
+	<div class="topbar">
+		<div class="breadcrumbs">
+			<a class="level level-zone level-zone-2 gd1">系统</a> <a class="level">支付接入管理</a>
+		</div>
+	</div>
+	<br>
+	<div class="page-intro vxnets">
+		<p class="lead">
+			<em>支付接入管理</em> 支付接入
+		</p>
+	</div>
+	<div class="pane" style="height: 100%">
+		<div class="hbox hbox-auto-xs hbox-auto-sm">
+			<div class="col">
+				<div class="pane" style="height: 95%;">
+					<div class="panel-heading">
+						<div class=" pull-left">
+							<button class="btn btn-dark btn-sm" type="button"
+								ng-click="open('','add',null)">申请</button>
+							<button class="btn btn-dark btn-sm" type="button"
+								ng-disabled="choosePayConfs.length == '0'" ng-click="approval();">审批</button>
+							<button class="btn btn-dark btn-sm" type="button"
+								ng-disabled="choosePayConfs.length == '0'"
+							ng-click="deleteModal();">删除</button>
+							<button class="btn btn-dark btn-sm" type="button"
+									ng-disabled="choosePayConfs.length == '0'&&choosePayConfs[0].status=='0'" ng-click="getPublicKey();">查看公钥</button>
+						</div>
+						<div class="col-sm-4 m-b-xs">
+							<div class="input-group">
+								<input type="text" class="input-sm form-control ng-pristine ng-valid ng-touched"
+									   placeholder="请输入项目名称" ng-model="businessName"> <span class="input-group-btn">
+							<button class="btn btn-sm btn-default" type="button" ng-click="searchByName()">搜索</button>
+                            </span></div>
+						</div>
+					</div>
+					<br>
+					<div class=" panel-body" style="height: 80%">
+						<div style="height: 95%; min-height: 400px;">
+							<table class="table table-bordered  pull-center " style="table-layout:fixed;" show-overflow-tooltip>
+								<thead>
+									<tr>
+										<th style="width: 30px;"><label class="i-checks m-b-bone">
+												<input type="checkbox" ng-model="master"
+												ng-click="chooseAll(master)"> <i></i>
+										</label></th>
+										<th style="width: 80px;">序号</th>
+										<th style="width: 250px;">应用id</th>
+										<th>项目名称</th>
+										<th>单位名称</th>
+										<th>单位编码</th>
+										<th>行政区划</th>
+										<th>支付类型</th>
+										<th>审核状态</th>
+										<th>生成时间</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr ng-repeat="payConf in lisPayConf"
+										onmouseover="style.backgroundColor='#F2F5F6'"
+										onmouseout="style.backgroundColor='#FFFFFF'"
+										style="cursor: pointer;">
+										<td><label class="i-checks m-b-bone"><input
+												ng-model="chk" ng-click="choose(chk,payConf,$index)"
+												type="checkbox" ng-checked="master" name="test[]"><i></i>
+										</label></td>
+										<td>{{$index+1}}</td>
+										<td>{{payConf.appId}}</td>
+										<td>{{payConf.businessName}}</td>
+										<td>{{payConf.accessName}}</td>
+										<td>{{payConf.orgCode}}</td>
+										<td>{{payConf.area}}</td>
+										<td>{{payConf.payType =='0'? '普通费类':'非税'}}</td>
+										<td>
+											<span ng-show="payConf.status == '0'">待审核</span>
+											<span ng-show="payConf.status == '1'">审核通过</span>
+											<span ng-show="payConf.status == '2'">审核未通过</span>
+										</td>
+										<td>{{payConf.createTime}}</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<div class="panel-footer" style="border: 0">
+						<div class="row">
+							<div class="col-sm-2 hidden-xs"></div>
+							<div class="col-sm-5 text-center">
+								<small class="text-muted inline m-t-sm m-b-sm">第{{currentPage}}页
+									共{{totalItems}}个 </small>
+							</div>
+							<div class="col-sm-5 text-right text-center-xs">
+								<pagination boundary-links="true" total-items="totalItems"
+									ng-model="currentPage" ng-change="pageChanged()"
+									max-size="maxSize" rotate="false"
+									class="pagination-sm m-t-none m-b" previous-text="&lsaquo;"
+									next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;">
+								</pagination>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+</div>
+

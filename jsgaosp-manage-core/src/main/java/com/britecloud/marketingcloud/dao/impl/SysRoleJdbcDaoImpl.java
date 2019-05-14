@@ -12,9 +12,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.britecloud.marketingcloud.domain.PageDataResult;
-import com.britecloud.marketingcloud.model.BcCodeSort;
-import com.britecloud.marketingcloud.utils.PageUtils;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
@@ -44,22 +41,9 @@ public class SysRoleJdbcDaoImpl extends BaseJdbcDao implements SysRoleJdbcDao {
     }
 
     @Override
-    public PageDataResult<BcRole> query(Map paramMap) {
-//        String sql = loadSQL("queryRole");
-//        return getNamedParameterJdbcTemplate().query(sql, paramMap,new BeanPropertyRowMapper(BcRole.class));
-
-        PageDataResult<BcRole> pageData = new PageDataResult<BcRole>();
-
-        String sql = loadSQL("queryRole", paramMap);
-        Integer totalCount = getNamedParameterJdbcTemplate().queryForInt(getTotalCountString(sql), paramMap);
-        pageData.setTotalCount(totalCount);
-        pageData.setTotalPage(PageUtils.getTotalPage(totalCount));
-
-        sql = getPaginationString(sql, PageUtils.getStartNum((Integer) paramMap.get("page")), PageUtils.pageSize);
-        List<BcRole> list = getNamedParameterJdbcTemplate().query(sql, paramMap, new BeanPropertyRowMapper(BcRole.class));
-        pageData.setList(list);
-        return pageData;
-
+    public List<BcRole> query(Map paramMap) {
+        String sql = loadSQL("queryRole");
+        return getNamedParameterJdbcTemplate().query(sql, paramMap,new BeanPropertyRowMapper(BcRole.class));
     }
 
     @Override

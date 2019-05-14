@@ -26,9 +26,9 @@ public class CommonDaoImpl extends BaseJdbcDao implements CommonDao{
 
         String sql ="";
         if(null==pColValue){
-            sql="select * from "+tableName+" where "+pColName+" is null AND STATUS='1'" ;
+            sql="select * from "+tableName+" where "+pColName+" is null AND STATUS='1'AND ORG_TYPE='01'" ;
         }else{
-            sql ="select * from "+tableName+" where "+pColName+"=:pColValue AND STATUS='1' ";
+            sql ="select * from "+tableName+" where "+pColName+"=:pColValue AND STATUS='1' AND ORG_TYPE='01'";
         }
 
 
