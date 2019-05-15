@@ -10,17 +10,19 @@
 <div class="hbox hbox-auto-xs bg-light"
 	ng-init="app.settings.asideFixed = true;app.settings.asideDock = false; app.settings.container = false; app.hideAside = false; app.hideFooter = true;"
 	ng-controller="AdviceController">
-	<orgtree-nav></orgtree-nav>
+	<!-- <orgtree-nav></orgtree-nav> -->
 
 	<!-- column -->
 	<div class="wrapper-md ng-scope">
 		<div class="panel panel-default">
 			<div class="row wrapper">
-				<div class="col-sm-12"></div>
+				<div class="col-sm-9 m-b-xs">
+				</div>
+				<div class="col-sm-3"></div>
 				<div class="col-sm-3">
 					<div class="input-group">
 						<input type="text" class="input-sm form-control"
-							placeholder="请输入应用名称" ng-model="keyword"> <span
+							placeholder="请输入内容" ng-model="keyword"> <span
 							class="input-group-btn">
 							<button class="btn btn-sm btn-default" type="button"
 								ng-click="searchApp()">搜索</button>
@@ -32,25 +34,17 @@
 				<table class="table table-striped b-t b-light">
 					<thead>
 						<tr>
-							<th style="width: 30px;"><label class="i-checks m-b-bone">
-									<input type="checkbox" ng-model="master"
-									ng-click="chooseAll(master)"> <i></i>
-							</label></th>
 							<th>序号</th>
-							<th>应用名称</th>
-							<th>组织名称</th> 
-							<th>系统类型</th>
-							<th>审核状态</th>
-							<th>上线状态</th>
-							<th>版本</th>
+							<th>用户id</th>
+							<th>内容</th> 
+							<th>提交时间</th>
+							<th>处理状态</th>
+							<th>处理人</th>
+							<th>处理时间</th>
 							<!-- <th>操作</th> -->
 						</tr>
 					</thead>
 					<tr ng-repeat="advice in adviceList">
-						<td><label class="i-checks m-b-bone"><input
-								ng-model="chk" ng-click="choose(chk,advice,$index)"
-								type="checkbox" ng-checked="master" name="test[]"><i></i>
-						</label></td>
 						<td>{{$index+1}}</td>
 						<td>{{advice.user_id}}</td>
 						<td>{{advice.content}}</td> 

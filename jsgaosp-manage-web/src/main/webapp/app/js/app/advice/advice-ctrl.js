@@ -6,16 +6,15 @@ app.controller('AdviceController',['$scope','$http','$state','$modal','$timeout'
     $scope.currentPage = 1;
     $scope.maxSize = 5;
 	
-	$scope.$watch('orgNo', function (newVal, oldVal) {
+/*	$scope.$watch('orgNo', function (newVal, oldVal) {
 		if ($scope.orgNo != null) {
 			console.log($scope.orgNo);
-			$scope.loadApplications();
+			$scope.loadAdvice();
 		}
-	})
-	
+	})*/
 	
 	$scope.loadAdvice=function(){
-		AdviceService.listAdvice($scope.currentPage,$scope.orgNo,$scope.keyword).then(function(res){
+		AdviceService.listAdvice($scope.currentPage,$scope.keyword).then(function(res){
             console.log(res)
             $scope.adviceList=res.data.list;
             $scope.totalItems=res.data.totalCount;
@@ -23,15 +22,15 @@ app.controller('AdviceController',['$scope','$http','$state','$modal','$timeout'
             $scope.chooseArgs=[];
         })
     }
-	
+	$scope.loadAdvice();
 	
 	 //搜索
     $scope.searchApp=function(){
-        $scope.loadApplications();
+        $scope.loadAdvice();
     }
 
     $scope.pageChanged = function () {
-        $scope.loadApplications();
+        $scope.loadAdvice();
     };
 	
     
