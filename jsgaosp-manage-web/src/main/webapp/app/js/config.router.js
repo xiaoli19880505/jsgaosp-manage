@@ -201,6 +201,17 @@ angular
                         ]
                     },
                     {
+                    	state: 'app.advice',
+                    	url: '/advice',
+                    	templateUrl: 'tpl/advice/advice.html',
+                    	deps: [
+                    		'js/app/advice/advice-ctrl.js',
+                    		'js/app/advice/advice-serv.js',
+                    		'js/app/advice/advice-modal.js'
+                    		
+                    		]
+                    },
+                    {
                         state: 'app.system.application',
                         url: '/application',
                         templateUrl: 'tpl//application/application.html',

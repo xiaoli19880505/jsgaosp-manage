@@ -290,6 +290,12 @@ angular.module('app').constant('GG', {
             text: '告警设置',
             iconCls: 'fa fa-caret-right',
             sref: 'app.APIkey.accessKey'
+        }, {
+            active: false,
+            id: '6-5',
+            text: '进言献策',
+            iconCls: 'fa fa-caret-right',
+            sref: 'app.advice'
         }]
     }, {
         active: false,
