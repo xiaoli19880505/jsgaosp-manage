@@ -58,58 +58,63 @@ update_date=sysdate
 where id=:id;
 --------------------------------------------
 --listApplication
-  WITH TMP AS
- (SELECT A.APP_NAME, A.ORG_ID, A.SYS_TYPE, MAX(I.CREATE_DATE) AS MDATE
-    FROM BC_DECLARE_APP A, BC_DECLARE_APP_INFO I
-   WHERE A.ID = I.APP_ID
-   GROUP BY A.APP_NAME, A.ORG_ID, A.SYS_TYPE),
-   tmp2 as (
-SELECT t1.id,
-       t1.app_name,
-       GET_ORG_NAME(t1.org_id) as org_name,
-       t1.org_id,
-       t1.sys_type,
-       GET_CODE_SORT_TEXT('sys_type', t1.sys_type) as sys_type_name,
-       t1.status,
-       t1.create_date,
-       t1.create_user_id,
-       t1.access_type,
-       t2.id as info_id,
-       t2.app_id as app_id,
-       t2.guide_addr,
-       t2.online_addr,
-       t2.online_qaq_addr,
-       t2.yw_type,
-       t2.xz_type,
-       t2.memo,
-       t2.status as version_status,
-       t2.approval_opinion,
-       t2.create_date as ver_create_date,
-       t2.create_user_id as ver_create_user_id,
-       t2.approval_date,
-       t2.approval_user_id,
-       t2.bl_type,
-       t2.version,
-       t2.working_status,
-       GET_CODE_SORT_TEXT('working_status', t2.working_status) as working_status_name,
-       t2.server_type,
-       t2.icon_url,
-       t2.approval_status,
-       GET_CODE_SORT_TEXT('app_status', t2.approval_status) as approval_status_name,
-       t2.conditions,
-       t2.legal_basis
-  FROM BC_DECLARE_APP T1, BC_DECLARE_APP_INFO T2, TMP
- WHERE T1.ID = T2.APP_ID
-   AND T1.APP_NAME = TMP.APP_NAME
-   AND T1.ORG_ID = TMP.ORG_ID
-   AND T1.SYS_TYPE = TMP.SYS_TYPE
-   AND T2.CREATE_DATE = TMP.MDATE
-   )
-   select tmp2.*,bq.id as qrid,bq.qr_code_url,bq.qr_code_img_url 
-   from tmp2 left join bc_qrcode  bq ON tmp2.id = bq.app_id
-   WHERE 1=1 and tmp2.status = '1'
-   and tmp2.org_id = :orgNo
-   order by tmp2.create_date desc
+   select a.id,
+       a.app_name,
+       GET_ORG_NAME(a.org_id) as org_name,
+       a.org_id,
+       a.sys_type,
+       GET_CODE_SORT_TEXT('sys_type', a.sys_type) as sys_type_name,
+       a.status,
+       a.create_date,
+       a.create_user_id,
+       a.access_type,
+       i.id as info_id,
+       i.app_id as app_id,
+       i.guide_addr,
+       i.online_addr,
+       i.online_qaq_addr,
+       i.yw_type,
+       i.xz_type,
+       i.memo,
+       i.status as version_status,
+       i.approval_opinion,
+       i.create_date as ver_create_date,
+       i.create_user_id as ver_create_user_id,
+       i.approval_date,
+       i.approval_user_id,
+       i.bl_type,
+       i.version,
+       i.working_status,
+       GET_CODE_SORT_TEXT('working_status', i.working_status) as working_status_name,
+       i.server_type,
+       i.icon_url,
+       i.approval_status,
+       i.conditions,
+       i.legal_basis,
+       b.qr_code_url,
+       b.qr_code_img_url,
+       b.id as code_Id,
+       GET_CODE_SORT_TEXT('app_status', i.approval_status) as approval_status_name
+  from bc_declare_app a, bc_declare_app_info i,bc_qrcode b
+ where a.id = i.app_id and a.status ='1' and b.app_id(+) = a.id
+ --<dynamic>
+   --<isNotEmpty prepend="AND" property="app_name">
+       a.app_name  = :app_name
+   --</isNotEmpty>
+   --<isNotEmpty prepend="AND" property="sys_type">
+       a.sys_type  = :sys_type
+   --</isNotEmpty>
+   --<isNotEmpty prepend="AND" property="status">
+      t.status  = :status
+   --</isNotEmpty>
+   --<isNotEmpty prepend="AND" property="create_date">
+       to_char(i.create_date, 'yyyy-MM-dd HH24:mi:ss')  >= :createDate
+   --</isNotEmpty>
+   --<isNotEmpty prepend="AND" property="orgNo">
+     a.org_id  = :orgNo
+   --</isNotEmpty>
+   --</dynamic>
+      
 --------------------------------------------
 --updateInfoStatus
 update bc_declare_app_info set 
@@ -164,6 +169,8 @@ set
        i.approval_status,
        i.conditions,
        i.legal_basis,
+       b.qr_code_url,
+       b.qr_code_img_url,
        GET_CODE_SORT_TEXT('app_status', i.approval_status) as approval_status_name
   from bc_declare_app a, bc_declare_app_info i
  where a.id = i.app_id and a.status ='1' and i.approval_status = '01'

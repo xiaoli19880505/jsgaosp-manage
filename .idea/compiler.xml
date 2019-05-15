@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="jsgaosp-manage-alarm" />
+        <module name="jsgaosp-manage-api" />
+        <module name="jsgaosp-manage-core" />
+        <module name="jsgaosp-manage-executor" />
+        <module name="jsgaosp-manage-web" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="jsgaosp-manage" target="1.6" />
+      <module name="jsgaosp-manage-alarm" target="1.8" />
+      <module name="jsgaosp-manage-api" target="1.8" />
+      <module name="jsgaosp-manage-core" target="1.8" />
+      <module name="jsgaosp-manage-executor" target="1.8" />
+      <module name="jsgaosp-manage-web" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

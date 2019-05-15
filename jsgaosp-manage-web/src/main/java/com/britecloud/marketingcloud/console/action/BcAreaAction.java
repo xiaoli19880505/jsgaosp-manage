@@ -47,10 +47,10 @@ public class BcAreaAction {
     @RequestMapping(value = "/list_area", method = RequestMethod.GET)
     @ResponseBody
     public ResponseResult listarea(HttpServletRequest request) throws Exception {
-        String tableName = "bc_org";
-        String pColName = "org_no";
+        String tableName = "bc_area";
+        String pColName = "p_area_no";
         String pColValue = "0";
-        String colName = "p_org_no";
+        String colName = "area_no";
 
         //获取树形
         JSONArray array = commonService.getJSONArray(tableName,pColName,colName,pColValue);

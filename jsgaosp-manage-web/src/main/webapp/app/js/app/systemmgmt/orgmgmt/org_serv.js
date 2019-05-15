@@ -6,15 +6,15 @@ angular.module('app').factory('OrgService', ['res', 'GG',
     function (res, GG) {
         var res = res(GG.BASE + '/org/:type');
         var service = {
-        	loadOrg: function () {
+            loadOrg: function () {
                 return res.get({
                     orgNo:"111",
-                	type:'list_org'
+                    type:'list_org'
                 }).$promise;
             },
             getOrgInfo: function (id) {
                 return res.get({
-                	id: "",
+                    id: "",
                     type:'get_org'
                 }).$promise;
             },
@@ -37,10 +37,10 @@ angular.module('app').factory('OrgService', ['res', 'GG',
                 return res.get(orgItem).$promise;
             },
             loadDepartmentList:function(currentPage,orgNo){
-              return res.get ( {
-                  currentPage:currentPage,
+                return res.get ( {
+                    currentPage:currentPage,
                     pOrgNo:orgNo,
-                    type:'listDepartmentByOrgId'
+                    type:'listByOrgId'
                 }).$promise;
             },
             addDepatemnt: function (orgItem) {

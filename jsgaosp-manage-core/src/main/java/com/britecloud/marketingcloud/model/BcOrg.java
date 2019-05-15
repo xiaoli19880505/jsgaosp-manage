@@ -6,7 +6,6 @@ import lombok.Data;
 public class BcOrg {
 
     private String orgNo;
-    private String orgCode;
     private String orgName;
     private String pOrgNo;
     private String status;
@@ -18,4 +17,6 @@ public class BcOrg {
     private String address;
     private String areaName;
     private String areaNo;
+    private String qrCodeImgUrl;
+    private String qrCodeUrl;
 }

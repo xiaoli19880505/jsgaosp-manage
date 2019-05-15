@@ -1,4 +1,4 @@
-/** 
+/**
  * 项目名称:91营销云
  * 文件名：SysRoleUserJdbcDao.java 
  * author:Administrator
@@ -11,14 +11,14 @@ package com.britecloud.marketingcloud.dao;
 import java.util.List;
 import java.util.Map;
 
-import com.britecloud.marketingcloud.model.BcRole;
-import com.britecloud.marketingcloud.model.BcUser;
-import com.britecloud.marketingcloud.model.Page;
-import com.britecloud.marketingcloud.model.Pageable;
+import com.britecloud.marketingcloud.domain.PageDataResult;
+import com.britecloud.marketingcloud.model.*;
 
 public interface SysRoleUserJdbcDao {
 
-    Page<BcUser> get(Map paramMap, String sign, Pageable pageable);
+
+    PageDataResult<BcUser> listUserByRoleId(Map params);
+    PageDataResult<BcUser> getrUserListNotInThisRole(Map params);
 
     List<BcUser> get(String roleId);
 
@@ -30,5 +30,7 @@ public interface SysRoleUserJdbcDao {
 
     List<BcRole> listRoleByUserId(String userId);
 
-	void addAdminRole(String companyId,String userId);
+    void addAdminRole(String companyId,String userId);
+
+    int countUserByRoleId(String roleId);
 }

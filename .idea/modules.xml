@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/jsgaosp-manage.iml" filepath="$PROJECT_DIR$/jsgaosp-manage.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jsgaosp-manage-alarm/jsgaosp-manage-alarm.iml" filepath="$PROJECT_DIR$/jsgaosp-manage-alarm/jsgaosp-manage-alarm.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jsgaosp-manage-api/jsgaosp-manage-api.iml" filepath="$PROJECT_DIR$/jsgaosp-manage-api/jsgaosp-manage-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jsgaosp-manage-core/jsgaosp-manage-core.iml" filepath="$PROJECT_DIR$/jsgaosp-manage-core/jsgaosp-manage-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jsgaosp-manage-executor/jsgaosp-manage-executor.iml" filepath="$PROJECT_DIR$/jsgaosp-manage-executor/jsgaosp-manage-executor.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jsgaosp-manage-web/jsgaosp-manage-web.iml" filepath="$PROJECT_DIR$/jsgaosp-manage-web/jsgaosp-manage-web.iml" />
+    </modules>
+  </component>
+</project>

@@ -16,6 +16,7 @@ angular.module('app', [
     'oc.lazyLoad',
     'pascalprecht.translate',
     'angularBootstrapNavTree',
+    'angularBootstrapAreaNavTree',
     'toaster',
     'myaccordion',
     // 'treeGrid',

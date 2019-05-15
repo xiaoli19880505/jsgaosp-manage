@@ -1,4 +1,4 @@
-/** 
+/**
  * 项目名称:91营销云
  * 文件名：SysRoleUserMgmtService.java 
  * author:Administrator
@@ -11,6 +11,7 @@ package com.britecloud.marketingcloud.service;
 import java.util.List;
 import java.util.Map;
 
+import com.britecloud.marketingcloud.domain.PageDataResult;
 import com.britecloud.marketingcloud.model.BcRole;
 import com.britecloud.marketingcloud.model.BcUser;
 import com.britecloud.marketingcloud.model.Page;
@@ -31,10 +32,16 @@ public interface SysRoleUserMgmtService {
 
     void remove(String roleId, String userId);
 
-    Page<BcUser> get(Map paramMap, String sign, Pageable pageable);
+    PageDataResult<BcUser> getUserListByRoleId(Map params);
+
+
+    PageDataResult<BcUser> getrUserListNotInThisRole(Map params);
 
     List<BcRole> listRoleByUserId(String userId);
-    
-	void addAdminRole(String companyId,String userId);
+
+    void addAdminRole(String companyId,String userId);
+
+    int CountUserByRoleId(String roleId);
+
 
 }

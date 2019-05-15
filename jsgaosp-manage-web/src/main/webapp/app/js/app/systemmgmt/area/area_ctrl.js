@@ -48,12 +48,14 @@ app.controller('AreaController',function($scope,$http,$state,$timeout,modalServ,
 	// 		$scope.area=data.data;
 	// 	})
 	// }
+	//
+	//
+	//
+	// //获取区划列表
+	// $scope.getAreaInfo();
 
 
-
-	//获取区划列表
-	//$scope.getAreaInfo();
-
+	$scope.areaTree=[];
 	var _branch = "";
 	$scope.keyword="";
 
@@ -91,25 +93,26 @@ app.controller('AreaController',function($scope,$http,$state,$timeout,modalServ,
 	};
 
 
-	// $scope.area = [];
-	// var tree = $scope.my_tree = {};
-	//
-	// var tmp=[];
-	// /**
-	//  * 加载地区树形结构
-	//  */
-	// $scope.loadArea = function() {
-	// 	$scope.doing_async = true;
-	// 	AreaService.loadArea().then(function(data) {
-	// 		if (data.code=="10000") {
-	// 			tmp=data.data;
-	// 			$scope.area = tmp;
-	// 			$scope.doing_async = false;
-	// 		}
-	// 	})
-	// };
+	$scope.area = [];
+	var tree = $scope.my_tree = {};
 
-	// $scope.loadArea();
+	var tmp=[];
+	/**
+	 * 加载地区树形结构
+	 */
+	$scope.loadArea = function() {
+		$scope.doing_async = true;
+		AreaService.loadArea().then(function(data) {
+			if (data.code=="10000") {
+				// var list =[];
+				// list.push(data.data)
+				$scope.areaTree = data.data;
+				$scope.doing_async = false;
+			}
+		})
+	};
+
+	$scope.loadArea();
 
 	/**
 	 * 增加一个节点

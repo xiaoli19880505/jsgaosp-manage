@@ -159,16 +159,13 @@ app.controller('OrgController',function($scope,$http,$state,$modal,$timeout,moda
 				toastr.warning('该组织下有子节点，不能删除!');
 			} else {
 				var modalOptions = {
-					bodyText : '确认删除' + $scope.orgName + '?'
+					bodyText : '确认删除' + org.orgName + '?'
 				};
 				modalServ.show(true, modalOptions).then(function() {
-					OrgService.deleteOrg($scope.orgItem).then(function(data) {
+					OrgService.deleteOrg(org).then(function(data) {
 						if (data.code=="10000") {
 							$scope.loadOrg();
-							$timeout(function() {
-								tree.expand_all();
-								tree.select_firstChild_branch();
-							}, 0);
+
 							toastr.success('删除成功！');
 						}
 					})
@@ -179,14 +176,11 @@ app.controller('OrgController',function($scope,$http,$state,$modal,$timeout,moda
 				bodyText : '确认删除' + org.orgName + '?'
 			};
 			modalServ.show(true, modalOptions).then(function() {
-				OrgService.deleteOrg({orgNo:orgNo}).then(function(data) {
+				OrgService.deleteOrg(org).then(function(data) {
 					if (data.code=="10000") {
 						$scope.tmp_flag=true;
 						$scope.loadOrg();
-						$timeout(function() {
-							tree.expand_all();
-							tree.select_firstChild_branch();
-						}, 0);
+						$scope.loadDepartmentList($scope.orgNo);
 						toastr.success('删除部门成功！');
 					}
 				})
@@ -215,7 +209,7 @@ app.controller('OrgController',function($scope,$http,$state,$modal,$timeout,moda
 					}else{
 						org=$scope.orgItem;
 					}
-					$scope.items = [type,org];
+					$scope.items = [type,org,$scope.orgNo];
 					return $scope.items;
 				}
 			}

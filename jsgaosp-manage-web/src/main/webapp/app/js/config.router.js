@@ -82,7 +82,9 @@ angular
                         deps: [
                             'js/app/systemmgmt/rolemgmt/role_ctrl.js',
                             'js/app/systemmgmt/rolemgmt/role_serv.js',
-                            'js/app/systemmgmt/rolemgmt/role_modal.js']
+                            'js/app/systemmgmt/rolemgmt/role_modal.js',
+                            'js/app/systemmgmt/rolemgmt/role_info_modal.js',
+                            'js/app/systemmgmt/rolemgmt/role_permission_modal.js']
                     },
                     {
                         state: 'app.system.user',

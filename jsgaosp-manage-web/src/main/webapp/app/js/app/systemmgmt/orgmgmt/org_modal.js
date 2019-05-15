@@ -23,14 +23,14 @@ app.controller('ModalOrgInstanceCtrl', ['$scope', '$modalInstance', '$http', '$s
             $scope.isUpdate=true;
         }else{
             $scope.orgItem={};
-            $scope.orgItem.pOrgNo=$scope.orgItem.porgNo;
+            $scope.orgItem.pOrgNo=items[2];
         }
 
         $scope.$watch('orgItem.orgType', function (newVal, oldVal) {
             if ($scope.orgItem.orgType=='01' && $scope.operateType != "update_org") {
                 $scope.title = '新增公安组织';
                 $scope.operateType="add_org";
-            }else if($scope.orgItem.orgType=='02' && $scope.operateType == "update_department"){
+            }else if($scope.orgItem.orgType=='02' && $scope.operateType != "update_department"){
                 $scope.title = '新增支队';
                 $scope.operateType="add_department";
             }
@@ -86,7 +86,6 @@ app.controller('ModalOrgInstanceCtrl', ['$scope', '$modalInstance', '$http', '$s
                     }
                 })
             } else if ($scope.operateType == "add_department") {
-                $scope.orgItem.pOrgNo = $scope.parentId;
                 OrgService.addDepatemnt($scope.orgItem).then(function (data) {
                     if (data.code == "10000") {
                         toastr.success('新建部门成功！');
