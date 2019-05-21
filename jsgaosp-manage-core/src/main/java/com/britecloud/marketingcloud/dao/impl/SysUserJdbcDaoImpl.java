@@ -8,6 +8,7 @@
  */
 package com.britecloud.marketingcloud.dao.impl;
 
+import java.net.URL;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -119,4 +120,5 @@ public class SysUserJdbcDaoImpl extends BaseJdbcDao implements SysUserJdbcDao {
 	     paramMap.put("email", email);
 	     return getNamedParameterJdbcTemplate().queryForInt(sql, paramMap);
 	}
+
 }

@@ -29,13 +29,7 @@ public class Executor {
 	public ContextHolder getContextHolder() {
 		return ContextHolder.getInstance();
 	}
-	
-	@Bean
-	public MonitorReceiveHandler ｍonitorReceiveHandler() {
-		return new MonitorReceiveHandler();
-	}
-	
-	
+
 	public static void main(String[] args) {
 		SpringApplication app = new SpringApplication(Executor.class);
 		app.setWebEnvironment(false);
@@ -44,10 +38,6 @@ public class Executor {
 		app.setEnvironment(env);
 		ApplicationContext ctx = app.run(args);
 		ContextHolder.getInstance().setApplicationContext(ctx);
-		
-		handler = (MonitorReceiveHandler)ctx.getBean("ｍonitorReceiveHandler");
-		handler.receive();
-		handler.destory();
 	}
 	
 	

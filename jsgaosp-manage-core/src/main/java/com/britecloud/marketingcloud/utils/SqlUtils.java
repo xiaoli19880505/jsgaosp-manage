@@ -113,4 +113,9 @@ public class SqlUtils {
 		}
 	}
 
+	public static  void  main(String[] args){
+		String resourceLocation = "com/britecloud/marketingcloud/dao/impl/sql/SysUserJdbcDaoImpl.sql";
+		URL url = ClassUtils.getDefaultClassLoader().getResource(resourceLocation);
+	}
+
 }

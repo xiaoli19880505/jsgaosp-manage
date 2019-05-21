@@ -30,6 +30,7 @@ import javax.servlet.Filter;
 //@EnableWebMvc
 //@EnableSwagger2
 @ComponentScan(basePackages = "com.britecloud")
+@EnableSwagger2
 public class ConsoleServer extends WebMvcConfigurerAdapter {
 
 	@Bean

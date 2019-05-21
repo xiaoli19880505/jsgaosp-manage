@@ -76,7 +76,7 @@ public class SysUserMgmtServiceImpl implements SysUserMgmtService {
                     String time = DateUtils.currentDateToString(DateUtils.DEFAULT_DATETIME_FORMAT);
                     loginLog.setTriggerTime(time);
                     loginLog.setSource(user.getUserEmail());
-                    bcLogDao.saveLoginLog(loginLog);
+                    //bcLogDao.saveLoginLog(loginLog);
                     return user;
                 }
         }

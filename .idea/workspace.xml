@@ -1,850 +1,182 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ebd573c1-6ab2-4b1d-9981-4bb3ce7b0d8e" name="Default Changelist" comment="区划管理">
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/f174113c-675d-44f1-85e8-4d4a1c5a6dbd.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/f174113c-675d-44f1-85e8-4d4a1c5a6dbd/storage_v2/_src_/schema/PUBLIC.aaZQjQ.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/f174113c-675d-44f1-85e8-4d4a1c5a6dbd/storage_v2/_src_/schema/SGA.bUABAA.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/f174113c-675d-44f1-85e8-4d4a1c5a6dbd/storage_v2/_src_/schema/SGA.bUABAA.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__antlr_antlr_2_7_7.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__aopalliance_aopalliance_1_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__ch_qos_cal10n_cal10n_api_0_7_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__ch_qos_logback_logback_classic_1_1_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__ch_qos_logback_logback_core_1_1_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_101tec_zkclient_0_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_alibaba_fastjson_1_2_5.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_esotericsoftware_kryo_kryo_2_21.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_esotericsoftware_minlog_minlog_1_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_esotericsoftware_reflectasm_reflectasm_shaded_1_07.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_classmate_1_0_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_classmate_1_2_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_4_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_4_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_4_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_dataformat_jackson_dataformat_yaml_2_4_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_datatype_jackson_datatype_joda_2_4_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_fge_btf_1_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_fge_jackson_coreutils_1_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_fge_json_patch_1_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_fge_json_schema_core_1_2_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_fge_json_schema_validator_2_2_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_fge_msg_simple_1_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_fge_uri_template_0_9.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_code_findbugs_jsr305_2_0_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_guava_guava_18_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_googlecode_libphonenumber_libphonenumber_6_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_oracle_ojdbc14_10_2_0_4_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_sun_mail_javax_mail_1_5_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_twitter_chill_2_10_0_5_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_twitter_chill_java_0_5_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_yammer_metrics_metrics_core_2_2_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_beanutils_commons_beanutils_1_9_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_chain_commons_chain_1_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_cli_commons_cli_1_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_codec_commons_codec_1_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_collections_commons_collections_3_2_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_dbutils_commons_dbutils_1_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_digester_commons_digester_2_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_io_commons_io_2_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_lang_commons_lang_2_5.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_logging_commons_logging_1_1_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_validator_commons_validator_1_3_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__de_undercouch_bson4jackson_2_4_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__dom4j_dom4j_1_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_github_robwin_markup_document_builder_0_1_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_github_robwin_swagger2markup_0_7_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_all_4_0_13_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_core_2_2_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_schema_2_2_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_spi_2_2_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_spring_web_2_2_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_staticdocs_2_2_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_swagger2_2_2_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_swagger_common_2_2_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_swagger_ui_2_2_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_swagger_swagger_annotations_1_5_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_swagger_swagger_compat_spec_parser_1_0_8.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_swagger_swagger_core_1_5_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_swagger_swagger_models_1_5_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_swagger_swagger_parser_1_0_8.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_activation_activation_1_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_mail_mailapi_1_4_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_validation_validation_api_1_1_0_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__jline_jline_0_9_94.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__joda_time_joda_time_2_5.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_12.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__log4j_log4j_1_2_17.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__mysql_mysql_connector_java_5_1_26.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__mysql_mysql_connector_java_5_1_35.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_sf_ezmorph_ezmorph_1_0_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_sf_jopt_simple_jopt_simple_3_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_sf_json_lib_json_lib_jdk15_2_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_ant_ant_1_8_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_ant_ant_launcher_1_8_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_lang3_3_2_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_pool2_2_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpclient_4_3_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpcore_4_3_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpmime_4_3_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_kafka_kafka_2_10_0_8_1_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_struts_struts_core_1_3_8.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_struts_struts_taglib_1_3_8.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_struts_struts_tiles_1_3_8.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_core_8_0_23.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_el_8_0_23.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_logging_juli_8_0_23.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_websocket_8_0_23.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_tomcat_jdbc_8_0_23.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_tomcat_juli_8_0_23.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_velocity_velocity_1_7.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_velocity_velocity_tools_2_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_zookeeper_zookeeper_3_3_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_aspectj_aspectjrt_1_8_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_aspectj_aspectjweaver_1_8_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_fusesource_leveldbjni_leveldbjni_all_1_8.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_library_1_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_hibernate_validator_5_1_3_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_logging_jboss_logging_3_1_3_GA.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jongo_jongo_1_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mapstruct_mapstruct_1_0_0_CR1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mockito_mockito_core_1_10_19.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mongodb_bson_3_1_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mongodb_mongodb_driver_3_1_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mongodb_mongodb_driver_core_3_1_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mozilla_rhino_1_7R4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_objenesis_objenesis_1_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_objenesis_objenesis_2_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_ow2_asm_asm_4_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_scala_lang_scala_library_2_10_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_scala_lang_scala_library_2_10_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_jcl_over_slf4j_1_7_12.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_jul_to_slf4j_1_7_12.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_log4j_over_slf4j_1_7_12.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_api_1_7_12.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_ext_1_6_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_log4j12_1_7_12.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_1_2_5_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_autoconfigure_1_2_5_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_1_2_5_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_jdbc_1_2_5_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_log4j_1_2_5_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_logging_1_2_5_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_mail_1_2_5_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_redis_1_2_5_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_test_1_2_5_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_tomcat_1_2_5_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_velocity_1_2_5_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_web_1_2_5_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_data_spring_data_redis_1_4_3_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_hateoas_spring_hateoas_0_16_0_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_plugin_spring_plugin_core_1_1_0_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_plugin_spring_plugin_metadata_1_2_0_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_aop_4_1_7_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_beans_4_1_7_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_context_4_1_7_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_context_support_4_1_7_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_core_4_1_7_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_expression_4_1_7_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_jdbc_4_1_7_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_test_4_1_7_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_tx_4_1_7_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_web_4_1_7_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_webmvc_4_1_7_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_xerial_snappy_snappy_java_1_0_5.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_yaml_snakeyaml_1_14.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_zeromq_jeromq_0_3_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__oro_oro_2_0_8.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__redis_clients_jedis_2_5_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__sslext_sslext_1_2_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/dao/BcLinkInfoDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/dao/BcRoleOpDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/dao/impl/BcLinkInfoDaoImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/dao/impl/BcRoleOpDaoImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/dao/impl/sql/BcLinkInfoDaoImpl.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/dao/impl/sql/BcRoleOpDaoImpl.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/model/BcLinkInfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/model/BcRoleOp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/service/BcLinkInfoService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/service/BcRoleOpService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/service/impl/BcLinkInfoServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/service/impl/BcRoleOpServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/java/com/britecloud/marketingcloud/console/action/api/BcCommonApiAction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/java/com/britecloud/marketingcloud/console/configuration/RestSignatureFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/java/com/britecloud/marketingcloud/console/configuration/SwaggerConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/js/app/systemmgmt/rolemgmt/role_info_modal.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/js/app/systemmgmt/rolemgmt/role_permission_modal.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/js/directives/custom/areatreeNav.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/tpl/systemmgmt/rolemgmt/role_info_form.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/ace.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/ext-beautify.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/ext-chromevox.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/ext-elastic_tabstops_lite.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/ext-emmet.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/ext-error_marker.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/ext-keybinding_menu.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/ext-language_tools.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/ext-linking.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/ext-modelist.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/ext-old_ie.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/ext-searchbox.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/ext-settings_menu.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/ext-spellcheck.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/ext-split.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/ext-static_highlight.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/ext-statusbar.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/ext-textarea.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/ext-themelist.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/ext-whitespace.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/keybinding-emacs.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/keybinding-vim.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-abap.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-abc.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-actionscript.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-ada.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-apache_conf.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-applescript.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-asciidoc.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-assembly_x86.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-autohotkey.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-batchfile.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-c9search.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-c_cpp.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-cirru.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-clojure.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-cobol.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-coffee.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-coldfusion.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-csharp.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-css.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-curly.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-d.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-dart.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-diff.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-django.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-dockerfile.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-dot.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-eiffel.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-ejs.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-elixir.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-elm.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-erlang.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-forth.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-ftl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-gcode.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-gherkin.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-gitignore.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-golang.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-groovy.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-haml.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-handlebars.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-haskell.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-haxe.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-html.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-html_elixir.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-html_ruby.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-ini.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-io.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-jack.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-jade.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-java.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-javascript.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-json.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-jsoniq.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-jsp.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-jsx.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-julia.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-latex.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-lean.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-less.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-liquid.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-lisp.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-live_script.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-livescript.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-logiql.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-lsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-lua.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-luapage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-lucene.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-makefile.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-markdown.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-mask.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-matlab.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-maze.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-mel.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-mips_assembler.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-mipsassembler.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-mushcode.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-mysql.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-nix.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-objectivec.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-ocaml.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-pascal.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-perl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-pgsql.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-php.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-plain_text.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-powershell.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-praat.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-prolog.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-properties.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-protobuf.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-python.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-r.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-rdoc.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-rhtml.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-ruby.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-rust.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-sass.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-scad.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-scala.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-scheme.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-scss.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-sh.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-sjs.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-smarty.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-snippets.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-soy_template.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-space.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-sql.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-sqlserver.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-stylus.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-svg.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-swift.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-swig.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-tcl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-tex.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-text.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-textile.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-toml.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-twig.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-typescript.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-vala.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-vbscript.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-velocity.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-verilog.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-vhdl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-xml.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-xquery.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/mode-yaml.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/abap.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/abc.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/actionscript.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/ada.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/apache_conf.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/applescript.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/asciidoc.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/assembly_x86.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/autohotkey.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/batchfile.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/c9search.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/c_cpp.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/cirru.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/clojure.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/cobol.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/coffee.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/coldfusion.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/csharp.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/css.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/curly.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/d.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/dart.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/diff.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/django.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/dockerfile.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/dot.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/eiffel.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/ejs.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/elixir.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/elm.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/erlang.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/forth.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/ftl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/gcode.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/gherkin.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/gitignore.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/golang.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/groovy.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/haml.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/handlebars.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/haskell.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/haxe.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/html.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/html_elixir.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/html_ruby.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/ini.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/io.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/jack.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/jade.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/java.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/javascript.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/json.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/jsoniq.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/jsp.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/jsx.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/julia.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/latex.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/lean.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/less.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/liquid.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/lisp.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/live_script.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/livescript.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/logiql.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/lsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/lua.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/luapage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/lucene.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/makefile.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/markdown.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/mask.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/matlab.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/maze.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/mel.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/mips_assembler.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/mipsassembler.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/mushcode.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/mysql.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/nix.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/objectivec.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/ocaml.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/pascal.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/perl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/pgsql.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/php.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/plain_text.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/powershell.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/praat.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/prolog.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/properties.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/protobuf.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/python.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/r.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/rdoc.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/rhtml.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/ruby.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/rust.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/sass.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/scad.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/scala.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/scheme.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/scss.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/sh.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/sjs.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/smarty.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/snippets.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/soy_template.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/space.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/sql.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/sqlserver.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/stylus.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/svg.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/swift.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/swig.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/tcl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/tex.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/text.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/textile.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/toml.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/twig.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/typescript.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/vala.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/vbscript.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/velocity.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/verilog.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/vhdl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/xml.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/xquery.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/snippets/yaml.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/theme-ambiance.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/theme-chaos.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/theme-chrome.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/theme-clouds.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/theme-clouds_midnight.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/theme-cobalt.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/theme-crimson_editor.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/theme-dawn.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/theme-dreamweaver.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/theme-eclipse.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/theme-github.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/theme-idle_fingers.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/theme-iplastic.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/theme-katzenmilch.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/theme-kr_theme.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/theme-kuroir.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/theme-merbivore.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/theme-merbivore_soft.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/theme-mono_industrial.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/theme-monokai.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/theme-pastel_on_dark.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/theme-solarized_dark.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/theme-solarized_light.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/theme-sqlserver.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/theme-terminal.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/theme-textmate.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/theme-tomorrow.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/theme-tomorrow_night.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/theme-tomorrow_night_blue.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/theme-tomorrow_night_bright.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/theme-tomorrow_night_eighties.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/theme-twilight.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/theme-vibrant_ink.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/theme-xcode.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/worker-coffee.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/worker-css.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/worker-html.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/worker-javascript.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/worker-json.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/worker-lua.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/worker-php.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/worker-xml.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/ace-builds/src-min-noconflict/worker-xquery.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/angular-code-mirror.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/angular-code-mirror.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/angular-code-mirror.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/angular-ui-ace/ui-ace.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/angular-ui-ace/ui-ace.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/modules/angular-bootstrap-nav-tree/area_tree_directive.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jsgaosp-manage-core/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/jsgaosp-manage-core/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/dao/BcCodeDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/dao/BcCodeDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/dao/BcOrgDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/dao/BcOrgDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/dao/SysRoleJdbcDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/dao/SysRoleJdbcDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/dao/SysRoleUserJdbcDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/dao/SysRoleUserJdbcDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/dao/impl/BcCodeDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/dao/impl/BcCodeDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/dao/impl/BcOrgDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/dao/impl/BcOrgDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/dao/impl/SysRoleJdbcDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/dao/impl/SysRoleJdbcDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/dao/impl/SysRoleUserJdbcDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/dao/impl/SysRoleUserJdbcDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/dao/impl/sql/ApplicatonDaoImpl.sql" beforeDir="false" afterPath="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/dao/impl/sql/ApplicatonDaoImpl.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/dao/impl/sql/BcCodeDaoImpl.sql" beforeDir="false" afterPath="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/dao/impl/sql/BcCodeDaoImpl.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/dao/impl/sql/BcOrgDaoImpl.sql" beforeDir="false" afterPath="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/dao/impl/sql/BcOrgDaoImpl.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/dao/impl/sql/SysRoleJdbcDaoImpl.sql" beforeDir="false" afterPath="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/dao/impl/sql/SysRoleJdbcDaoImpl.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/dao/impl/sql/SysRoleUserJdbcDaoImpl.sql" beforeDir="false" afterPath="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/dao/impl/sql/SysRoleUserJdbcDaoImpl.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/model/BcOrg.java" beforeDir="false" afterPath="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/model/BcOrg.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/model/BcRole.java" beforeDir="false" afterPath="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/model/BcRole.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/service/BcCodeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/service/BcCodeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/service/BcOrgService.java" beforeDir="false" afterPath="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/service/BcOrgService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/service/SysRoleMgmtService.java" beforeDir="false" afterPath="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/service/SysRoleMgmtService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/service/SysRoleUserMgmtService.java" beforeDir="false" afterPath="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/service/SysRoleUserMgmtService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/service/impl/BcAreaServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/service/impl/BcAreaServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/service/impl/BcCodeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/service/impl/BcCodeServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/service/impl/BcOrgServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/service/impl/BcOrgServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/service/impl/SysRoleMgmtServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/service/impl/SysRoleMgmtServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/service/impl/SysRoleUserMgmtServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/service/impl/SysRoleUserMgmtServiceImpl.java" afterDir="false" />
+    <list default="true" id="f5f1bbb4-e918-4239-8999-b61fdcf51e77" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_area_name_bson_3_1_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/dao/impl/Test.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/dao/impl/test.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/f174113c-675d-44f1-85e8-4d4a1c5a6dbd.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/f174113c-675d-44f1-85e8-4d4a1c5a6dbd/storage_v2/_src_/schema/PUBLIC.aaZQjQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/f174113c-675d-44f1-85e8-4d4a1c5a6dbd/storage_v2/_src_/schema/SGA.bUABAA.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/f174113c-675d-44f1-85e8-4d4a1c5a6dbd/storage_v2/_src_/schema/SGA.bUABAA.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_oracle_ojdbc14_10_2_0_4_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_oracle_ojdbc6_11_2_0_3.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/hbi.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/tsar.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jsgaosp-manage-api/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/jsgaosp-manage-api/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/dao/impl/AccessKeyDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/dao/impl/AccessKeyDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/dao/impl/SysUserJdbcDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/dao/impl/SysUserJdbcDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/service/impl/SysUserMgmtServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/service/impl/SysUserMgmtServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/utils/SqlUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/utils/SqlUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jsgaosp-manage-executor/src/main/java/com/britecloud/marketingcloud/executor/Executor.java" beforeDir="false" afterPath="$PROJECT_DIR$/jsgaosp-manage-executor/src/main/java/com/britecloud/marketingcloud/executor/Executor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jsgaosp-manage-executor/src/main/java/com/britecloud/marketingcloud/executor/zmq/MonitorReceiveHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/jsgaosp-manage-executor/src/main/java/com/britecloud/marketingcloud/executor/zmq/MonitorReceiveHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jsgaosp-manage-web/jsgaosp-manage-web.iml" beforeDir="false" afterPath="$PROJECT_DIR$/jsgaosp-manage-web/jsgaosp-manage-web.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jsgaosp-manage-web/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/jsgaosp-manage-web/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/java/com/britecloud/marketingcloud/console/ConsoleServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/java/com/britecloud/marketingcloud/console/ConsoleServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/java/com/britecloud/marketingcloud/console/action/BcAreaAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/java/com/britecloud/marketingcloud/console/action/BcAreaAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/java/com/britecloud/marketingcloud/console/action/BcOrgAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/java/com/britecloud/marketingcloud/console/action/BcOrgAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/java/com/britecloud/marketingcloud/console/action/GlobalAct.java" beforeDir="false" afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/java/com/britecloud/marketingcloud/console/action/GlobalAct.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/java/com/britecloud/marketingcloud/console/action/SysRoleMgmtAct.java" beforeDir="false" afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/java/com/britecloud/marketingcloud/console/action/SysRoleMgmtAct.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/java/com/britecloud/marketingcloud/console/action/SysRoleUserMgmtAct.java" beforeDir="false" afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/java/com/britecloud/marketingcloud/console/action/SysRoleUserMgmtAct.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/java/com/britecloud/marketingcloud/console/action/api/BcAppApiAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/java/com/britecloud/marketingcloud/console/action/api/BcAppApiAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/java/com/britecloud/marketingcloud/console/action/api/BcOrgApiAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/java/com/britecloud/marketingcloud/console/action/api/BcOrgApiAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/java/com/britecloud/marketingcloud/console/configuration/WebConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/java/com/britecloud/marketingcloud/console/configuration/WebConfiguration.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/resources/application-web.properties" beforeDir="false" afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/resources/application-web.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/js/app/app_ctrl.js" beforeDir="false" afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/js/app/app_ctrl.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/js/app/commonService.js" beforeDir="false" afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/js/app/commonService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/js/app/global.js" beforeDir="false" afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/js/app/global.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/js/app/systemmgmt/area/area_ctrl.js" beforeDir="false" afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/js/app/systemmgmt/area/area_ctrl.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/js/app/systemmgmt/orgmgmt/org_ctrl.js" beforeDir="false" afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/js/app/systemmgmt/orgmgmt/org_ctrl.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/js/app/systemmgmt/orgmgmt/org_modal.js" beforeDir="false" afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/js/app/systemmgmt/orgmgmt/org_modal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/js/app/systemmgmt/orgmgmt/org_serv.js" beforeDir="false" afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/js/app/systemmgmt/orgmgmt/org_serv.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/js/app/systemmgmt/rolemgmt/role_ctrl.js" beforeDir="false" afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/js/app/systemmgmt/rolemgmt/role_ctrl.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/js/app/systemmgmt/rolemgmt/role_modal.js" beforeDir="false" afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/js/app/systemmgmt/rolemgmt/role_modal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/js/app/systemmgmt/rolemgmt/role_serv.js" beforeDir="false" afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/js/app/systemmgmt/rolemgmt/role_serv.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/js/config.lazyload.js" beforeDir="false" afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/js/config.lazyload.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/js/config.router.js" beforeDir="false" afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/js/config.router.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/js/directives/custom/stTargetTree.js" beforeDir="false" afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/js/directives/custom/stTargetTree.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/tpl/application/application_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/tpl/application/application_form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/tpl/systemmgmt/area/area.html" beforeDir="false" afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/tpl/systemmgmt/area/area.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/tpl/systemmgmt/orgmgmt/org.html" beforeDir="false" afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/tpl/systemmgmt/orgmgmt/org.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/tpl/systemmgmt/rolemgmt/role_modal_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/tpl/systemmgmt/rolemgmt/role_modal_form.html" afterDir="false" />
     </list>
-    <ignored path="$PROJECT_DIR$/jsgaosp-manage-alarm/target/" />
-    <ignored path="$PROJECT_DIR$/jsgaosp-manage-web/target/" />
     <ignored path="$PROJECT_DIR$/target/" />
-    <ignored path="$PROJECT_DIR$/jsgaosp-manage-executor/target/" />
+    <ignored path="$PROJECT_DIR$/jsgaosp-manage-alarm/target/" />
     <ignored path="$PROJECT_DIR$/jsgaosp-manage-api/target/" />
     <ignored path="$PROJECT_DIR$/jsgaosp-manage-core/target/" />
+    <ignored path="$PROJECT_DIR$/jsgaosp-manage-executor/target/" />
+    <ignored path="$PROJECT_DIR$/jsgaosp-manage-web/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="CompilerWorkspaceConfiguration">
-    <option name="MAKE_PROJECT_ON_SAVE" value="true" />
-  </component>
-  <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/jsgaosp_manage$ConsoleServer.ic" NAME="ConsoleServer Coverage Results" MODIFIED="1557798241645" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-  </component>
-  <component name="CoverageViewManager">
-    <option name="myElementSize" value="131" />
-  </component>
-  <component name="DatabaseView">
-    <option name="SHOW_INTERMEDIATE" value="true" />
-    <option name="GROUP_DATA_SOURCES" value="true" />
-    <option name="GROUP_SCHEMA" value="true" />
-    <option name="GROUP_CONTENTS" value="false" />
-    <option name="SORT_POSITIONED" value="false" />
-    <option name="SHOW_EMPTY_GROUPS" value="false" />
-    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
-    <option name="HIDDEN_KINDS">
-      <set />
-    </option>
-    <expand>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="@192.168.0.23" type="feb32156:DbDataSourceImpl" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="@192.168.0.23" type="feb32156:DbDataSourceImpl" />
-        <item name="SGA: schema" type="3abd1b6a:OraImplModel$Schema" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="@192.168.0.23" type="feb32156:DbDataSourceImpl" />
-        <item name="SGA: schema" type="3abd1b6a:OraImplModel$Schema" />
-        <item name="tables" type="d4e8921:DatabaseStructure$FamilyGroup" />
-      </path>
-    </expand>
-    <select />
-  </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/js/app/systemmgmt/orgmgmt/company_serv.js">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/tpl/org_tree_nav.html">
+    <leaf>
+      <file leaf-file-name="BcLogDaoImpl.sql" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/dao/impl/sql/BcLogDaoImpl.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="611">
-              <caret line="38" selection-start-line="38" selection-end-line="38" />
+            <state relative-caret-position="171">
+              <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/tpl/org_tree_modal.html">
+      <file leaf-file-name="BcSysAppDaoImpl.sql" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/dao/impl/sql/BcSysAppDaoImpl.sql">
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/js/directives/custom/buttonPermissionCheck.js">
+      <file leaf-file-name="SysUserMgmtServiceImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/service/impl/SysUserMgmtServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-342" />
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/js/directives/custom/orgtreeNav.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="211">
-              <caret line="78" lean-forward="true" selection-start-line="78" selection-end-line="78" />
+            <state relative-caret-position="181">
+              <caret line="65" column="21" selection-start-line="65" selection-start-column="21" selection-end-line="65" selection-end-column="21" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file leaf-file-name="GlobalAct.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/jsgaosp-manage-web/src/main/java/com/britecloud/marketingcloud/console/action/GlobalAct.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1998">
+              <caret line="52" column="30" lean-forward="true" selection-start-line="52" selection-start-column="30" selection-end-line="52" selection-end-column="39" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="login-serv.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/js/app/login/login-serv.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="380">
+              <caret line="20" column="19" selection-start-line="20" selection-start-column="15" selection-end-line="20" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SysRoleMgmtAct.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/jsgaosp-manage-web/src/main/java/com/britecloud/marketingcloud/console/action/SysRoleMgmtAct.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="133">
+              <caret line="135" column="44" selection-start-line="135" selection-start-column="29" selection-end-line="135" selection-end-column="44" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app_ctrl.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/js/app/app_ctrl.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="605">
-              <caret line="58" column="33" lean-forward="true" selection-start-line="58" selection-start-column="33" selection-end-line="58" selection-end-column="33" />
+            <state relative-caret-position="169">
+              <caret line="62" lean-forward="true" selection-start-line="62" selection-end-line="62" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/js/app/systemmgmt/orgmgmt/org_ctrl.js">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="275">
-              <caret line="182" column="64" selection-start-line="182" selection-start-column="64" selection-end-line="182" selection-end-column="64" />
+            <state relative-caret-position="152">
+              <caret line="8" column="45" selection-start-line="8" selection-start-column="41" selection-end-line="8" selection-end-column="45" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/js/app/systemmgmt/orgmgmt/org_serv.js">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1425">
-              <caret line="57" lean-forward="true" selection-start-line="57" selection-end-line="58" selection-end-column="10" />
+            <state relative-caret-position="130">
+              <caret line="13" column="54" selection-start-line="13" selection-start-column="54" selection-end-line="13" selection-end-column="54" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/js/app/systemmgmt/orgmgmt/org_modal.js">
+      <file leaf-file-name="SysUserJdbcDaoImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/dao/impl/SysUserJdbcDaoImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1050">
-              <caret line="62" selection-start-line="62" selection-end-line="62" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/tpl/systemmgmt/orgmgmt/org.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="149">
-              <caret line="132" column="78" selection-start-line="132" selection-start-column="61" selection-end-line="132" selection-end-column="78" />
+            <state relative-caret-position="1262">
+              <caret line="95" column="44" lean-forward="true" selection-start-line="95" selection-start-column="44" selection-end-line="95" selection-end-column="44" />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Interface" />
-        <option value="CSS File" />
-        <option value="JavaScript File" />
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>chooseRo</find>
-      <find>upload</find>
-      <find>/oss</find>
-      <find>targetFile</find>
-      <find>img</find>
-      <find>Upload</find>
-      <find>ngf-accept</find>
-      <find>fa-plus-square-o</find>
-      <find>global/info</find>
-      <find>tarRes</find>
-      <find>ngAnimate</find>
-      <find>myaccordion</find>
-      <find>changeOrg</find>
-      <find>select_firstChild_branch</find>
-      <find>getInfo</find>
-      <find>getUserInfo</find>
-      <find>There is already</find>
-      <find>abn-tree</find>
-      <find>abn</find>
-      <find>listarea(</find>
-      <find>angularBootstrapN</find>
-      <find>treeData</find>
-      <find>label</find>
-      <find>org_name</find>
-      <find>area_name</find>
-      <find>p_org_no</find>
-      <find>p_area_no</find>
-      <find>buttonPermissionCheck.js</find>
-      <find>delete_department</find>
-      <find>update_department</find>
+      <find>SecurityInterceptor</find>
+      <find>bc_login_log</find>
+      <find>to_date</find>
+      <find>BC_LOGIN_LOG</find>
+      <find>saveLoginLog</find>
+      <find>login</find>
+      <find>l</find>
+      <find>global/in</find>
+      <find>getPermByRoleId</find>
     </findStrings>
     <replaceStrings>
-      <replace>p_area_no</replace>
-      <replace>tmp_flag</replace>
-      <replace>abnccc-tree</replace>
-      <replace>area_name</replace>
+      <replace />
     </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="c1176d24fd0e62033db9b45116ee257de06d1e8e" />
-      </map>
-    </option>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/dao/BcOrgDao.java" />
-        <option value="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/dao/impl/BcCodeDaoImpl.java" />
-        <option value="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/dao/impl/sql/BcCodeDaoImpl.sql" />
-        <option value="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/dao/impl/sql/BcOrgDaoImpl.sql" />
-        <option value="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/dao/impl/BcOrgDaoImpl.java" />
-        <option value="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/dao/impl/sql/SysRoleJdbcDaoImpl.sql" />
-        <option value="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/dao/impl/sql/SysRoleUserJdbcDaoImpl.sql" />
-        <option value="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/dao/impl/SysRoleJdbcDaoImpl.java" />
-        <option value="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/dao/impl/SysRoleUserJdbcDaoImpl.java" />
-        <option value="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/dao/SysRoleJdbcDao.java" />
-        <option value="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/dao/SysRoleUserJdbcDao.java" />
-        <option value="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/model/BcOrg.java" />
-        <option value="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/model/BcRole.java" />
-        <option value="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/service/BcCodeService.java" />
-        <option value="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/service/BcOrgService.java" />
-        <option value="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/service/impl/BcAreaServiceImpl.java" />
-        <option value="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/service/impl/BcCodeServiceImpl.java" />
-        <option value="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/service/impl/BcOrgServiceImpl.java" />
-        <option value="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/service/impl/SysRoleMgmtServiceImpl.java" />
-        <option value="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/service/impl/SysRoleUserMgmtServiceImpl.java" />
-        <option value="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/service/SysRoleMgmtService.java" />
-        <option value="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/service/SysRoleUserMgmtService.java" />
-        <option value="$PROJECT_DIR$/jsgaosp-manage-web/src/main/java/com/britecloud/marketingcloud/console/action/api/BcAppApiAction.java" />
-        <option value="$PROJECT_DIR$/jsgaosp-manage-web/src/main/java/com/britecloud/marketingcloud/console/action/api/BcOrgApiAction.java" />
-        <option value="$PROJECT_DIR$/jsgaosp-manage-web/src/main/java/com/britecloud/marketingcloud/console/action/BcOrgAction.java" />
-        <option value="$PROJECT_DIR$/jsgaosp-manage-web/src/main/java/com/britecloud/marketingcloud/console/action/GlobalAct.java" />
-        <option value="$PROJECT_DIR$/jsgaosp-manage-web/src/main/java/com/britecloud/marketingcloud/console/action/SysRoleMgmtAct.java" />
-        <option value="$PROJECT_DIR$/jsgaosp-manage-web/src/main/java/com/britecloud/marketingcloud/console/action/SysRoleUserMgmtAct.java" />
-        <option value="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/js/app/commonService.js" />
-        <option value="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/js/app/systemmgmt/rolemgmt/role_ctrl.js" />
-        <option value="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/js/app/systemmgmt/orgmgmt/org_serv.js" />
-        <option value="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/js/app/systemmgmt/rolemgmt/role_modal.js" />
-        <option value="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/js/app/systemmgmt/rolemgmt/role_serv.js" />
-        <option value="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/js/config.router.js" />
-        <option value="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/tpl/systemmgmt/rolemgmt/role.html" />
-        <option value="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/tpl/systemmgmt/rolemgmt/role_modal_form.html" />
-        <option value="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/model/BcRoleOp.java" />
-        <option value="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/dao/BcRoleOpDao.java" />
-        <option value="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/dao/impl/BcRoleOpDaoImpl.java" />
-        <option value="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/service/BcRoleOpService.java" />
-        <option value="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/service/impl/BcRoleOpServiceImpl.java" />
-        <option value="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/js/directives/custom/stTargetTree.js" />
-        <option value="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/tpl/systemmgmt/orgmgmt/org.html" />
-        <option value="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/js/app/global.js" />
-        <option value="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/js/app/systemmgmt/link/applicant-ctrl.js" />
-        <option value="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/js/app/systemmgmt/link/applicant-modal.js" />
-        <option value="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/js/app/systemmgmt/link/applicant-serv.js" />
-        <option value="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/tpl/org_tree_nav.html" />
-        <option value="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/js/app/app_ctrl.js" />
-        <option value="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/js/app/systemmgmt/orgmgmt/org_modal.js" />
-        <option value="$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/js/app/systemmgmt/orgmgmt/org_ctrl.js" />
+        <option value="$PROJECT_DIR$/jsgaosp-manage-web/pom.xml" />
+        <option value="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/core/SecurityInterceptor.java" />
+        <option value="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/utils/SqlUtils.java" />
+        <option value="$PROJECT_DIR$/jsgaosp-manage-web/src/main/resources/application-web.properties" />
+        <option value="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/dao/impl/BcLogDaoImpl.java" />
+        <option value="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/dao/impl/SysUserJdbcDaoImpl.java" />
+        <option value="$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/service/impl/SysUserMgmtServiceImpl.java" />
       </list>
     </option>
   </component>
-  <component name="MavenImportPreferences">
-    <option name="importingSettings">
-      <MavenImportingSettings>
-        <option name="importAutomatically" value="true" />
-      </MavenImportingSettings>
-    </option>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="MavenProjectNavigator">
     <treeState>
       <expand>
         <path>
           <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
-          <item name="jsgaosp-manage" type="9519ce18:MavenProjectsStructure$ProjectNode" />
-        </path>
-        <path>
-          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
-          <item name="jsgaosp-manage" type="9519ce18:MavenProjectsStructure$ProjectNode" />
-          <item name="Lifecycle" type="58874e2:MavenProjectsStructure$LifecycleNode" />
-        </path>
-        <path>
-          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
-          <item name="jsgaosp-manage-api" type="9519ce18:MavenProjectsStructure$ProjectNode" />
-        </path>
-        <path>
-          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
           <item name="jsgaosp-manage-core" type="9519ce18:MavenProjectsStructure$ProjectNode" />
         </path>
         <path>
@@ -855,32 +187,30 @@
         <path>
           <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
           <item name="jsgaosp-manage-web" type="9519ce18:MavenProjectsStructure$ProjectNode" />
-        </path>
-        <path>
-          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
-          <item name="jsgaosp-manage-web" type="9519ce18:MavenProjectsStructure$ProjectNode" />
-          <item name="Lifecycle" type="58874e2:MavenProjectsStructure$LifecycleNode" />
         </path>
       </expand>
       <select />
     </treeState>
   </component>
-  <component name="MavenRunner">
-    <option name="skipTests" value="true" />
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="10" />
-    <option name="y" value="20" />
-    <option name="width" value="1346" />
-    <option name="height" value="688" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1386" />
+    <option name="height" value="788" />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
       <pane id="PackagesPane" />
+      <pane id="AndroidView" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -892,6 +222,11 @@
             <path>
               <item name="jsgaosp-manage" type="b2602c69:ProjectViewProjectNode" />
               <item name="jsgaosp-manage" type="462c0819:PsiDirectoryNode" />
+              <item name="db" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="jsgaosp-manage" type="b2602c69:ProjectViewProjectNode" />
+              <item name="jsgaosp-manage" type="462c0819:PsiDirectoryNode" />
               <item name="jsgaosp-manage-core" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -923,16 +258,6 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="marketingcloud" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="jsgaosp-manage" type="b2602c69:ProjectViewProjectNode" />
-              <item name="jsgaosp-manage" type="462c0819:PsiDirectoryNode" />
-              <item name="jsgaosp-manage-core" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="marketingcloud" type="462c0819:PsiDirectoryNode" />
-              <item name="core" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="jsgaosp-manage" type="b2602c69:ProjectViewProjectNode" />
@@ -958,6 +283,18 @@
             <path>
               <item name="jsgaosp-manage" type="b2602c69:ProjectViewProjectNode" />
               <item name="jsgaosp-manage" type="462c0819:PsiDirectoryNode" />
+              <item name="jsgaosp-manage-core" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="marketingcloud" type="462c0819:PsiDirectoryNode" />
+              <item name="dao" type="462c0819:PsiDirectoryNode" />
+              <item name="impl" type="462c0819:PsiDirectoryNode" />
+              <item name="sql" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="jsgaosp-manage" type="b2602c69:ProjectViewProjectNode" />
+              <item name="jsgaosp-manage" type="462c0819:PsiDirectoryNode" />
               <item name="jsgaosp-manage-web" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -972,6 +309,31 @@
               <item name="jsgaosp-manage-web" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="jsgaosp-manage" type="b2602c69:ProjectViewProjectNode" />
+              <item name="jsgaosp-manage" type="462c0819:PsiDirectoryNode" />
+              <item name="jsgaosp-manage-web" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="jsgaosp-manage" type="b2602c69:ProjectViewProjectNode" />
+              <item name="jsgaosp-manage" type="462c0819:PsiDirectoryNode" />
+              <item name="jsgaosp-manage-web" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="console" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="jsgaosp-manage" type="b2602c69:ProjectViewProjectNode" />
+              <item name="jsgaosp-manage" type="462c0819:PsiDirectoryNode" />
+              <item name="jsgaosp-manage-web" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="jsgaosp-manage" type="b2602c69:ProjectViewProjectNode" />
@@ -980,48 +342,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="jsgaosp-manage" type="b2602c69:ProjectViewProjectNode" />
-              <item name="jsgaosp-manage" type="462c0819:PsiDirectoryNode" />
-              <item name="jsgaosp-manage-web" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="jsgaosp-manage" type="b2602c69:ProjectViewProjectNode" />
-              <item name="jsgaosp-manage" type="462c0819:PsiDirectoryNode" />
-              <item name="jsgaosp-manage-web" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="jsgaosp-manage" type="b2602c69:ProjectViewProjectNode" />
-              <item name="jsgaosp-manage" type="462c0819:PsiDirectoryNode" />
-              <item name="jsgaosp-manage-web" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="jsgaosp-manage" type="b2602c69:ProjectViewProjectNode" />
-              <item name="jsgaosp-manage" type="462c0819:PsiDirectoryNode" />
-              <item name="jsgaosp-manage-web" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="systemmgmt" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="jsgaosp-manage" type="b2602c69:ProjectViewProjectNode" />
@@ -1031,96 +351,6 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="systemmgmt" type="462c0819:PsiDirectoryNode" />
-              <item name="orgmgmt" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="jsgaosp-manage" type="b2602c69:ProjectViewProjectNode" />
-              <item name="jsgaosp-manage" type="462c0819:PsiDirectoryNode" />
-              <item name="jsgaosp-manage-web" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-              <item name="directives" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="jsgaosp-manage" type="b2602c69:ProjectViewProjectNode" />
-              <item name="jsgaosp-manage" type="462c0819:PsiDirectoryNode" />
-              <item name="jsgaosp-manage-web" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-              <item name="directives" type="462c0819:PsiDirectoryNode" />
-              <item name="custom" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="jsgaosp-manage" type="b2602c69:ProjectViewProjectNode" />
-              <item name="jsgaosp-manage" type="462c0819:PsiDirectoryNode" />
-              <item name="jsgaosp-manage-web" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="tpl" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="jsgaosp-manage" type="b2602c69:ProjectViewProjectNode" />
-              <item name="jsgaosp-manage" type="462c0819:PsiDirectoryNode" />
-              <item name="jsgaosp-manage-web" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="tpl" type="462c0819:PsiDirectoryNode" />
-              <item name="systemmgmt" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="jsgaosp-manage" type="b2602c69:ProjectViewProjectNode" />
-              <item name="jsgaosp-manage" type="462c0819:PsiDirectoryNode" />
-              <item name="jsgaosp-manage-web" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="tpl" type="462c0819:PsiDirectoryNode" />
-              <item name="systemmgmt" type="462c0819:PsiDirectoryNode" />
-              <item name="orgmgmt" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="jsgaosp-manage" type="b2602c69:ProjectViewProjectNode" />
-              <item name="jsgaosp-manage" type="462c0819:PsiDirectoryNode" />
-              <item name="jsgaosp-manage-web" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="jsgaosp-manage" type="b2602c69:ProjectViewProjectNode" />
-              <item name="jsgaosp-manage" type="462c0819:PsiDirectoryNode" />
-              <item name="jsgaosp-manage-web" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="modules" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="jsgaosp-manage" type="b2602c69:ProjectViewProjectNode" />
-              <item name="jsgaosp-manage" type="462c0819:PsiDirectoryNode" />
-              <item name="jsgaosp-manage-web" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="modules" type="462c0819:PsiDirectoryNode" />
-              <item name="angular-bootstrap-nav-tree" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -1129,48 +359,13 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="DatabaseDriversLRU" value="oracle" />
+    <property name="ExpandSpringBootJavaOptionsPanel" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557888626161" />
-    <property name="database.console.LAST_STATE" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Documents/WeChat Files/v320111/FileStorage/File/2019-04/web" />
-    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/pom.xml" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="SDKs" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.2" />
-    <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="project.propCompiler" />
-  </component>
-  <component name="RecentsManager">
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="com.britecloud.marketingcloud.service.impl" />
-      <recent name="com.britecloud.marketingcloud.dao.impl" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="F:\zjsy\jsgaosp-manage\jsgaosp-manage-web\src\main\webapp\app\tpl" />
-      <recent name="F:\zjsy\jsgaosp-manage\jsgaosp-manage-web\src\main\webapp\app\js\app\systemmgmt\orgmgmt" />
-      <recent name="F:\zjsy\jsgaosp-manage\jsgaosp-manage-web\src\main\webapp\app\js\app\systemmgmt\rolemgmt" />
-      <recent name="F:\zjsy\jsgaosp-manage\jsgaosp-manage-web\src\main\webapp\app\tpl\systemmgmt\link" />
-      <recent name="F:\zjsy\jsgaosp-manage\jsgaosp-manage-web\src\main\webapp\app\js\app\systemmgmt\link" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.britecloud.marketingcloud.service.impl" />
-      <recent name="com.britecloud.marketingcloud.service" />
-      <recent name="com.britecloud.marketingcloud.dao.impl" />
-      <recent name="com.britecloud.marketingcloud.dao" />
-      <recent name="com.britecloud.marketingcloud.console.action" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="F:\zjsy\jsgaosp-manage\jsgaosp-manage-web\src\main\webapp\app\tpl" />
-      <recent name="F:\zjsy\jsgaosp-manage\jsgaosp-manage-web\src\main\webapp\app\tpl\applicationmgmt" />
-      <recent name="F:\zjsy\jsgaosp-manage\jsgaosp-manage-web\src\main\webapp\app\tpl\systemmgmt" />
-      <recent name="F:\zjsy\jsgaosp-manage\jsgaosp-manage-web\src\main\webapp\app\js\app\systemmgmt\application\app_approve" />
-      <recent name="F:\zjsy\jsgaosp-manage\jsgaosp-manage-web\src\main\webapp\app\js\app\systemmgmt\application\app_applicant" />
-    </key>
+    <property name="settings.editor.selected.configurable" value="settings.github" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -1184,927 +379,280 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.ConsoleServer">
-    <configuration name="user_modal_form.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/jsgaosp-manage/jsgaosp-manage-web/src/main/webapp/app/tpl/systemmgmt/usermgmt/user_modal_form.html" useBuiltInWebServerPort="true">
-      <method v="2" />
+  <component name="RunManager">
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
     </configuration>
     <configuration name="ConsoleServer" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="jsgaosp-manage-web" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.britecloud.marketingcloud.console.ConsoleServer" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
+      <option name="WORKING_DIRECTORY" value="file://$MODULE_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH" />
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="JavaScript Debug.user_modal_form.html" />
-      </list>
-    </recent_temporary>
-  </component>
-  <component name="SvnConfiguration">
-    <configuration />
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <properties />
+      <listeners />
+    </configuration>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="ebd573c1-6ab2-4b1d-9981-4bb3ce7b0d8e" name="Default Changelist" comment="" />
-      <created>1554879503159</created>
+      <changelist id="f5f1bbb4-e918-4239-8999-b61fdcf51e77" name="Default" comment="" />
+      <created>1558415789058</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1554879503159</updated>
-      <workItem from="1554879504766" duration="2441000" />
-      <workItem from="1554882259936" duration="6424000" />
-      <workItem from="1554891331768" duration="190639000" />
-      <workItem from="1555648699469" duration="53900000" />
-      <workItem from="1556067898776" duration="17677000" />
-      <workItem from="1556162376562" duration="5226000" />
-      <workItem from="1556182128113" duration="2048000" />
-      <workItem from="1556240734805" duration="24842000" />
-      <workItem from="1556332012872" duration="62870000" />
-      <workItem from="1556590211128" duration="14525000" />
-      <workItem from="1557018762452" duration="244386000" />
+      <updated>1558415789058</updated>
+      <workItem from="1558415791823" duration="7207000" />
     </task>
-    <task id="LOCAL-00001" summary="aa">
-      <created>1554899317225</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1554899317225</updated>
-    </task>
-    <task id="LOCAL-00002" summary="去除dev-tools">
-      <created>1554962528967</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1554962528967</updated>
-    </task>
-    <task id="LOCAL-00003" summary="行政区划管理">
-      <created>1554969130742</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1554969130742</updated>
-    </task>
-    <task id="LOCAL-00004" summary="行政区划管理增加表单隐藏效果">
-      <created>1555030679955</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1555030679955</updated>
-    </task>
-    <task id="LOCAL-00005" summary="增加表单隐藏效果">
-      <created>1555030793704</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1555030793704</updated>
-    </task>
-    <task id="LOCAL-00006" summary="编辑用户信息的模态框添加区划选择">
-      <created>1555060094983</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1555060094983</updated>
-    </task>
-    <task id="LOCAL-00007" summary="删除form多余的submit">
-      <created>1555126050520</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1555126050520</updated>
-    </task>
-    <task id="LOCAL-00008" summary="添加‘应用管理’一级菜单，‘应用申报’为对应的二级菜单">
-      <created>1555126232557</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1555126232557</updated>
-    </task>
-    <task id="LOCAL-00009" summary="修改用户信息模态框里区划框的样式">
-      <created>1555138830128</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1555138830128</updated>
-    </task>
-    <task id="LOCAL-00010" summary="aa">
-      <created>1555142632267</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1555142632267</updated>
-    </task>
-    <task id="LOCAL-00011" summary="aa">
-      <created>1555145362872</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1555145362872</updated>
-    </task>
-    <task id="LOCAL-00012" summary="core 第三方系統申報">
-      <created>1555314424806</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1555314424806</updated>
-    </task>
-    <task id="LOCAL-00013" summary="aa">
-      <created>1555315357916</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1555315357916</updated>
-    </task>
-    <task id="LOCAL-00014" summary="aa">
-      <created>1555409291935</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1555409291935</updated>
-    </task>
-    <task id="LOCAL-00015" summary="aa">
-      <created>1555409387476</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1555409387476</updated>
-    </task>
-    <task id="LOCAL-00016" summary="应用系统申报（部分）">
-      <created>1555414488828</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1555414488828</updated>
-    </task>
-    <task id="LOCAL-00017" summary="应用系统申报（部分）">
-      <created>1555555295090</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1555555295107</updated>
-    </task>
-    <task id="LOCAL-00018" summary="应用系统审核（部分）">
-      <created>1555580007139</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1555580007139</updated>
-    </task>
-    <task id="LOCAL-00019" summary="前端文件目录位置变更">
-      <created>1555654128501</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1555654128501</updated>
-    </task>
-    <task id="LOCAL-00020" summary="添加一个通用commonService，调用方法参照应用的ctrl">
-      <created>1556010264559</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1556010264559</updated>
-    </task>
-    <task id="LOCAL-00021" summary="Revert &quot;添加一个通用commonService，调用方法参照应用申报的modal&quot;&#10;&#10;This reverts commit f54c3a5c">
-      <created>1556010486349</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1556010486349</updated>
-    </task>
-    <task id="LOCAL-00022" summary="之前提交出问题了，修改的部分删掉了，再上传一遍">
-      <created>1556012077022</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1556012077022</updated>
-    </task>
-    <task id="LOCAL-00023" summary="登录那块把数据字典放到session里，ctrl里直接从session里取">
-      <created>1556070352888</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1556070352888</updated>
-    </task>
-    <task id="LOCAL-00024" summary="数据字典后台">
-      <created>1556272981111</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1556272981111</updated>
-    </task>
-    <task id="LOCAL-00025" summary="数据字典修改core">
-      <created>1556273066837</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1556273066837</updated>
-    </task>
-    <task id="LOCAL-00026" summary="组织管理（部分完成）">
-      <created>1556446946132</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1556446946132</updated>
-    </task>
-    <task id="LOCAL-00027" summary="获取组织树结构改成传入父节点编号（orgNo），获取父节点和所有子节点">
-      <created>1556454698406</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1556454698406</updated>
-    </task>
-    <task id="LOCAL-00028" summary="通用组织树">
-      <created>1556517554064</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1556517554064</updated>
-    </task>
-    <task id="LOCAL-00029" summary="组织管理">
-      <created>1556535973071</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1556535973071</updated>
-    </task>
-    <task id="LOCAL-00030" summary="组织管理..">
-      <created>1556536419930</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1556536419930</updated>
-    </task>
-    <task id="LOCAL-00031" summary="登录时获得数据字典列表">
-      <created>1556613281489</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1556613281489</updated>
-    </task>
-    <task id="LOCAL-00032" summary="数据字典">
-      <created>1557052846974</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1557052846975</updated>
-    </task>
-    <task id="LOCAL-00033" summary="账号管理">
-      <created>1557142185461</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1557142185461</updated>
-    </task>
-    <task id="LOCAL-00034" summary="角色管理部分">
-      <created>1557302598076</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1557302598076</updated>
-    </task>
-    <task id="LOCAL-00035" summary="组织管理（改）">
-      <created>1557365496523</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1557365496523</updated>
-    </task>
-    <task id="LOCAL-00036" summary="按钮权限控制">
-      <created>1557722554861</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1557722554861</updated>
-    </task>
-    <task id="LOCAL-00037" summary="按钮权限控制改进">
-      <created>1557728013538</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1557728013538</updated>
-    </task>
-    <task id="LOCAL-00038" summary="回到之前正常的版本">
-      <created>1557801231825</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1557801231825</updated>
-    </task>
-    <task id="LOCAL-00039" summary="组织树">
-      <created>1557802200752</created>
-      <option name="number" value="00039" />
-      <option name="presentableId" value="LOCAL-00039" />
-      <option name="project" value="LOCAL" />
-      <updated>1557802200752</updated>
-    </task>
-    <task id="LOCAL-00040" summary="1">
-      <created>1557834654851</created>
-      <option name="number" value="00040" />
-      <option name="presentableId" value="LOCAL-00040" />
-      <option name="project" value="LOCAL" />
-      <updated>1557834654851</updated>
-    </task>
-    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="624978000" />
-  </component>
-  <component name="TodoView" selected-index="5">
-    <todo-panel id="selected-file">
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
-    <todo-panel id="all">
-      <are-packages-shown value="true" />
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
+    <option name="totallyTimeSpent" value="7207000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.9261364" visible="true" weight="0.33736762" />
-      <window_info id="Structure" order="1" sideWeight="0.07386363" side_tool="true" weight="0.27760968" />
-      <window_info id="Designer" order="2" />
-      <window_info id="Image Layers" order="3" />
-      <window_info id="Capture Tool" order="4" />
-      <window_info id="UI Designer" order="5" />
-      <window_info id="Favorites" order="6" side_tool="true" />
-      <window_info id="Web" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Database Console" order="0" weight="0.35573772" />
-      <window_info anchor="bottom" id="Problems" order="1" weight="0.3295082" />
-      <window_info anchor="bottom" id="Message" order="2" />
-      <window_info anchor="bottom" id="Find" order="3" weight="0.4409836" />
-      <window_info anchor="bottom" id="Run" order="4" sideWeight="0.2632375" weight="0.3622951" />
-      <window_info active="true" anchor="bottom" id="Debug" order="5" sideWeight="0.33812407" visible="true" weight="0.20163934" />
-      <window_info anchor="bottom" id="Cvs" order="6" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="7" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="8" sideWeight="0.49924356" weight="0.352459" />
-      <window_info anchor="bottom" id="Spring" order="9" weight="0.3295082" />
-      <window_info anchor="bottom" id="Terminal" order="10" weight="0.40327868" />
-      <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="12" sideWeight="0.73676246" side_tool="true" weight="0.44262296" />
-      <window_info anchor="bottom" id="Event Log" order="13" sideWeight="0.66187596" side_tool="true" weight="0.6442623" />
-      <window_info anchor="bottom" id="Messages" order="14" sideWeight="0.42965204" weight="0.6819672" />
-      <window_info anchor="bottom" id="Java Enterprise" order="15" weight="0.3295082" />
-      <window_info anchor="bottom" id="Database Changes" order="16" />
-      <window_info anchor="right" id="Coverage" order="0" sideWeight="0.50358" side_tool="true" weight="0.33282906" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="1" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="2" show_stripe_button="false" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.0892587" />
-      <window_info anchor="right" id="Bean Validation" order="4" sideWeight="0.49537036" weight="0.32980332" />
-      <window_info anchor="right" id="Palette" order="5" />
-      <window_info anchor="right" id="Capture Analysis" order="6" />
-      <window_info anchor="right" id="Palette&#9;" order="7" />
-      <window_info anchor="right" id="Theme Preview" order="8" />
-      <window_info anchor="right" id="Database" order="9" weight="0.33282906" />
-      <window_info anchor="right" id="Maven" order="10" sideWeight="0.49642006" weight="0.33282906" />
+      <window_info anchor="right" id="Palette" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="right" id="Maven Projects" visible="true" weight="0.1709531" />
+      <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
+      <window_info id="Capture Tool" />
+      <window_info id="Designer" />
+      <window_info anchor="right" id="Database" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info id="UI Designer" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Messages" weight="0.32843137" />
+      <window_info anchor="right" id="Palette&#9;" />
+      <window_info id="Image Layers" />
+      <window_info anchor="bottom" id="Java Enterprise" />
+      <window_info anchor="right" id="Capture Analysis" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.18464053" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="Spring" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2708018" />
+      <window_info anchor="right" id="Bean Validation" />
+      <window_info id="Web" side_tool="true" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="right" id="Theme Preview" />
+      <window_info id="Favorites" side_tool="true" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
-  <component name="Vcs.Log.History.Properties">
-    <option name="COLUMN_ORDER">
-      <list>
-        <option value="0" />
-        <option value="2" />
-        <option value="3" />
-        <option value="1" />
-      </list>
-    </option>
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State>
-              <option name="RECENTLY_FILTERED_USER_GROUPS">
-                <collection />
-              </option>
-              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
-                <collection />
-              </option>
-              <option name="COLUMN_ORDER">
-                <list>
-                  <option value="0" />
-                  <option value="1" />
-                  <option value="2" />
-                  <option value="3" />
-                </list>
-              </option>
-            </State>
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="应用系统申报（部分）" />
-    <MESSAGE value="应用系统审核（部分）" />
-    <MESSAGE value="前端文件目录位置变更" />
-    <MESSAGE value="添加一个通用commonService，调用方法参照应用的ctrl" />
-    <MESSAGE value="Revert &quot;添加一个通用commonService，调用方法参照应用申报的modal&quot;&#10;&#10;This reverts commit f54c3a5c" />
-    <MESSAGE value="之前提交出问题了，修改的部分删掉了，再上传一遍" />
-    <MESSAGE value="登录那块把数据字典放到session里，ctrl里直接从session里取" />
-    <MESSAGE value="数据字典后台" />
-    <MESSAGE value="数据字典修改core" />
-    <MESSAGE value="组织管理（部分完成）" />
-    <MESSAGE value="获取组织树结构改成传入父节点编号（orgNo），获取父节点和所有子节点" />
-    <MESSAGE value="通用组织树" />
-    <MESSAGE value="组织管理" />
-    <MESSAGE value="组织管理.." />
-    <MESSAGE value="登录时获得数据字典列表" />
-    <MESSAGE value="数据字典" />
-    <MESSAGE value="账号管理" />
-    <MESSAGE value="角色管理部分" />
-    <MESSAGE value="组织管理（改）" />
-    <MESSAGE value="按钮权限控制" />
-    <MESSAGE value="按钮权限控制改进" />
-    <MESSAGE value="回到之前正常的版本" />
-    <MESSAGE value="组织树" />
-    <MESSAGE value="1" />
-    <MESSAGE value="区划管理" />
-    <option name="LAST_COMMIT_MESSAGE" value="区划管理" />
-  </component>
-  <component name="antWorkspaceConfiguration">
-    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
-    <option name="FILTER_TARGETS" value="false" />
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/service/impl/BcCodeServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/jsgaosp-manage-web/src/main/java/com/britecloud/marketingcloud/console/ConsoleServer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="69" lean-forward="true" selection-start-line="69" selection-end-line="69" />
-          <folding>
-            <element signature="e#800#801#0" expanded="true" />
-            <element signature="e#853#854#0" expanded="true" />
-            <element signature="e#1091#1092#0" expanded="true" />
-            <element signature="e#1139#1140#0" expanded="true" />
-            <element signature="e#1208#1209#0" expanded="true" />
-            <element signature="e#1258#1259#0" expanded="true" />
-            <element signature="e#1327#1328#0" expanded="true" />
-            <element signature="e#1377#1378#0" expanded="true" />
-            <element signature="e#1455#1456#0" expanded="true" />
-            <element signature="e#1513#1514#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="270">
+          <caret line="39" selection-start-line="39" selection-end-line="39" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/service/impl/BcOrgServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/jsgaosp-manage-web/src/main/java/com/britecloud/marketingcloud/console/configuration/WebConfiguration.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="102" lean-forward="true" selection-start-line="102" selection-end-line="102" />
+        <state relative-caret-position="179">
+          <caret line="45" selection-start-line="45" selection-end-line="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jsgaosp-manage-web/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="97" column="21" lean-forward="true" selection-start-line="97" selection-start-column="21" selection-end-line="97" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/core/SecurityInterceptor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="69" column="48" selection-start-line="69" selection-start-column="48" selection-end-line="69" selection-end-column="48" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#721#722#0" expanded="true" />
-            <element signature="e#768#769#0" expanded="true" />
-            <element signature="e#852#853#0" expanded="true" />
-            <element signature="e#913#914#0" expanded="true" />
-            <element signature="e#965#966#0" expanded="true" />
-            <element signature="e#1001#1002#0" expanded="true" />
-            <element signature="e#1055#1056#0" expanded="true" />
-            <element signature="e#1094#1095#0" expanded="true" />
-            <element signature="e#1148#1149#0" expanded="true" />
-            <element signature="e#1187#1188#0" expanded="true" />
-            <element signature="e#1243#1244#0" expanded="true" />
-            <element signature="e#1289#1290#0" expanded="true" />
-            <element signature="e#1365#1366#0" expanded="true" />
-            <element signature="e#1417#1418#0" expanded="true" />
-            <element signature="e#1474#1475#0" expanded="true" />
-            <element signature="e#1524#1525#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/service/impl/SysRoleMgmtServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/core/dao/jdbc/BaseJdbcDao.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="87" lean-forward="true" selection-start-line="87" selection-end-line="87" />
-          <folding>
-            <element signature="e#1576#1577#0" expanded="true" />
-            <element signature="e#1629#1630#0" expanded="true" />
-            <element signature="e#1835#1836#0" expanded="true" />
-            <element signature="e#1884#1885#0" expanded="true" />
-            <element signature="e#1944#1945#0" expanded="true" />
-            <element signature="e#1996#1997#0" expanded="true" />
-            <element signature="e#2038#2039#0" expanded="true" />
-            <element signature="e#2079#2080#0" expanded="true" />
-            <element signature="e#2145#2146#0" expanded="true" />
-            <element signature="e#2194#2195#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="189">
+          <caret line="106" column="35" selection-start-line="106" selection-start-column="35" selection-end-line="106" selection-end-column="35" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/service/impl/SysRoleUserMgmtServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/jsgaosp-manage-web/src/main/resources/application-web.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="81" lean-forward="true" selection-start-line="81" selection-end-line="81" />
-          <folding>
-            <element signature="e#1580#1581#0" expanded="true" />
-            <element signature="e#1642#1643#0" expanded="true" />
-            <element signature="e#1715#1716#0" expanded="true" />
-            <element signature="e#1781#1782#0" expanded="true" />
-            <element signature="e#1889#1890#0" expanded="true" />
-            <element signature="e#1945#1946#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="209">
+          <caret line="41" column="33" lean-forward="true" selection-start-line="41" selection-start-column="33" selection-end-line="41" selection-end-column="33" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/service/SysRoleMgmtService.java">
+    <entry file="file://$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/model/BcLoginLog.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
+        <state relative-caret-position="190">
+          <caret line="12" column="27" lean-forward="true" selection-start-line="12" selection-start-column="27" selection-end-line="12" selection-end-column="27" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/service/SysRoleUserMgmtService.java">
+    <entry file="file://$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/dao/impl/sql/BcThirdPartySysImpl.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="47" lean-forward="true" selection-start-line="47" selection-end-line="47" />
+        <state relative-caret-position="19">
+          <caret line="1" column="2" lean-forward="true" selection-start-line="1" selection-start-column="2" selection-end-line="1" selection-end-column="19" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/jsgaosp-manage-web/src/main/java/com/britecloud/marketingcloud/console/action/api/BcOrgApiAction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jsgaosp-manage-web/src/main/java/com/britecloud/marketingcloud/console/action/BcOrgAction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="175" column="1" lean-forward="true" selection-start-line="175" selection-start-column="1" selection-end-line="175" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jsgaosp-manage-web/src/main/java/com/britecloud/marketingcloud/console/action/GlobalAct.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="176" lean-forward="true" selection-start-line="176" selection-end-line="176" />
-          <folding>
-            <element signature="e#0#7002#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jsgaosp-manage-web/src/main/java/com/britecloud/marketingcloud/console/action/SysRoleUserMgmtAct.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="87" lean-forward="true" selection-start-line="87" selection-end-line="87" />
-          <folding>
-            <element signature="e#0#2014#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/js/app/commonService.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="52" column="30" selection-start-line="52" selection-start-column="30" selection-end-line="52" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/js/app/systemmgmt/rolemgmt/role_modal.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="92" column="3" selection-start-line="92" selection-start-column="3" selection-end-line="92" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/js/app/systemmgmt/rolemgmt/role_serv.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="170" column="8" selection-start-line="170" selection-start-column="8" selection-end-line="170" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/js/config.router.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="85" column="76" selection-start-line="85" selection-start-column="76" selection-end-line="85" selection-end-column="76" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/tpl/systemmgmt/rolemgmt/role_modal_form.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="67" column="6" selection-start-line="67" selection-start-column="6" selection-end-line="67" selection-end-column="6" />
-          <folding>
-            <element signature="n#style#0;n#th#0;n#tr#0;n#thead#0;n#table#0;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/model/BcRoleOp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="12" column="1" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jsgaosp-manage-web/src/main/java/com/britecloud/marketingcloud/console/action/SysRoleMgmtAct.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="49" selection-start-line="49" selection-end-line="49" />
-          <folding>
-            <element signature="e#0#2150#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/dao/impl/sql/BcRoleOpDaoImpl.sql">
+    <entry file="file://$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/dao/impl/sql/BcAdviceDaoImpl.sql">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/dao/impl/BcRoleOpDaoImpl.java">
+    <entry file="file://$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/dao/impl/sql/SysUserJdbcDaoImpl.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="73">
-          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+        <state relative-caret-position="76">
+          <caret line="112" column="21" lean-forward="true" selection-start-line="112" selection-start-column="21" selection-end-line="112" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/utils/SqlUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="703">
+          <caret line="98" column="49" lean-forward="true" selection-start-line="98" selection-start-column="49" selection-end-line="98" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/dao/impl/BcLogDaoImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="249">
+          <caret line="33" column="47" selection-start-line="33" selection-start-column="47" selection-end-line="33" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/utils/UUIDUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="8" column="5" lean-forward="true" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#135#136#0" expanded="true" />
+            <element signature="e#205#206#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/service/impl/BcRoleOpServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/service/BcRoleOpService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/dao/BcRoleOpDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/js/directives/custom/stTargetTree.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3550">
-          <caret line="142" column="16" selection-start-line="142" selection-start-column="16" selection-end-line="142" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/tpl/systemmgmt/rolemgmt/role.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="25">
-          <caret line="31" column="61" lean-forward="true" selection-start-line="31" selection-start-column="61" selection-end-line="31" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/tpl/systemmgmt/area/area.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="89" column="47" selection-start-line="89" selection-start-column="47" selection-end-line="89" selection-end-column="47" />
-          <folding>
-            <element signature="n#style#0;n#span#0;n#label#0;n#div#0;n#form#0;n#div#1;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#label#0;n#div#1;n#form#0;n#div#1;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/js/app/systemmgmt/rolemgmt/role_info_modal.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="39">
-          <caret line="8" column="25" lean-forward="true" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/tpl/systemmgmt/syscode/codesort.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="22" column="35" selection-start-line="22" selection-start-column="35" selection-end-line="22" selection-end-column="35" />
+        <state relative-caret-position="152">
+          <caret line="8" column="45" selection-start-line="8" selection-start-column="41" selection-end-line="8" selection-end-column="45" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="11" column="26" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
+        <state relative-caret-position="130">
+          <caret line="13" column="54" selection-start-line="13" selection-start-column="54" selection-end-line="13" selection-end-column="54" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/js/app.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/assets/highlight/angular-code-mirror.js">
+    <entry file="file://$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/dao/impl/SysUserJdbcDaoImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="83">
-          <caret line="372" column="5" selection-start-line="372" selection-start-column="5" selection-end-line="372" selection-end-column="5" />
+        <state relative-caret-position="1262">
+          <caret line="95" column="44" lean-forward="true" selection-start-line="95" selection-start-column="44" selection-end-line="95" selection-end-column="44" />
         </state>
       </provider>
     </entry>
-    <entry file="das://f174113c-675d-44f1-85e8-4d4a1c5a6dbd/schema/SGA/table/BC_LINK_INFO">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
+    <entry file="file://$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/service/impl/SysUserMgmtServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="181">
+          <caret line="65" column="21" selection-start-line="65" selection-start-column="21" selection-end-line="65" selection-end-column="21" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/jsgaosp-manage-web/src/main/java/com/britecloud/marketingcloud/console/action/api/BcAppApiAction.java">
+    <entry file="file://$PROJECT_DIR$/jsgaosp-manage-web/src/main/java/com/britecloud/marketingcloud/console/action/GlobalAct.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-236">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+        <state relative-caret-position="-1998">
+          <caret line="52" column="30" lean-forward="true" selection-start-line="52" selection-start-column="30" selection-end-line="52" selection-end-column="39" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/js/app/systemmgmt/link/link-ctrl.js">
+    <entry file="file://$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/js/app/login/login-serv.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="5" column="32" selection-start-line="5" selection-start-column="32" selection-end-line="5" selection-end-column="32" />
+        <state relative-caret-position="380">
+          <caret line="20" column="19" selection-start-line="20" selection-start-column="15" selection-end-line="20" selection-end-column="19" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/js/app/systemmgmt/link/link-serv.js">
+    <entry file="file://$PROJECT_DIR$/jsgaosp-manage-web/src/main/java/com/britecloud/marketingcloud/console/action/SysRoleMgmtAct.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="4" column="35" selection-start-line="4" selection-start-column="35" selection-end-line="4" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/tpl/systemmgmt/link/org.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="8" column="16" lean-forward="true" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/js/app/systemmgmt/link/link-modal.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="5" column="25" selection-start-line="5" selection-start-column="25" selection-end-line="5" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/js/app/global.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="400" column="3" selection-start-line="400" selection-start-column="3" selection-end-line="400" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/js/app/systemmgmt/rolemgmt/role_ctrl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="304" selection-start-line="304" selection-end-line="304" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/js/app/systemmgmt/orgmgmt/company_serv.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/tpl/sttarget_tree_modal.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/tpl/org_tree_nav.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="611">
-          <caret line="38" selection-start-line="38" selection-end-line="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/tpl/org_tree_modal.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/js/directives/custom/buttonPermissionCheck.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-342" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/js/directives/custom/areatreeNav.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2025" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/js/directives/custom/orgtreeNav.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="78" lean-forward="true" selection-start-line="78" selection-end-line="78" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://f174113c-675d-44f1-85e8-4d4a1c5a6dbd/schema/SGA/table/BC_ORG">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
+        <state relative-caret-position="133">
+          <caret line="135" column="44" selection-start-line="135" selection-start-column="29" selection-end-line="135" selection-end-column="44" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/js/app/app_ctrl.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="605">
-          <caret line="58" column="33" lean-forward="true" selection-start-line="58" selection-start-column="33" selection-end-line="58" selection-end-column="33" />
+        <state relative-caret-position="169">
+          <caret line="62" lean-forward="true" selection-start-line="62" selection-end-line="62" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/js/app/systemmgmt/orgmgmt/org_serv.js">
+    <entry file="file://$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/dao/impl/sql/BcLogDaoImpl.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1425">
-          <caret line="57" lean-forward="true" selection-start-line="57" selection-end-line="58" selection-end-column="10" />
+        <state relative-caret-position="171">
+          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/tpl/systemmgmt/orgmgmt/org.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="149">
-          <caret line="132" column="78" selection-start-line="132" selection-start-column="61" selection-end-line="132" selection-end-column="78" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/js/app/systemmgmt/orgmgmt/org_modal.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1050">
-          <caret line="62" selection-start-line="62" selection-end-line="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jsgaosp-manage-web/src/main/webapp/app/js/app/systemmgmt/orgmgmt/org_ctrl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="182" column="64" selection-start-line="182" selection-start-column="64" selection-end-line="182" selection-end-column="64" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/jsgaosp-manage-core/src/main/java/com/britecloud/marketingcloud/dao/impl/sql/BcSysAppDaoImpl.sql">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
   <component name="masterDetails">
     <states>
-      <state key="ArtifactsStructureConfigurable.UI">
-        <settings>
-          <artifact-editor />
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="FacetStructureConfigurable.UI">
-        <settings>
-          <last-edited>Spring</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="GlobalLibrariesConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="JdkListConfigurable.UI">
+      <state key="ProjectJDKs.UI">
         <settings>
           <last-edited>1.8</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ModuleStructureConfigurable.UI">
-        <settings>
-          <last-edited>jsgaosp-manage-web</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-                <option value="0.6" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ProjectLibrariesConfigurable.UI">
-        <settings>
-          <last-edited>Maven: antlr:antlr:2.7.7</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
